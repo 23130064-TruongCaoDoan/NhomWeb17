@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    font-family: "Sarabun", sans-serif;
+}
+.container{
+    margin: auto;
+    width: 1400px;
+}
+#page-header{
+    min-height: 300px;
+    /*background: #d5ebdb;*/
+}
+#page-header .header-message {
+    height: 70px;
+}
+#page-header .message {
+    height: 40px;
+    background: #0d3164;
+}
+#page-header .messageBorder {
+    display: block;
+    height: 30px;
+    background: repeating-radial-gradient(
+            circle at top center,
+            #cde7da 0,
+            #cde7da 20px,
+            transparent 21px,
+            transparent 40px
+    );
+    background-size: 40px 40px;
+}
+
+
+#page-header .header-title {
+    text-align: center;
+    margin-right: 20px;
+    float: left;
+}
+#page-header .header-title .logo img{
+    width: auto;
+    height: 150px;
+}
+#page-header .header-menu{
+    margin-top: 60px;
+    float: right;
+    display: flex;
+    justify-content: space-around;
+    width: calc(100% - 200px - 70px);
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #0d3164;
+    border-radius: 10px;
+    align-content: center;
+    background: white;
+}
+#page-header .header-menu a{
+    font-size: 17px;
+    text-decoration: none ;
+    color: #0d3164;
+}
+#page-header .header-menu .button{
+    align-content: center;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+#page-header .header-menu .button:hover{
+    background: #cde7da;
+    border-radius: 10px;
+}
+#page-header .header-menu .button i{
+    margin-right: 5px;
+}
+#page-header .header-menu .button span{
+    font-weight: bold;
+}
+
+#page-header .header-menu .search{
+    margin: auto 0;
+    text-align: center;
+    height: 80%;
+    flex:4;
+    background: #f2f2f2;
+    align-content: center;
+    border-radius: 10px;
+
+}
+#page-header .header-menu .search input{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 420px;
+    height: 100%;
+    font-size: 17px;
+    background: #f2f2f2;
+    border: none;
+}
+#page-header .header-menu .search button{
+    color: white;
+    font-size: 17px;
+    background: #0d3164;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#page-header .header-menu .category{
+    position: relative;
+}
+#page-header .header-menu .danhMuc{
+    display: none;
+}
+#page-header .header-menu .category:hover .danhMuc{
+    position: absolute;
+    width: 99%;
+    display: block;
+    top: 49px;
+    flex-direction: column;
+    border: 1px solid #0d3164;
+}
+#page-header .header-menu .category .danhMuc .item{
+    border-bottom: 1px solid #0d3164;
+    height: 35px;
+    align-content: center;
+}
+#page-header .header-menu .category .danhMuc .item:hover{
+    background: #cde7da;
+}
