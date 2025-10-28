@@ -4,11 +4,10 @@ body{
 }
 .container{
     margin: auto;
-    width: 1400px;
+    width: 90%;
 }
 #page-header{
     min-height: 250px;
-    /*background: #d5ebdb;*/
 }
 #page-header .header-message {
     height: 70px;
