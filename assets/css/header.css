@@ -7,7 +7,7 @@ body{
     width: 1400px;
 }
 #page-header{
-    min-height: 300px;
+    min-height: 250px;
     /*background: #d5ebdb;*/
 }
 #page-header .header-message {
