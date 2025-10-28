@@ -1,0 +1,20 @@
+
+#content .login{
+    margin: auto;
+    width: 400px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: #fff;
+    text-align: center;
+}
+#content .login .title{
+    color: #0d3164;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 17px;
+    font-family: "Sarabun", sans-serif;
+}
+#content .login .{
+    width: 100%;
+}
