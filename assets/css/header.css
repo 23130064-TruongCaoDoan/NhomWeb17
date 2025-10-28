@@ -67,6 +67,7 @@ body{
 #page-header .header-menu .button:hover{
     background: #cde7da;
     border-radius: 10px;
+    z-index: 10;
 }
 #page-header .header-menu .button i{
     margin-right: 5px;

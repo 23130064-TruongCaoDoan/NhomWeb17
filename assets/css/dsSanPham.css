@@ -1,0 +1,6 @@
+.page-wrapper .content {
+    display: flex;
+}
+.card img {
+    max-width: 8vw;
+}
