@@ -125,3 +125,20 @@ body{
 #page-header .header-menu .category .danhMuc .item:hover{
     background: #cde7da;
 }
+#pagination {
+    margin-top: 20px;
+    margin-left: 60vw;
+    display: flex;
+    text-align: center;
+    gap: 10px;
+}
+
+#pagination button{
+    border-radius:5px;
+    cursor: pointer;
+    background-color: white;
+}
+#pagination button:hover {
+    background-color: black;
+    color: white;
+}

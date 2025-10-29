@@ -76,9 +76,37 @@
           </div>
         </div>
       </div>
-
+      <div class="banner">
+          <h1>Sản phẩm</h1>
+      </div>
       <div class="content">
-        <div class="filter"></div>
+        <div class="filter">
+          <div class="recipient">
+              <div class="filter-title"><h2>Filters</h2></div>
+              <hr>
+              <div class="filter-header" onclick="toggleOptions()">Đối tượng</div>
+              <div class="filter-options" id="options">
+                <button>Trẻ sơ sinh</button>
+                <button>Trẻ 1-3 tuổi</button>
+                <button>Trẻ >4 tuổi</button>
+                <button>Sinh đôi</button>
+                <button>Anh chị em</button>
+                <button>Gia đình</button>
+              </div>
+          </div>
+          <div class="occasions">
+                <hr>
+              <div class="filter-header" onclick="toggleOptions2()">Theo mùa</div>
+              <div class="filter-options" id="options-2">
+                <button>Mùa xuân</button>
+                <button>Mùa hạ</button>
+                <button>Mùa thu</button>
+                <button>Mùa đông</button>
+                <button>Halloween</button>
+                <button>Chrismarts</button>
+              </div>
+          </div>
+        </div>
         <div class="listProducts">
           <div class="card">
             <img src="../assets/img/books/DeMen.jpg" alt="" />
@@ -189,6 +217,8 @@
             </div>
           </div>
         </div>
+        <div id="pagination"></div>
+
       </div>
 
       <footer class="footer">
@@ -243,4 +273,5 @@
       </footer>
     </div>
   </body>
+  <script src="../assets/js/dsSanPham.js"></script>
 </html>
