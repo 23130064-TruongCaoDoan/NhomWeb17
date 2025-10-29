@@ -1,0 +1,91 @@
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content .menuUser {
+    flex: 1;
+    background: #f2f2f2;
+    width: 20vw;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.content .nameUser {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-bottom: 1px solid #bbc1c7;
+}
+
+.content .nameUser .anh {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto 0;
+    font-size: 3rem;
+    border-radius: 50%;
+    border: 1px solid #bbc1c7;
+    line-height: 70px;
+    color: gray;
+}
+
+.content .nameUser .name {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.content .nameUser .bacThanhVien {
+    margin: 10px auto;
+    width: 12vw;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: #bbc1c7;
+    font-size: 14px;
+}
+.content .nameUser .point{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.content .menuMain{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: left;
+    position: relative;
+}
+.content .menuMain .menu{
+    padding-left: 5px;
+    line-height: 5vh;
+    cursor:pointer ;
+    color: #575757;
+}
+.content .menuMain .menu:hover {
+    color: #0746ae;
+}
+.content .menuMain .menu i{
+    padding-right: 5px;
+}
+
+.content .menuInfor {
+    display: none;
+    flex-direction: column;
+}
+.content .menuInfor {
+    display: none;
+    flex-direction: column;
+    background: #f2f2f2;
+    border-left: 3px solid #0d3164;
+    padding-left: 10px;
+    margin-left: 25px;
+    gap: 5px;
+    color: #575757;
+}
+.content .menuInfor .title:hover {
+    color: #0746ae;
+}
+
+
+
