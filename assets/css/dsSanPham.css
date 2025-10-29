@@ -1,0 +1,68 @@
+.content {
+  display: grid;
+  grid-template-columns: 20vw 1fr;
+
+}
+
+
+.listProducts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 60px;
+}
+
+.card {
+  background-color: #fff;
+  width: 200px; 
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  
+}
+
+.card:hover {
+    cursor: pointer;
+
+}
+.price-cart {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 8px;
+}
+.card .book-name {
+  font-weight: bold;
+  color: #003366;
+  margin: 10px 0 5px 0;
+}
+
+.card .book-name:hover{
+    text-decoration: underline;
+}
+.card .rating {
+  color: gold;
+  margin: 5px 0;
+}
+
+.card .price {
+  color: #008000;
+  margin-left: 35%;
+  font-weight: bold;
+}
+
+.card i {
+  color: #003366;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.card i:hover {
+  color: #008000;
+}
