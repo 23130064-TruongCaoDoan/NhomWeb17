@@ -1,0 +1,44 @@
+.errol_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 80%;
+    width: 100%;
+}
+.errol_container .container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: white;
+    padding-bottom: 100px;
+}
+.errol_container h3{
+    height: 40px;
+    border-bottom: 1px solid black;
+}
+.errol_container .form-group{
+    height: 72px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.errol_container label{
+    font-size: 12px;
+}
+.errol_container input{
+    height: 40px;
+    width: 100%;
+}
+.errol_container form{
+    display: flex;
+    flex-direction: column;
+}
+.errol_container button{
+    float : right;
+    width: 150px;
+    height: 30px;
+    margin-top: 35px;
+    border-radius: 10px;
+    background-color: #0d3164;
+    color: white;
+}
