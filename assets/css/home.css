@@ -1,0 +1,179 @@
+.sachh{
+    height: 95vh;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.moi{
+    background: #fbf6e9;
+    margin-top: 50px;
+
+}
+.yeuThich{
+    margin-top: 50px;
+    background: #cde7da;
+}
+.sale{
+    margin-top: 50px;
+    background: #FF4C4C;
+}
+.sale .bt {
+    background: #FF4C4C;
+}
+.sale .t span{
+    color: white;
+    font-size: 35px;
+}
+.sale .t i{
+    margin-left: 5px;
+    color: white;
+    font-size: 40px;
+}
+
+
+
+.dsbooks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+
+}
+
+.card:hover {
+    cursor: pointer;
+
+}
+.price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+.card .book-name {
+    font-weight: bold;
+    color: #003366;
+    margin: 10px 0 5px 0;
+}
+
+.card .book-name:hover{
+    text-decoration: underline;
+}
+.card .rating {
+    color: gold;
+    margin: 5px 0;
+}
+
+.card .price {
+    color: #008000;
+    margin-left: 35%;
+    font-weight: bold;
+}
+
+.card i {
+    color: #003366;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.card i:hover {
+    color: #008000;
+}
+.sachh .title{
+    padding-left: 24px;
+    color:#FF4C4C;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Lobster", sans-serif;
+
+}
+.sachh .bt{
+    margin-top: 40px;
+    text-align: center;
+}
+.sachh .bt button{
+    width: 7vw;
+    height: 5vh;
+    box-sizing: border-box;
+    padding: 2px;
+    font-size: 14px;
+    background: white;
+    color: #0d3164;
+    border: 1px solid #0d3164;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sachh .bt button:hover{
+    background: #0d3164;
+    color: white;
+}
+.event-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.event-carousel .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.event-carousel .slide {
+    min-width: 100%;
+}
+
+.event-carousel .slide img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.event-carousel .prev,
+.event-carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+}
+
+.event-carousel .prev { left: 10px; }
+.event-carousel .next { right: 10px; }
+
+.event-carousel .prev:hover,
+.event-carousel .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
