@@ -117,3 +117,17 @@
   margin-left: 1vw;
   cursor: pointer;
 }
+.clear-filter {
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  width: 10vw;
+  padding: 1vw;
+  border-radius: 50px;
+  margin-top: 2vh;
+  margin-left: 3.5vw;
+  cursor: pointer;
+}
+.clear-filter:hover {
+  background-color: rgb(206, 206, 206);
+}
