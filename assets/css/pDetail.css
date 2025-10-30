@@ -1,0 +1,72 @@
+.detail-container{
+    width: 80%;
+    height: 1000px;
+}
+.detail-container .detail{
+    width: 100%;
+    height: 50%;
+    align-content: center;
+    text-align: center;
+    margin-left: 14%;
+
+}
+.detail-container .detail .img{
+    float: left;
+    transform: scale(0.9);
+    width: 55%;
+    border-right: 1px gray solid;
+}
+.detail-container .detail .describe{
+    width: 35%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    /*background-color: yellow;*/
+    align-items: start;
+    margin-right: 9%;
+}
+.detail-container .detail .book-name{
+    float: left;
+    font-size: 30px;
+    margin-bottom: 10px
+}
+.detail-container .detail .rating{
+    float: left;
+    margin-top: 0;
+}
+.detail-container .detail .price-cart{
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.detail-container .detail .price-cart button{
+    height: 40px;
+    border-radius: 10px;
+}
+.detail-container .detail #buy{
+    width: 100px;
+    background-color: orangered;
+    color: white;
+}
+.detail-container .detail .price{
+    line-height: 1.8px;
+    margin-top: 15px;
+}
+.detail-container .detail .program{
+    margin-top: 10px;
+    line-height: 2px;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #d5ebdb;
+}
+.detail-container .book-content{
+    width: 80%;
+    margin-left: 10%;
+    line-height: 1.1;
+    border: 1px dashed gray;
+    border-radius: 4px;
+
+}
+

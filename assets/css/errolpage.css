@@ -42,6 +42,7 @@
     border-radius: 10px;
     background-color: #0d3164;
     color: white;
+    cursor: pointer;
 }
 .errol_container .form-group .container-password{
     width: 100%;
@@ -57,6 +58,9 @@
     border: 2px gray solid;
     border-right: none;
 }
+.errol_container .form-group  input{
+    border: 2px gray solid;
+}
 .errol_container .form-group .fa-eye{
     float: right;
     margin-top: 30px;
@@ -68,9 +72,4 @@
     border-left: none;
     margin-right: -6px;
 }
-/*.errol_container .pass-strength{*/
-/*    margin-top: 4px;*/
-/*    font-size: 14px;*/
-/*    font-weight: 500;*/
-/*    color: red; !* Mặc định *!*/
-/*}*/
+
