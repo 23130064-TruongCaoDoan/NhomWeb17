@@ -83,8 +83,27 @@
     <main>
         <div class="detail-container">
             <div class="detail">
-                <div class="img">
-                    <img src="../assets/img/books/365TruyenKeHangDem.png" alt="ảnh sách">
+                <div class="gallery">
+                    <div class="thumbnail-column">
+                        <img class="thumbnail active"
+                             src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
+                             alt="Ảnh sách 1"
+                             data-main-image="../assets/img/books/365TruyenKeHangDemMuaHe.png">
+                        <img class="thumbnail "
+                             src="../assets/img/books/365TruyenKeHangDem.png"
+                             alt="Ảnh sách 2"
+                             data-main-image="../assets/img/books/365TruyenKeHangDem.png">
+                        <img class="thumbnail "
+                             src="../assets/img/books/365TruyenKeHangDemMuaThu.png"
+                             alt="Ảnh sách 3"
+                             data-main-image="../assets/img/books/365TruyenKeHangDemMuaThu.png">
+                    </div>
+
+                    <div class="main-img">
+                        <img id="mainImageDisplay"
+                             src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
+                             alt="Ảnh sách chính">
+                    </div>
                 </div>
                 <div class="describe">
                     <p class="book-name">365 Truyện kể hằng đêm 1</p>
@@ -166,5 +185,6 @@
     </footer>
 </div>
 <script src="../assets/js/home.js"></script>
+<script src="../assets/js/pDetail.js" defer></script>
 </body>
 </html>

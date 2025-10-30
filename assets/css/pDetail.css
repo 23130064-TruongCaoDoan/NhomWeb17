@@ -1,20 +1,64 @@
 .detail-container{
     width: 80%;
-    height: 1000px;
+    height: fit-content;
+    color: #0d3164;
 }
 .detail-container .detail{
     width: 100%;
-    height: 50%;
+    height: fit-content;
     align-content: center;
     text-align: center;
     margin-left: 14%;
 
 }
-.detail-container .detail .img{
-    float: left;
-    transform: scale(0.9);
+
+.detail-container .detail .gallery {
+    float: none;
     width: 55%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    min-height: 400px;
+    /*background-color: #99c2a2;*/
+    padding: 15px;
+    box-sizing: border-box;
     border-right: 1px gray solid;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.detail-container .detail .thumbnail-column {
+    transform: none;
+    float: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+.detail-container .detail .thumbnail-column img {
+    width: 80px;
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.detail-container .detail .thumbnail.active {
+    border: 2px solid #007bff;
+    opacity: 0.8;
+}
+.detail-container .detail .main-img {
+    transform: none;
+    float: none;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.detail-container .detail .main-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 .detail-container .detail .describe{
     width: 35%;
@@ -24,11 +68,15 @@
     /*background-color: yellow;*/
     align-items: start;
     margin-right: 9%;
+    margin-top: -560px;
 }
+
 .detail-container .detail .book-name{
     float: left;
     font-size: 30px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    color: #0d3164;
+    font-weight: bold;
 }
 .detail-container .detail .rating{
     float: left;
@@ -42,6 +90,10 @@
 .detail-container .detail .price-cart button{
     height: 40px;
     border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    color: #0d3164;
+
 }
 .detail-container .detail #buy{
     width: 100px;
@@ -60,6 +112,7 @@
     display: flex;
     flex-direction: column;
     background-color: #d5ebdb;
+    font-weight: bold;
 }
 .detail-container .book-content{
     width: 80%;
@@ -67,6 +120,16 @@
     line-height: 1.1;
     border: 1px dashed gray;
     border-radius: 4px;
-
+    color: #0d3164;
 }
+.detail-container .book-content h5{
+    line-height: 1.2px;
+    color: #0d3164;
+}
+.detail-container .book-content p{
+    line-height: 1.3;
+    margin-left: 15px;
+    color: #0d3164;
+}
+
 
