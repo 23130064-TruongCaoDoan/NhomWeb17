@@ -1,0 +1,114 @@
+.content .menuUser .inforuser .ttcn{
+    font-weight: bold;
+    color: #0d3164;
+}
+.content .menuInfor .prof{
+    font-weight: bold;
+    color: #0d3164;
+
+}
+.profile-container {
+    flex: 3;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.required {
+    color: red;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #0d3164;
+    outline: none;
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-inline a {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #3b7ddd;
+    text-decoration: none;
+}
+
+.form-inline a:hover {
+    text-decoration: underline;
+}
+
+.gender-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.birthday-group {
+    display: flex;
+    gap: 10px;
+}
+.birthday-group input {
+    width: 100%;
+    text-align: center;
+}
+.btn-save {
+    display: block;
+    width: 200px;
+    padding: 12px;
+    margin: 25px auto 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #d71919;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #b51515;
+}
+.content .menuInfor {
+    display: block;
+    flex-direction: column;
+    background: #fff;
+    border-left: 3px solid #0d3164;
+    padding-left: 10px;
+    margin-left: 25px;
+    gap: 5px;
+    color: #575757;
+}
+.content .menuInfor .title:hover {
+    color: #0d3164;
+    transform: translateY(-3px);
+}
