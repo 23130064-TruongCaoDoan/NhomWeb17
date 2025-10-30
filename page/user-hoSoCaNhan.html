@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/user.css">
+    <link rel="stylesheet" href="../assets/css/hoSoCaNhan.css">
+
+
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="../assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="home.html" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham.html" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách" />
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="login.html" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                    <a href="" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="menuUser">
+                <div class="nameUser">
+                    <div class="anh"><i class="fa-solid fa-user"></i></div>
+                    <div class="name"> Lê Vân Trường</div>
+                    <div class="bacThanhVien">Thành viên bạc</div>
+                    <div class="point">10000 point</div>
+                </div>
+                <div class="menuMain">
+                    <div class="menu inforuser">
+                        <div class="title ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="menuInfor">
+                            <div class="title prof"><span>Hồ sơ cá nhân</span></div>
+                            <div class="title address"><span>Số địa chỉ</span></div>
+                            <div class="title passw"><span>Đổi mật khẩu</span></div>
+                            <div class="title member"><span>Ưu đãi thành viên</span></div>
+                        </div>
+                    </div>
+                    <div class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></div>
+                    <div class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></div>
+                    <div class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></div>
+                    <div class="menu spYeuThich"><i class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></div>
+                </div>
+            </div>
+            <div class="profile-container">
+                <h2>Hồ sơ cá nhân</h2>
+                <div class="form-group">
+                    <label for="hoten">Họ và tên</label>
+                    <input type="text" id="hoten" placeholder="Nhập họ và tên">
+                </div>
+
+                <div class="form-group">
+                    <label for="sdt">Số điện thoại</label>
+                    <div class="form-inline">
+                        <input type="text" id="sdt" placeholder="Nhập số điện thoại">
+                        <a href="#">Thay đổi</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="form-inline">
+                        <input type="email" id="email" value="truongdoangacho432@gmail.com">
+                        <a href="#">Thay đổi</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Giới tính</label>
+                    <div class="gender-group">
+                        <label><input type="radio" name="gioitinh" checked> Nam</label>
+                        <label><input type="radio" name="gioitinh"> Nữ</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Birthday <span class="required">*</span></label>
+                    <div class="birthday-group">
+                        <input type="number" placeholder="25" min="1" max="31">
+                        <input type="number" placeholder="04" min="1" max="12">
+                        <input type="number" placeholder="2005" min="1900" max="2025">
+                    </div>
+                </div>
+                <button class="btn-save">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="wave-container">
+            <svg viewBox="0 0 120 15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"></path>
+            </svg>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Liên hệ chúng tôi</h3>
+                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                <a href="#"><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ khách hàng</h3>
+                <a href="#">Theo dõi đơn hàng</a>
+                <a href="#">Tài khoản</a>
+                <a href="#">Thông tin vận chuyển</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Đối tác</h3>
+                <a href="#">Nhà phân phối</a>
+                <a href="#">Sách của chúng tôi</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bảo mật</h3>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Điều khoản sử dụng</a>
+                <a href="#">Khả năng tiếp cận</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright ©. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
