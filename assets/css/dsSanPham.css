@@ -67,3 +67,67 @@
 .card i:hover {
   color: #008000;
 }
+
+.page-wrapper .banner {
+  width: 100%;
+  min-height: 20vh;
+  background-color: #6899c9;
+  margin-bottom: 5vh;
+}
+.page-wrapper .banner h1 {
+  color: white;
+  margin-left: 14vw;
+  margin-top: 7vh;
+}
+
+.filter {
+  position: sticky;
+  top: 10px; 
+  border: solid black 1px;
+  margin-left: 0.5vw;
+  padding: 20px;
+  margin-top: 2vh;
+  border-radius: 5px;
+  min-height: 10vh;
+  height: fit-content;
+}
+.filter .filter-options {
+  margin-top: 10px;
+  display: none; 
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter .filter-options button {
+    padding: 5px 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    width: 7vw;
+    background-color: white;
+    cursor: pointer;
+    color:#003366;
+    margin-left: 0.5vw;
+}
+.filter .filter-options button:hover {
+  background-color: rgb(238, 238, 238);
+}
+.filter .filter-title {
+  margin-left: 6vw;
+}
+.filter .filter-header {
+  margin-left: 1vw;
+  cursor: pointer;
+}
+.clear-filter {
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  width: 10vw;
+  padding: 1vw;
+  border-radius: 50px;
+  margin-top: 2vh;
+  margin-left: 3.5vw;
+  cursor: pointer;
+}
+.clear-filter:hover {
+  background-color: rgb(206, 206, 206);
+}

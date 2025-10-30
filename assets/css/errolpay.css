@@ -22,18 +22,19 @@
     line-height: 30px;
     margin-bottom: 10px;
 }
-.errol_container label{
+.errol_container .form-group label{
     font-size: 12px;
+
 }
-.errol_container input{
+.errol_container .form-group input{
     height: 40px;
     width: 100%;
 }
-.errol_container form{
+.errol_container .form-group form{
     display: flex;
     flex-direction: column;
 }
-.errol_container button{
+.errol_container  button{
     float : right;
     width: 150px;
     height: 30px;
@@ -42,3 +43,34 @@
     background-color: #0d3164;
     color: white;
 }
+.errol_container .form-group .container-password{
+    width: 100%;
+}
+.errol_container .form-group .password-content{
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 95%;
+}
+.errol_container .form-group .password-content input{
+    width: 100%;
+    border: 2px gray solid;
+    border-right: none;
+}
+.errol_container .form-group .fa-eye{
+    float: right;
+    margin-top: 30px;
+    height: 42px;
+    width: 5%;
+    text-align: center;
+    align-content: center;
+    border: 2px gray solid;
+    border-left: none;
+    margin-right: -6px;
+}
+/*.errol_container .pass-strength{*/
+/*    margin-top: 4px;*/
+/*    font-size: 14px;*/
+/*    font-weight: 500;*/
+/*    color: red; !* Mặc định *!*/
+/*}*/
