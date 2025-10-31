@@ -60,9 +60,11 @@ body{
     cursor: pointer;
     flex: 1;
     text-align: center;
+    transition: 0.3s;
 }
 #page-header .header-menu .button:hover{
     background: #cde7da;
+    transform: translateY(-3px);
     border-radius: 10px;
     z-index: 10;
 }
@@ -114,16 +116,17 @@ body{
     display: block;
     top: 49px;
     flex-direction: column;
-    border: 1px solid #0d3164;
 }
 #page-header .header-menu .category .danhMuc .item{
-    border-bottom: 1px solid #0d3164;
     height: 35px;
     align-content: center;
     background: white;
+    transition: 0.3s;
+    border: 1px solid #0d3164;
 }
 #page-header .header-menu .category .danhMuc .item:hover{
     background: #cde7da;
+    transform: translateY(-3px);
 }
 #pagination {
     margin-top: 20px;
