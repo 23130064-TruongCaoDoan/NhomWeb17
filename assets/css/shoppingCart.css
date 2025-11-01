@@ -82,6 +82,7 @@
     background-color: #0d3164;
     cursor: pointer;
 }
+
 .right-container .bill div {
     display: flex;
     justify-content: space-between;
@@ -95,6 +96,8 @@
     height: 15%;
     border-radius: 5px;
     margin-left: 7vw;
+    font-size: 18px;
+    font-weight: bold;
 }
 .right-container .check-out:hover {
      color: #0d3164;
