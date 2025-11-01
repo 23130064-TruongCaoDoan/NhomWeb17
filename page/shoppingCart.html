@@ -85,64 +85,86 @@
 
       <div class="title-cart">
         <i class="fa-solid fa-cart-shopping"></i>
-        <span>Giỏ hàng</span>
+        <h1>Giỏ hàng</h1>
       </div>
+
       <div class="container-cart">
         <div class="left-container">
-          <hr />
-          <img src="../assets/img/books/365TruyenKeHangDemMuaHe.png" alt="" />
-          <p>365 Truyện kể hằng đêm mùa hè</p>
-          <div class="detail">
-            <p>Tác giả: Lưu Hồng Hà</p>
-            <p>Nhà xuất bản: Mỹ Thuật</p>
-            <p>Năm xuất bản: 2022</p>
+          <div class="left">
+            <hr />
+            <div class="card-items">
+              <img
+                src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
+                alt=""
+              />
+
+              <div class="item-info">
+                <h4>365 Truyện kể hằng đêm mùa hè</h4>
+                <div class="detail">
+                  <p>Tác giả: Lưu Hồng Hà</p>
+                  <p>Nhà xuất bản: Mỹ Thuật</p>
+                  <p>Năm xuất bản: 2022</p>
+                </div>
+              </div>
+              <div class="price-each">
+                <h4>Giá sản phẩm</h4>
+                <h4>80.000VNĐ</h4>
+              </div>
+              <div class="quantity">
+                <h4>Số lượng</h4>
+                <input
+                  class="qty-input"
+                  type="number"
+                  min="1"
+                  value="1"
+                  aria-label="Số lượng"
+                />
+              </div>
+              <div class="total-cost">
+                <h4>Tổng</h4>
+                <p class="cost">80.000VNĐ</p>
+              </div>
+              <i class="fa-solid fa-trash"></i>
+            </div>
           </div>
-          <div class="quantity">
-            <p>Số lượng</p>
-            <input
-              class="qty-input"
-              type="number"
-              min="1"
-              value="1"
-              aria-label="Số lượng"
-            />
-          </div>
-          <div class="total-cost">
-            <p class="cost">80.000VNĐ</p>
-          </div>
-          <i class="fa-solid fa-trash"></i>
           <hr />
           <div class="footer-bill">
-            <span class="total-item">1 Items</span>
-            <span class="total-cost">80.000VNĐ</span>
+            <div class="footer-total">
+              <span class="total-item">1 sản phẩm</span>
+              <span class="total-cost">80.000VNĐ</span>
+            </div>
           </div>
+          
         </div>
+
         <div class="right-container">
-            <div class="coupon">
-                <p>Nhập mã giảm giá (nếu có)</p>
-                <input />
-                <button class="check-coupon">
-                    Xác nhận
-                </button>
-            </div>
-            <div class="bill">
+          <div class="coupon">
+            <p>Nhập mã giảm giá (nếu có)</p>
             <div>
-                <p>Giá tiền:</p>
-                <p>80.000VNĐ</p>
+              <input placeholder="Nhập mã ở đây" />
+              <button class="check-coupon">Xác nhận</button>
             </div>
+          </div>
+          <div class="bill">
             <div>
-                <p>Giảm giá:</p>
-                <p>-0 VNĐ</p>
+              <p>Giá tiền:</p>
+              <p>80.000VNĐ</p>
             </div>
             <div>
-                <p>Phí vận chuyển: </p>
-                <p>Miễn phí</p>
+              <p>Giảm giá:</p>
+              <p>-0 VNĐ</p>
             </div>
-             
-            <h2 class="total-price">Tổng chi phí:</h2>
-            <p>80.000VNĐ</p>
+            <div>
+              <p>Phí vận chuyển:</p>
+              <p>Miễn phí</p>
             </div>
-        </div>
+            <div>
+              <h2 class="total-price">Tổng chi phí:</h2>
+              <p>80.000VNĐ</p>
+            </div>
+          </div>
+          <button class="check-out">Đặt hàng</button>
+        </div> 
       </div>
 
       <footer class="footer">
