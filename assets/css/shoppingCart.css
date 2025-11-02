@@ -1,0 +1,107 @@
+.container-cart {
+  display: grid;
+  grid-template-columns: 65vw 1fr;
+  gap: 5vw;
+}
+.title-cart {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 1vw;
+  min-height: 20vh;
+  background-color: #6899c9;
+  margin-bottom: 5vh;
+}
+.title-cart i {
+    margin-left: 12vw;
+}
+.left-container{
+    padding-left: 2vw;
+}
+.left-container img {
+  width: 10vw;
+  height: 22vh;
+}
+.left-container .card-items {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1vw;
+  gap: 1vw;
+ 
+  justify-content: space-between;
+}
+.left-container .card-items .item-info h4 {
+  margin-bottom: 1vh;
+}
+
+.left-container .card-items .item-info .detail p {
+  margin: 0;
+  color: rgb(34, 34, 34);
+}
+.left-container .footer-bill {
+  width: 65vw;
+}
+.left-container .footer-bill .footer-total {
+  display: flex;
+  width: 33vw;
+  justify-content: space-between;
+  margin-left: 14vw;
+  gap: 100%;
+  font-weight: bold;
+}
+.left-container .card-items i {
+  margin-top: 3.8rem;
+}
+.left-container .card-items .quantity {
+  text-align: center;
+}
+.left-container .card-items .quantity input {
+  width: 40%;
+}
+.left-container .footer-bill .footer-total span{
+    min-width: 20%;
+}
+.right-container {
+    width: 90%;
+}
+.right-container .coupon div {
+    display: flex;
+}
+.right-container .coupon input {
+    width: 60%;
+}
+.right-container .coupon input:placeholder-shown{
+    font-size: 14px;
+}
+.right-container .coupon button{
+    border: none;
+    width: 40%;
+    min-height: 5vh;
+    color: white;
+    background-color: #0d3164;
+    cursor: pointer;
+}
+
+.right-container .bill div {
+    display: flex;
+    justify-content: space-between;
+}
+.right-container .check-out {
+    border: none;
+    color: white;
+    background-color: #0d3164;
+    cursor: pointer;
+    width: 50%;
+    height: 15%;
+    border-radius: 5px;
+    margin-left: 7vw;
+    font-size: 18px;
+    font-weight: bold;
+}
+.right-container .check-out:hover {
+     color: #0d3164;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px black;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
