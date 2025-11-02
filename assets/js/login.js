@@ -28,6 +28,7 @@ btnLogin.addEventListener('click', (e) => {
         errorPass.textContent = '';
     }
     if (!hasError) {
+        window.location.href="../page/user-hoSoCaNhan.html";
     }
 });
 
