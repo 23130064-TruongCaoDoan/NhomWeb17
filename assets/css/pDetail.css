@@ -138,12 +138,12 @@
 /*chi tiết sản phẩm*/
 .detail-container .product-info {
     background: #fff;
-    border-radius: 8px;
     padding: 20px 25px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     font-family: "Sarabun", sans-serif;
     width: 500px;
     margin: 30px auto;
+
 }
 
 .detail-container .product-info h3 {
@@ -151,6 +151,7 @@
     font-weight: 700;
     margin-bottom: 15px;
     color: #222;
+    margin-top: -10px;
 }
 
 .detail-container .info-row {
