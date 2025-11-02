@@ -83,7 +83,8 @@
 .filter {
   position: sticky;
   top: 10px; 
-  border: solid black 1px;
+  border: 1px solid #eee;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   margin-left: 0.5vw;
   padding: 20px;
   margin-top: 2vh;
@@ -127,7 +128,11 @@
   margin-top: 2vh;
   margin-left: 3.5vw;
   cursor: pointer;
+  color: white;
+  background-color: #0d3164;
 }
 .clear-filter:hover {
-  background-color: rgb(206, 206, 206);
+  background-color: rgb(255, 255, 255);
+  color:#0d3164;
+  border: solid black 1px;
 }
