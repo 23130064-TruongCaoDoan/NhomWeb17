@@ -5,11 +5,9 @@
     <title>User</title>
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <link rel="stylesheet" href="../assets/css/user.css">
     <link rel="stylesheet" href="../assets/css/hoSoCaNhan.css">
-
-
 </head>
 <body>
 <div class="page-wrapper">
@@ -55,7 +53,7 @@
                     </div>
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" placeholder="Tìm kiếm sách" />
+                        <input type="search" placeholder="Tìm kiếm sách"/>
                         <button>Tìm Kiếm</button>
                     </div>
                     <a href="login.html" class="button bt taikhoan">
@@ -80,41 +78,41 @@
                     <div class="point">10000 point</div>
                 </div>
                 <div class="menuMain">
-                    <div class="menu inforuser">
-                        <div class="title ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i class="fa-solid fa-arrow-down"></i></div>
-                        <div class="menuInfor">
-                            <div class="title prof"><span>Hồ sơ cá nhân</span></div>
-                            <div class="title address"><span>Số địa chỉ</span></div>
-                            <div class="title passw"><span>Đổi mật khẩu</span></div>
-                            <div class="title member"><span>Ưu đãi thành viên</span></div>
-                        </div>
+                    <a href="user-hoSoCaNhan.html" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
+                            class="fa-solid fa-arrow-down"></i></a>
+                    <div class="menuInfor">
+                        <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                        <a href="user-address.html" class="title address"><span>Số địa chỉ</span></a>
+                        <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
+                        <a href="" class="title member"><span>Ưu đãi thành viên</span></a>
                     </div>
-                    <div class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></div>
-                    <div class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></div>
-                    <div class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></div>
-                    <div class="menu spYeuThich"><i class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></div>
+                    <a href="" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                    <a href="" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></a>
+                    <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                    <a href="" class="menu spYeuThich"><i
+                            class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
                 </div>
             </div>
             <div class="profile-container">
                 <h2>Hồ sơ cá nhân</h2>
                 <div class="form-group">
                     <label for="hoten">Họ và tên</label>
-                    <input type="text" id="hoten" placeholder="Nhập họ và tên">
+                    <input type="text" id="hoten" placeholder="Nhập họ và tên" aria-describedby="hotenError"/>
+                    <div class="error" id="hotenError" role="alert" aria-live="polite">Vui lòng nhập họ và tên.</div>
                 </div>
-
                 <div class="form-group">
                     <label for="sdt">Số điện thoại</label>
                     <div class="form-inline">
-                        <input type="text" id="sdt" placeholder="Nhập số điện thoại">
-                        <a href="#">Thay đổi</a>
+                        <input type="text" id="sdt" placeholder="Nhập số điện thoại " readonly>
+                        <a id="thayDoiDT" href="#">Thay đổi</a>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div class="form-inline">
-                        <input type="email" id="email" value="truongdoangacho432@gmail.com">
-                        <a href="#">Thay đổi</a>
+                        <input type="email" id="email" value="truongdoangacho432@gmail.com" readonly>
+                        <a id="thayDoiE" href="#">Thay đổi</a>
                     </div>
                 </div>
 
@@ -126,7 +124,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Birthday <span class="required">*</span></label>
+                    <label>Birthday</label>
                     <div class="birthday-group">
                         <input type="number" placeholder="25" min="1" max="31">
                         <input type="number" placeholder="04" min="1" max="12">
@@ -180,5 +178,52 @@
         </div>
     </footer>
 </div>
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="thaydoDT">
+    <h3>THAY ĐỔI SỐ ĐIỆN THOẠI</h3>
+
+    <div class="form-group">
+        <label for="phone">Số điện thoại</label>
+        <input type="text" id="phone" placeholder="Nhập số điện thoại"/>
+    </div>
+
+    <div class="form-group">
+        <label>Chọn phương thức xác minh OTP</label>
+        <div class="otp-method">
+            <button class="method sms"><i class="fa-solid fa-comment-sms"></i>Tin nhắn SMS</button>
+            <button class="method zalo"><img src="../assets/img/icon/iconZalo.png" alt=""><span>Zalo ZNS</span></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="otp">Mã xác nhận OTP</label>
+        <input type="text" id="otp" placeholder="6 ký tự" maxlength="6"/>
+    </div>
+    <div class="btn-group">
+        <button class="confirm">Xác nhận</button>
+        <button class="cancel">Trở về</button>
+    </div>
+</div>
+<div class="popup" id="thaydoiEmail">
+    <h3>THAY ĐỔI EMAIL</h3>
+    <div class="form-group">
+        <label>Email</label>
+        <div class="email-row">
+            <input type="email" placeholder="Enter Email"/>
+            <button class="otp-btn">Gửi mã OTP</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Mã xác nhận OTP</label>
+        <input type="text" placeholder="6 ký tự" maxlength="6"/>
+    </div>
+
+    <div class="btn-group">
+        <button class="confirm">Xác nhận</button>
+        <button class="cancel">Trở về</button>
+    </div>
+</div>
+<script src="../assets/js/hoSoCaNhan.js"></script>
 </body>
 </html>
