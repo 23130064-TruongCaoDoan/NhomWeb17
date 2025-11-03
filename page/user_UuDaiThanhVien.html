@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>changePassword</title>
+    <title>MemberOffer</title>
     <link rel="stylesheet" href="../assets/css/user.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
-    <link rel="stylesheet" href="../assets/css/changePassword.css">
+    <link rel="stylesheet" href="../assets/css/UuDaiThanhVien.css">
 </head>
 <body>
 <div class="page-wrapper">
@@ -93,32 +93,76 @@
                             class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
                 </div>
             </div>
-            <div class="password-container">
-                <h2>Đổi mật khẩu</h2>
-                <form class="password-form" id="passwordForm" novalidate>
-
-                    <div class="form-group">
-                        <label>Mật khẩu hiện tại</label>
-                        <input type="password" id="oldPass" placeholder="Nhập mật khẩu hiện tại">
-                        <small class="error-msg"></small>
+            <div class="box-content">
+                <h2>Ưu đãi thành viên</h2>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h3>Ưu đãi của bạn</h3>
+                        <div class="info-content">
+                            <div class="info-item">
+                                <p>Point hiện có</p>
+                                <span>0</span>
+                            </div>
+                            <div class="info-item">
+                                <p>Freeshop hiện có</p>
+                                <span>0 lần</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Mật khẩu mới</label>
-                        <input type="password" id="newPass" placeholder="Nhập mật khẩu mới">
-                        <small class="error-msg"></small>
+                    <div class="info-box">
+                        <h3>Thành tích năm 2025</h3>
+                        <div class="info-content">
+                            <div class="info-item">
+                                <p>Số đơn hàng</p>
+                                <span>0 đơn hàng</span>
+                            </div>
+                            <div class="info-item">
+                                <p>Đã thanh toán</p>
+                                <span>0 Đ</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="member-rank-table">
+                    <h2>Quyền lợi theo bậc thành viên</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Bậc thành viên</th>
+                            <th>Điểm cần đạt</th>
+                            <th>Quà sinh nhật</th>
+                            <th>Ưu đãi freeship / mã giảm giá</th>
+                            <th>Tỉ lệ tích Point</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="silver">
+                            <td><span class="tsilver">Hạng Bạc</span></td>
+                            <td>0 – 29,999 điểm</td>
+                            <td>Không</td>
+                            <td>Không</td>
+                            <td><b>0,5%</b></td>
+                        </tr>
+                        <tr class="gold">
+                            <td><span class="tgold">Hạng Vàng</span></td>
+                            <td>30,000 – 99,999 điểm</td>
+                            <td>Voucher giảm 35%</td>
+                            <td>Không freeship</td>
+                            <td><b>1%</b></td>
+                        </tr>
+                        <tr class="diamond">
+                            <td><span class="tdiamond">Hạng Kim Cương</span></td>
+                            <td>≥ 100,000 điểm</td>
+                            <td>Voucher giảm 35%</td>
+                            <td>Freeship toàn quốc</td>
+                            <td><b>2%</b></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <div class="form-group">
-                        <label>Xác nhận mật khẩu mới</label>
-                        <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu mới">
-                        <small class="error-msg"></small>
-                    </div>
-
-                    <button type="submit" class="save-btn">Lưu mật khẩu</button>
-                </form>
             </div>
-
         </div>
     </div>
     <footer class="footer">
@@ -164,6 +208,5 @@
         </div>
     </footer>
 </div>
-<script src="../assets/js/changePassword.js"></script>
 </body>
 </html>
