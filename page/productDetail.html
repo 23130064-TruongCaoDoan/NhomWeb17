@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chi tiết sản phẩm</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/header.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/footer.css"/>
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/pDetail.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="../assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="home.html" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham.html" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách"/>
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="login.html" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                    <a href="" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="detail-container">
+            <div class="detail">
+                <div class="gallery">
+                    <div class="thumbnail-column">
+                        <img class="thumbnail active"
+                             src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
+                             alt="Ảnh sách 1"
+                             data-main-image="../assets/img/books/365TruyenKeHangDemMuaHe.png">
+                        <img class="thumbnail "
+                             src="../assets/img/books/365TruyenKeHangDem.png"
+                             alt="Ảnh sách 2"
+                             data-main-image="../assets/img/books/365TruyenKeHangDem.png">
+                        <img class="thumbnail "
+                             src="../assets/img/books/365TruyenKeHangDemMuaThu.png"
+                             alt="Ảnh sách 3"
+                             data-main-image="../assets/img/books/365TruyenKeHangDemMuaThu.png">
+                    </div>
+
+                    <div class="main-img">
+                        <img id="mainImageDisplay"
+                             src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
+                             alt="Ảnh sách chính">
+                    </div>
+                </div>
+                <div class="describe">
+                    <p class="book-name">365 Truyện kể hằng đêm 1</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <div class="price">
+                            <strike>65.000 Đ</strike>
+                            <p>50.000 Đ</p>
+                        </div>
+                        <button>Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i></button>
+                        <button id="buy">Mua ngay</button>
+                    </div>
+                    <div class="program">
+                        <p>🛡️ Đổi trả miễn phí 7 ngày</p>
+                        <p>🔥 Chỉ còn 35 cuốn</p>
+                    </div>
+                    <div class="product-info">
+                        <h3>Thông tin chi tiết</h3>
+                        <div class="info-row">
+                            <span class="label">Mã hàng</span>
+                            <span class="value">8936067604153</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Tên Nhà Cung Cấp</span>
+                            <a href="#" class="value link">Minh Long</a>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Tác giả</span>
+                            <span class="value">Lưu Hồng Hà</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">NXB</span>
+                            <span class="value">Mỹ Thuật</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Năm XB</span>
+                            <span class="value">2021</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Trọng lượng (gr)</span>
+                            <span class="value">371</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Kích Thước Bao Bì</span>
+                            <span class="value">23 x 17 x 1.3 cm</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Số trang</span>
+                            <span class="value">216</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Hình thức</span>
+                            <span class="value">Bìa Mềm</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Sản phẩm hiển thị trong</span>
+                            <a href="#" class="value link">Minh Long</a>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Sản phẩm bán chạy nhất</span>
+                            <a href="#" class="value link" style="margin-left: -43px">Top 100 sản phẩm Truyện Đọc Thiếu Nhi bán chạy của tháng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-content">
+                <h5>📖 Mô tả sách: </h5>
+                <p>
+                    "365 Truyện kể hằng đêm 1" là tuyển tập các câu chuyện cổ tích, ngụ ngôn nhẹ nhàng và những câu chuyện về cuộc sống gần gũi (thế giới động vật, thiên nhiên, gia đình). Sách được biên soạn với mục đích giáo dục sớm, mỗi truyện đều chứa đựng một bài học nhỏ về lòng dũng cảm, sự sẻ chia, tình yêu thương và tôn trọng.
+                </p>
+                <p>
+                    Cuốn sách là chìa khóa giúp cha mẹ xây dựng thói quen đọc sách cho con, biến giờ đi ngủ thành khoảnh khắc gắn kết tuyệt vời.
+                </p>
+            </div>
+        </div>
+        <div class="reviews-section">
+            <div class="rating-summary">
+                <div class="rating-score">
+                    <h2>5</h2>
+                        <div class="stars">★★★★★</div>
+                    <p>Based on Reviews</p>
+                </div>
+
+                <div class="rating-bars">
+                    <div class="rating-row">
+                        <span>5</span>
+                        <div class="rating-bar"><div class="rating-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="rating-row">
+                        <span>4</span>
+                        <div class="rating-bar"><div class="rating-fill" style="width: 2%;"></div></div>
+
+                    </div>
+                    <div class="rating-row">
+                        <span>3</span>
+                        <div class="rating-bar"><div class="rating-fill" style="width: 1%;"></div></div>
+
+                    </div>
+                    <div class="rating-row">
+                        <span>2</span>
+                        <div class="rating-bar"><div class="rating-fill" style="width: 0%;"></div></div>
+
+                    </div>
+                    <div class="rating-row">
+                        <span>1</span>
+                        <div class="rating-bar"><div class="rating-fill" style="width: 3%;"></div></div>
+
+                    </div>
+                </div>
+
+                <div class="review-actions">
+                    <button class="action-btn">Ask a Question</button>
+                    <button class="action-btn">Write a Review</button>
+                </div>
+            </div>
+
+            <div class="review-navigation">
+                <div class="nav-item active">Reviews</div>
+            </div>
+
+            <div class="sort-area">
+                <select>
+                    <option>Sort</option>
+                    <option>Mới nhất</option>
+                    <option>Hữu ích nhất</option>
+                    <option>Điểm cao nhất</option>
+                </select>
+            </div>
+            <div class="comment-list" style="padding-top: 20px;">
+                <div class="comment-item" style="border-bottom: 1px dashed #eee; padding-bottom: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 14px;">
+                        <span style="font-weight: bold; color: #333;">KB</span>
+                        <span style="color: #888;">02/14/2025</span>
+                    </div>
+                    <p style="margin: 5px 0 10px; font-size: 14px; color: #4CAF50;">★★★★☆ Verified Buyer</p>
+                    <p style="font-style: italic; color: #333;">"Tuyệt vời! Sách giúp bé ngủ ngon hơn rất nhiều."</p>
+                    <div style="font-size: 12px; color: #888; display: flex; justify-content: flex-end; align-items: center;">
+                        <span style="margin-right: 15px;">Was this helpful? <i class="fa-solid fa-thumbs-up" style="color: #FFD43B;"></i> | <i class="fa-solid fa-thumbs-down" style="color: #FFD43B;"></i> </span>
+                        <a href="#" style="text-decoration: none; color: #888;">Share</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend">
+            <div class="slogan"><h3>Chúng tôi coi trọng chất lượng và sự độc đáo</h3></div>
+            <div class="valua-container">
+                <div class="valua-card">
+                    <figure>
+                        <img src="../assets/img/slogan/card1.png" alt="">
+                        <figcaption>Chất lượng cao cấp</figcaption>
+                    </figure>
+                </div>
+                <div class="valua-card">
+                    <figure>
+                        <img src="../assets/img/slogan/card2.png" alt="">
+                        <figcaption>Trải nghiệm nhập vai</figcaption>
+                    </figure>
+                </div>
+                <div class="valua-card">
+                    <figure>
+                        <img src="../assets/img/slogan/card3.png" alt="">
+                        <figcaption>Sự lựa trọn hàng đầu</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="slogan"><h3>Những quyến sách có thẻ bạn sẽ thích</h3></div>
+            <div class="list-product">
+                <div class="card">
+                    <img src="../assets/img/books/CoTichTheGioi.jpg" alt="" />
+                    <p class="book-name">Tuyển tập cổ tích thế giới</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <p class="price">50.000 Đ</p>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../assets/img/books/guongDungCam.png" alt="" />
+                    <p class="book-name">Gương Dũng Cảm</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <p class="price">50.000 Đ</p>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../assets/img/books/ThoiQuenTot.jpg" alt="" />
+                    <p class="book-name">Bồi dưỡng thói quen tốt</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <p class="price">50.000 Đ</p>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../assets/img/books/suThanVietNam.jpg" alt="" />
+                    <p class="book-name">Sứ Thần Việt Nam</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <p class="price">50.000 Đ</p>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../assets/img/books/guongHieuHoc.jpg" alt="" />
+                    <p class="book-name">Gương hiếu học</p>
+                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <div class="price-cart">
+                        <p class="price">50.000 Đ</p>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="wave-container">
+            <svg
+                    viewBox="0 0 120 15"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+            >
+                <path
+                        d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"
+                ></path>
+            </svg>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Liên hệ chúng tôi</h3>
+                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                <a href="#"
+                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
+                >
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ khách hàng</h3>
+                <a href="#">Theo dõi đơn hàng</a>
+                <a href="#">Tài khoản</a>
+                <a href="#">Thông tin vận chuyển</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Đối tác</h3>
+                <a href="#">Nhà phân phối</a>
+                <a href="#">Sách của chúng tôi</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bảo mật</h3>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Điều khoản sử dụng</a>
+                <a href="#">Khả năng tiếp cận</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright ©. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+<script src="../assets/js/home.js"></script>
+<script src="../assets/js/pDetail.js" defer></script>
+</body>
+</html>
