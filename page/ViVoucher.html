@@ -87,10 +87,14 @@
                         <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
                     </div>
                     <a href="" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
-                    <a href="" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></a>
+                    <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
+                        <span>Ví voucher</span></a>
                     <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
                     <a href="" class="menu spYeuThich"><i
                             class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
+                </div>
+                <div class="btDangXuat">
+                    <a href="login.html" class="dangXuat">Đăng xuất</a>
                 </div>
             </div>
             <div class="voucher-box">
@@ -223,7 +227,30 @@
         <button class="cancel">×</button>
     </div>
 </div>
-<script src="../assets/js/ViVoucher.js"></script>
+<script>
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("voucherPopup");
+    const voucherBtns = document.querySelectorAll(".voucher-detail");
 
+    voucherBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+    const cancelBtns = document.querySelectorAll(".cancel");
+    cancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            overlay.style.display = "none";
+            popup.style.display = "none";
+        });
+    });
+</script>
 </body>
 </html>
