@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Address</title>
+    <link rel="stylesheet" href="../assets/css/user.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/css/address.css">
 </head>
 <body>
 <div class="page-wrapper">
@@ -73,20 +78,65 @@
                     <div class="point">10000 point</div>
                 </div>
                 <div class="menuMain">
-                    <div class="menu inforuser">
-                        <div class="title ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i class="fa-solid fa-arrow-down"></i></div>
-                        <div class="menuInfor">
-                            <div class="title prof"><span>Hồ sơ cá nhân</span></div>
-                            <div class="title address"><span>Số địa chỉ</span></div>
-                            <div class="title passw"><span>Đổi mật khẩu</span></div>
-                            <div class="title member"><span>Ưu đãi thành viên</span></div>
-                        </div>
+                    <a href="user-hoSoCaNhan.html" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i class="fa-solid fa-arrow-down"></i></a>
+                    <div class="menuInfor">
+                        <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                        <a href="user-address.html" class="title address"><span>Số địa chỉ</span></a>
+                        <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
+                        <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
                     </div>
-                    <div class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></div>
-                    <div class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></div>
-                    <div class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></div>
-                    <div class="menu spYeuThich"><i class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></div>
+                    <a href="" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                    <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i><span>Ví voucher</span></a>
+                    <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                    <a href="" class="menu spYeuThich"><i class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
                 </div>
+            </div>
+            <div class="address-container">
+                <h2>Thêm địa chỉ mới</h2>
+                <form class="address-form" id="addressForm" novalidate>
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" id="hoten" placeholder="Nhập họ và tên">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input type="text" id="sdt" placeholder="Ex: 0972xxxxxx">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tỉnh/Thành phố</label>
+                        <select id="tinh">
+                            <option value="">Vui lòng chọn</option>
+                            <option value="TP.HCM">TP. Hồ Chí Minh</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                        </select>
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quận/Huyện</label>
+                        <input type="text" id="quan">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Xã/Phường</label>
+                        <input type="text" id="xa">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="diachi" placeholder="Địa chỉ cụ thể">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <button type="submit" class="save-btn">Lưu địa chỉ</button>
+                </form>
             </div>
         </div>
     </div>
@@ -143,5 +193,6 @@
         </div>
     </footer>
 </div>
+<script src="../assets/js/address.js"></script>
 </body>
 </html>

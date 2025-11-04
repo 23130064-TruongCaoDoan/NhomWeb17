@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <title>MemberOffer</title>
     <link rel="stylesheet" href="../assets/css/user.css">
-    <link rel="stylesheet" href="../assets/css/hoSoCaNhan.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../assets/css/UuDaiThanhVien.css">
 </head>
 <body>
 <div class="page-wrapper">
@@ -60,7 +60,7 @@
                         <i class="fa-solid fa-user"></i>
                         <span>Tài khoản</span>
                     </a>
-                    <a href="shoppingCart.html" class="button bt gio">
+                    <a href="" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Giỏ hàng</span>
                     </a>
@@ -93,72 +93,94 @@
                             class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
                 </div>
             </div>
-            <div class="profile-container">
-                <h2>Hồ sơ cá nhân</h2>
-                <div class="form-group">
-                    <label for="hoten">Họ và tên</label>
-                    <input type="text" id="hoten" placeholder="Nhập họ và tên" aria-describedby="hotenError"/>
-                    <div class="error" id="hotenError" role="alert" aria-live="polite">Vui lòng nhập họ và tên.</div>
-                </div>
-                <div class="form-group">
-                    <label for="sdt">Số điện thoại</label>
-                    <div class="form-inline">
-                        <input type="text" id="sdt" placeholder="Nhập số điện thoại " readonly>
-                        <a id="thayDoiDT" href="#">Thay đổi</a>
+            <div class="box-content">
+                <h2>Ưu đãi thành viên</h2>
+                <div class="info-container">
+                    <div class="info-box">
+                        <h3>Ưu đãi của bạn</h3>
+                        <div class="info-content">
+                            <div class="info-item">
+                                <p>Point hiện có</p>
+                                <span>0</span>
+                            </div>
+                            <div class="info-item">
+                                <p>Freeshop hiện có</p>
+                                <span>0 lần</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="info-box">
+                        <h3>Thành tích năm 2025</h3>
+                        <div class="info-content">
+                            <div class="info-item">
+                                <p>Số đơn hàng</p>
+                                <span>0 đơn hàng</span>
+                            </div>
+                            <div class="info-item">
+                                <p>Đã thanh toán</p>
+                                <span>0 Đ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="member-rank-table">
+                    <h2>Quyền lợi theo bậc thành viên</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Bậc thành viên</th>
+                            <th>Điểm cần đạt</th>
+                            <th>Quà sinh nhật</th>
+                            <th>Ưu đãi freeship / mã giảm giá</th>
+                            <th>Tỉ lệ tích Point</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="silver">
+                            <td><span class="tsilver">Hạng Bạc</span></td>
+                            <td>0 – 29,999 điểm</td>
+                            <td>Không</td>
+                            <td>Không</td>
+                            <td><b>0,5%</b></td>
+                        </tr>
+                        <tr class="gold">
+                            <td><span class="tgold">Hạng Vàng</span></td>
+                            <td>30,000 – 99,999 điểm</td>
+                            <td>Voucher giảm 35%</td>
+                            <td>Không freeship</td>
+                            <td><b>1%</b></td>
+                        </tr>
+                        <tr class="diamond">
+                            <td><span class="tdiamond">Hạng Kim Cương</span></td>
+                            <td>≥ 100,000 điểm</td>
+                            <td>Voucher giảm 35%</td>
+                            <td>Freeship toàn quốc</td>
+                            <td><b>2%</b></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <div class="form-inline">
-                        <input type="email" id="email" value="truongdoangacho432@gmail.com" readonly>
-                        <a id="thayDoiE" href="#">Thay đổi</a>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Giới tính</label>
-                    <div class="gender-group">
-                        <label><input type="radio" name="gioitinh" checked> Nam</label>
-                        <label><input type="radio" name="gioitinh"> Nữ</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Birthday</label>
-                    <div class="birthday-group">
-                        <input type="number" placeholder="25" min="1" max="31">
-                        <input type="number" placeholder="04" min="1" max="12">
-                        <input type="number" placeholder="2005" min="1900" max="2025">
-                    </div>
-                </div>
-                <button class="btn-save">Lưu thay đổi</button>
             </div>
         </div>
     </div>
     <footer class="footer">
         <div class="wave-container">
-            <svg
-                    viewBox="0 0 120 15"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-            >
-                <path
-                        d="M0,10
+            <svg viewBox="0 0 120 15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,10
                 C10,15 20,5 30,10
                 C40,15 50,5 60,10
                 C70,15 80,5 90,10
                 C100,15 115,5 120,10
-                L120,20 0,20 Z"
-                ></path>
+                L120,20 0,20 Z"></path>
             </svg>
         </div>
         <div class="footer-container">
             <div class="footer-column">
                 <h3>Liên hệ chúng tôi</h3>
                 <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-                <a href="#"
-                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
-                >
+                <a href="#"><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a>
             </div>
 
             <div class="footer-column">
@@ -166,8 +188,6 @@
                 <a href="#">Theo dõi đơn hàng</a>
                 <a href="#">Tài khoản</a>
                 <a href="#">Thông tin vận chuyển</a>
-                <a href="returnPolicy.html">Chính sách đổi trả</a>
-
             </div>
 
             <div class="footer-column">
@@ -188,52 +208,5 @@
         </div>
     </footer>
 </div>
-<div class="overlay" id="overlay"></div>
-<div class="popup" id="thaydoDT">
-    <h3>THAY ĐỔI SỐ ĐIỆN THOẠI</h3>
-
-    <div class="form-group">
-        <label for="phone">Số điện thoại</label>
-        <input type="text" id="phone" placeholder="Nhập số điện thoại"/>
-    </div>
-
-    <div class="form-group">
-        <label>Chọn phương thức xác minh OTP</label>
-        <div class="otp-method">
-            <button class="method sms"><i class="fa-solid fa-comment-sms"></i>Tin nhắn SMS</button>
-            <button class="method zalo"><img src="../assets/img/icon/iconZalo.png" alt=""><span>Zalo ZNS</span></button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="otp">Mã xác nhận OTP</label>
-        <input type="text" id="otp" placeholder="6 ký tự" maxlength="6"/>
-    </div>
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
-</div>
-<div class="popup" id="thaydoiEmail">
-    <h3>THAY ĐỔI EMAIL</h3>
-    <div class="form-group">
-        <label>Email</label>
-        <div class="email-row">
-            <input type="email" placeholder="Enter Email"/>
-            <button class="otp-btn">Gửi mã OTP</button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label>Mã xác nhận OTP</label>
-        <input type="text" placeholder="6 ký tự" maxlength="6"/>
-    </div>
-
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
-</div>
-<script src="../assets/js/hoSoCaNhan.js"></script>
 </body>
 </html>
