@@ -349,3 +349,8 @@
     border: 1px solid #0d3164;
     border-radius: 0;
 }
+.recommend .list-product .card img{
+    height: 150px;
+    width: 100px;
+
+}
