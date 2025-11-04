@@ -372,7 +372,19 @@
         </div>
     </footer>
 </div>
-<script src="../assets/js/home.js"></script>
-<script src="../assets/js/pDetail.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainImage = document.getElementById('mainImageDisplay');
+        const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                mainImage.src = this.dataset.mainImage;
+            });
+        });
+    });
+</script>
 </body>
 </html>

@@ -58,12 +58,33 @@
     font-size: 14px;
     margin-bottom: 10px;
 }
+.content .menuUser .btDangXuat{
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    margin-top: 10px;
+}
+.content .menuUser .dangXuat{
+    text-align: center;
+    font-size: 14px;
+    margin: 20px auto;
+    width: 8vw;
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    background: #0d3164;
+    color: white;
+}
+.content .menuUser .dangXuat:hover{
+    background: #154c99;
+}
 .content .menuMain{
     display: flex;
     flex-direction: column;
     height: auto;
     text-align: left;
     position: relative;
+    border-bottom: 1px solid #bbc1c7;
 }
 .content .menuMain .menu{
     line-height: 5vh;
