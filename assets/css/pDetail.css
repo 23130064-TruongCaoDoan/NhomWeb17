@@ -352,5 +352,10 @@
 .recommend .list-product .card img{
     height: 150px;
     width: 100px;
-
+}
+.detail .describe .fa-heart{
+    font-size: 25px;
+}
+.detail .describe .fa-heart:hover{
+    cursor: pointer;
 }

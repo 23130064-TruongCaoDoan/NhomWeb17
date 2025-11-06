@@ -10,3 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+const heart = document.getElementById('addHeart')
+heart.addEventListener('click', function() {
+    heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
+})
