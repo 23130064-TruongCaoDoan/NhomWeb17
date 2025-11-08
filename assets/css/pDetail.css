@@ -18,8 +18,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    height: 740px;
-    /*background-color: #99c2a2;*/
+    height: 700px;
     padding: 15px;
     box-sizing: border-box;
     border-right: 1px gray solid;
@@ -66,10 +65,9 @@
     float: right;
     display: flex;
     flex-direction: column;
-    /*background-color: yellow;*/
     align-items: start;
     margin-right: 9%;
-    margin-top: -770px;
+    margin-top: -730px;
 }
 
 .detail-container .detail .book-name{
@@ -94,12 +92,17 @@
     border: none;
     font-weight: bold;
     color: #0d3164;
-
+}
+.detail-container .detail .price-cart button:hover{
+    cursor: pointer;
 }
 .detail-container .detail #buy{
     width: 100px;
     background-color: orangered;
     color: white;
+}
+.detail-container .detail #buy:hover{
+    cursor: pointer;
 }
 .detail-container .detail .price{
     line-height: 1.8px;
@@ -109,7 +112,7 @@
     margin-top: 10px;
     line-height: 2px;
     height: fit-content;
-    width: 100%;
+    width:550px;
     display: flex;
     flex-direction: column;
     background-color: #d5ebdb;

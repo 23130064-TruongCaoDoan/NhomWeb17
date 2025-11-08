@@ -159,14 +159,6 @@
                             <span class="label">Hình thức</span>
                             <span class="value">Bìa Mềm</span>
                         </div>
-                        <div class="info-row">
-                            <span class="label">Sản phẩm hiển thị trong</span>
-                            <a href="#" class="value link">Minh Long</a>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">Sản phẩm bán chạy nhất</span>
-                            <a href="#" class="value link" style="margin-left: -43px">Top 100 sản phẩm Truyện Đọc Thiếu Nhi bán chạy của tháng</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -374,6 +366,11 @@
     </footer>
 </div>
 <script src="../assets/js/home.js"></script>
-<script src="../assets/js/pDetail.js" defer></script>
+<script >
+    const heart = document.getElementById('addHeart');
+    heart.addEventListener('click', function ()   {
+        heart.style.color=heart.style.color==='red'?'gray':'red';
+    })
+</script>
 </body>
 </html>
