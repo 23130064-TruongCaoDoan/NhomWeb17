@@ -365,12 +365,23 @@
         </div>
     </footer>
 </div>
-<script src="../assets/js/home.js"></script>
 <script >
     const heart = document.getElementById('addHeart');
     heart.addEventListener('click', function ()   {
         heart.style.color=heart.style.color==='red'?'gray':'red';
     })
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainImage = document.getElementById('mainImageDisplay');
+        const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                mainImage.src = this.dataset.mainImage;
+            });
+        });
+    });
 </script>
 </body>
 </html>
