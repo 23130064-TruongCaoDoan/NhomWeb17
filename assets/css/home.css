@@ -238,3 +238,40 @@
     padding-left: 10px;
 }
 
+/*recommend*/
+.recommend{
+    text-align: center;
+    margin-top: 80px;
+}
+.recommend .slogan h3{
+    font-weight: bold;
+    font-size: 35px;
+    color: #0d3164;
+}
+.recommend .valua-container img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+.recommend .valua-container figcaption{
+    margin-top: 10px;
+}
+.recommend .valua-container{
+    display: flex;
+    justify-content: center;
+}
+.recommend .list-product{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.recommend .list-product .card{
+    border: 1px solid #0d3164;
+    border-radius: 0;
+}
+.recommend .list-product .card img{
+    height: 150px;
+    width: 100px;
+
+}
+

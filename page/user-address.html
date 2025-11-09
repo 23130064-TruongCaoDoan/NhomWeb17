@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Address</title>
-    <link rel="stylesheet" href="../assets/css/user.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/css/address.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../assets/css/user.css">
+    <link rel="stylesheet" href="../assets/css/adrress.css">
+
 </head>
 <body>
 <div class="page-wrapper">
@@ -82,7 +83,7 @@
                             class="fa-solid fa-arrow-down"></i></a>
                     <div class="menuInfor">
                         <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
-                        <a href="user-address.html" class="title address"><span>Số địa chỉ</span></a>
+                        <a href="user-address.html" class="title address"><span>Sổ địa chỉ</span></a>
                         <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
                         <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
                     </div>
@@ -98,51 +99,45 @@
                 </div>
             </div>
             <div class="address-container">
-                <h2>Thêm địa chỉ mới</h2>
-                <form class="address-form" id="addressForm" novalidate>
-                    <div class="form-group">
-                        <label>Họ và tên</label>
-                        <input type="text" id="hoten" placeholder="Nhập họ và tên">
-                        <small class="error-msg"></small>
-                    </div>
+                <div class="address-header">
+                    <h2>Sổ địa chỉ</h2>
+                    <a href="user-newAddress.html" class="add-address"><i class="fa-solid fa-plus"></i> Thêm địa chỉ mới</a>
+                </div>
 
-                    <div class="form-group">
-                        <label>Điện thoại</label>
-                        <input type="text" id="sdt" placeholder="Ex: 0972xxxxxx">
-                        <small class="error-msg"></small>
+                <div class="address-card card1">
+                    <div class="address-info">
+                        <div class="address-title">
+                            <strong>Trương Đoàn</strong>
+                            <span class="divider">|</span>
+                            <span class="phone">0859934939</span>
+                            <span class="default-tag blue">Địa chỉ thanh toán mặc định</span>
+                        </div>
+                        <p>699, trường tiểu học phước lâm<br>Xã Phước Hậu, Huyện Cần Giuộc, Long An, VN</p>
                     </div>
-
-                    <div class="form-group">
-                        <label>Tỉnh/Thành phố</label>
-                        <select id="tinh">
-                            <option value="">Vui lòng chọn</option>
-                            <option value="TP.HCM">TP. Hồ Chí Minh</option>
-                            <option value="Hà Nội">Hà Nội</option>
-                            <option value="Đà Nẵng">Đà Nẵng</option>
-                        </select>
-                        <small class="error-msg"></small>
+                    <div class="address-actions">
+                        <a href="user-newAddress.html"><i class="fa-solid fa-pen"></i></a>
+                        <span class="divider">|</span>
+                        <button class="delete delete1"><i class="fa-solid fa-trash"></i></button>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label>Quận/Huyện</label>
-                        <input type="text" id="quan">
-                        <small class="error-msg"></small>
+                <div class="address-card card2">
+                    <div class="address-info">
+                        <div class="address-title">
+                            <strong>Trương Đoàn</strong>
+                            <span class="divider">|</span>
+                            <span class="phone">0859934939</span>
+                            <span class="default-tag gray">Địa chỉ khác</span>
+                        </div>
+                        <p>699, trường tiểu học phước lâm<br>Xã Dũng Liệt, Huyện Yên Phong, Bắc Ninh, VN</p>
                     </div>
-
-                    <div class="form-group">
-                        <label>Xã/Phường</label>
-                        <input type="text" id="xa">
-                        <small class="error-msg"></small>
+                    <div class="address-actions">
+                        <a href="user-newAddress.html"><i class="fa-solid fa-pen"></i></a>
+                        <span class="divider">|</span>
+                        <button class="delete delete2"><i class="fa-solid fa-trash"></i></button>
                     </div>
-
-                    <div class="form-group">
-                        <label>Địa chỉ</label>
-                        <input type="text" id="diachi" placeholder="Địa chỉ cụ thể">
-                        <small class="error-msg"></small>
-                    </div>
-
-                    <button type="submit" class="save-btn">Lưu địa chỉ</button>
-                </form>
+                </div>
+                <div class="emtyCard"><span> Bạn chưa có địa chỉ nào</span></div>
             </div>
         </div>
     </div>
@@ -200,48 +195,30 @@
     </footer>
 </div>
 <script>
-    document.getElementById("addressForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+    function checkEmpty() {
+        const emtyCard = document.querySelector(".emtyCard");
+        const cards = document.querySelectorAll('.card1, .card2');
 
-        const fields = [
-            { id: "hoten", name: "Họ và tên" },
-            { id: "sdt", name: "Điện thoại" },
-            { id: "tinh", name: "Tỉnh/Thành phố" },
-            { id: "quan", name: "Quận/Huyện" },
-            { id: "xa", name: "Xã/Phường" },
-            { id: "diachi", name: "Địa chỉ" },
-        ];
-
-        let isValid = true;
-
-        fields.forEach((field) => {
-            const input = document.getElementById(field.id);
-            const errorMsg = input.nextElementSibling;
-
-            if (!input.value.trim()) {
-                errorMsg.textContent = `Vui lòng nhập ${field.name.toLowerCase()}.`;
-                errorMsg.style.display = "block";
-                input.classList.add("error");
-                isValid = false;
-            } else {
-                errorMsg.textContent = "";
-                errorMsg.style.display = "none";
-                input.classList.remove("error");
-            }
+        if (cards.length === 0) {
+            emtyCard.style.display = "block";
+        } else {
+            emtyCard.style.display = "none";
+        }
+    }
 
 
-            if (field.id === "sdt" && input.value.trim()) {
-                const phoneRegex = /^(0[1-9][0-9]{8})$/;
-                if (!phoneRegex.test(input.value)) {
-                    errorMsg.textContent = "Số điện thoại không hợp lệ (VD: 0972xxxxxx).";
-                    errorMsg.style.display = "block";
-                    input.classList.add("error");
-                    isValid = false;
-                }
-            }
-        });
+    document.querySelector('.delete1')?.addEventListener('click', () => {
+        if (confirm('Bạn có chắc muốn xóa địa chỉ thanh toán mặc định này không?')) {
+            document.querySelector('.card1')?.remove();
+            checkEmpty();
+        }
+    });
 
-        if (isValid) {
+
+    document.querySelector('.delete2')?.addEventListener('click', () => {
+        if (confirm('Bạn có chắc muốn xóa địa chỉ này không?')) {
+            document.querySelector('.card2')?.remove();
+            checkEmpty();
         }
     });
 
