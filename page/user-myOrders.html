@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Đơn hàng của tôi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="../assets/css/Login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/footer.css">
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/errolpage.css">
+    <link rel="stylesheet" href="../assets/css/user.css">
+    <link rel="stylesheet" href="../assets/css/address.css">
+    <link rel="stylesheet" href="../assets/css/myOrder.css">
 </head>
 <body>
 <div id="home-page">
@@ -55,7 +59,7 @@
                 </div>
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" placeholder="Tìm kiếm sách" />
+                    <input type="search" placeholder="Tìm kiếm sách"/>
                     <button>Tìm Kiếm</button>
                 </div>
                 <a href="login.html" class="button bt taikhoan">
@@ -70,21 +74,60 @@
         </div>
     </div>
 </div>
-<div id="content">
+<div class="content">
     <div class="container">
-        <div class="login">
-            <div class="title">Đăng nhập</div>
-            <div class="inputIfor">
-               <div class="khung user"> <input type="text" id="iUser" placeholder="Tên đăng nhập hoặc email"></div>
-                <div class="error User"></div>
-                <div class="khung MK"><input type="password" id="iPass" placeholder="Mật khẩu"><button class="show"><i class="fa-solid fa-eye "></i></button></div>
-                <div class="error Pass"></div>
+        <div class="menuUser">
+            <div class="nameUser">
+                <div class="anh"><i class="fa-solid fa-user"></i></div>
+                <div class="name"> Lê Vân Trường</div>
+                <div class="bacThanhVien">Thành viên bạc</div>
+                <div class="point">10000 point</div>
             </div>
-            <div class="forget"><a href=""><span>quên mật khẩu</span></a></div>
-            <div class="buttonLoginAndSignUp">
-                <button class="dangNhap">Đăng nhập</button>
-                <div class="signUp"><a href="errol.html"><span>Đăng kí</span></a></div>
+            <div class="menuMain">
+                <a href="user-hoSoCaNhan.html" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
+                        class="fa-solid fa-arrow-down"></i></a>
+                <div class="menuInfor">
+                    <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                    <a href="user-address.html" class="title address"><span>Sổ địa chỉ</span></a>
+                    <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
+                    <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
+                </div>
+                <a href="user-myOrders.html" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
+                    <span>Ví voucher</span></a>
+                <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                <a href="user-spYeuThich.html" class="menu spYeuThich"><i
+                        class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
             </div>
+            <div class="btDangXuat">
+                <a href="login.html" class="dangXuat">Đăng xuất</a>
+            </div>
+        </div>
+        <div class="manage-order">
+            <div class="menu-bar">
+                <div class="menu-item">
+                    <p>tất cả</p>
+                </div>
+                <div class="menu-item">
+                    <p>Chờ xác nhận</p>
+                </div>
+                <div class="menu-item">
+                    <p>Vận chuyển</p>
+                </div>
+                <div class="menu-item">
+                    <p>Chờ giao hàng</p>
+                </div>
+                <div class="menu-item">
+                    <p>Hoàn thành</p>
+                </div>
+                <div class="menu-item">
+                    <p>Đã hủy</p>
+                </div>
+                <div class="menu-item" id="hoantien">
+                    <p>Hoàn trả</p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
@@ -139,50 +182,19 @@
         <p>Copyright ©. All Rights Reserved.</p>
     </div>
 </footer>
-
 <script>
-    const userInput = document.getElementById('iUser');
-    const passInput = document.getElementById('iPass');
-    const khungPass=document.querySelector(".MK")
-    const btnLogin = document.querySelector('.dangNhap');
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu-item");
 
-    const errorUser = document.querySelector('.User');
-    const errorPass = document.querySelector('.Pass');
-
-    btnLogin.addEventListener('click', (e) => {
-
-        let hasError = false;
-        if (userInput.value.trim() === '') {
-            userInput.style.border = '1px solid red';
-            errorUser.textContent = 'Vui lòng nhập tên đăng nhập hoặc email';
-            errorUser.style.color = 'red';
-            hasError = true;
-        } else {
-            userInput.style.border = '1px solid #0d3164';
-            errorUser.textContent = '';
-        }
-        if (passInput.value.trim() === '') {
-            khungPass.style.border = '1px solid red';
-            errorPass.textContent = 'Vui lòng nhập mật khẩu';
-            errorPass.style.color = 'red';
-            hasError = true;
-        } else {
-            passInput.style.border = '1px solid #0d3164';
-            errorPass.textContent = '';
-        }
-        if (!hasError) {
-            window.location.href="../page/user-hoSoCaNhan.html";
-        }
+        menuItems.forEach(item => {
+            item.addEventListener("click", function() {
+                // Xóa active ở tất cả
+                menuItems.forEach(i => i.classList.remove("active"));
+                // Thêm active vào mục được bấm
+                this.classList.add("active");
+            });
+        });
     });
-
-    const bShow=document.querySelector(".show")
-    bShow.addEventListener("click",function (){
-        if (passInput.type === "password") {
-            passInput.type = "text";
-        } else {
-            passInput.type = "password";
-        }
-    })
 </script>
 </body>
 </html>
