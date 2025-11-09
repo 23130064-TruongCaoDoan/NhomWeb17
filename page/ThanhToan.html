@@ -36,18 +36,18 @@
                         >
                         <div class="danhMuc sach">
                             <div class="item truyenTranh">
-                                <a href="" class="it truyen-tranh"
+                                <a href="dsSanPham.html" class="it truyen-tranh"
                                 ><span>Truyện tranh</span></a
                                 >
                             </div>
                             <div class="item anh">
-                                <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
+                                <a href="dsSanPham.html" class="it sach-anh"><span>Sách ảnh</span></a>
                             </div>
                             <div class="item giaoDuc">
-                                <a href="" class="it giao-duc"><span>Giáo dục</span></a>
+                                <a href="dsSanPham.html" class="it giao-duc"><span>Giáo dục</span></a>
                             </div>
                             <div class="item toMau">
-                                <a href="" class="it to-mau"><span>Sách tô màu</span></a>
+                                <a href="dsSanPham.html" class="it to-mau"><span>Sách tô màu</span></a>
                             </div>
                         </div>
                     </div>
@@ -63,6 +63,10 @@
                     <a href="shoppingCart.html" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Giỏ hàng</span>
+                    </a>
+                    <a href="" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
                     </a>
                 </div>
             </div>
@@ -127,19 +131,19 @@
             <div class="checkout-section">
                 <div class="section-title">PHƯƠNG THỨC THANH TOÁN</div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="vnpay" name="payment">
                     <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg"
                          alt="">
                     <span>VNPAY</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="momo" name="payment">
                     <img src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjA0NjgzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--6d1081fa86f1300daa38e2cb2fd3ffc5a28b6592/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsMzAwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--e1d036817a0840c585f202e70291f5cdd058753d/MoMo%20Logo.png"
                          alt="">
                     <span>Ví Momo</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="money" name="payment">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5lvx2wxsU3oCisTG1mwVJfl7Jb8et02zZwg&s"
                          alt="">
                     <span>Thanh toán tiền mặt khi nhận hàng</span>
@@ -546,6 +550,23 @@
     setupSectionToggle('.layout.discounts', '.list.discount', '.toggle-btnDis'); // Discount
     setupSectionToggle('.layout.ships', '.list.ship', '.toggle-btnShip');       // Ship
 
+    const vnpay=document.querySelector(".vnpay");
+    const momo=document.querySelector(".momo");
+    const money=document.querySelector(".money");
+    const thanhtoan=document.querySelector(".confirm-payment-btn");
+
+    thanhtoan.addEventListener("click", function (){
+        if(vnpay.checked){
+            window.location.href = "giaLapMOMO.html";
+        }
+        else if(momo.checked){
+            window.location.href = "giaLapMOMO.html";
+        }
+        if(money.checked){
+            alert("Đặt hàng thành công!");
+            window.location.href = "home.html";
+        }
+    })
 
 
 </script>
