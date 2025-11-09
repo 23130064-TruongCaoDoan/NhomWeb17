@@ -115,6 +115,7 @@
                         </div>
                         <button>Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i></button>
                         <button id="buy">Mua ngay</button>
+                        <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
                     </div>
                     <div class="program">
                         <p>🛡️ Đổi trả miễn phí 7 ngày</p>
@@ -157,14 +158,6 @@
                         <div class="info-row">
                             <span class="label">Hình thức</span>
                             <span class="value">Bìa Mềm</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">Sản phẩm hiển thị trong</span>
-                            <a href="#" class="value link">Minh Long</a>
-                        </div>
-                        <div class="info-row">
-                            <span class="label">Sản phẩm bán chạy nhất</span>
-                            <a href="#" class="value link" style="margin-left: -43px">Top 100 sản phẩm Truyện Đọc Thiếu Nhi bán chạy của tháng</a>
                         </div>
                     </div>
                 </div>
@@ -269,7 +262,7 @@
                     </figure>
                 </div>
             </div>
-            <div class="slogan"><h3>Những quyến sách có thẻ bạn sẽ thích</h3></div>
+            <div class="slogan"><h3>Những quyển sách có thẻ bạn sẽ thích</h3></div>
             <div class="list-product">
                 <div class="card">
                     <img src="../assets/img/books/CoTichTheGioi.jpg" alt="" />
@@ -372,7 +365,11 @@
         </div>
     </footer>
 </div>
-<script>
+<script >
+    const heart = document.getElementById('addHeart');
+    heart.addEventListener('click', function ()   {
+        heart.style.color=heart.style.color==='red'?'gray':'red';
+    })
     document.addEventListener('DOMContentLoaded', function() {
         const mainImage = document.getElementById('mainImageDisplay');
         const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
