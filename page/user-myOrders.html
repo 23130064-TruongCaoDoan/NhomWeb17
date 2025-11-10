@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Errol</title>
+    <title>Đơn hàng của tôi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/home.css">
     <link rel="stylesheet" href="../assets/css/errolpage.css">
+    <link rel="stylesheet" href="../assets/css/user.css">
+    <link rel="stylesheet" href="../assets/css/address.css">
+    <link rel="stylesheet" href="../assets/css/myOrder.css">
 </head>
 <body>
 <div id="home-page">
@@ -37,7 +40,7 @@
                     <a href="dsSanPham.html" class="button bt danhmuc">
                         <i class="fa-solid fa-list"></i><span>Danh mục</span></a
                     >
-                    <div class="danhMuc sach" >
+                    <div class="danhMuc sach">
                         <div class="item truyenTranh">
                             <a href="" class="it truyen-tranh"
                             ><span>Truyện tranh</span></a
@@ -56,7 +59,7 @@
                 </div>
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" placeholder="Tìm kiếm sách" />
+                    <input type="search" placeholder="Tìm kiếm sách"/>
                     <button>Tìm Kiếm</button>
                 </div>
                 <a href="login.html" class="button bt taikhoan">
@@ -71,39 +74,63 @@
         </div>
     </div>
 </div>
-<main class="errol_container">
+<div class="content">
     <div class="container">
-        <h2>Tạo tài khoản mới</h2>
-        <form>
-            <section class="form-section">
-                <h3>Thông tin cá nhân</h3>
-                <div class="form-group">
-                    <label for="fullname">Họ và Tên *</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+        <div class="menuUser">
+            <div class="nameUser">
+                <div class="anh"><i class="fa-solid fa-user"></i></div>
+                <div class="name"> Lê Vân Trường</div>
+                <div class="bacThanhVien">Thành viên bạc</div>
+                <div class="point">10000 point</div>
+            </div>
+            <div class="menuMain">
+                <a href="user-hoSoCaNhan.html" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
+                        class="fa-solid fa-arrow-down"></i></a>
+                <div class="menuInfor">
+                    <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                    <a href="user-address.html" class="title address"><span>Sổ địa chỉ</span></a>
+                    <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
+                    <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
                 </div>
-            </section>
-            <section class="form-section">
-                <h3>Thông tin đăng ký</h3>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                <a href="user-myOrders.html" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
+                    <span>Ví voucher</span></a>
+                <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                <a href="user-spYeuThich.html" class="menu spYeuThich"><i
+                        class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
+            </div>
+            <div class="btDangXuat">
+                <a href="login.html" class="dangXuat">Đăng xuất</a>
+            </div>
+        </div>
+        <div class="manage-order">
+            <div class="menu-bar">
+                <div class="menu-item">
+                    <p>tất cả</p>
                 </div>
-                <div class="form-group">
-                    <div class="container-password"><div class="password-content">
-                        <label for="confirm-password">Confirm Password *</label>
-                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
-                    </div>
-                        <div class="show-password"><i class="fa-solid fa-eye" id="togglePassword"></i></div> </div>
+                <div class="menu-item">
+                    <p>Chờ xác nhận</p>
                 </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password *</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận lại mật khẩu" required>
+                <div class="menu-item">
+                    <p>Vận chuyển</p>
                 </div>
-                <button type="submit">Tạo tài khoản</button>
-            </section>
-        </form>
+                <div class="menu-item">
+                    <p>Chờ giao hàng</p>
+                </div>
+                <div class="menu-item">
+                    <p>Hoàn thành</p>
+                </div>
+                <div class="menu-item">
+                    <p>Đã hủy</p>
+                </div>
+                <div class="menu-item" id="hoantien">
+                    <p>Hoàn trả</p>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
-</main>
+</div>
 <footer class="footer">
     <div class="wave-container">
         <svg
@@ -154,16 +181,19 @@
         <p>Copyright ©. All Rights Reserved.</p>
     </div>
 </footer>
-</body>
-<script>// show password
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirm-password");
-const toggle = document.getElementById("togglePassword");
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu-item");
 
-toggle.addEventListener("click", () => {
-    const type = password.type === "password" ? "text" : "password";
-    password.type = type;
-    confirmPassword.type = type;
-});
-/script>
+        menuItems.forEach(item => {
+            item.addEventListener("click", function() {
+                // Xóa active ở tất cả
+                menuItems.forEach(i => i.classList.remove("active"));
+                // Thêm active vào mục được bấm
+                this.classList.add("active");
+            });
+        });
+    });
+</script>
+</body>
 </html>
