@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sản Phẩm Yêu Thích</title>
+    <title>Đơn hàng của tôi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="../assets/css/errolpage.css">
     <link rel="stylesheet" href="../assets/css/user.css">
     <link rel="stylesheet" href="../assets/css/address.css">
-    <link rel="stylesheet" href="../assets/css/spYeuThich.css">
+    <link rel="stylesheet" href="../assets/css/myOrder.css">
 </head>
-
 <body>
 <div id="home-page">
     <div id="page-header">
@@ -43,18 +42,18 @@
                     >
                     <div class="danhMuc sach">
                         <div class="item truyenTranh">
-                            <a href="dsSanPham.html" class="it truyen-tranh"
+                            <a href="" class="it truyen-tranh"
                             ><span>Truyện tranh</span></a
                             >
                         </div>
                         <div class="item anh">
-                            <a href="dsSanPham.html" class="it sach-anh"><span>Sách ảnh</span></a>
+                            <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
                         </div>
                         <div class="item giaoDuc">
-                            <a href="dsSanPham.html" class="it giao-duc"><span>Giáo dục</span></a>
+                            <a href="" class="it giao-duc"><span>Giáo dục</span></a>
                         </div>
                         <div class="item toMau">
-                            <a href="dsSanPham.html" class="it to-mau"><span>Sách tô màu</span></a>
+                            <a href="" class="it to-mau"><span>Sách tô màu</span></a>
                         </div>
                     </div>
                 </div>
@@ -93,10 +92,10 @@
                     <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
                     <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
                 </div>
-                <a href="" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                <a href="user-myOrders.html" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
                 <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
                     <span>Ví voucher</span></a>
-                <a href="user-myOrders.html" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
                 <a href="user-spYeuThich.html" class="menu spYeuThich"><i
                         class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
             </div>
@@ -104,95 +103,31 @@
                 <a href="login.html" class="dangXuat">Đăng xuất</a>
             </div>
         </div>
-        <div class="favorite-products">
-            <h2>Sản phẩm yêu thích của tôi</h2>
-            <div class="listProducts">
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="../assets/img/books/DeMen.jpg" alt="" />
-                    <p class="book-name">Dế Mèn phiêu lưu ký</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+        <div class="manage-order">
+            <div class="menu-bar">
+                <div class="menu-item">
+                    <p>tất cả</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <a href="productDetail.html">
-                        <img src="../assets/img/books/365TruyenKeHangDem.png" alt="" />
-                    </a>
-                    <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item">
+                    <p>Chờ xác nhận</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="../assets/img/books/CoTichTheGioi.jpg" alt="" />
-                    <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item">
+                    <p>Vận chuyển</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="../assets/img/books/guongDungCam.png" alt="" />
-                    <p class="book-name">Gương Dũng Cảm</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item">
+                    <p>Chờ giao hàng</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="../assets/img/books/ThoiQuenTot.jpg" alt="" />
-                    <p class="book-name">Bồi dưỡng thói quen tốt</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item">
+                    <p>Hoàn thành</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <img src="../assets/img/books/suThanVietNam.jpg" alt="" />
-                    <p class="book-name">Sứ Thần Việt Nam</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item">
+                    <p>Đã hủy</p>
                 </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <img src="../assets/img/books/guongHieuHoc.jpg" alt="" />
-                    <p class="book-name">Gương hiếu học</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="../assets/img/books/thanDongVietNam.jpg" alt="" />
-                    <p class="book-name">Thần Đồng Việt Nam</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
+                <div class="menu-item" id="hoantien">
+                    <p>Hoàn trả</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -247,21 +182,18 @@
     </div>
 </footer>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('mainImageDisplay');
-    const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu-item");
 
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            thumbnails.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            mainImage.src = this.dataset.mainImage;
+        menuItems.forEach(item => {
+            item.addEventListener("click", function() {
+                // Xóa active ở tất cả
+                menuItems.forEach(i => i.classList.remove("active"));
+                // Thêm active vào mục được bấm
+                this.classList.add("active");
+            });
         });
     });
-});
-const heart = document.getElementById('addHeart')
-heart.addEventListener('click', function() {
-    heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
-})</script>
+</script>
 </body>
 </html>

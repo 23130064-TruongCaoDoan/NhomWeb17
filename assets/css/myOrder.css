@@ -1,0 +1,38 @@
+.content .container .menu.donhang{
+    color: #0d3164;
+    font-weight: bold;
+}
+.content .container .manage-order{
+    width: 72%;
+    height: 600px;
+}
+.content .container .manage-order .menu-bar {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid gray;
+    margin-top: -12px;
+
+}
+.content .container .manage-order .menu-bar .menu-item {
+    width: 140px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    color: #575757;
+}
+.content .container .manage-order .menu-bar .menu-item:hover {
+    cursor: pointer;
+    color: #0d3164;
+}
+/* Khi được chọn */
+.menu-item.active {
+    border-bottom: 2px solid #0d3164; /* màu cam nổi bật */
+}
+
+.menu-item.active p {
+    color: #0d3164; /* đổi màu chữ */
+    font-weight: bold;
+}
