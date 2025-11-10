@@ -82,26 +82,57 @@
 .right-container {
     width: 90%;
 }
-.right-container .coupon div {
-    display: flex;
+.right-container .voucher {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 5px;
+  padding: 1vw;
+  margin-bottom: 3vh;
 }
-.right-container .coupon input {
-    width: 60%;
+.right-container .voucher .more-voucher {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  color:#0d3164;
+  font-weight: bold;
+;
 }
-.right-container .coupon input:placeholder-shown{
-    font-size: 14px;
+.right-container .voucher .info-voucher h4{
+  margin: 0;
 }
-.right-container .coupon button{
-    border: none;
-    width: 40%;
-    min-height: 5vh;
-    color: white;
-    background-color: #0d3164;
-    cursor: pointer;
+.right-container .voucher .info-voucher p{
+  margin: 0;
 }
-
+.right-container .voucher .more-voucher p:hover {
+  text-decoration: underline;
+}
+.right-container .voucher .expired {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:2vh;
+}
+.right-container .voucher .expired div p{
+  margin: 0;
+}
+.right-container .voucher .expired button {
+  width: 8vw;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #0d3164;
+}
+.right-container .voucher .expired button:hover {
+  background-color: #154c99;
+  cursor: pointer;
+}
+.right-container .bill{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 5px;
+}
 .right-container .bill div {
     display: flex;
+    padding: 0 10px 0 10px;
     justify-content: space-between;
 }
 .right-container .check-out {
@@ -109,10 +140,11 @@
     color: white;
     background-color: #0d3164;
     cursor: pointer;
-    width: 50%;
-    height: 15%;
+    width: 90%;
+    height:6vh;
     border-radius: 5px;
-    margin-left: 7vw;
+    margin-left: 1.5vw;
+    margin-bottom: 2vh;
     font-size: 18px;
     font-weight: bold;
 }
@@ -120,5 +152,5 @@
     background-color: #154c99;
 }
 input[type="checkbox"]{
-    accent-color: #3b7ddd;
+    accent-color: #0d3164;
 }
