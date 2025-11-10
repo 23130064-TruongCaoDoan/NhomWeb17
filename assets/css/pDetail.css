@@ -363,3 +363,60 @@
 .detail .describe .fa-heart:hover{
     cursor: pointer;
 }
+#reviewForm {
+    display: none; /* ẩn mặc định */
+    margin-top: 20px;
+}
+
+#reviewForm input,
+#reviewForm select,
+#reviewForm textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+#reviewStars option,#reviewStars{
+    color: #FFD700;
+}
+
+
+#submitReview {
+    padding: 8px 15px;
+    background-color: #0d3164;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+.comment-list {
+    padding-top: 20px;
+}
+
+.comment-item {
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.comment-author {
+    font-weight: bold;
+}
+
+.comment-date {
+    color: #888;
+}
+
+.comment-rating {
+    margin: 5px 0 10px;
+    font-size: 14px;
+    color: #4CAF50;
+}
+
+.comment-text {
+    font-style: italic;
+}
