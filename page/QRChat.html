@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>changePassword</title>
-    <link rel="stylesheet" href="../assets/css/user.css">
+    <title>QRChat</title>
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
-    <link rel="stylesheet" href="../assets/css/changePassword.css">
+    <link rel="stylesheet" href="../assets/css/QRChat.css">
 </head>
 <body>
+
 <div class="page-wrapper">
     <div id="home-page">
         <div id="page-header">
@@ -74,59 +74,11 @@
     </div>
     <div class="content">
         <div class="container">
-            <div class="menuUser">
-                <div class="nameUser">
-                    <div class="anh"><i class="fa-solid fa-user"></i></div>
-                    <div class="name"> Lê Vân Trường</div>
-                    <div class="bacThanhVien">Thành viên bạc</div>
-                    <div class="point">10000 point</div>
-                </div>
-                <div class="menuMain">
-                    <a href="user-hoSoCaNhan.html" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
-                            class="fa-solid fa-arrow-down"></i></a>
-                    <div class="menuInfor">
-                        <a href="user-hoSoCaNhan.html" class="title prof"><span>Hồ sơ cá nhân</span></a>
-                        <a href="user-address.html" class="title address"><span>Sổ địa chỉ</span></a>
-                        <a href="user-changePassword.html" class="title passw"><span>Đổi mật khẩu</span></a>
-                        <a href="user_UuDaiThanhVien.html" class="title member"><span>Ưu đãi thành viên</span></a>
-                    </div>
-                    <a href="" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
-                    <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
-                        <span>Ví voucher</span></a>
-                    <a href="" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
-                    <a href="user-spYeuThich.html" class="menu spYeuThich"><i
-                            class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
-                </div>
-                <div class="btDangXuat">
-                    <a href="login.html" class="dangXuat">Đăng xuất</a>
-                </div>
+            <div class="zalo-box">
+                <h3 class="zalo-title">Chat trên Zalo</h3>
+                <img class="zalo-qr" src="../assets/img/QR/zalo.jpg" alt="QR Zalo">
+                <p class="zalo-desc">Quét QR code để chat trực tiếp</p>
             </div>
-            <div class="password-container">
-                <h2>Đổi mật khẩu</h2>
-                <form class="password-form" id="passwordForm" novalidate>
-
-                    <div class="form-group">
-                        <label>Mật khẩu hiện tại</label>
-                        <input type="password" id="oldPass" placeholder="Nhập mật khẩu hiện tại">
-                        <small class="error-msg"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Mật khẩu mới</label>
-                        <input type="password" id="newPass" placeholder="Nhập mật khẩu mới">
-                        <small class="error-msg"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Xác nhận mật khẩu mới</label>
-                        <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu mới">
-                        <small class="error-msg"></small>
-                    </div>
-
-                    <button type="submit" class="save-btn">Lưu mật khẩu</button>
-                </form>
-            </div>
-
         </div>
     </div>
     <footer class="footer">
@@ -180,59 +132,5 @@
         </div>
     </footer>
 </div>
-<script>
-    document.getElementById("passwordForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const oldPass = document.getElementById("oldPass");
-        const newPass = document.getElementById("newPass");
-        const confirmPass = document.getElementById("confirmPass");
-
-        const fields = [
-            { el: oldPass, name: "mật khẩu hiện tại" },
-            { el: newPass, name: "mật khẩu mới" },
-            { el: confirmPass, name: "xác nhận mật khẩu mới" }
-        ];
-
-        let isValid = true;
-
-
-        fields.forEach(f => {
-            const errorMsg = f.el.nextElementSibling;
-            if (!f.el.value.trim()) {
-                errorMsg.textContent = `Vui lòng nhập ${f.name}.`;
-                errorMsg.style.display = "block";
-                f.el.classList.add("error");
-                isValid = false;
-            } else {
-                errorMsg.textContent = "";
-                errorMsg.style.display = "none";
-                f.el.classList.remove("error");
-            }
-        });
-
-        if (newPass.value && newPass.value.length < 6) {
-            const errorMsg = newPass.nextElementSibling;
-            errorMsg.textContent = "Mật khẩu mới phải có ít nhất 6 ký tự.";
-            errorMsg.style.display = "block";
-            newPass.classList.add("error");
-            isValid = false;
-        }
-
-
-        if (newPass.value && confirmPass.value && newPass.value !== confirmPass.value) {
-            const errorMsg = confirmPass.nextElementSibling;
-            errorMsg.textContent = "Mật khẩu xác nhận không trùng khớp.";
-            errorMsg.style.display = "block";
-            confirmPass.classList.add("error");
-            isValid = false;
-        }
-
-        if (isValid) {
-            alert("Đổi mật khẩu thành công!");
-
-        }
-    });
-</script>
 </body>
 </html>

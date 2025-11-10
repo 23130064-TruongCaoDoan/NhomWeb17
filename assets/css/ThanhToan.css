@@ -188,7 +188,7 @@ a {
     background-color: #0052cc;
 }
 
-.choose-code {
+#choose-code {
     color: #3b7ddd;
     font-size: 16px;
     text-decoration: none;
@@ -350,6 +350,107 @@ a {
 
 .buttonAndTerm .confirm-payment-btn:active {
     background-color: #990012;
+}
+
+/*chon voucher*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: none;
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 101;
+    display: none;
+    box-sizing: border-box;
+    width: 40vw;
+    overflow: hidden;
+}
+.popup h3{
+    text-align: center;
+    color: #0d3164;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+.popup .search{
+    display: flex;
+    gap: 10px;
+
+}
+.popup .search input{
+    flex: 1;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+.popup .search button {
+    height: 36px;
+    background-color: #0d3164;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.popup .listVoucher{
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.popup .listVoucher .title{
+    margin-bottom: 30px;
+}
+.popup .listVoucher .title .ten{
+    float: left;
+    font-size: 15px;
+    color: #0d3164;
+    font-weight: bold;
+}
+.popup .listVoucher .title .numberAply{
+    float: right;
+    font-size: 15px;
+    color: #a5a4a4;
+    margin-right: 15px;
+}
+.popup .listVoucher .list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+.popup .toggle-btnDis,.toggle-btnShip {
+    display: block;
+    margin: 10px auto 0;
+    width: fit-content;
+    padding: 6px 12px;
+    background: white;
+    color: #0d3164;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #0d3164;
 }
 
 

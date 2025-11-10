@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <link rel="stylesheet" href="../assets/css/ThanhToan.css">
+    <link rel="stylesheet" href="../assets/css/voucher.css">
 </head>
 <body>
 <div class="page-wrapper">
@@ -35,18 +36,18 @@
                         >
                         <div class="danhMuc sach">
                             <div class="item truyenTranh">
-                                <a href="" class="it truyen-tranh"
+                                <a href="dsSanPham.html" class="it truyen-tranh"
                                 ><span>Truyện tranh</span></a
                                 >
                             </div>
                             <div class="item anh">
-                                <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
+                                <a href="dsSanPham.html" class="it sach-anh"><span>Sách ảnh</span></a>
                             </div>
                             <div class="item giaoDuc">
-                                <a href="" class="it giao-duc"><span>Giáo dục</span></a>
+                                <a href="dsSanPham.html" class="it giao-duc"><span>Giáo dục</span></a>
                             </div>
                             <div class="item toMau">
-                                <a href="" class="it to-mau"><span>Sách tô màu</span></a>
+                                <a href="dsSanPham.html" class="it to-mau"><span>Sách tô màu</span></a>
                             </div>
                         </div>
                     </div>
@@ -62,6 +63,10 @@
                     <a href="shoppingCart.html" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Giỏ hàng</span>
+                    </a>
+                    <a href="" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
                     </a>
                 </div>
             </div>
@@ -126,19 +131,19 @@
             <div class="checkout-section">
                 <div class="section-title">PHƯƠNG THỨC THANH TOÁN</div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="vnpay" name="payment">
                     <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg"
                          alt="">
                     <span>VNPAY</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="momo" name="payment">
                     <img src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjA0NjgzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--6d1081fa86f1300daa38e2cb2fd3ffc5a28b6592/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsMzAwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--e1d036817a0840c585f202e70291f5cdd058753d/MoMo%20Logo.png"
                          alt="">
                     <span>Ví Momo</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" name="payment">
+                    <input type="radio" class="money" name="payment">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5lvx2wxsU3oCisTG1mwVJfl7Jb8et02zZwg&s"
                          alt="">
                     <span>Thanh toán tiền mặt khi nhận hàng</span>
@@ -147,7 +152,7 @@
 
             <!-- ThanhVien -->
             <div class="checkout-section">
-                <div class="section-title">THÀNH VIÊN FAHASA</div>
+                <div class="section-title">THÀNH VIÊN</div>
                 <div class="member-info">
                     <div>Số Point hiện có: <span class="highlight">0</span></div>
                     <label><input type="checkbox"> Dùng <span class="highlight">0 đ</span> Point để thanh
@@ -166,7 +171,7 @@
                         <div class="input-group">
                             <input type="text" id="giftcode" placeholder="Nhập mã khuyến mãi / Gift Card">
                             <button class="apply-btn">Áp dụng</button>
-                            <a href="#" class="choose-code">Chọn mã khuyến mãi</a>
+                            <a href="#" id="choose-code">Chọn mã khuyến mãi</a>
                         </div>
                     </div>
                 </div>
@@ -201,7 +206,6 @@
             </div>
 
         </div>
-
         <div class="checkout-summary">
             <div class="container">
                 <div class="checkout-total">
@@ -234,5 +238,337 @@
 
     </div>
 </div>
+<div class="overlay" id="overlay"></div>
+<div class="popup">
+    <h3>CHỌN KHUYẾN MÃI</h3>
+    <div class="search">
+        <input type="text" placeholder="Mã khuyến mãi / Gift card">
+        <button class="apply">Áp dụng</button>
+    </div>
+    <div class="listVoucher">
+        <div class="layout discounts">
+            <div class="title Discount">
+                <div class="ten">Mã giảm giá</div>
+                <div class="numberAply">Áp dụng tối đa: 1</div>
+            </div>
+            <div class="list discount">
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="toggle-btnDis">Xem thêm</button>
+        </div>
+        <div class="layout ships">
+            <div class="title Ship">
+                <div class="ten">Mã vận chuyển</div>
+                <div class="numberAply">Áp dụng tối đa: 1</div>
+            </div>
+            <div class="list ship">
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="voucher-item">
+                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="voucher-right">
+                        <b>Mã Giảm 10K - Toàn Sàn</b>
+                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                        <br>
+                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                        <div class="voucher-code">FHS10KT11</div>
+                        <div class="voucher-footer">
+                            <span>HSD: 30/11/2025</span>
+                            <button>Áp dụng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="toggle-btnShip">Xem thêm</button>
+        </div>
+    </div>
+</div>
+<div id="voucherPopup" class="popup">
+    <div class="popup-content">
+        <h3>ĐIỀU KIỆN ÁP DỤNG</h3>
+        <div class="popup-body">
+            <div class="voucher-list-detail">
+                <p class="voucher-item-detail">Mã giảm giá 10K cho đơn hàng từ 130K</p>
+                <p class="voucher-item-detail">Mã giảm giá 20K cho đơn hàng từ 249K</p>
+                <p class="voucher-item-detail">Mã giảm giá 40K cho đơn hàng từ 499K</p>
+                <p class="voucher-item-detail">Mã giảm giá 80K cho đơn hàng từ 999K</p>
+            </div>
+            <div class="voucher-condition">
+                <p>- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo cùng một số loại giấy và bảng khác.</p>
+                <p>- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển.</p>
+            </div>
+        </div>
+        <button class="copy-code">ÁP DỤNG</button>
+        <button class="cancel">×</button>
+    </div>
+</div>
+<script>
+    //voucher
+
+    const openPopup = document.getElementById("choose-code");
+    const overlay = document.getElementById("overlay");
+    const popup = document.querySelector(".popup");
+
+    openPopup.addEventListener("click", (e) => {
+        e.preventDefault();
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    });
+
+    overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        voucherPopup.style.display = "none";
+    });
+
+
+
+    // hiển thị chi tiết voucher
+    const detailBtns = document.querySelectorAll(".voucher-detail");
+    const voucherPopup = document.getElementById("voucherPopup");
+    const cancelBtn = document.querySelector("#voucherPopup .cancel");
+
+    detailBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            popup.style.display = "none";
+            voucherPopup.style.display = "block";
+        });
+    });
+
+    // Đóng popup điều kiện
+    cancelBtn.addEventListener("click", () => {
+        voucherPopup.style.display = "none";
+        popup.style.display = "block";
+    });
+
+    function setupSectionToggle(layoutSelector, listSelector, toggleBtnClass) {
+        const layout = document.querySelector(layoutSelector);
+
+        const items = layout.querySelectorAll(listSelector + ' .voucher-item');
+        const toggleBtn = layout.querySelector(toggleBtnClass);
+
+
+        items.forEach((v, i) => {
+            if (i > 1) v.style.display = 'none';
+            else v.style.display = 'flex';
+        });
+
+        toggleBtn.addEventListener('click', () => {
+            const hiddenItems = Array.from(items).filter(v => v.style.display === 'none');
+
+            if (hiddenItems.length > 0) {
+                hiddenItems.forEach(v => v.style.display = 'flex');
+                toggleBtn.textContent = 'Thu gọn';
+            } else {
+                items.forEach((v, i) => {
+                    if (i > 1) v.style.display = 'none';
+                });
+                toggleBtn.textContent = 'Xem thêm';
+            }
+        });
+    }
+
+    setupSectionToggle('.layout.discounts', '.list.discount', '.toggle-btnDis'); // Discount
+    setupSectionToggle('.layout.ships', '.list.ship', '.toggle-btnShip');       // Ship
+
+    const vnpay=document.querySelector(".vnpay");
+    const momo=document.querySelector(".momo");
+    const money=document.querySelector(".money");
+    const thanhtoan=document.querySelector(".confirm-payment-btn");
+
+    thanhtoan.addEventListener("click", function (){
+        if(vnpay.checked){
+            window.location.href = "giaLapMOMO.html";
+        }
+        else if(momo.checked){
+            window.location.href = "giaLapMOMO.html";
+        }
+        if(money.checked){
+            alert("Đặt hàng thành công!");
+            window.location.href = "home.html";
+        }
+    })
+
+
+</script>
 </body>
 </html>

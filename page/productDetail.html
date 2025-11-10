@@ -48,18 +48,18 @@
                         >
                         <div class="danhMuc sach">
                             <div class="item truyenTranh">
-                                <a href="" class="it truyen-tranh"
+                                <a href="dsSanPham.html" class="it truyen-tranh"
                                 ><span>Truyện tranh</span></a
                                 >
                             </div>
                             <div class="item anh">
-                                <a href="" class="it sach-anh"><span>Sách ảnh</span></a>
+                                <a href="dsSanPham.html" class="it sach-anh"><span>Sách ảnh</span></a>
                             </div>
                             <div class="item giaoDuc">
-                                <a href="" class="it giao-duc"><span>Giáo dục</span></a>
+                                <a href="dsSanPham.html" class="it giao-duc"><span>Giáo dục</span></a>
                             </div>
                             <div class="item toMau">
-                                <a href="" class="it to-mau"><span>Sách tô màu</span></a>
+                                <a href="dsSanPham.html" class="it to-mau"><span>Sách tô màu</span></a>
                             </div>
                         </div>
                     </div>
@@ -72,9 +72,13 @@
                         <i class="fa-solid fa-user"></i>
                         <span>Tài khoản</span>
                     </a>
-                    <a href="" class="button bt gio">
+                    <a href="shoppingCart.html" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span>Giỏ hàng</span>
+                    </a>
+                    <a href="" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
                     </a>
                 </div>
             </div>
@@ -173,45 +177,41 @@
             </div>
         </div>
         <div class="reviews-section">
+
             <div class="rating-summary">
                 <div class="rating-score">
                     <h2>5</h2>
-                        <div class="stars">★★★★★</div>
+                    <div class="stars">★★★★★</div>
                     <p>Based on Reviews</p>
                 </div>
 
                 <div class="rating-bars">
-                    <div class="rating-row">
-                        <span>5</span>
-                        <div class="rating-bar"><div class="rating-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="rating-row">
-                        <span>4</span>
-                        <div class="rating-bar"><div class="rating-fill" style="width: 2%;"></div></div>
-
-                    </div>
-                    <div class="rating-row">
-                        <span>3</span>
-                        <div class="rating-bar"><div class="rating-fill" style="width: 1%;"></div></div>
-
-                    </div>
-                    <div class="rating-row">
-                        <span>2</span>
-                        <div class="rating-bar"><div class="rating-fill" style="width: 0%;"></div></div>
-
-                    </div>
-                    <div class="rating-row">
-                        <span>1</span>
-                        <div class="rating-bar"><div class="rating-fill" style="width: 3%;"></div></div>
-
-                    </div>
+                    <div class="rating-row"><span>5</span><div class="rating-bar"><div class="rating-fill" style="width: 90%;"></div></div></div>
+                    <div class="rating-row"><span>4</span><div class="rating-bar"><div class="rating-fill" style="width: 2%;"></div></div></div>
+                    <div class="rating-row"><span>3</span><div class="rating-bar"><div class="rating-fill" style="width: 1%;"></div></div></div>
+                    <div class="rating-row"><span>2</span><div class="rating-bar"><div class="rating-fill" style="width: 0%;"></div></div></div>
+                    <div class="rating-row"><span>1</span><div class="rating-bar"><div class="rating-fill" style="width: 3%;"></div></div></div>
                 </div>
 
                 <div class="review-actions">
-                    <button class="action-btn">Ask a Question</button>
-                    <button class="action-btn">Write a Review</button>
+                    <button class="action-btn" id="writeReviewBtn">Write a Review</button>
                 </div>
             </div>
+
+            <div id="reviewForm">
+                <h3>Viết đánh giá</h3>
+                <input type="text" id="reviewName" placeholder="Tên của bạn">
+                <select id="reviewStars">
+                    <option value="5">5 ★★★★★</option>
+                    <option value="4">4 ★★★★</option>
+                    <option value="3">3 ★★★</option>
+                    <option value="2">2 ★★</option>
+                    <option value="1">1 ★</option>
+                </select>
+                <textarea id="reviewText" rows="4" placeholder="Nội dung đánh giá..."></textarea>
+                <button id="submitReview">Hoàn thành</button>
+            </div>
+
 
             <div class="review-navigation">
                 <div class="nav-item active">Reviews</div>
@@ -225,21 +225,21 @@
                     <option>Điểm cao nhất</option>
                 </select>
             </div>
-            <div class="comment-list" style="padding-top: 20px;">
-                <div class="comment-item" style="border-bottom: 1px dashed #eee; padding-bottom: 20px; margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; font-size: 14px;">
-                        <span style="font-weight: bold; color: #333;">KB</span>
-                        <span style="color: #888;">02/14/2025</span>
+
+            <div class="comment-list">
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-author">KB</span>
+                        <span class="comment-date">02/14/2025</span>
                     </div>
-                    <p style="margin: 5px 0 10px; font-size: 14px; color: #4CAF50;">★★★★☆ Verified Buyer</p>
-                    <p style="font-style: italic; color: #333;">"Tuyệt vời! Sách giúp bé ngủ ngon hơn rất nhiều."</p>
-                    <div style="font-size: 12px; color: #888; display: flex; justify-content: flex-end; align-items: center;">
-                        <span style="margin-right: 15px;">Was this helpful? <i class="fa-solid fa-thumbs-up" style="color: #FFD43B;"></i> | <i class="fa-solid fa-thumbs-down" style="color: #FFD43B;"></i> </span>
-                        <a href="#" style="text-decoration: none; color: #888;">Share</a>
-                    </div>
+                    <p class="comment-rating">4/5 Verified Buyer</p>
+                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
                 </div>
+
             </div>
+
         </div>
+
         <div class="recommend">
             <div class="slogan"><h3>Chúng tôi coi trọng chất lượng và sự độc đáo</h3></div>
             <div class="valua-container">
@@ -348,8 +348,8 @@
 
             <div class="footer-column">
                 <h3>Đối tác</h3>
-                <a href="#">Nhà phân phối</a>
-                <a href="#">Sách của chúng tôi</a>
+                <a href="NhaPhanPhoi.html">Nhà phân phối</a>
+                <a href="dsSanPham.html">Sách của chúng tôi</a>
             </div>
 
             <div class="footer-column">
@@ -380,6 +380,59 @@
             });
         });
     });
+
+        const writeBtn = document.getElementById("writeReviewBtn");
+        const form = document.getElementById("reviewForm");
+        const submitBtn = document.getElementById("submitReview");
+        const commentList = document.querySelector(".comment-list");
+
+        // Bấm Write a Review
+        writeBtn.addEventListener("click", () => {
+        form.style.display = "block";
+        writeBtn.style.display = "none";
+    });
+
+        //  Bấm Hoàn thành
+        submitBtn.addEventListener("click", () => {
+        const name = document.getElementById("reviewName").value;
+        const stars = document.getElementById("reviewStars").value;
+        const text = document.getElementById("reviewText").value;
+
+        if (!name || !text) {
+        alert("Vui lòng nhập đầy đủ thông tin.");
+        return;
+    }
+
+        //viết đánh giá
+
+        const newComment = document.createElement("div");
+        newComment.className = "comment-item";
+        newComment.style = "border-bottom:1px dashed #eee; padding-bottom:20px; margin-bottom:20px;";
+
+        newComment.innerHTML = `
+        <div style="display:flex; justify-content:space-between; font-size:14px;">
+            <span style="font-weight:bold;">${name}</span>
+            <span style="color:#888;">${new Date().toLocaleDateString("en-US")}</span>
+        </div>
+
+        <p style="margin:5px 0 10px; font-size:14px; color:#4CAF50;">${stars} Verified Buyer</p>
+
+        <p style="font-style: italic;">"${text}"</p>
+    `;
+
+
+        commentList.insertBefore(newComment, commentList.firstChild);
+
+
+        form.style.display = "none";
+        writeBtn.style.display = "inline-block";
+
+
+        document.getElementById("reviewName").value = "";
+        document.getElementById("reviewText").value = "";
+    });
+
+
 </script>
 </body>
 </html>

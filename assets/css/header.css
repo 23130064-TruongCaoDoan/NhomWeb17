@@ -89,7 +89,7 @@ body{
 #page-header .header-menu .search input{
     margin-left: 5px;
     margin-right: 5px;
-    width: 35vw;
+    width: 30vw;
     font-size: 17px;
     background: #f2f2f2;
     border: none;
@@ -143,4 +143,12 @@ body{
 #pagination button:hover {
     background-color: black;
     color: white;
+}
+#page-header .thongbao i{
+    position: relative;
+}
+#page-header .thongbao .number{
+    position: absolute;
+    color: red;
+    font-size: 10px;
 }

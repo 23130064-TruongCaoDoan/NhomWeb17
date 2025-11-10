@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 65vw 1fr;
   gap: 5vw;
+    z-index: 2;
 }
 .title-cart {
   width: 100%;
@@ -100,8 +101,8 @@
     font-weight: bold;
 }
 .right-container .check-out:hover {
-     color: #0d3164;
-    background-color: rgb(255, 255, 255);
-    border: solid 1px black;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: #154c99;
+}
+input[type="checkbox"]{
+    accent-color: #3b7ddd;
 }
