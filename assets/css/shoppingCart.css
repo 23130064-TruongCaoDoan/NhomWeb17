@@ -54,11 +54,27 @@
 .left-container .card-items i {
   margin-top: 3.8rem;
 }
-.left-container .card-items .quantity {
+.left-container .card-items .quantity  {
   text-align: center;
 }
-.left-container .card-items .quantity input {
-  width: 40%;
+.left-container .card-items .quantity .number-input {
+  margin: 0;
+  display: flex;
+  border: solid black 1px;
+
+}
+.left-container .card-items .quantity .number-input input {
+  width: 2vw;
+  border: none;
+  text-align: center;
+} 
+.left-container .card-items .quantity .number-input button {
+  border: none;
+}
+.left-container .card-items .quantity .number-input button:hover {
+  background-color: #0d3164;
+  color: white;
+  cursor: pointer;
 }
 .left-container .footer-bill .footer-total span{
     min-width: 20%;
