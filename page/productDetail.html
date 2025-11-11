@@ -194,7 +194,7 @@
                 </div>
 
                 <div class="review-actions">
-                    <button class="action-btn" id="writeReviewBtn">Write a Review</button>
+                    <button class="action-btn" id="writeReviewBtn">Viết đánh giá</button>
                 </div>
             </div>
 
@@ -403,33 +403,6 @@
         return;
     }
 
-        //viết đánh giá
-
-        const newComment = document.createElement("div");
-        newComment.className = "comment-item";
-        newComment.style = "border-bottom:1px dashed #eee; padding-bottom:20px; margin-bottom:20px;";
-
-        newComment.innerHTML = `
-        <div style="display:flex; justify-content:space-between; font-size:14px;">
-            <span style="font-weight:bold;">${name}</span>
-            <span style="color:#888;">${new Date().toLocaleDateString("en-US")}</span>
-        </div>
-
-        <p style="margin:5px 0 10px; font-size:14px; color:#4CAF50;">${stars} Verified Buyer</p>
-
-        <p style="font-style: italic;">"${text}"</p>
-    `;
-
-
-        commentList.insertBefore(newComment, commentList.firstChild);
-
-
-        form.style.display = "none";
-        writeBtn.style.display = "inline-block";
-
-
-        document.getElementById("reviewName").value = "";
-        document.getElementById("reviewText").value = "";
     });
 
 
