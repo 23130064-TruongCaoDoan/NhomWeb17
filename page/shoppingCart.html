@@ -95,14 +95,18 @@
       <div class="container-cart">
         <div class="left-container">
           <div class="left">
-            <hr />
-            <div class="card-items">
-                <input type="checkbox">
+            <div class="header-cart">
+              <input type="checkbox" id="select-all">
+              <p>Chọn tất cả (1 sản phẩm)</p>
+              <span>Số lượng</span>
+              <span>Thành tiền</span>
+            </div>
+            <div class="card-item">
+                <input type="checkbox" class="product-checkbox">
               <img
                 src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
                 alt=""
               />
-
               <div class="item-info">
                 <h4>365 Truyện kể hằng đêm mùa hè</h4>
                 <div class="detail">
@@ -111,64 +115,54 @@
                   <p>Năm xuất bản: 2022</p>
                 </div>
               </div>
-              <div class="price-each">
-                <h4>Giá sản phẩm</h4>
-                <h4>80.000VNĐ</h4>
-              </div>
-              <div class="quantity">
-                <h4>Số lượng</h4>
-                <input
-                  class="qty-input"
-                  type="number"
-                  min="1"
-                  value="1"
-                  aria-label="Số lượng"
-                />
+              <div class="quantity">            
+                <div class="number-input">
+                  <button class="minus" onclick="minus()">-</button>
+                  <input type="number" value="1" min="1" id="number-quanity" />
+                  <button class="plus" onclick="plus()">+</button>
+                </div>
               </div>
               <div class="total-cost">
-                <h4>Tổng</h4>
                 <p class="cost">80.000VNĐ</p>
               </div>
               <i class="fa-solid fa-trash"></i>
             </div>
           </div>
-          <hr />
-          <div class="footer-bill">
-            <div class="footer-total">
-              <span class="total-item">1 sản phẩm</span>
-              <span class="total-cost">80.000VNĐ</span>
-            </div>
-          </div>
-          
         </div>
 
         <div class="right-container">
-          <div class="coupon">
-            <p>Nhập mã giảm giá (nếu có)</p>
-            <div>
-              <input placeholder="Nhập mã ở đây" />
-              <button class="check-coupon">Xác nhận</button>
+          <div class="voucher">
+            <a href="" class="more-voucher">
+              <p><i class="fa-solid fa-ticket"></i> Khuyến Mãi</p>
+              <p>Xem thêm ></p>
+            </a>
+            <div class="info-voucher">
+              <h4>Mã Giảm 10K - Toàn Cửa Hàng</h4>
+              <p>Đơn hàng từ 130k - Không bao gồm giá trị của sản phẩm sau: Manga,...</p>
+              <div class="expired">
+                <div>
+                  <p>HSD: 30/11/2025</p>
+                  <progress value="60" max="100"></progress>
+                  <p>Mua thêm: 56.000VNĐ</p>
+                </div>
+                 
+                 <button>Mua thêm</button>
+              </div>
+             
+
             </div>
           </div>
           <div class="bill">
-            <div>
-              <p>Giá tiền:</p>
+            <div class="thanh-tien">
+              <p>Thành tiền</p>
               <p>80.000VNĐ</p>
             </div>
             <div>
-              <p>Giảm giá:</p>
-              <p>-0 VNĐ</p>
-            </div>
-            <div>
-              <p>Phí vận chuyển:</p>
-              <p>Miễn phí</p>
-            </div>
-            <div>
-              <h2 class="total-price">Tổng chi phí:</h2>
+              <h3 class="total-price">Tổng số tiền (bao gồm VAT)</h3>
               <p>80.000VNĐ</p>
             </div>
-          </div>
           <button class="check-out" onclick="window.location.href='ThanhToan.html'">Đặt hàng</button>
+          </div>
         </div> 
       </div>
 
@@ -223,6 +217,27 @@
             </div>
         </footer>
     </div>
-    <script src="../assets/js/home.js"></script>
+    <script>
+        const minusBtn = document.querySelector(".minus");
+        const plusBtn = document.querySelector(".plus");
+        const input = document.querySelector(".number-input input");
+        const minus =()=>{
+          input.value =   input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
+        }
+        const plus = () =>{
+            input.value = parseInt(input.value) + 1;
+        }
+        const selectAll = document.getElementById('select-all');
+        const productCheckboxes = document.querySelectorAll('.product-checkbox');
+        selectAll.addEventListener('change', () => {
+          productCheckboxes.forEach(cb => cb.checked = selectAll.checked);
+        });
+        productCheckboxes.forEach(cb => {
+          cb.addEventListener('change', () => {
+            const allChecked = Array.from(productCheckboxes).every(c => c.checked);
+            selectAll.checked = allChecked;
+          });
+        });
+    </script>
   </body>
 </html>
