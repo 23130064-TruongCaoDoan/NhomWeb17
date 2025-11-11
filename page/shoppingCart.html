@@ -95,14 +95,18 @@
       <div class="container-cart">
         <div class="left-container">
           <div class="left">
-            <hr />
-            <div class="card-items">
-                <input type="checkbox">
+            <div class="header-cart">
+              <input type="checkbox" id="select-all">
+              <p>Chọn tất cả (1 sản phẩm)</p>
+              <span>Số lượng</span>
+              <span>Thành tiền</span>
+            </div>
+            <div class="card-item">
+                <input type="checkbox" class="product-checkbox">
               <img
                 src="../assets/img/books/365TruyenKeHangDemMuaHe.png"
                 alt=""
               />
-
               <div class="item-info">
                 <h4>365 Truyện kể hằng đêm mùa hè</h4>
                 <div class="detail">
@@ -111,12 +115,7 @@
                   <p>Năm xuất bản: 2022</p>
                 </div>
               </div>
-              <div class="price-each">
-                <h4>Giá sản phẩm</h4>
-                <h4>80.000VNĐ</h4>
-              </div>
-              <div class="quantity">
-                <h4>Số lượng</h4>
+              <div class="quantity">            
                 <div class="number-input">
                   <button class="minus" onclick="minus()">-</button>
                   <input type="number" value="1" min="1" id="number-quanity" />
@@ -124,20 +123,11 @@
                 </div>
               </div>
               <div class="total-cost">
-                <h4>Tổng</h4>
                 <p class="cost">80.000VNĐ</p>
               </div>
               <i class="fa-solid fa-trash"></i>
             </div>
           </div>
-          <hr />
-          <div class="footer-bill">
-            <div class="footer-total">
-              <span class="total-item">1 sản phẩm</span>
-              <span class="total-cost">80.000VNĐ</span>
-            </div>
-          </div>
-          
         </div>
 
         <div class="right-container">
@@ -237,6 +227,17 @@
         const plus = () =>{
             input.value = parseInt(input.value) + 1;
         }
+        const selectAll = document.getElementById('select-all');
+        const productCheckboxes = document.querySelectorAll('.product-checkbox');
+        selectAll.addEventListener('change', () => {
+          productCheckboxes.forEach(cb => cb.checked = selectAll.checked);
+        });
+        productCheckboxes.forEach(cb => {
+          cb.addEventListener('change', () => {
+            const allChecked = Array.from(productCheckboxes).every(c => c.checked);
+            selectAll.checked = allChecked;
+          });
+        });
     </script>
   </body>
 </html>

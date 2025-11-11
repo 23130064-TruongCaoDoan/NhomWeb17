@@ -24,60 +24,56 @@
   width: 10vw;
   height: 22vh;
 }
-.left-container .card-items {
-  display: flex;
+.left-container .card-item {
+  display: grid;
   flex-wrap: wrap;
+  grid-template-columns: 2vw 10vw 0.7fr 5vw 10vw 5vw;
   padding: 1vw;
   gap: 1vw;
- 
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 5px;
   justify-content: space-between;
+  align-items: center;
 }
-.left-container .card-items .item-info h4 {
-  margin-bottom: 1vh;
+.left-container .header-cart {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 3vw 4fr 1fr 2fr;
+  padding: 10px;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 5px;
+  margin-bottom: 2vh;
 }
 
-.left-container .card-items .item-info .detail p {
-  margin: 0;
-  color: rgb(34, 34, 34);
-}
-.left-container .footer-bill {
-  width: 65vw;
-}
-.left-container .footer-bill .footer-total {
-  display: flex;
-  width: 33vw;
-  justify-content: space-between;
-  margin-left: 14vw;
-  gap: 100%;
-  font-weight: bold;
-}
-.left-container .card-items i {
-  margin-top: 3.8rem;
-}
-.left-container .card-items .quantity  {
+.left-container .card-item .quantity  {
   text-align: center;
 }
-.left-container .card-items .quantity .number-input {
+.left-container .card-item .quantity .number-input {
   margin: 0;
   display: flex;
   border: solid black 1px;
-
 }
-.left-container .card-items .quantity .number-input input {
-  width: 2vw;
-  border: none;
+.left-container .card-item .quantity .number-input input {
+  width: 100%;
   text-align: center;
-} 
-.left-container .card-items .quantity .number-input button {
   border: none;
+  outline: none;
+} 
+.left-container .card-item .quantity .number-input button {
+  border: none;
+  background-color: white;
 }
-.left-container .card-items .quantity .number-input button:hover {
+.left-container .card-item .quantity .number-input button:hover {
   background-color: #0d3164;
   color: white;
   cursor: pointer;
 }
 .left-container .footer-bill .footer-total span{
     min-width: 20%;
+}
+.left-container .card-item i:hover {
+  cursor: pointer;
 }
 .right-container {
     width: 90%;
@@ -153,4 +149,8 @@
 }
 input[type="checkbox"]{
     accent-color: #0d3164;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
