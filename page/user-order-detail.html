@@ -106,23 +106,38 @@
         </div>
         <div class="manage-order">
             <div class="order-detail">
-                <div class="state">
-                <h2>Mã Đơn Hàng #1308324</h2>
-                <p class="order-state">Bị huỷ</p>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="state">
+                        <h2>Mã Đơn Hàng #1308324</h2>
+                        <p class="order-state">Bị huỷ</p>
+                    </div>
+                    <p class="order-date">Ngày mua:10/11/2025 - 21:51</p>
                 </div>
-        
-                <p class="order-date">Ngày mua:10/11/2025 - 21:51</p>
+                
                 <div class="order-progess">
                     <div class="new-order">
-                        <p>Đơn hàng mới</p>
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span style="position: relative;top:-7px">
+                            <span style="font-weight: bold;">Đơn hàng mới</span>
+                            <br>
+                            <span style="position: absolute;left: 0.4px;width: 10vw;top: 22px;font-size: small;">10/11/2025 - 21:51</span>
+
+                        </span>
+                        
                     </div>
                     <div class="order-pending">
-                        <p>Đang xử lý</p>
+                        <i class="fa-solid fa-box"></i>
+                        <span style="font-weight: bold;">Đang xử lý</span>
                     </div>
                     <div class="order-end">
-                        <p>Bị huỷ</p>
+                        <i class="fa-solid fa-xmark"></i>
+                        <span style="position: relative;top:-7px">
+                            <span style="font-weight: bold;">Bị huỷ</span>
+                        <br>
+                        <span style="position: absolute;left: 0.4px;width: 10vw;top: 22px;font-size: small;">10/11/2025 - 21:51</span>
+                        </span>
+                        
                     </div>
-                </div>
                 </div>
                 <div class="order-info">
                     <div class="user-info">
@@ -154,6 +169,8 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                
                 <div style="display: flex;justify-content: space-between;">
                     <p class="order-note">Lý do huỷ đơn: Thanh toán thất bại</p>
                     <button class="order-button">Mua Lại</button>

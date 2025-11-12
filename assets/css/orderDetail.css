@@ -1,0 +1,39 @@
+.manage-order .order-detail {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+        
+}
+.manage-order .order-detail .state {
+    display: flex;
+    text-align: center;
+    gap: 1vw;
+}
+.manage-order .order-detail .state .order-state{
+    border: solid #0746ae 1px;
+    background-color: #507abd;
+    color: black;
+    padding-top: 1vh;
+    width: 5vw;
+    border-radius: 15px;
+}
+.manage-order .order-detail .order-date {
+    display: flex;
+}
+.manage-order .order-detail .order-progess {
+    display: flex;
+    justify-content: space-around;
+    background-color: #b7c9e6;
+    border-radius: 15px;
+    height: 10vh;
+    color: black;
+}
+.manage-order .order-detail .order-progess div {
+    margin-top: 2.5vh;
+}
+.manage-order .order-detail .order-progess i{
+    color:black;
+    border: solid white 1px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
