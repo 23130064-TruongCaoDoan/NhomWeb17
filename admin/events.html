@@ -46,6 +46,7 @@
                 <div class="title">
                     <h3>Danh sách sự kiện</h3>
                     <select class="locEvent">
+                        <option value="all">Tất cả</option>
                         <option value="latest">Sự kiện gần nhất</option>
                         <option value="oldest">Sự kiện cũ nhất</option>
                     </select>
@@ -59,7 +60,7 @@
                             <th>Tiêu đề</th>
                             <th>Giá trị</th>
                             <th>Thời gian</th>
-                            <th>Mã sách áp dụng</th>
+                            <th>Loại sách áp dụng</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                         </thead>
@@ -69,7 +70,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -80,7 +81,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -91,7 +92,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -102,7 +103,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -113,7 +114,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -124,7 +125,7 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
@@ -135,25 +136,34 @@
                             <td>Giảm giá Black Friday</td>
                             <td>30%</td>
                             <td>2025-11-10 → 2025-11-20</td>
-                            <td>BOOK01, BOOK02, BOOK03</td>
+                            <td>Sach To Mau</td>
                             <td>
                                 <i class="fa-solid fa-pen sua"></i>
                                 <i class="fa-solid fa-trash xoa"></i>
                             </td>
                         </tr>
-
-
+                        <tr>
+                            <td>EVENT01</td>
+                            <td>Giảm giá Black Friday</td>
+                            <td>30%</td>
+                            <td>2025-11-10 → 2025-11-20</td>
+                            <td>Sach To Mau</td>
+                            <td>
+                                <i class="fa-solid fa-pen sua"></i>
+                                <i class="fa-solid fa-trash xoa"></i>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
     <div id="overlay"></div>
     <div id="eventForm">
         <div class="form-group">
             <label>Mã sự kiện</label>
-            <input type="text" id="eventCode" placeholder="VD: EVENT01" required>
+            <input type="text" id="eventCode" placeholder="Nhập mã sự kiện" required>
         </div>
 
         <div class="form-group">
@@ -183,18 +193,26 @@
         </div>
 
         <div class="form-group">
-            <label>Mã sách áp dụng</label>
-            <textarea id="bookCodes" placeholder="Nhập các mã sách, cách nhau bằng dấu phẩy..."></textarea>
+            <label>Loại sách áp dụng</label>
+            <input id="typeBook" placeholder="Nhập các tên loại, cách nhau bằng dấu phẩy...">
+        </div>
+        <div class="form-group">
+            <label>Loại sách theo độ tuổi đc áp dụng</label>
+            <input id="ageBook" placeholder="Nhập các tên loại, cách nhau bằng dấu phẩy...">
+        </div>
+        <div class="form-group">
+            <label>Nhà xuất bản áp dụng</label>
+            <input id="bookCodes" placeholder="Nhập các tên nhà xuất bảng, cách nhau bằng dấu phẩy...">
         </div>
         <div class="form-group">
             <label>Mã voucher tặng chung</label>
-            <input type="text" id="voucherCode" placeholder="VD: SALEBOOK20">
+            <input type="text" id="voucherCode" placeholder="Nhập mã voucher">
         </div>
 
         <div class="form-group-inline">
             <div>
                 <label>Điều kiện point</label>
-                <input type="number" id="minPoint" placeholder="VD: 500">
+                <input type="number" id="minPoint" placeholder="Điềm từ...">
             </div>
             <div>
                 <label>Các mã voucher dành riêng</label>
