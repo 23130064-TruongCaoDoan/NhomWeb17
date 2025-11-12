@@ -1,7 +1,7 @@
 .manage-order .order-detail {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
         padding: 20px;
-        
+        border-radius: 5px;
 }
 .manage-order .order-detail .state {
     display: flex;
@@ -11,7 +11,7 @@
 .manage-order .order-detail .state .order-state{
     border: solid #0746ae 1px;
     background-color: #507abd;
-    color: black;
+    color: rgb(255, 255, 255);
     padding-top: 1vh;
     width: 5vw;
     border-radius: 15px;
@@ -36,4 +36,88 @@
     padding: 10px;
     background-color: white;
     border-radius: 50%;
+}
+.manage-order .order-detail .order-info {
+    display: flex;
+    gap: 1vw;
+   
+}
+.manage-order .order-detail .order-info .user-info {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-top: 2vh;
+    padding: 20px;
+    width: 35%;
+}
+.manage-order .order-detail .order-info .payment-method {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-top: 2vh;
+    padding: 20px;
+    width: 30%;
+}
+.manage-order .order-detail .order-info .order-price {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    margin-top: 2vh;
+    padding: 20px;
+    width: 35%;
+    
+}
+.manage-order .order-detail .order-info .order-price div {
+    display: flex;
+    justify-content: space-between;
+
+}
+.manage-order .order-detail .order-info .order-price div p,h3 {
+    margin: 0;
+    padding: 5px;
+}
+.manage-order .order-detail .order-button {
+    border: none;
+    background-color: #0d3164;
+    color: white;
+    border-radius: 5px;
+    width: 13vw;
+    height: 5vh;
+    font-size: medium;
+    font-weight: bold;
+}
+.manage-order .order-detail .order-button:hover {
+    cursor: pointer;
+}
+.manage-order .order-detail .order-note {
+    color: rgb(22, 153, 17);
+}
+.manage-order .footer-order-detail {
+    display: flex;
+    margin-top: 3vh;
+    gap: 2vw;
+}
+.manage-order .footer-order-detail .shipping-method {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 50%;
+    padding: 20px;
+    position: relative;
+    min-height: 10vh;
+}
+.manage-order .footer-order-detail .shipping-method p {
+    margin: 0;
+    position: absolute;
+    left: 25px ;
+    top:50px;
+}
+.manage-order .footer-order-detail .note {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 50%;
+    padding: 20px;
+    position: relative;
+    min-height: 10vh;
+}
+.manage-order .footer-order-detail .note p {
+    margin: 0;
+    position: absolute;
+    left: 25px ;
 }
