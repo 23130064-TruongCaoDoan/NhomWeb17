@@ -1,34 +1,34 @@
-.Menu .menfunction .event {
+.content .Menu {
+    width: 30%;
+}
+.Menu .menfunction .qlsanpham{
     border-left: 3px solid #0d3164;
     font-weight: bold;
 }
-
-.event-container {
+.product-container{
+    width: 70%;
     flex: 3;
-    width: 20vw;
     align-items: flex-start;
     background: #fff;
-    padding: 24px;
+    padding: 15px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-
-.event-container h2 {
+.product-container h2 {
     color: #0d3164;
     font-size: 24px;
     margin-top: 0;
     margin-bottom: 20px;
 }
-
-.event-container .function {
+.product-container .function {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.event-container .function #addEvent,
-.event-container .function .timkiem button {
+.product-container .function #add,
+.product-container .function .find button {
     background-color: #0d3164;
     color: #fff;
     padding: 10px 16px;
@@ -38,77 +38,84 @@
     font-weight: 600;
 }
 
-.event-container .function .timkiem {
+.product-container .function .find {
     display: flex;
     gap: 10px;
 }
-
-.event-container .function .timkiem input {
+.product-container .function .find input {
     width: 20vw;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-
-.event-list .title {
+/*title table and filter*/
+.product-container .event-list .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.event-list .title select {
+.product-container .event-list .title select {
     width: 12vw;
     height: 5vh;
     border-radius: 6px;
     padding: 4px;
 }
-
-.table-wrapper {
-    max-height: 250px;
+/*table*/
+.product-container .table-wrapper{
+    width: fit-content;
+    max-height: 500px; /* Giới hạn chiều cao để có thanh cuộn */
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.product-container .table-wrapper {
     overflow-y: auto;
     border: 1px solid #ccc;
-    border-radius: 6px;
-}
 
-.event-list table {
-    width: 100%;
+}
+.product-container .table-wrapper table{
+    border: 1px solid #ccc;
     border-collapse: collapse;
+    border-radius: 5px;
+    padding: 0;
 }
 
-.event-list th, .event-list td {
+.product-container .table-wrapper thead th {
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    color: #0d3164;
+}
+.product-container th, .product-container td {
     border-bottom: 1px solid #ddd;
     text-align: center;
     padding: 10px;
-    white-space: nowrap;
+    font-family: "Times New Roman";
 }
-
-.event-list th {
-    background: #f4f7fa;
-    color: #0d3164;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-#eventTable .sua {
+.product-container tbody .sua{
     color: #3b7ddd;
     cursor: pointer;
 }
-#eventTable .xoa {
+.product-container tbody .xoa{
     color: #8e8e8e;
     cursor: pointer;
 }
-
-#overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    display: none;
+.product-container .table-wrapper td img{
+    width: 80px;
+    height: 100px;
 }
-
-#eventForm {
+.product-container .table-wrapper th,
+.product-container .table-wrapper td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+/*form add book*/
+#bookForm{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -117,15 +124,17 @@
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 101; /* cao hơn overlay */
+    z-index: 101;
     display: none;
     box-sizing: border-box;
-    width: 40vw;
-    max-height: 80vh;
-    overflow-y: auto;
+    width: 70%;
 }
-
-#eventForm h3 {
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    gap: 15px 20px; /* khoảng cách giữa các cột và hàng */
+}
+#bookForm h3 {
     margin-top: 0;
     color: #0d3164;
 }
@@ -147,9 +156,9 @@ label {
 }
 
 input, select, textarea {
-    width: 100%;
+    width: 95%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px     solid #ccc;
     border-radius: 6px;
     outline: none;
 }
@@ -173,33 +182,11 @@ textarea {
 .btn-save:hover {
     background-color: #0a254b;
 }
-
-.event-list table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.event-list th,
-.event-list td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-    white-space: nowrap;
-}
-
-
-.event-list thead th {
-    position: sticky;
-    top: 0;
-    background-color: #f5f5f5;
-    z-index: 2;
-}
-
-
-.event-list .table-wrapper {
-    max-height: 250px;
-    overflow-y: auto;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+#overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: none;
 }
