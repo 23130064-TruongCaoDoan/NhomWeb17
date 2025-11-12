@@ -1,9 +1,9 @@
-.Menu .menfunction .event {
+.Menu .menfunction .qlkhachhang {
     border-left: 3px solid #0d3164;
     font-weight: bold;
 }
 
-.event-container {
+.user {
     flex: 3;
     width: 20vw;
     align-items: flex-start;
@@ -12,23 +12,27 @@
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
-
-.event-container h2 {
+.user h2 {
     color: #0d3164;
     font-size: 24px;
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-.event-container .function {
+.user .function {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     align-items: center;
     margin-bottom: 20px;
 }
-
-.event-container .function #addEvent,
-.event-container .function .timkiem button {
+.user .function .but{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.user .function #add,
+.user .function #notify {
     background-color: #0d3164;
     color: #fff;
     padding: 10px 16px;
@@ -37,48 +41,67 @@
     cursor: pointer;
     font-weight: 600;
 }
-
-.event-container .function .timkiem {
-    display: flex;
-    gap: 10px;
-}
-
-.event-container .function .timkiem input {
-    width: 20vw;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.event-list .title {
+.user .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.event-list .title select {
+.user .title select {
     width: 12vw;
     height: 5vh;
     border-radius: 6px;
     padding: 4px;
 }
-
-.table-wrapper {
-    max-height: 250px;
-    overflow-y: auto;
+.user .timkiem {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.user .timkiem button{
+    background-color: #0d3164;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.user .timkiem input {
+    width: 20vw;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-
-#eventTable .sua {
-    color: #3b7ddd;
-    cursor: pointer;
-}
-#eventTable .xoa {
-    color: #8e8e8e;
-    cursor: pointer;
+.user-list table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
+.user-list th,
+.user-list td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.user-list thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    z-index: 2;
+}
+
+
+.user-list .table-wrapper {
+    max-height: 250px;
+    overflow-y: auto;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 #overlay {
     position: fixed;
     top: 0; left: 0;
@@ -88,7 +111,7 @@
     display: none;
 }
 
-#eventForm {
+#tangVoucherForm, #taoThongBao {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -104,8 +127,7 @@
     max-height: 80vh;
     overflow-y: auto;
 }
-
-#eventForm h3 {
+#tangVoucherForm h3,#taoThongBao h3 {
     margin-top: 0;
     color: #0d3164;
 }
@@ -120,13 +142,7 @@
     gap: 50px;
 }
 
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-input, select, textarea {
+ input, select, textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -134,12 +150,7 @@ input, select, textarea {
     outline: none;
 }
 
-textarea {
-    resize: vertical;
-    min-height: 70px;
-}
-
-.btn-save {
+ .confirm {
     display: block;
     margin: 0 auto;
     background-color: #0d3164;
@@ -151,36 +162,47 @@ textarea {
     font-weight: 600;
 }
 
-.btn-save:hover {
+ .confirm:hover {
     background-color: #0a254b;
 }
-
-.event-list table {
-    width: 100%;
-    border-collapse: collapse;
+.cacluaChon {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-.event-list th,
-.event-list td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-    white-space: nowrap;
+.cacluaChon div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-
-.event-list thead th {
-    position: sticky;
-    top: 0;
-    background-color: #f5f5f5;
-    z-index: 2;
+.cacluaChon input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
+.cacluaChon label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
 
-.event-list .table-wrapper {
-    max-height: 250px;
-    overflow-y: auto;
-    width: 100%;
+.cacluaChon .dieukien input[type="text"] {
+    flex: 1;
+    padding: 5px 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    outline: none;
 }
+
+.cacluaChon .dieukien input[type="text"]:focus {
+    border-color: #007bff;
+}
+tbody tr:hover{
+    background: #0d3164;
+    color: white;
+}
+
