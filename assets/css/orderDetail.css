@@ -192,6 +192,8 @@
 }
 .content .container{
     height: 160vh;
+    position: relative;
+    z-index: 2;
 }
 .left-container .header-cart {
   align-items: center;
