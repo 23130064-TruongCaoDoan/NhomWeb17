@@ -24,13 +24,14 @@
     font-weight: normal;
     color: #575757;
 }
+
 .content .container .manage-order .menu-bar .menu-item:hover {
     cursor: pointer;
     color: #0d3164;
 }
 /* Khi được chọn */
 .menu-item.active {
-    border-bottom: 2px solid #0d3164; /* màu cam nổi bật */
+    border-bottom: 2px solid #0d3164;
 }
 
 .menu-item.active p {
