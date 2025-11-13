@@ -8,7 +8,7 @@
 .listProducts {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 60px;
+  gap: 60px;
 }
 
 .card {
