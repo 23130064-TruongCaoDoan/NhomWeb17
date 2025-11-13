@@ -277,9 +277,7 @@
     </div>
 </footer>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
         const menuItems = document.querySelectorAll(".menu-item");
-
         menuItems.forEach(item => {
             item.addEventListener("click", function() {
                 // Xóa active ở tất cả
@@ -288,7 +286,6 @@
                 this.classList.add("active");
             });
         });
-    });
 </script>
 </body>
 </html>

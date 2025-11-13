@@ -73,4 +73,6 @@
     border-left: none;
     margin-right: -6px;
 }
-
+.errol_container .form-group .fa-eye:hover{
+    cursor: pointer;
+}
