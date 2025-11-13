@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoá đơn</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../assets/css_admin/quanlidonhang.css">
+    <link rel="stylesheet" href="../assets/css_admin/admin.css">
+</head>
+<body>
+<main>
+    <header>
+        <div class="logo left"><img src="../assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="right">
+            <i class="fa-solid fa-user"></i>
+            <div class="ten">admin</div>
+            <button class="dangxuat">Đăng xuất</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="Menu">
+            <div class="title"><span>CHỨC NĂNG</span></div>
+            <div class="menfunction">
+                <a href="" class="function thongke">Thống kê</a>
+                <a href="" class="function qlsanpham">Quản lí sản phẩm</a>
+                <a href="" class="function qlkhachhang">Quản lí khách hàng</a>
+                <a href="" class="function qldonhang active">Quản lí đơn hàng</a>
+                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
+                <a href="" class="function event">Sự kiện</a>
+                <a href="" class="function rating">Đánh giá</a>
+            </div>
+        </div>
+
+        <div class="order-container">
+            <h2>Quản lý đơn hàng</h2>
+
+            <div class="order-list">
+                <div class="title">
+                    <h3>Danh sách đơn hàng</h3>
+                    <select class="locorder">
+                        <option value="all">Tất cả</option>
+                        <option value="latest">Đơn hàng mới nhất</option>
+                        <option value="oldest">Đơn hàng cũ nhất</option>
+                    </select>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Ngày đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                        </thead>
+                        <tbody id="orderTable">
+                        <tr>
+                            <td>HD001</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>450.000đ</td>
+                            <td>2025-11-10</td>
+                            <td>Đang giao</td>
+                            <td>
+                                <i class="fa-solid fa-pen sua"></i>
+                                <i class="fa-solid fa-trash xoa"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>HD002</td>
+                            <td>Trần Thị B</td>
+                            <td>320.000đ</td>
+                            <td>2025-11-11</td>
+                            <td>Hoàn thành</td>
+                            <td>
+                                <i class="fa-solid fa-pen sua"></i>
+                                <i class="fa-solid fa-trash xoa"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="orderForm">
+        <div class="form-group">
+            <label>Mã đơn hàng</label>
+            <input type="text" id="orderCode" value="HD001" disabled >
+        </div>
+
+        <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input type="text" id="orderTitle" value="Nguyễn Văn A" disabled >
+        </div>
+
+        <div class="form-group">
+            <label>Tổng tiền (VNĐ)</label>
+            <input type="number" id="orderValue" value="50.000" disabled>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>Ngày đặt</label>
+                <input type="date" id="startDate" disabled>
+            </div>
+            <div>
+                <label>Ngày giao dự kiến</label>
+                <input type="date" id="endDate" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ giao hàng</label>
+            <input id="typeBook" placeholder="Nhập địa chỉ giao hàng..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input id="ageBook" placeholder="Nhập số điện thoại khách hàng..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Phương thức thanh toán</label>
+            <input id="bookCodes" placeholder="VD: Tiền mặt, Chuyển khoản..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú</label>
+            <input type="text" id="voucherCode" placeholder="Nhập ghi chú (nếu có)" disabled>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>Trạng thái đơn hàng</label>
+                <Select>
+                    <option value="">Chờ xử lý</option>
+                    <option value="">Đã giao</option>
+                    <option value="">Đã Huỷ</option>
+                </Select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-save">Lưu đơn hàng</button>
+    </div>
+</main>
+
+<script>
+    const overlay = document.getElementById("overlay");
+    const sua = document.querySelector(".sua")
+    const popup = document.getElementById("orderForm");
+
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+    sua.addEventListener('click', () => {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    })
+   
+
+</script>
+</body>
+</html>
