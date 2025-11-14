@@ -65,7 +65,7 @@
                         </tr>
                         </thead>
                         <tbody id="userTable">
-                        <tr class="infUser">
+                        <tr class="infUser" onclick="window.location='userDetail.html'">
                             <td>KH002</td>
                             <td>Lê Vân Trường</td>
                             <td>truongDepTrai@gmail.com</td>
@@ -134,7 +134,6 @@
                 <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
             </div>
         </div>
-
         <button type="submit" class="confirm">Xác nhận</button>
     </div>
     <div id="taoThongBao">
@@ -157,6 +156,7 @@
 
         <button type="submit" class="confirm">Xác nhận</button>
     </div>
+    <div class="infor-user"></div>
 </main>
 <script>
     const overlay = document.getElementById("overlay");

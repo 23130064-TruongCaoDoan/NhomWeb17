@@ -118,3 +118,60 @@
     margin-top: 10px;
     font-size: 14px;
 }
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: none;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+/* Khung popup */
+.popup-content {
+    background: white;
+    width: 60%;
+    margin: 7% auto;
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Nút đóng */
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table thead {
+    background: #007bff;
+    color: white;
+}
+
