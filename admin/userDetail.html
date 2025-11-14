@@ -35,13 +35,19 @@
             <a href="user.html"><span><i class="fa-solid fa-arrow-left"></i></span></a>
             <div class="customer-info">
                 <h2>Thông tin khách hàng</h2>
-                <div class="info-item"><span>Tên khách hàng:</span> Nguyễn Văn A</div>
-                <div class="info-item"><span>Ngày sinh:</span> 12/05/1995</div>
-                <div class="info-item"><span>Địa chỉ 1:</span> 123 Nguyễn Trãi, Q.1, TP.HCM</div>
-                <div class="info-item"><span>Số điện thoại:</span> 0909 888 777</div>
-                <div class="info-item">
-                    <span>Xếp loại:</span>
-                    <span class="rank diamond">Kim cương</span>
+                <div>
+                    <div class="info-item"><span>Tên khách hàng:</span> Nguyễn Văn A</div>
+                    <div class="info-item"><span>Ngày sinh:</span> 12/05/1995</div>
+                    <div class="info-item"><span>Địa chỉ 1:</span> 123 Nguyễn Trãi, Q.1, TP.HCM</div>
+                    <div class="info-item"><span>Số điện thoại:</span> 0909 888 777</div>
+                    <div class="info-item">
+                        <span>Xếp loại:</span>
+                        <span class="rank diamond">Kim cương</span>
+                    </div>
+                    <div class="button-group">
+                        <button id="btnLock">Khóa</button>
+                        <button id="btnDelete">Xóa tài khoản</button>
+                    </div>
                 </div>
             </div>
             <div class="table-container">
@@ -181,32 +187,18 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 </main>
 <script>
-    const overlay = document.getElementById("overlay");
-    const add = document.getElementById("add")
-    const thongbao = document.getElementById("notify")
-    const popupTB= document.getElementById("taoThongBao");
-    const popup = document.getElementById("tangVoucherForm");
-
-
-    overlay.addEventListener('click', () => {
-        overlay.style.display = "none";
-        popup.style.display = "none";
-        popupTB.style.display = "none";
+    const btnLock = document.getElementById("btnLock");
+    btnLock.addEventListener("click", function () {
+        if (btnLock.textContent === "Khóa") {
+            btnLock.textContent = "Mở";   // đổi thành Mở
+        } else {
+            btnLock.textContent = "Khóa"; // đổi thành Khóa
+        }
     });
-    add.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    })
-    thongbao.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popupTB.style.display = "block";
-    })
-
 </script>
 </body>
 </html>

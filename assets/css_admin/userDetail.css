@@ -15,7 +15,17 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     border-bottom: 10px;
 }
-
+.user-details .customer-info .button-group button{
+   background-color: #0d3164;
+    color: #fff;
+    border-radius: 4px;
+}
+.user-details .customer-info .button-group #btnLock{
+    width: 50px;
+}
+.user-details .customer-info .button-group button:hover{
+    cursor: pointer;
+}
 .user-details .fa-arrow-left{
     transform: scale(2);
     color: #0d3164;
