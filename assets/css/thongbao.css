@@ -1,6 +1,13 @@
-.container .menuMain .thongbao {
-    border-left: solid #0746ae 5px; 
-    padding-left:10px;
+.container .menuMain .thongbao,.container .menuMain .thongbao i {
+    font-weight: bold;
+    color: #0d3164;
+}
+.container .menuInfor {
+    display: none;
+}
+.container .menuMain .ttcn{
+    color: #575757;
+    font-weight: normal;
 }
 
 .container .nav-inform {
