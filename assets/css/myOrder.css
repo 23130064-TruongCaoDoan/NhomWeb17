@@ -171,8 +171,8 @@
     border: none;
 }
 .content .container .manage-order .order-content .card-order .button .rebuy {
-    background: red;
-    color: white;
+    background: #c5c5c5;
+    color: #0d3164;
 }
 .content .container .manage-order .order-content .card-order .button button:hover {
     cursor: pointer;
