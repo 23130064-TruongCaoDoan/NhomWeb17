@@ -75,8 +75,8 @@
 }
 .manage-order .order-detail .order-button {
     border: none;
-    background-color: #0d3164;
-    color: white;
+    background: #c5c5c5;
+    color: #0d3164;
     border-radius: 5px;
     width: 13vw;
     height: 5vh;
