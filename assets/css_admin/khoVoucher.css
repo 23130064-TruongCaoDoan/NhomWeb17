@@ -33,6 +33,9 @@ label {
     font-weight: 600;
     margin-bottom: 6px;
 }
+.form-group input{
+    margin-bottom: 3px;
+}
 
 input, select {
     width: 100%;
