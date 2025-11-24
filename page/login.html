@@ -79,12 +79,14 @@
         <div class="login">
             <div class="title">Đăng nhập</div>
             <div class="inputIfor">
-               <div class="khung user"> <input type="text" id="iUser" placeholder="Tên đăng nhập hoặc email"></div>
+                <div class="khung user"><input type="text" id="iUser" placeholder="Tên đăng nhập hoặc email"></div>
                 <div class="error User"></div>
-                <div class="khung MK"><input type="password" id="iPass" placeholder="Mật khẩu"><button class="show"><i class="fa-solid fa-eye "></i></button></div>
+                <div class="khung MK"><input type="password" id="iPass" placeholder="Mật khẩu">
+                    <button class="show"><i class="fa-solid fa-eye "></i></button>
+                </div>
                 <div class="error Pass"></div>
             </div>
-            <div class="forget"><a href=""><span>quên mật khẩu</span></a></div>
+            <div class="forget"><a href="" class="qmk"><span>quên mật khẩu</span></a></div>
             <div class="buttonLoginAndSignUp">
                 <button class="dangNhap">Đăng nhập</button>
                 <div class="signUp"><a href="errol.html"><span>Đăng kí</span></a></div>
@@ -142,10 +144,19 @@
         <p>Copyright ©. All Rights Reserved.</p>
     </div>
 </footer>
+<div class="overlay" id="overlay"></div>
+<form class="quenmk">
+    <p>GỬI LẠI MẬT KHẨU</p>
+    <div class="khung">
+        <input type="email" class="nhapemail" placeholder="Nhập email lấy lại mật khẩu">
+        <div class="error Email"></div>
+    </div>
+    <button class="send">Chấp nhận</button>
+</form>
 <script>
     const userInput = document.getElementById('iUser');
     const passInput = document.getElementById('iPass');
-    const khungPass=document.querySelector(".MK")
+    const khungPass = document.querySelector(".MK")
     const btnLogin = document.querySelector('.dangNhap');
 
     const errorUser = document.querySelector('.User');
@@ -173,18 +184,54 @@
             errorPass.textContent = '';
         }
         if (!hasError) {
-            window.location.href="../page/user-hoSoCaNhan.html";
+            window.location.href = "../page/user-hoSoCaNhan.html";
         }
     });
 
-    const bShow=document.querySelector(".show")
-    bShow.addEventListener("click",function (){
+    const bShow = document.querySelector(".show")
+    bShow.addEventListener("click", function () {
         if (passInput.type === "password") {
             passInput.type = "text";
         } else {
             passInput.type = "password";
         }
     })
+
+    const overlay = document.getElementById("overlay");
+    const popup = document.querySelector(".quenmk");
+    const quenmk = document.querySelector(".qmk");
+    const send = document.querySelector(".send");
+
+    quenmk.addEventListener('click', (e) => {
+        e.preventDefault();
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+    const errorEmail = document.querySelector(".error.Email");
+
+    send.addEventListener('click', (e) => {
+        e.preventDefault();
+        const input =document.querySelector(".nhapemail").value.trim();
+        if (input === "") {
+            errorEmail.style.display="block"
+            errorEmail.textContent = "Vui lòng nhập email!";
+        } else {
+            errorEmail.style.display="none"
+            errorEmail.textContent = "";
+            overlay.style.display = "none";
+            popup.style.display = "none";
+            alert("Mật khẩu đã được gửi bên email của bạn");
+        }
+    });
+
+
+
+
 </script>
 </body>
 </html>
