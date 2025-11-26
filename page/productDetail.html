@@ -117,6 +117,13 @@
                             <strike>65.000 Đ</strike>
                             <p>50.000 Đ</p>
                         </div>
+                        <div class="quantity">
+                            <div class="number-input">
+                                <button class="minus" onclick="minus()">-</button>
+                                <input type="number" value="1" min="1" id="number-quantity" />
+                                <button class="plus" onclick="plus()">+</button>
+                            </div>
+                        </div>
                         <button>Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i></button>
                         <button id="buy">Mua ngay</button>
                         <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
@@ -364,6 +371,7 @@
     </footer>
 </div>
 <script >
+    //heart
     const heart = document.getElementById('addHeart');
     heart.addEventListener('click', function ()   {
         heart.style.color=heart.style.color==='red'?'gray':'red';
@@ -380,6 +388,14 @@
             });
         });
     });
+    // quantity
+    const input = document.querySelector(".number-input input");
+    const minus =()=>{
+        input.value =   input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
+    }
+    const plus = () =>{
+        input.value = parseInt(input.value) + 1;
+    }
 
         const writeBtn = document.getElementById("writeReviewBtn");
         const form = document.getElementById("reviewForm");
