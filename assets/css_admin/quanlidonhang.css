@@ -28,7 +28,7 @@
 }
 
 .order-container .function #addorder,
-.order-container .function .timkiem button {
+.order-container .function .find button {
     background-color: #0d3164;
     color: #fff;
     padding: 10px 16px;
@@ -38,12 +38,12 @@
     font-weight: 600;
 }
 
-.order-container .function .timkiem {
+.order-container .function .find {
     display: flex;
     gap: 10px;
 }
 
-.order-container .function .timkiem input {
+.order-container .function .find input {
     width: 20vw;
     padding: 8px;
     border: 1px solid #ccc;
