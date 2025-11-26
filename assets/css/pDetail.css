@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
     border: solid black 1px;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
 }
 .detail-container  .quantity .number-input input {
@@ -448,4 +448,20 @@
 
 .comment-text {
     font-style: italic;
+}
+/* Ẩn các nút mũi tên trong input type="number" */
+.no-spinners {
+    /* Cho Chrome, Edge, Safari */
+    -webkit-appearance: none;
+    margin: 0;
+    /* Cho Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Áp dụng cho các pseudo-elements cụ thể trong WebKit */
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
