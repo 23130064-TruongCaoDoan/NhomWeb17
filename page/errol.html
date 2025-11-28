@@ -78,34 +78,50 @@
 <main class="errol_container">
     <div class="container">
         <h2>Tạo tài khoản mới</h2>
-        <form>
+        <form id="registerForm">
+
             <section class="form-section">
                 <h3>Thông tin cá nhân</h3>
                 <div class="form-group">
                     <label for="fullname">Họ và Tên *</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+                    <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên">
+                    <small class="error"></small>
                 </div>
             </section>
+
             <section class="form-section">
                 <h3>Thông tin đăng ký</h3>
+
                 <div class="form-group">
                     <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+                    <small class="error"></small>
                 </div>
+
                 <div class="form-group">
-                    <div class="container-password"><div class="password-content">
-                        <label for="confirm-password">Confirm Password *</label>
-                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                    <div class="container-password">
+                        <div class="password-content">
+                            <label for="password">Password *</label>
+                            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+                        </div>
+                        <div class="show-password">
+                            <i class="fa-solid fa-eye" id="togglePassword"></i>
+                        </div>
                     </div>
-                        <div class="show-password"><i class="fa-solid fa-eye" id="togglePassword"></i></div> </div>
+                    <small class="error"></small>
                 </div>
+
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password *</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận lại mật khẩu" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận lại mật khẩu">
+                    <small class="error"></small>
                 </div>
-                <button type="submit">Tạo tài khoản</button>
+
+                <button type="submit" id="btnSubmit">Tạo tài khoản</button>
             </section>
+
         </form>
+
     </div>
 </main>
 <footer class="footer">
@@ -159,15 +175,90 @@
     </div>
 </footer>
 </body>
-<script>// show password
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirm-password");
-const toggle = document.getElementById("togglePassword");
+<script>
+    const fullname = document.getElementById("fullname");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const toggle = document.getElementById("togglePassword");
+    const form = document.getElementById("registerForm");
 
-toggle.addEventListener("click", () => {
-    const type = password.type === "password" ? "text" : "password";
-    password.type = type;
-    confirmPassword.type = type;
-});
+    // Ẩn/hiện mật khẩu
+    toggle.addEventListener("click", () => {
+        const type = password.type === "password" ? "text" : "password";
+        password.type = type;
+        confirmPassword.type = type;
+    });
+
+    // Hiển thị lỗi
+    function setError(inputElement, message) {
+        // Sử dụng .closest('.form-group') để tìm phần tử cha gần nhất có class .form-group
+        const group = inputElement.closest('.form-group');
+        if (group) {
+            const error = group.querySelector('.error');
+            if (error) {
+                error.textContent = message;
+                error.style.color = 'red';
+            }
+        }
+        inputElement.style.border = '1px solid red';
+    }
+
+    function clearError(inputElement) {
+        const group = inputElement.closest('.form-group');
+        if (group) {
+            const error = group.querySelector('.error');
+            if (error) {
+                error.textContent = '';
+            }
+        }
+        inputElement.style.border = '1px solid #0d3164';
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let hasError = false;
+
+        // Fullname
+        if (fullname.value.trim() === "") {
+            setError(fullname, "Vui lòng nhập họ tên");
+            hasError = true;
+        } else clearError(fullname);
+
+        // Email
+        if (email.value.trim() === "") {
+            setError(email, "Vui lòng nhập email");
+            hasError = true;
+        } else if (!email.value.includes("@")) {
+            setError(email, "Email không hợp lệ");
+            hasError = true;
+        } else clearError(email);
+
+        // Password
+        if (password.value.trim() === "") {
+            setError(password, "Vui lòng nhập mật khẩu");
+            hasError = true;
+        } else clearError(password);
+
+        // Confirm password
+        if (confirmPassword.value.trim() === "") {
+            setError(confirmPassword, "Vui lòng xác nhận mật khẩu");
+            hasError = true;
+
+        } else if (confirmPassword.value !== password.value) {
+            setError(confirmPassword, "Mật khẩu không trùng khớp");
+            hasError = true;
+
+        } else {
+            clearError(confirmPassword);
+        }
+
+        // Nếu không có lỗi thì xử lý
+        if (!hasError) {
+            alert("Tạo tài khoản thành công!");
+            window.location.href = "login.html";
+        }
+    });
 </script>
+
 </html>

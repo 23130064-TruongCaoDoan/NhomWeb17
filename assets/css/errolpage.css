@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    height: 80%;
+    height: fit-content;
     width: 100%;
 }
 .errol_container .container{
@@ -13,6 +13,8 @@
     background-color: white;
     padding-bottom: 100px;
 }
+.errol_container .container .form-section{
+}
 .errol_container h3{
     height: 40px;
     border-bottom: 1px solid black;
@@ -20,7 +22,8 @@
 .errol_container .form-group{
     height: 72px;
     line-height: 30px;
-    margin-bottom: 10px;
+    position: relative;
+    margin-bottom: 25px;
 }
 .errol_container .form-group label{
     font-size: 12px;
