@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
     border: solid black 1px;
-    height: 20px;
+    height: 25px;
     overflow: hidden;
 }
 .detail-container  .quantity .number-input input {
@@ -126,9 +126,17 @@
 .detail-container .detail .price-cart button:hover{
     cursor: pointer;
 }
+.detail-container .detail .price-cart #cart a{
+    text-decoration: none;
+    color: #0d3164;
+}
 .detail-container .detail #buy{
     width: 100px;
     background-color: orangered;
+    color: white;
+}
+.detail-container .detail a{
+    text-decoration: none;
     color: white;
 }
 .detail-container .detail #buy:hover{
@@ -448,4 +456,20 @@
 
 .comment-text {
     font-style: italic;
+}
+/* Ẩn các nút mũi tên trong input type="number" */
+.no-spinners {
+    /* Cho Chrome, Edge, Safari */
+    -webkit-appearance: none;
+    margin: 0;
+    /* Cho Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Áp dụng cho các pseudo-elements cụ thể trong WebKit */
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

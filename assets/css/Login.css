@@ -69,6 +69,9 @@
     font-size: 14px;
     color: #0d3164;
 }
+#content .login .forget span:hover{
+    text-decoration: underline;
+}
 #content .login .buttonLoginAndSignUp button{
     width: 120px;
     height: 40px;
@@ -88,6 +91,9 @@
 #content .login .buttonLoginAndSignUp .signUp a{
     text-decoration: none;
     color: gray;
+}
+#content .login .buttonLoginAndSignUp .signUp a:hover{
+    text-decoration: underline;
 }
 #content .login .error{
     display: block;

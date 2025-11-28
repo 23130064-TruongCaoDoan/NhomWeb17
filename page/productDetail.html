@@ -120,12 +120,12 @@
                         <div class="quantity">
                             <div class="number-input">
                                 <button class="minus" onclick="minus()">-</button>
-                                <input type="number" value="1" min="1" id="number-quantity" />
+                                <input type="number" value="1" min="1" id="number-quantity" class="no-spinners" />
                                 <button class="plus" onclick="plus()">+</button>
                             </div>
                         </div>
-                        <button>Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i></button>
-                        <button id="buy">Mua ngay</button>
+                        <button id="cart"><a href="shoppingCart.html">Thêm vào giỏ hàng</a> <i class="fa-solid fa-cart-plus"></i></button>
+                        <button id="buy"><a href="ThanhToan.html">Mua ngay</a></button>
                         <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
                     </div>
                     <div class="program">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="info-row">
                             <span class="label">Tên Nhà Cung Cấp</span>
-                            <a href="#" class="value link">Minh Long</a>
+                            <span class="value">Minh Long</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Tác giả</span>
@@ -221,7 +221,7 @@
 
 
             <div class="review-navigation">
-                <div class="nav-item active">Reviews</div>
+                <div class="nav-item active">Đánh giá</div>
             </div>
 
             <div class="sort-area">
@@ -236,10 +236,26 @@
             <div class="comment-list">
                 <div class="comment-item">
                     <div class="comment-header">
-                        <span class="comment-author">KB</span>
+                        <span class="comment-author">Lê Vân Trường</span>
                         <span class="comment-date">02/14/2025</span>
                     </div>
-                    <p class="comment-rating">4/5 Verified Buyer</p>
+                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
+                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-author">Trương Cao Đòn</span>
+                        <span class="comment-date">02/14/2025</span>
+                    </div>
+                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
+                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <span class="comment-author">Nguyễn Gia Hi</span>
+                        <span class="comment-date">02/14/2025</span>
+                    </div>
+                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
                     <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
                 </div>
 
