@@ -1,0 +1,350 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thống kê</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css_admin/ThongKe.css">
+    <link rel="stylesheet" href="assets/css_admin/admin.css">
+</head>
+<body>
+<main class="main">
+    <header>
+        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="right">
+            <i class="fa-solid fa-user"></i>
+            <div class="ten">admin</div>
+            <button class="dangxuat">Đăng xuất</button>
+        </div>
+    </header>
+    <div class="content">
+        <div class="Menu">
+            <div class="title"><span>CHỨC NĂNG</span></div>
+            <div class="menfunction">
+                <a href="ThongKe.html" class="function thongke">Thống kê</a>
+                <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
+                <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
+                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
+                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
+                <a href="events.html" class="function event">Sự kiện</a>
+                <a href="DanhGia.html" class="function rating">Đánh giá</a>
+            </div>
+        </div>
+        <div class="thongke-container">
+            <h2>Thống kê</h2>
+            <div class="filter-bar">
+                <select id="month">
+                    <option selected>Thống kê theo tháng</option>
+                    <option>Thống kê theo tuần</option>
+                    <option>Thống kê theo ngày</option>
+                    <option>Thống kê theo năm</option>
+                </select>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <h3>Tổng doanh thu</h3>
+                    <p>150.000.000₫</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <h3>Khách hàng mua nhiều nhất</h3>
+                    <p>Nguyễn Văn A</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h3>Sản phẩm bán chạy nhất</h3>
+                    <p>Dế Mèn Phiêu Lưu Ký</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-box"></i>
+                    <h3>Sản phẩm bán ít nhất</h3>
+                    <p>Conan Tập 1</p>
+                </div>
+                <div class="card top10-product">
+                    <i class="fa-solid fa-box"></i>
+                    <h3>Top 10 Sản phẩm bán chạy nhất</h3>
+                </div>
+                <div class="card top10-customer">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <h3>Top 10 Khách hàng mua nhiều nhất</h3>
+                </div>
+            </div>
+
+            <div class="chart">
+                <h2>Biểu đồ doanh thu theo tuần</h2>
+                <div class="bar-container">
+                    <div>
+                        <div class="figure">10.000.000₫</div>
+                        <div class="bar" style="height: 120px;"></div>
+                        <div class="bar-label">Tuần 1</div>
+                    </div>
+                    <div>
+                        <div class="figure">45.000.000₫</div>
+                        <div class="bar" style="height: 180px;"></div>
+                        <div class="bar-label">Tuần 2</div>
+                    </div>
+                    <div>
+                        <div class="figure">70.000.000₫</div>
+                        <div class="bar" style="height: 220px;"></div>
+                        <div class="bar-label">Tuần 3</div>
+                    </div>
+                    <div>
+                        <div class="figure">15.000.000₫</div>
+                        <div class="bar" style="height: 150px;"></div>
+                        <div class="bar-label">Tuần 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="top10-customer-panel">
+        <div id="top10-customer-container">
+            <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã Khách Hàng</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Email</th>
+                            <th>Point</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userTable">
+                        <tr class="infUser" onclick="window.location='userDetail.html'">
+                            <td>KH002</td>
+                            <td>Lê Vân Trường</td>
+                            <td>truongDepTrai@gmail.com</td>
+                            <td>500000</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH003</td>
+                            <td>Trần Nguyễn Thanh Tú</td>
+                            <td>tuDepTrai@gmail.com</td>
+                            <td>100000</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH004</td>
+                            <td>Nguyên Gia Huy</td>
+                            <td>huyDepTrai@gmail.com</td>
+                            <td>10500</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>10.000.000₫</td>
+                        </tr>
+                         <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                             <td>10.000.000₫</td>
+                        </tr>
+                         <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                             <td>10.000.000₫</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <div id="top10-product-panel">
+        <div id="top10-product-container">
+        <div class="table-wrapper" >
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã sách</th>
+                            <th>Tên sách</th>
+                            <th>Tác giả</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Loại sách</th>
+                            <th>Độ tuổi</th>
+                            <th>Hình ảnh</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>B001</td>
+                            <td>365 Truyện kể hằng đêm</td>
+                            <td>Nhiều tác giả</td>
+                            <td>50.000 ₫</td>
+                            <td>20</td>
+                            <td>Thiếu nhi</td>
+                            <td>6+</td>
+                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B002</td>
+                            <td>Dế Mèn Phiêu Lưu Ký</td>
+                            <td>Tô Hoài</td>
+                            <td>45.000 ₫</td>
+                            <td>15</td>
+                            <td>Văn học Việt Nam</td>
+                            <td>8+</td>
+                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B001</td>
+                            <td>365 Truyện kể hằng đêm</td>
+                            <td>Nhiều tác giả</td>
+                            <td>50.000 ₫</td>
+                            <td>20</td>
+                            <td>Thiếu nhi</td>
+                            <td>6+</td>
+                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B002</td>
+                            <td>Dế Mèn Phiêu Lưu Ký</td>
+                            <td>Tô Hoài</td>
+                            <td>45.000 ₫</td>
+                            <td>15</td>
+                            <td>Văn học Việt Nam</td>
+                            <td>8+</td>
+                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B001</td>
+                            <td>365 Truyện kể hằng đêm</td>
+                            <td>Nhiều tác giả</td>
+                            <td>50.000 ₫</td>
+                            <td>20</td>
+                            <td>Thiếu nhi</td>
+                            <td>6+</td>
+                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B002</td>
+                            <td>Dế Mèn Phiêu Lưu Ký</td>
+                            <td>Tô Hoài</td>
+                            <td>45.000 ₫</td>
+                            <td>15</td>
+                            <td>Văn học Việt Nam</td>
+                            <td>8+</td>
+                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B001</td>
+                            <td>365 Truyện kể hằng đêm</td>
+                            <td>Nhiều tác giả</td>
+                            <td>50.000 ₫</td>
+                            <td>20</td>
+                            <td>Thiếu nhi</td>
+                            <td>6+</td>
+                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B002</td>
+                            <td>Dế Mèn Phiêu Lưu Ký</td>
+                            <td>Tô Hoài</td>
+                            <td>45.000 ₫</td>
+                            <td>15</td>
+                            <td>Văn học Việt Nam</td>
+                            <td>8+</td>
+                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B001</td>
+                            <td>365 Truyện kể hằng đêm</td>
+                            <td>Nhiều tác giả</td>
+                            <td>50.000 ₫</td>
+                            <td>20</td>
+                            <td>Thiếu nhi</td>
+                            <td>6+</td>
+                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td>B002</td>
+                            <td>Dế Mèn Phiêu Lưu Ký</td>
+                            <td>Tô Hoài</td>
+                            <td>45.000 ₫</td>
+                            <td>15</td>
+                            <td>Văn học Việt Nam</td>
+                            <td>8+</td>
+                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+
+</main>
+</body>
+<script>
+    const panel = document.getElementById("top10-customer-panel");
+
+    document.querySelector(".top10-customer").addEventListener("click", () => {
+        panel.style.display = "flex";
+    });
+
+    panel.addEventListener("click", (e) => {
+        if (e.target === panel) {
+            panel.style.display = "none";
+        }
+    });
+
+    const popup_panel = () =>{
+        const top10ProductPanel = document.getElementById("top10-product-panel");
+
+        document.querySelector('.top10-product').addEventListener("click", () => {
+        top10ProductPanel.style.display = "flex";
+        });
+
+        top10ProductPanel.addEventListener("click", (e) => {
+            if (e.target === top10ProductPanel) {
+                top10ProductPanel.style.display = "none";
+            }
+        });
+    }
+    popup_panel()
+
+</script>
+</html>

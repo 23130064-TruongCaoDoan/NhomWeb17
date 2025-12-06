@@ -1,0 +1,67 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginAdmin</title>
+    <link rel="stylesheet" href="assets/css_admin/loginAdmin.css">
+</head>
+<body>
+    <div class="login">
+        <div class="title">Đăng nhập</div>
+        <div class="inputIfor">
+            <div class="khung user"> <input type="text" id="iUser" placeholder="Email"></div>
+            <div class="error User"></div>
+            <div class="khung MK"><input type="password" id="iPass" placeholder="Mật khẩu"><button class="show"><i class="fa-solid fa-eye "></i></button></div>
+            <div class="error Pass"></div>
+        </div>
+        <div class="buttonLoginAndSignUp">
+            <button class="dangNhap">Đăng nhập</button>
+        </div>
+    </div>
+</body>
+<script>
+    const userInput = document.getElementById('iUser');
+    const passInput = document.getElementById('iPass');
+    const khungPass=document.querySelector(".MK")
+    const btnLogin = document.querySelector('.dangNhap');
+
+    const errorUser = document.querySelector('.User');
+    const errorPass = document.querySelector('.Pass');
+
+    btnLogin.addEventListener('click', (e) => {
+
+        let hasError = false;
+        if (userInput.value.trim() === '') {
+            userInput.style.border = '1px solid red';
+            errorUser.textContent = 'Vui lòng nhập tên đăng nhập hoặc email';
+            errorUser.style.color = 'red';
+            hasError = true;
+        } else {
+            userInput.style.border = '1px solid #0d3164';
+            errorUser.textContent = '';
+        }
+        if (passInput.value.trim() === '') {
+            khungPass.style.border = '1px solid red';
+            errorPass.textContent = 'Vui lòng nhập mật khẩu';
+            errorPass.style.color = 'red';
+            hasError = true;
+        } else {
+            passInput.style.border = '1px solid #0d3164';
+            errorPass.textContent = '';
+        }
+        if (!hasError) {
+            window.location.href="quanlidonhang.html";
+        }
+    });
+
+    const bShow=document.querySelector(".show")
+    bShow.addEventListener("click",function (){
+        if (passInput.type === "password") {
+            passInput.type = "text";
+        } else {
+            passInput.type = "password";
+        }
+    })
+</script>
+</html>

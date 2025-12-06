@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="unnamed" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/Json_SanPhamSach/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/NewAddress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/NhaPhanPhoi.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/PrivatePolicy.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/QRChat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/ThanhToan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/UuDaiThanhVien.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/ViVoucher.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/adrress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/changePassword.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/dieukhoansd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/dsSanPham.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/errolpage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/giaLapMoMo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/hoSoCaNhan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/myOrder.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/orderDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/returnP.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/shoppingCart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/spYeuThich.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/thongbao.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css/voucher.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/ThongKe.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/danhgia.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/events.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/khoVoucher.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/loginAdmin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/mProduct.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/quanlidonhang.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/css_admin/userDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/QR/qrMoMo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/QR/zalo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/365TruyenKeHangDem.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/365TruyenKeHangDemMuaHe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/365TruyenKeHangDemMuaThu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/CoTichTheGioi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/DeMen.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/ThoiQuenTot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/guongDungCam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/guongHieuHoc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/suThanVietNam.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/thanDongVietNam.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/trangVietNam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/books/truyenCoGrimm.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/event/10-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/event/halloween.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/icon/iconNew.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/icon/iconZalo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/icon/sale.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/logo/logoChinh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/slogan/card1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/slogan/card2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web17/src/main/webapp/assets/img/slogan/card3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projectWeb.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/DanhGia.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ManageProduct.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/ThongKe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/events.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/khoVoucher.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/loginAdmin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/quanlidonhang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/userDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Json_SanPhamSach/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/Login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/NewAddress.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/NhaPhanPhoi.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/PrivatePolicy.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/QRChat.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/ThanhToan.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/UuDaiThanhVien.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/ViVoucher.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/adrress.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/changePassword.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/dieukhoansd.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/dsSanPham.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/errolpage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/giaLapMoMo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/hoSoCaNhan.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/myOrder.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/orderDetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/pDetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/returnP.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/shoppingCart.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/spYeuThich.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/thongbao.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/voucher.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/ThongKe.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/danhgia.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/events.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/khoVoucher.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/loginAdmin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/mProduct.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/quanlidonhang.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css_admin/userDetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/QR/qrMoMo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/QR/zalo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/365TruyenKeHangDem.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/365TruyenKeHangDemMuaHe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/365TruyenKeHangDemMuaThu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/CoTichTheGioi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/DeMen.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/ThoiQuenTot.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/guongDungCam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/guongHieuHoc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/suThanVietNam.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/thanDongVietNam.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/trangVietNam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/books/truyenCoGrimm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/event/10-10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/event/halloween.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon/iconNew.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon/iconZalo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/icon/sale.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/logo/logoChinh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/slogan/card1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/slogan/card2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/slogan/card3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/DieuKhoanSuDung.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/NhaPhanPhoi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/PrivatePolicy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/QRChat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/ThanhToan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/ViVoucher.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/dsSanPham.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/errol.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/giaLapMOMO.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/productDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/returnPolicy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/shoppingCart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-address.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-changePassword.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-hoSoCaNhan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-myOrders.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-newAddress.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-order-detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-spYeuThich.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user-thongbao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/user_UuDaiThanhVien.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;23130064-TruongCaoDoan&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/23130064-TruongCaoDoan/NhomWeb17.git&quot;,
+    &quot;accountId&quot;: &quot;832cde6a-5b17-41d3-b875-f6478d1a262f&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/admin/events.html" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="34bYBu5GGt2WJHYgSOkFSq4qSUf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.ThanhToan.html.executor": "Run",
+    "JavaScript Debug.home.html.executor": "Run",
+    "JavaScript Debug.quanlidonhang.html.executor": "Run",
+    "JavaScript Debug.user_UuDaiThanhVien.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Tomcat Server.Tomcat 10.1.482.executor": "Run",
+    "git-widget-placeholder": "doan",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/projectWeb/web17/src/main/webapp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projectWeb\web17\src\main\webapp" />
+      <recent name="D:\projectWeb\page" />
+      <recent name="D:\projectWeb\assets\img\QR" />
+      <recent name="D:\projectWeb\assets\img\icon" />
+      <recent name="D:\projectWeb\assets\img\logo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projectWeb\admin" />
+      <recent name="D:\projectWeb\assets\img\logo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+          <value>
+            <map>
+              <entry key="Tomcat 10.1.482" value="FAILED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 10.1.482" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.482" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="unnamed">
+          <settings>
+            <option name="CONTEXT_PATH" value="/projectWeb" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="739979d7-36f2-4c64-b157-2dc0d7e6facb" />
+        <option name="HTTP_PORT" value="80" />
+        <option name="JNDI_PORT" value="2000" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54797" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="unnamed" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="" />
+      <created>1761483606266</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761483606266</updated>
+      <workItem from="1761483607652" duration="8512000" />
+      <workItem from="1761545307968" duration="2132000" />
+      <workItem from="1761556872622" duration="17990000" />
+      <workItem from="1761579675940" duration="937000" />
+      <workItem from="1761618140157" duration="140000" />
+      <workItem from="1761618411403" duration="6569000" />
+      <workItem from="1761626867856" duration="15000" />
+      <workItem from="1761653708669" duration="6339000" />
+      <workItem from="1761723865547" duration="15936000" />
+      <workItem from="1761740561604" duration="11717000" />
+      <workItem from="1761827426335" duration="8402000" />
+      <workItem from="1761889283082" duration="36000" />
+      <workItem from="1762054414776" duration="18308000" />
+      <workItem from="1762082343020" duration="6473000" />
+      <workItem from="1762181931571" duration="8348000" />
+      <workItem from="1762222645468" duration="5379000" />
+      <workItem from="1762344442732" duration="15379000" />
+      <workItem from="1762418517464" duration="178000" />
+      <workItem from="1762421881088" duration="57000" />
+      <workItem from="1762507957137" duration="7922000" />
+      <workItem from="1762669406351" duration="6700000" />
+      <workItem from="1762676466510" duration="2413000" />
+      <workItem from="1762693441067" duration="5849000" />
+      <workItem from="1762742349683" duration="4273000" />
+      <workItem from="1762747254470" duration="628000" />
+      <workItem from="1762747901751" duration="37000" />
+      <workItem from="1762773110597" duration="17663000" />
+      <workItem from="1762854589795" duration="3099000" />
+      <workItem from="1762870315361" duration="4556000" />
+      <workItem from="1762877974460" duration="2948000" />
+      <workItem from="1762915857829" duration="585000" />
+      <workItem from="1762934929277" duration="90000" />
+      <workItem from="1762956151757" duration="6190000" />
+      <workItem from="1763023470021" duration="10636000" />
+      <workItem from="1763045769985" duration="2468000" />
+      <workItem from="1763048619409" duration="146000" />
+      <workItem from="1763095235210" duration="27000" />
+      <workItem from="1763208942328" duration="1881000" />
+      <workItem from="1763212404612" duration="9733000" />
+      <workItem from="1763274058682" duration="8180000" />
+      <workItem from="1763357034663" duration="55000" />
+      <workItem from="1763374686828" duration="5545000" />
+      <workItem from="1763395892736" duration="496000" />
+      <workItem from="1763432892760" duration="80000" />
+      <workItem from="1763437742903" duration="103000" />
+      <workItem from="1763438597198" duration="503000" />
+      <workItem from="1763571923267" duration="406000" />
+      <workItem from="1763643645657" duration="1806000" />
+      <workItem from="1763901095838" duration="1573000" />
+      <workItem from="1763990960462" duration="4315000" />
+      <workItem from="1763995640162" duration="127000" />
+      <workItem from="1763997180891" duration="51000" />
+      <workItem from="1764075563523" duration="419000" />
+      <workItem from="1764077477618" duration="151000" />
+      <workItem from="1764079497946" duration="911000" />
+      <workItem from="1764156649693" duration="10867000" />
+      <workItem from="1764334271872" duration="3282000" />
+      <workItem from="1764348594831" duration="667000" />
+      <workItem from="1764381323982" duration="5816000" />
+      <workItem from="1764413390748" duration="1733000" />
+      <workItem from="1764466588722" duration="2010000" />
+      <workItem from="1764479273723" duration="1519000" />
+      <workItem from="1764558498882" duration="194000" />
+      <workItem from="1765022529741" duration="1617000" />
+      <workItem from="1765027126757" duration="1933000" />
+      <workItem from="1765029089741" duration="1107000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

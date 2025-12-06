@@ -1,0 +1,253 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address</title>
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/NewAddress.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="home.jsp" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham.jsp" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="dsSanPham.jsp" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách"/>
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="login.jsp" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                    <a href="shoppingCart.jsp" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                    <a href="user-thongbao.jsp" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="menuUser">
+                <div class="nameUser">
+                    <div class="anh"><i class="fa-solid fa-user"></i></div>
+                    <div class="name"> Lê Vân Trường</div>
+                    <div class="bacThanhVien">Thành viên bạc</div>
+                    <div class="point">10000 point</div>
+                </div>
+                <div class="menuMain">
+                    <a href="user-hoSoCaNhan.jsp" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
+                            class="fa-solid fa-arrow-down"></i></a>
+                    <div class="menuInfor">
+                        <a href="user-hoSoCaNhan.jsp" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                        <a href="user-address.jsp" class="title address"><span>Sổ địa chỉ</span></a>
+                        <a href="user-changePassword.jsp" class="title passw"><span>Đổi mật khẩu</span></a>
+                        <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
+                    </div>
+                    <a href="user-myOrders.jsp" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                    <a href="ViVoucher.jsp" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
+                        <span>Ví voucher</span></a>
+                    <a href="user-thongbao.jsp" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                    <a href="user-spYeuThich.jsp" class="menu spYeuThich"><i
+                            class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
+                </div>
+                <div class="btDangXuat">
+                    <a href="login.jsp" class="dangXuat">Đăng xuất</a>
+                </div>
+            </div>
+            <div class="address-container">
+                <h2>Thêm địa chỉ mới</h2>
+                <form class="address-form" id="addressForm" novalidate>
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" id="hoten" placeholder="Nhập họ và tên">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input type="text" id="sdt" placeholder="Ex: 0972xxxxxx">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tỉnh/Thành phố</label>
+                        <select id="tinh">
+                            <option value="">Vui lòng chọn</option>
+                            <option value="TP.HCM">TP. Hồ Chí Minh</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                        </select>
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quận/Huyện</label>
+                        <input type="text" id="quan">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Xã/Phường</label>
+                        <input type="text" id="xa">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="diachi" placeholder="Địa chỉ cụ thể">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <button type="submit" class="save-btn">Lưu địa chỉ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="wave-container">
+            <svg
+                    viewBox="0 0 120 15"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+            >
+                <path
+                        d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"
+                ></path>
+            </svg>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Liên hệ chúng tôi</h3>
+                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                <a href="#"
+                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
+                >
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ khách hàng</h3>
+                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
+                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
+                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Đối tác</h3>
+                <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
+                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bảo mật</h3>
+                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
+                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright ©. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+<script>
+    document.getElementById("addressForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const fields = [
+            { id: "hoten", name: "Họ và tên" },
+            { id: "sdt", name: "Điện thoại" },
+            { id: "tinh", name: "Tỉnh/Thành phố" },
+            { id: "quan", name: "Quận/Huyện" },
+            { id: "xa", name: "Xã/Phường" },
+            { id: "diachi", name: "Địa chỉ" },
+        ];
+
+        let isValid = true;
+
+        fields.forEach((field) => {
+            const input = document.getElementById(field.id);
+            const errorMsg = input.nextElementSibling;
+
+            if (!input.value.trim()) {
+                errorMsg.textContent = `Vui lòng nhập ${field.name.toLowerCase()}.`;
+                errorMsg.style.display = "block";
+                input.classList.add("error");
+                isValid = false;
+            } else {
+                errorMsg.textContent = "";
+                errorMsg.style.display = "none";
+                input.classList.remove("error");
+            }
+
+
+            if (field.id === "sdt" && input.value.trim()) {
+                const phoneRegex = /^(0[1-9][0-9]{8})$/;
+                if (!phoneRegex.test(input.value)) {
+                    errorMsg.textContent = "Số điện thoại không hợp lệ (VD: 0972xxxxxx).";
+                    errorMsg.style.display = "block";
+                    input.classList.add("error");
+                    isValid = false;
+                }
+            }
+        });
+
+        if (isValid) {
+        }
+    });
+
+</script>
+</body>
+</html>
