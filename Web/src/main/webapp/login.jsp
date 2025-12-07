@@ -77,22 +77,21 @@
 </div>
 <div id="content">
     <div class="container">
-        <div class="login">
+        <form action="login" method="post" class="login">
             <div class="title">Đăng nhập</div>
             <div class="inputIfor">
-                <div class="khung user"><input type="text" id="iUser" placeholder="Số điện thoại hoặc email"></div>
-                <div class="error User"></div>
-                <div class="khung MK"><input type="password" id="iPass" placeholder="Mật khẩu">
+                <div class="khung user"><input type="text" id="iUser" name="user" placeholder="Số điện thoại hoặc email"></div>
+                <div class="khung MK"><input type="password" id="iPass" name="password" placeholder="Mật khẩu">
                     <button class="show"><i class="fa-solid fa-eye "></i></button>
                 </div>
-                <div class="error Pass"></div>
+                <div class="error">%{error}</div>
             </div>
             <div class="forget"><a href="" class="qmk"><span>quên mật khẩu</span></a></div>
             <div class="buttonLoginAndSignUp">
                 <button class="dangNhap">Đăng nhập</button>
                 <div class="signUp"><a href="errol.jsp"><span>Đăng ký</span></a></div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <footer class="footer">
