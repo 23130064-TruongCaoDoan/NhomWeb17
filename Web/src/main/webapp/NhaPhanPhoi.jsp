@@ -1,0 +1,161 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Nhà Phân Phối</title>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/header.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/footer.css"/>
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/returnP.css">
+    <link rel="stylesheet" href="assets/css/NhaPhanPhoi.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="home.jsp" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham.jsp" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="dsSanPham.jsp" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách"/>
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="login.jsp" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                    <a href="shoppingCart.jsp" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                    <a href="user-thongbao.jsp" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="return-policy">
+        <section class="policy-intro">
+            <h1>Nhà Phân Phối</h1>
+            <p>
+                <strong>Sách Thiếu Nhi Cho Bé</strong> hợp tác với cái nhà phân phối sau để cung cấp sản phẩm đến tay
+                người tiêu dùng
+            </p>
+
+        </section>
+
+        <section class="policy-section">
+            <p>1. Công Ty Cổ Phần Phát Hành Sách Tp. HCM</p>
+            <p>2. Trí Tuệ - Công Ty Cổ Phần Sách & Thiết Bị Giáo Dục Trí Tuệ</p>
+            <p>3. Công Ty TNHH Đăng Nguyên</p>
+            <p>4. Công Ty Cổ Phần Sách Mcbooks</p>
+            <p>5. Công Ty TNHH Văn Hóa Việt Long</p>
+
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="wave-container">
+            <svg
+                    viewBox="0 0 120 15"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+            >
+                <path
+                        d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"
+                ></path>
+            </svg>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Liên hệ chúng tôi</h3>
+                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                <a href="#"
+                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
+                >
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ khách hàng</h3>
+                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
+                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
+                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Đối tác</h3>
+                <a href="NhaPhanPhoi.html">Nhà phân phối</a>
+                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bảo mật</h3>
+                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
+                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright ©. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

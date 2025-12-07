@@ -1,0 +1,270 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voucher</title>
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css/ViVoucher.css">
+    <link rel="stylesheet" href="assets/css/voucher.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="home.jsp" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham.jsp" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="dsSanPham.jsp" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách"/>
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="login.jsp" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Tài khoản</span>
+                    </a>
+                    <a href="shoppingCart.jsp" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                    <a href="user-thongbao.jsp" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="menuUser">
+                <div class="nameUser">
+                    <div class="anh"><i class="fa-solid fa-user"></i></div>
+                    <div class="name"> Lê Vân Trường</div>
+                    <div class="bacThanhVien">Thành viên bạc</div>
+                    <div class="point">10000 point</div>
+                </div>
+                <div class="menuMain">
+                    <a href="user-hoSoCaNhan.jsp" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
+                            class="fa-solid fa-arrow-down"></i></a>
+                    <div class="menuInfor">
+                        <a href="user-hoSoCaNhan.jsp" class="title prof"><span>Hồ sơ cá nhân</span></a>
+                        <a href="user-address.jsp" class="title address"><span>Sổ địa chỉ</span></a>
+                        <a href="user-changePassword.jsp" class="title passw"><span>Đổi mật khẩu</span></a>
+                        <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
+                    </div>
+                    <a href="user-myOrders.jsp" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
+                    <a href="ViVoucher.html" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
+                        <span>Ví voucher</span></a>
+                    <a href="user-thongbao.jsp" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
+                    <a href="user-spYeuThich.jsp" class="menu spYeuThich"><i
+                            class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
+                </div>
+                <div class="btDangXuat">
+                    <a href="login.jsp" class="dangXuat">Đăng xuất</a>
+                </div>
+            </div>
+            <div class="voucher-box">
+                <h2>Ví voucher</h2>
+                <div class="voucher-list">
+
+                    <div class="voucher-item">
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>Mã Giảm 10K - Toàn Sàn</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
+                            <div class="voucher-code">FHS10KT11</div>
+                            <div class="voucher-footer">
+                                <span>HSD: 30/11/2025</span>
+                                <button>Copy mã</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>Mã Giảm 20K - Toàn Sàn</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ 249k - Không bao gồm Manga, Ngoại Văn<br>
+                            <div class="voucher-code">FHS20KT11</div>
+                            <div class="voucher-footer">
+                                <span>HSD: 30/11/2025</span>
+                                <button>Copy mã</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>Mã Giảm 40K - Toàn Sàn</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ 499k - Không bao gồm Manga, Ngoại Văn<br>
+                            <div class="voucher-code">FHS40KT11</div>
+                            <div class="voucher-footer">
+                                <span>HSD: 30/11/2025</span>
+                                <button>Copy mã</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="voucher-item">
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>Mã Giảm 80K - Toàn Sàn</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ 999k - Không bao gồm Manga, Ngoại Văn<br>
+                            <div class="voucher-code">FHS80KT11</div>
+                            <div class="voucher-footer">
+                                <span>HSD: 30/11/2025</span>
+                                <button>Copy mã</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="wave-container">
+            <svg
+                    viewBox="0 0 120 15"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+            >
+                <path
+                        d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"
+                ></path>
+            </svg>
+        </div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Liên hệ chúng tôi</h3>
+                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                <a href="#"
+                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
+                >
+            </div>
+
+            <div class="footer-column">
+                <h3>Dịch vụ khách hàng</h3>
+                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
+                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
+                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Đối tác</h3>
+                <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
+                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Bảo mật</h3>
+                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
+                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright ©. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+<div class="overlay" id="overlay"></div>
+<div id="voucherPopup" class="popup">
+    <div class="popup-content">
+        <h3>ĐIỀU KIỆN ÁP DỤNG</h3>
+        <div class="popup-body">
+            <div class="voucher-list-detail">
+                <p class="voucher-item-detail">Mã giảm giá 10K cho đơn hàng từ 130K</p>
+                <p class="voucher-item-detail">Mã giảm giá 20K cho đơn hàng từ 249K</p>
+                <p class="voucher-item-detail">Mã giảm giá 40K cho đơn hàng từ 499K</p>
+                <p class="voucher-item-detail">Mã giảm giá 80K cho đơn hàng từ 999K</p>
+            </div>
+            <div class="voucher-condition">
+                <p>- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo cùng một số loại giấy và bảng khác.</p>
+                <p>- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển.</p>
+            </div>
+        </div>
+        <button class="copy-code">COPY MÃ</button>
+        <button class="cancel">×</button>
+    </div>
+</div>
+<script>
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("voucherPopup");
+    const voucherBtns = document.querySelectorAll(".voucher-detail");
+
+    voucherBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        });
+    });
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+    });
+    const cancelBtns = document.querySelectorAll(".cancel");
+    cancelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            overlay.style.display = "none";
+            popup.style.display = "none";
+        });
+    });
+</script>
+</body>
+</html>

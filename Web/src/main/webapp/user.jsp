@@ -1,0 +1,195 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan li user</title>
+    <link rel="stylesheet" href="assets/css_admin/admin.css">
+    <link rel="stylesheet" href="assets/css_admin/user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+</head>
+<body>
+<main>
+    <header>
+        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="right">
+            <i class="fa-solid fa-user"></i>
+            <div class="ten">admin</div>
+            <button class="dangxuat" onclick="window.location='loginAdmin.html'">Đăng xuất</button>
+        </div>
+    </header>
+    <div class="content">
+        <div class="Menu">
+            <div class="title"><span>CHỨC NĂNG</span></div>
+            <div class="menfunction">
+                <a href="ThongKe.html" class="function thongke">Thống kê</a>
+                <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
+                <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
+                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
+                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
+                <a href="events.html" class="function event">Sự kiện</a>
+                <a href="DanhGia.html" class="function rating">Đánh giá</a>
+            </div>
+        </div>
+        <div class="user">
+            <h2>Quản lý khách hàng</h2>
+            <div class="function">
+                <div class="but">
+                    <button id="add">Tặng voucher</button>
+                    <button id="notify">Tạo thông báo</button>
+                </div>
+                <div class="timkiem">
+                    <input type="text" class="search" placeholder="Tìm kiếm khách hàng">
+                    <button class="buttonSearch">Tìm kiếm</button>
+                </div>
+            </div>
+            <div class="user-list">
+                <div class="title">
+                    <h3>Danh sách khách hàng hiện có</h3>
+                    <select class="locUser">
+                        <option>Tất cả</option>
+                        <option>Điểm tăng dần</option>
+                        <option>Giảm dần</option>
+                        <option>Tổng tiền mua tăng dần</option>
+                        <option>Tổng tiền mua giảm dần</option>
+                    </select>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã Khách Hàng</th>
+                            <th>Tên Khách Hàng</th>
+                            <th>Email</th>
+                            <th>Point</th>
+                            <th>Tổng tiền mua</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userTable">
+                        <tr class="infUser" onclick="window.location='userDetail.html'">
+                            <td>KH002</td>
+                            <td>Lê Vân Trường</td>
+                            <td>truongDepTrai@gmail.com</td>
+                            <td>50000</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH003</td>
+                            <td>Trần Nguyễn Thanh Tú</td>
+                            <td>tuDepTrai@gmail.com</td>
+                            <td>5000</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH004</td>
+                            <td>Nguyên Gia Huy</td>
+                            <td>huyDepTrai@gmail.com</td>
+                            <td>10500</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        <tr class="infUser">
+                            <td>KH005</td>
+                            <td>Nguyễn Hữu Trọng</td>
+                            <td>trongDepTrai@gmail.com</td>
+                            <td>200</td>
+                            <td>50.000.000₫</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="tangVoucherForm">
+        <h3>TẶNG VOUCHER</h3>
+        <div class="form-group">
+            <label>Mã Voucher</label>
+            <input type="text" id="voucherCode" placeholder="Nhập mã voucher" required>
+        </div>
+        <div class="form-group">
+            <label>Chọn Khách Hàng</label>
+            <div class="cacluaChon">
+                <div class="chonAll"><input type="radio" name="chon"><label>Tất cả khách hàng</label></div>
+                <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
+            </div>
+        </div>
+        <button type="submit" class="confirm">Xác nhận</button>
+    </div>
+    <div id="taoThongBao">
+        <h3>THÔNG BÁO</h3>
+        <div class="form-group">
+            <label>Tiêu Đề</label>
+            <input type="text" id="title" placeholder="Nhập tiêu đề" required>
+        </div>
+        <div class="form-group">
+            <label>Mô tả</label>
+            <textarea name="" id="" class="mota" cols="30" rows="10" placeholder="Nhập mô tả"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Loại thông báo</label>
+            <select name="" id="">
+                <option value="Đơn hàng">Đơn hàng</option>
+                <option value="Sự kiện">Sự kiện</option>
+                <option value="Mã giảm giá">Mã giảm giá</option>
+                <option value="Xác nhận">Xác nhận</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Chọn Khách Hàng</label>
+            <div class="cacluaChon">
+                <div class="chonAll"><input type="radio" name="chon"><label>Tất cả khách hàng</label></div>
+                <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
+            </div>
+        </div>
+
+        <button type="submit" class="confirm">Xác nhận</button>
+    </div>
+    <div class="infor-user"></div>
+</main>
+<script>
+    const overlay = document.getElementById("overlay");
+    const add = document.getElementById("add")
+    const thongbao = document.getElementById("notify")
+    const popupTB= document.getElementById("taoThongBao");
+    const popup = document.getElementById("tangVoucherForm");
+
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        popupTB.style.display = "none";
+    });
+    add.addEventListener('click', () => {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    })
+    thongbao.addEventListener('click', () => {
+        overlay.style.display = "block";
+        popupTB.style.display = "block";
+    })
+
+</script>
+</body>
+</html>

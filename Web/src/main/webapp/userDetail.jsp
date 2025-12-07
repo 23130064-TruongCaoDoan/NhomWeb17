@@ -1,0 +1,208 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css_admin/admin.css">
+    <link rel="stylesheet" href="assets/css_admin/userDetail.css">
+
+</head>
+<body>
+<main>
+    <header>
+        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="right">
+            <i class="fa-solid fa-user"></i>
+            <div class="ten">admin</div>
+            <button class="dangxuat">Đăng xuất</button>
+        </div>
+    </header>
+    <div class="content">
+        <div class="Menu">
+            <div class="title"><span>CHỨC NĂNG</span></div>
+            <div class="menfunction">
+                <a href="ThongKe.html" class="function thongke">Thống kê</a>
+                <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
+                <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
+                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
+                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
+                <a href="events.html" class="function event">Sự kiện</a>
+                <a href="DanhGia.html" class="function rating">Đánh giá</a>
+            </div>
+        </div>
+        <div class="user-details">
+            <a href="user.html"><span><i class="fa-solid fa-arrow-left"></i></span></a>
+            <div class="customer-info">
+                <h2>Thông tin khách hàng</h2>
+                <div>
+                    <div class="info-item"><span>Tên khách hàng:</span> Nguyễn Văn A</div>
+                    <div class="info-item"><span>Ngày sinh:</span> 12/05/1995</div>
+                    <div class="info-item"><span>Số điện thoại:</span> 0909 888 777</div>
+                    <div class="info-item"><span>Giới tính</span> Nữ</div>
+                    <div class="info-item"><span>Email</span> vana@gmail.com</div>
+                    <div class="info-item"><span>Số điện thoại:</span> 0909 888 777</div>
+                    <div class="info-item">
+                        <span>Xếp loại:</span>
+                        <span class="rank diamond">Kim cương</span>
+                    </div>
+                    <div class="info-item"><span>Trạng thái:</span> Mở</div>
+                    <div class="button-group">
+                        <button id="btnLock">Khóa</button>
+                        <button id="btnDelete">Xóa tài khoản</button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <h2>Sản phẩm yêu thích</h2>
+                <div class="infor-table">
+                    <div class="table-wrapper" >
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Mã sách</th>
+                                <th>Tên sách</th>
+                                <th>Tác giả</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Loại sách</th>
+                                <th>Độ tuổi</th>
+                                <th>Hình ảnh</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>B001</td>
+                                <td>365 Truyện kể hằng đêm</td>
+                                <td>Nhiều tác giả</td>
+                                <td>50.000 ₫</td>
+                                <td>20</td>
+                                <td>Thiếu nhi</td>
+                                <td>6+</td>
+                                <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            </tr>
+                            <tr>
+                                <td>B002</td>
+                                <td>Dế Mèn Phiêu Lưu Ký</td>
+                                <td>Tô Hoài</td>
+                                <td>45.000 ₫</td>
+                                <td>15</td>
+                                <td>Văn học Việt Nam</td>
+                                <td>8+</td>
+                                <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                            </tr>
+                            <tr>
+                                <td>B001</td>
+                                <td>365 Truyện kể hằng đêm</td>
+                                <td>Nhiều tác giả</td>
+                                <td>50.000 ₫</td>
+                                <td>20</td>
+                                <td>Thiếu nhi</td>
+                                <td>6+</td>
+                                <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <h2>Lịch sử mua hàng</h2>
+                <div class="order-list">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Tổng tiền</th>
+                                <th>Ngày đặt</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                            </thead>
+                            <tbody id="orderTable">
+                            <tr>
+                                <td>HD001</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>450.000đ</td>
+                                <td>2025-11-10</td>
+                                <td>Đang giao</td>
+                            </tr>
+                            <tr>
+                                <td>HD002</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>320.000đ</td>
+                                <td>2025-9-11</td>
+                                <td>Hoàn thành</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <h2>Danh sách voucher</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã</th>
+                            <th>Mô tả</th>
+                            <th>Loại</th>
+                            <th>Giá trị</th>
+                            <th>Thời gian</th>
+                            <th>Giới hạn</th>
+                            <th>Chỉnh sửa</th>
+                        </tr>
+                        </thead>
+                        <tbody id="voucherTable">
+                        <tr>
+                            <td>SALE50</td>
+                            <td>Giảm 50% cho đơn trên 200K</td>
+                            <td>Giảm giá</td>
+                            <td>0.5</td>
+                            <td>2025-11-01 - 2025-11-30</td>
+                            <td>10</td>
+                            <td>
+                                <i  class="fa-solid fa-trash xoa"></i></td>
+                        </tr>
+                        <tr>
+                            <td>SALE50</td>
+                            <td>Giảm 50% cho đơn trên 200K</td>
+                            <td>Giảm giá</td>
+                            <td>0.5</td>
+                            <td>2025-11-01 - 2025-11-30</td>
+                            <td>10</td>
+                            <td>
+                                <i  class="fa-solid fa-trash xoa"></i></td>
+                        </tr><tr>
+                            <td>SALE50</td>
+                            <td>Giảm 50% cho đơn trên 200K</td>
+                            <td>Giảm giá</td>
+                            <td>0.5</td>
+                            <td>2025-11-01 - 2025-11-30</td>
+                            <td>10</td>
+                            <td>
+                                <i  class="fa-solid fa-trash xoa"></i></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    const btnLock = document.getElementById("btnLock");
+    btnLock.addEventListener("click", function () {
+        if (btnLock.textContent === "Khóa") {
+            btnLock.textContent = "Mở";   // đổi thành Mở
+        } else {
+            btnLock.textContent = "Khóa"; // đổi thành Khóa
+        }
+    });
+</script>
+</body>
+</html>

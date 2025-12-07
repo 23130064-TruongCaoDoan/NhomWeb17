@@ -1,0 +1,308 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hoá đơn</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/css_admin/quanlidonhang.css">
+    <link rel="stylesheet" href="assets/css_admin/admin.css">
+</head>
+<body>
+<main>
+    <header>
+        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="right">
+            <i class="fa-solid fa-user"></i>
+            <div class="ten">admin</div>
+            <button class="dangxuat" onclick="window.location='loginAdmin.html'">Đăng xuất</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="Menu">
+            <div class="title"><span>CHỨC NĂNG</span></div>
+            <div class="menfunction">
+                <a href="ThongKe.html" class="function thongke">Thống kê</a>
+                <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
+                <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
+                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
+                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
+                <a href="events.html" class="function event">Sự kiện</a>
+                <a href="DanhGia.html" class="function rating">Đánh giá</a>
+            </div>
+        </div>
+
+        <div class="order-container">
+            <h2>Quản lý đơn hàng</h2>
+            <div class="function">
+                <div class="find">
+                    <input type="text" class="search" placeholder="Tìm kiếm sản phẩm">
+                    <button class="buttonSearch">Tìm kiếm</button>
+                </div>
+            </div>
+            <div class="order-list">
+                <div class="title">
+                    <h3>Danh sách đơn hàng</h3>
+                    <select class="locorder">
+                        <option value="all">Tất cả</option>
+                        <option value="latest">Đơn hàng mới nhất</option>
+                        <option value="oldest">Đơn hàng cũ nhất</option>
+                        <option value="latest">Giá trị đơn tăng dần</option>
+                        <option value="oldest">Giá trị đơn giảm dần</option>
+                    </select>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Mã đơn hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Ngày đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Chỉnh sửa</th>
+                            <th>Các sản phẩm</th>
+                        </tr>
+                        </thead>
+                        <tbody id="orderTable">
+                        <tr>
+                            <td>HD001</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>450.000đ</td>
+                            <td>2025-11-10</td>
+                            <td>Đang giao</td>
+                            <td>
+                                <i class="fa-solid fa-pen sua"></i>
+                                <i class="fa-solid fa-trash xoa"></i>
+                            </td>
+                            <td class="cacsp">xem</td>
+                        </tr>
+                        <tr>
+                            <td>HD002</td>
+                            <td>Trần Thị B</td>
+                            <td>320.000đ</td>
+                            <td>2025-11-11</td>
+                            <td>Hoàn thành</td>
+                            <td>
+                                <i class="fa-solid fa-pen sua"></i>
+                                <i class="fa-solid fa-trash xoa"></i>
+                            </td>
+                            <td class="cacsp">xem</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="orderForm">
+        <div class="form-group">
+            <label>Mã đơn hàng</label>
+            <input type="text" id="orderCode" value="HD001" disabled >
+        </div>
+
+        <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input type="text" id="orderTitle" value="Nguyễn Văn A" disabled >
+        </div>
+
+        <div class="form-group">
+            <label>Tổng tiền (VNĐ)</label>
+            <input type="number" id="orderValue" value="50.000" >
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>Ngày đặt</label>
+                <input type="date" id="startDate" disabled>
+            </div>
+            <div>
+                <label>Ngày giao dự kiến</label>
+                <input type="date" id="endDate" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ giao hàng</label>
+            <input id="typeBook" placeholder="Nhập địa chỉ giao hàng..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input id="ageBook" placeholder="Nhập số điện thoại khách hàng..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Phương thức thanh toán</label>
+            <input id="bookCodes" placeholder="VD: Tiền mặt, Chuyển khoản..." disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú</label>
+            <input type="text" id="voucherCode" placeholder="Nhập ghi chú (nếu có)" disabled>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>Trạng thái đơn hàng</label>
+                <Select>
+                    <option value="">Chờ xử lý</option>
+                    <option value="">Đã giao</option>
+                    <option value="">Đã Huỷ</option>
+                </Select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-save">Lưu đơn hàng</button>
+    </div>
+    <div id="listSP">
+        <div class="table-wrapper" >
+            <table>
+                <thead>
+                <tr>
+                    <th>Mã sách</th>
+                    <th>Tên sách</th>
+                    <th>Tác giả</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Loại sách</th>
+                    <th>Độ tuổi</th>
+                    <th>Hình ảnh</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>B001</td>
+                    <td>365 Truyện kể hằng đêm</td>
+                    <td>Nhiều tác giả</td>
+                    <td>50.000 ₫</td>
+                    <td>20</td>
+                    <td>Thiếu nhi</td>
+                    <td>6+</td>
+                    <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B002</td>
+                    <td>Dế Mèn Phiêu Lưu Ký</td>
+                    <td>Tô Hoài</td>
+                    <td>45.000 ₫</td>
+                    <td>15</td>
+                    <td>Văn học Việt Nam</td>
+                    <td>8+</td>
+                    <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B001</td>
+                    <td>365 Truyện kể hằng đêm</td>
+                    <td>Nhiều tác giả</td>
+                    <td>50.000 ₫</td>
+                    <td>20</td>
+                    <td>Thiếu nhi</td>
+                    <td>6+</td>
+                    <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B002</td>
+                    <td>Dế Mèn Phiêu Lưu Ký</td>
+                    <td>Tô Hoài</td>
+                    <td>45.000 ₫</td>
+                    <td>15</td>
+                    <td>Văn học Việt Nam</td>
+                    <td>8+</td>
+                    <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B001</td>
+                    <td>365 Truyện kể hằng đêm</td>
+                    <td>Nhiều tác giả</td>
+                    <td>50.000 ₫</td>
+                    <td>20</td>
+                    <td>Thiếu nhi</td>
+                    <td>6+</td>
+                    <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B002</td>
+                    <td>Dế Mèn Phiêu Lưu Ký</td>
+                    <td>Tô Hoài</td>
+                    <td>45.000 ₫</td>
+                    <td>15</td>
+                    <td>Văn học Việt Nam</td>
+                    <td>8+</td>
+                    <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B001</td>
+                    <td>365 Truyện kể hằng đêm</td>
+                    <td>Nhiều tác giả</td>
+                    <td>50.000 ₫</td>
+                    <td>20</td>
+                    <td>Thiếu nhi</td>
+                    <td>6+</td>
+                    <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B002</td>
+                    <td>Dế Mèn Phiêu Lưu Ký</td>
+                    <td>Tô Hoài</td>
+                    <td>45.000 ₫</td>
+                    <td>15</td>
+                    <td>Văn học Việt Nam</td>
+                    <td>8+</td>
+                    <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B001</td>
+                    <td>365 Truyện kể hằng đêm</td>
+                    <td>Nhiều tác giả</td>
+                    <td>50.000 ₫</td>
+                    <td>20</td>
+                    <td>Thiếu nhi</td>
+                    <td>6+</td>
+                    <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
+                </tr>
+                <tr>
+                    <td>B002</td>
+                    <td>Dế Mèn Phiêu Lưu Ký</td>
+                    <td>Tô Hoài</td>
+                    <td>45.000 ₫</td>
+                    <td>15</td>
+                    <td>Văn học Việt Nam</td>
+                    <td>8+</td>
+                    <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<script>
+    const overlay = document.getElementById("overlay");
+    const sua = document.querySelector(".sua")
+    const popup = document.getElementById("orderForm");
+    const popup1 = document.getElementById("listSP");
+    const xem=document.querySelector(".cacsp");
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        popup1.style.display = "none";
+    });
+    sua.addEventListener('click', () => {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    })
+    xem.addEventListener('click',()=>{
+        overlay.style.display = "block";
+        popup1.style.display = "block";
+    })
+   
+
+</script>
+</body>
+</html>

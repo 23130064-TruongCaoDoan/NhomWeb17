@@ -1,0 +1,323 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Danh sách sản phẩm</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/dsSanPham.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+        <div id="home-page">
+            <div id="page-header">
+                <div class="header-message">
+                    <div class="message"></div>
+                    <div class="messageBorder"></div>
+                </div>
+                <div class="container">
+                    <div class="header-title">
+                        <a href="" class="logo">
+                            <img
+                                    src="assets/img/logo/logoChinh.png"
+                                    alt="Sách thiếu nhi cho bé"
+                            />
+                        </a>
+                    </div>
+                    <div class="header-menu">
+                        <a href="home.jsp" class="button bt"
+                        ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                        >
+                        <div class="button category">
+                            <a href="dsSanPham.html" class="button bt danhmuc">
+                                <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                            >
+                            <div class="danhMuc sach">
+                                <div class="item truyenTranh">
+                                    <a href="dsSanPham.html" class="it truyen-tranh"
+                                    ><span>Truyện tranh</span></a
+                                    >
+                                </div>
+                                <div class="item anh">
+                                    <a href="dsSanPham.html" class="it sach-anh"><span>Sách ảnh</span></a>
+                                </div>
+                                <div class="item giaoDuc">
+                                    <a href="dsSanPham.html" class="it giao-duc"><span>Giáo dục</span></a>
+                                </div>
+                                <div class="item toMau">
+                                    <a href="dsSanPham.html" class="it to-mau"><span>Sách tô màu</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" placeholder="Tìm kiếm sách"/>
+                            <button>Tìm Kiếm</button>
+                        </div>
+                        <a href="login.jsp" class="button bt taikhoan">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Tài khoản</span>
+                        </a>
+                        <a href="shoppingCart.jsp" class="button bt gio">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>Giỏ hàng</span>
+                        </a>
+                        <a href="user-thongbao.jsp" class="button bt thongbao">
+                            <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                            <span>Thông báo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="banner">
+          <h1>Sản phẩm</h1>
+      </div>
+      <div class="content">
+        <div class="filter">
+          <div class="recipient">
+              <div class="filter-title"><h2>Bộ lọc</h2></div>
+              <hr>
+              <div class="filter-header" onclick="toggleOptions()">Đối tượng</div>
+              <div class="filter-options" id="options">
+                <button>Trẻ sơ sinh</button>
+                <button>Trẻ 1-3 tuổi</button>
+                <button>Trẻ >4 tuổi</button>
+                <button>Sinh đôi</button>
+                <button>Anh chị em</button>
+                <button>Gia đình</button>
+              </div>
+          </div>
+          <div class="occasions">
+                <hr>
+              <div class="filter-header" onclick="toggleOptions2()">Theo thể loại</div>
+              <div class="filter-options" id="options-2">
+                <button>Truyện tranh</button>
+                <button>Sách ảnh</button>
+                <button>Giáo dục</button>
+                <button>Tô màu</button>
+              </div>
+          </div>
+          <button class="clear-filter">Xoá bộ lọc</button>
+        </div>
+        <div class="listProducts">
+          <div class="card">
+            <img src="assets/img/books/DeMen.jpg" alt="" />
+            <p class="book-name">Dế Mèn phiêu lưu ký</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+              <a href="productDetail.jsp">
+                  <img src="assets/img/books/365TruyenKeHangDem.png" alt="" />
+              </a>
+            <p class="book-name">365 Truyện kể hằng đêm 1</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/CoTichTheGioi.jpg" alt="" />
+            <p class="book-name">Tuyển tập cổ tích thế giới</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/guongDungCam.png" alt="" />
+            <p class="book-name">Gương Dũng Cảm</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/ThoiQuenTot.jpg" alt="" />
+            <p class="book-name">Bồi dưỡng thói quen tốt</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/suThanVietNam.jpg" alt="" />
+            <p class="book-name">Sứ Thần Việt Nam</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/guongHieuHoc.jpg" alt="" />
+            <p class="book-name">Gương hiếu học</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/thanDongVietNam.jpg" alt="" />
+            <p class="book-name">Thần Đồng Việt Nam</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/trangVietNam.png" alt="" />
+            <p class="book-name">Trạng Việt Nam</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt="" />
+            <p class="book-name">365 Truyện kể hằng đêm 3</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/365TruyenKeHangDemMuaHe.png" alt="" />
+            <p class="book-name">365 Truyện kể hằng đêm 2</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/img/books/truyenCoGrimm.jpg" alt="" />
+            <p class="book-name">Truyện cổ Grimm</p>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <div class="price-cart">
+              <p class="price">50.000 Đ</p>
+              <i class="fa-solid fa-cart-plus"></i>
+            </div>
+          </div>
+        </div>
+        <div id="pagination"></div>        
+      </div>
+        <footer class="footer">
+            <div class="wave-container">
+                <svg
+                        viewBox="0 0 120 15"
+                        xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none"
+                >
+                    <path
+                            d="M0,10
+                C10,15 20,5 30,10
+                C40,15 50,5 60,10
+                C70,15 80,5 90,10
+                C100,15 115,5 120,10
+                L120,20 0,20 Z"
+                    ></path>
+                </svg>
+            </div>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Liên hệ chúng tôi</h3>
+                    <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
+                    <a href="#"
+                    ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
+                    >
+                </div>
+
+                <div class="footer-column">
+                    <h3>Dịch vụ khách hàng</h3>
+                    <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
+                    <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
+                    <a href="returnPolicy.jsp">Chính sách đổi trả</a>
+
+                </div>
+
+                <div class="footer-column">
+                    <h3>Đối tác</h3>
+                    <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
+                    <a href="dsSanPham.html">Sách của chúng tôi</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Bảo mật</h3>
+                    <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
+                    <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright ©. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+  </body>
+  <script>
+      function toggleOptions() {
+          const options = document.getElementById('options');
+          options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+      }
+      function toggleOptions2() {
+          const options = document.getElementById('options-2');
+          options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+      }
+
+      const cards = document.querySelectorAll('.listProducts .card');
+      const pagination = document.getElementById('pagination');
+
+      const itemsPerPage = 6;
+      let currentPage = 1;
+
+      function showPage(page) {
+          currentPage = page;
+          const start = (page - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
+
+          cards.forEach((card, index) => {
+              card.style.display = (index >= start && index < end) ? 'block' : 'none';
+          });
+
+          renderPagination();
+      }
+
+      function renderPagination() {
+          const pageCount = Math.ceil(cards.length / itemsPerPage);
+          pagination.innerHTML = '';
+
+          for (let i = 1; i <= pageCount; i++) {
+              const btn = document.createElement('button');
+              btn.textContent = i;
+              if (i === currentPage) btn.classList.add('active');
+              btn.addEventListener('click', () => showPage(i));
+              pagination.appendChild(btn);
+          }
+      }
+
+      showPage(1);
+  </script>
+</html>
