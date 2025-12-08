@@ -22,6 +22,7 @@
 #content .login .inputIfor{
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 #content .login .user input {
     padding-left: 10px;

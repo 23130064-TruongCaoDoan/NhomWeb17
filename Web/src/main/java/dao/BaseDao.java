@@ -43,7 +43,7 @@ public class BaseDao {
 
         static {
             try {
-                File file = new File("src/test/resources/db.properties");
+                File file = new File("..\\src\\main\\resources\\db.properties");
                 if (file.exists()) {
                     prop.load(new FileInputStream(file));
                 } else {

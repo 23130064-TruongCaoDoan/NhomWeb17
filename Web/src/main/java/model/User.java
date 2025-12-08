@@ -5,7 +5,6 @@ import java.util.Date;
 public class User {
     private int id;
     private String name;
-    private String email;
 
     private String password_hash;
 
@@ -20,9 +19,7 @@ public class User {
     private int point;
 
     private boolean status;
-
-    public User() {
-    }
+    private String email;
 
     public int getId() {
         return id;
@@ -40,20 +37,12 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getPassword_hash() {
+        return password_hash;
     }
 
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
-    }
-
-    public String getPassword_hash() {
-        return password_hash;
     }
 
     public boolean isRole() {
@@ -104,18 +93,27 @@ public class User {
         this.status = status;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", password_hash='" + password_hash + '\'' +
                 ", role=" + role +
                 ", sex=" + sex +
                 ", phone='" + phone + '\'' +
                 ", birthday=" + birthday +
                 ", point=" + point +
                 ", status=" + status +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
