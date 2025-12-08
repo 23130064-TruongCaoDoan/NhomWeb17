@@ -71,7 +71,14 @@
                     </div>
                     <a href="<c:url value="/login" />" class="button bt taikhoan">
                         <i class="fa-solid fa-user"></i>
-                        <span>Tài khoản</span>
+                        <span>
+                            <c:if test="${not empty user}">
+                            ${user}
+                            </c:if>
+                            <c:if test="${empty user}">
+                                Tài khoản
+                            </c:if>
+                        </span>
                     </a>
                     <a href="shoppingCart.jsp" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -90,7 +97,8 @@
             <div class="event-carousel">
                 <div class="slides">
                     <div class="slide active">
-                        <a href="dsSanPham.jsp" class="halloween"><img src="assets/img/event/halloween.jpg" alt="Halloween"></a>
+                        <a href="dsSanPham.jsp" class="halloween"><img src="assets/img/event/halloween.jpg"
+                                                                       alt="Halloween"></a>
                     </div>
                     <div class="slide">
                         <a href="dsSanPham.jsp" class="10-10"><img src="assets/img/event/10-10.jpg" alt="10-10"></a>
@@ -104,7 +112,7 @@
                 <div class="dsbooks">
                     <div class="card">
                         <a href="productDetail.jsp">
-                        <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
+                            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
                         </a>
                         <p class="book-name">365 Truyện kể hằng đêm 3</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
@@ -151,7 +159,8 @@
                     </div>
                 </div>
                 <div class="bt btsale">
-                    <button  onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i class="fa-solid fa-arrow-right"></i></button>
+                    <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             <div class="sachh moi">
@@ -159,7 +168,7 @@
                 <div class="dsbooks">
                     <div class="card">
                         <a href="productDetail.jsp">
-                        <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
+                            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
                         </a>
                         <p class="book-name">365 Truyện kể hằng đêm 3</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
@@ -206,7 +215,8 @@
                     </div>
                 </div>
                 <div class="bt btmoi">
-                    <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i class="fa-solid fa-arrow-right"></i></button>
+                    <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             <div class="sachh yeuThich">
@@ -214,7 +224,7 @@
                 <div class="dsbooks">
                     <div class="card">
                         <a href="productDetail.jsp">
-                        <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
+                            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
                         </a>
                         <p class="book-name">365 Truyện kể hằng đêm 3</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
@@ -261,7 +271,8 @@
                     </div>
                 </div>
                 <div class="bt btsachYeuThich">
-                    <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i class="fa-solid fa-arrow-right"></i></button>
+                    <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             <div class="recommend">
@@ -289,7 +300,7 @@
                 <div class="slogan"><h3>Những quyến sách có thể bạn sẽ thích</h3></div>
                 <div class="list-product">
                     <div class="card">
-                        <img src="assets/img/books/CoTichTheGioi.jpg" alt="" />
+                        <img src="assets/img/books/CoTichTheGioi.jpg" alt=""/>
                         <p class="book-name">Tuyển tập cổ tích thế giới</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
                         <div class="price-cart">
@@ -298,7 +309,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/books/guongDungCam.png" alt="" />
+                        <img src="assets/img/books/guongDungCam.png" alt=""/>
                         <p class="book-name">Gương Dũng Cảm</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
                         <div class="price-cart">
@@ -307,7 +318,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/books/ThoiQuenTot.jpg" alt="" />
+                        <img src="assets/img/books/ThoiQuenTot.jpg" alt=""/>
                         <p class="book-name">Bồi dưỡng thói quen tốt</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
                         <div class="price-cart">
@@ -316,7 +327,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/books/suThanVietNam.jpg" alt="" />
+                        <img src="assets/img/books/suThanVietNam.jpg" alt=""/>
                         <p class="book-name">Sứ Thần Việt Nam</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
                         <div class="price-cart">
@@ -325,7 +336,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/books/guongHieuHoc.jpg" alt="" />
+                        <img src="assets/img/books/guongHieuHoc.jpg" alt=""/>
                         <p class="book-name">Gương hiếu học</p>
                         <p class="rating">⭐⭐⭐⭐⭐</p>
                         <div class="price-cart">
