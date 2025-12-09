@@ -17,4 +17,17 @@ public class UserService {
     public boolean checkPass(User user,String password) {
         return user.getPassword_hash().equals(password) ;
     }
+
+    public boolean checkExit(String email) {
+
+        if(findUser(email)!=null){
+            return true;
+        }
+        return false;
+
+    }
+
+    public void addUser(String fullname, String email, String password) {
+        userDao.addUser(fullname,email, password);
+    }
 }
