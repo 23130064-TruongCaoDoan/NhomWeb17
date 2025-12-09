@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Book {
@@ -14,7 +15,7 @@ public class Book {
     private String description;
     private String publisher;
     private String provider;
-    private Date publishedDate;
+    private LocalDate publishedDate;
     private double weight;
     private String bookSize;
     private int pagesNumber;
@@ -28,7 +29,7 @@ public class Book {
     // Constructor đầy đủ
     public Book(int id, String model, String title, String author, double price, double priceDiscounted,
                 String type, int age, String coverImgUrl, String description, String publisher,
-                String provider, Date publishedDate, double weight, String bookSize,
+                String provider, LocalDate  publishedDate, double weight, String bookSize,
                 int pagesNumber, String format, boolean isSell) {
         this.id = id;
         this.model = model;
@@ -86,8 +87,8 @@ public class Book {
     public String getProvider() { return provider; }
     public void setProvider(String provider) { this.provider = provider; }
 
-    public Date getPublishedDate() { return publishedDate; }
-    public void setPublishedDate(Date publishedDate) { this.publishedDate = publishedDate; }
+    public LocalDate  getPublishedDate() { return publishedDate; }
+    public void setPublishedDate(LocalDate publishedDate) { this.publishedDate = publishedDate; }
 
     public double getWeight() { return weight; }
     public void setWeight(double weight) { this.weight = weight; }

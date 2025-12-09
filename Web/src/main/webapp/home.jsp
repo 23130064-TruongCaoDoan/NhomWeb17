@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,53 +111,24 @@
             <div class="sachh sale">
                 <div class="title t"><span>Giảm giá</span><img src="assets/img/icon/sale.png" alt=""></div>
                 <div class="dsbooks">
-                    <div class="card">
-                        <a href="productDetail.jsp">
-                            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
-                        </a>
-                        <p class="book-name">365 Truyện kể hằng đêm 3</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price"><s>50.000 Đ</s> <span>20.000 Đ</span></p>
-                            <i class="fa-solid fa-cart-plus"></i>
+                    <c:forEach var="book" items="${booksList}">
+                        <div class="card">
+                            <a href="productDetail.jsp">
+                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                            </a>
+                            <p class="book-name">${book.title}</p>
+                            <p class="rating">
+                                ⭐⭐⭐⭐⭐
+                            </p>
+                            <div class="price-cart">
+                                <p class="price">
+                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                </p>
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/trangVietNam.png" alt=""/>
-                        <p class="book-name">Trạng Việt Nam</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price"><s>50.000 Đ</s> <span>20.000 Đ</span></p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/365TruyenKeHangDem.png" alt=""/>
-                        <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price"><s>50.000 Đ</s> <span>20.000 Đ</span></p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/CoTichTheGioi.jpg" alt=""/>
-                        <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price"><s>50.000 Đ</s> <span>20.000 Đ</span></p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/guongDungCam.png" alt=""/>
-                        <p class="book-name">Gương Dũng Cảm</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price"><s>50.000 Đ</s> <span>20.000 Đ</span></p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
                 <div class="bt btsale">
                     <button onclick="location.href='dsSanPham.html'" class="xemThem">Xem Thêm<i

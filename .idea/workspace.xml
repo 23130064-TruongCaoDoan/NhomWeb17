@@ -69,6 +69,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HomeDao.executor": "Run",
+    "Application.UserDao.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.ThanhToan.html.executor": "Run",
     "JavaScript Debug.home.html.executor": "Run",
@@ -305,7 +307,7 @@
       <workItem from="1765289898198" duration="7000" />
       <workItem from="1765289911974" duration="100000" />
       <workItem from="1765290138995" duration="16000" />
-      <workItem from="1765290223885" duration="5657000" />
+      <workItem from="1765290223885" duration="9983000" />
     </task>
     <servers />
   </component>
