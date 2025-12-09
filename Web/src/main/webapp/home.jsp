@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="header-menu">
-                    <a href="home.html" class="button bt"
+                    <a href="#" class="button bt"
                     ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
                     >
                     <div class="button category">
