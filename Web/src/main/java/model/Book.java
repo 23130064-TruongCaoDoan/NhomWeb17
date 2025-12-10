@@ -21,6 +21,9 @@ public class Book {
     private int pagesNumber;
     private String format;
     private boolean isSell;
+    private LocalDate add_date;
+    private int quantitySold;
+
 
     // Constructor mặc định
     public Book() {
@@ -30,7 +33,7 @@ public class Book {
     public Book(int id, String model, String title, String author, double price, double priceDiscounted,
                 String type, int age, String coverImgUrl, String description, String publisher,
                 String provider, LocalDate  publishedDate, double weight, String bookSize,
-                int pagesNumber, String format, boolean isSell) {
+                int pagesNumber, String format, boolean isSell,  LocalDate add_date, int quantitySold) {
         this.id = id;
         this.model = model;
         this.title = title;
@@ -49,6 +52,8 @@ public class Book {
         this.pagesNumber = pagesNumber;
         this.format = format;
         this.isSell = isSell;
+        this.add_date = add_date;
+        this.quantitySold = quantitySold;
     }
     // Getter và Setter cho tất cả thuộc tính
     public int getId() { return id; }
@@ -105,6 +110,13 @@ public class Book {
     public boolean getSell() { return isSell; }
     public void setSell(boolean isSell) { this.isSell = isSell; }
 
+    public LocalDate getAdd_date() { return add_date; }
+    public void setAdd_date(LocalDate add_date) { this.add_date = add_date; }
+
+    public int getQuantitySold() { return quantitySold; }
+    public void setQuantitySold(int quantitySold) { this.quantitySold = quantitySold; }
+
+
     @Override
     public String toString() {
         return "Book{" +
@@ -126,6 +138,8 @@ public class Book {
                 ", pagesNumber=" + pagesNumber +
                 ", format='" + format + '\'' +
                 ", sell=" + isSell +
+                ", add_date=" + add_date +
+                ", quantitySold=" + quantitySold +
                 '}';
     }
 }
