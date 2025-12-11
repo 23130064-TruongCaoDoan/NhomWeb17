@@ -24,9 +24,12 @@ public class SignupServlet extends HttpServlet {
         UserService userService = new UserService();
         if(!userService.checkExit(email)&&(password.equals(confirmPassword))){
             userService.addUser(fullname,email,password);
-            response.sendRedirect("login");
+            request.setAttribute("message","Đăng Kí Thành công");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         else{
+            request.setAttribute("type","danger");
+            request.setAttribute("message","Tài khoản đã tồn tại");
             request.setAttribute("fullname",fullname);
             request.setAttribute("email",email);
             request.setAttribute("password",password);

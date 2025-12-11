@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class BaseDao {
+
     private Jdbi jdbi;
 
     protected Jdbi getJdbi() {
