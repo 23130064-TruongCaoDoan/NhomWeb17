@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
            response.sendRedirect("home");
        }
        else{
+
            request.setAttribute("username",username);
            request.setAttribute("password",password);
            request.setAttribute("error","Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu");

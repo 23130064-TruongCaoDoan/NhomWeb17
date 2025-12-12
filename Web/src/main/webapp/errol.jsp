@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,8 +80,13 @@
 <main class="errol_container">
     <div class="container">
         <h2>Đăng ký tài khoản</h2>
-        <form id="registerForm">
-
+        <c:if test="${not empty message}">
+            <div class="alert alert-${type}">
+                <i class="fa-solid ${type == 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                    ${message}
+            </div>
+        </c:if>
+        <form id="registerForm" action="dangki" method="post">
             <section class="form-section">
                 <h3>Thông tin cá nhân</h3>
                 <div class="form-group">
@@ -94,8 +100,8 @@
                 <h3>Thông tin đăng ký</h3>
 
                 <div class="form-group">
-                    <label for="email">Số điện thoại / Email *</label>
-                    <input type="text" id="email" name="email" placeholder="Nhập số điện thoại hoặc email của bạn">
+                    <label for="email">Email </label>
+                    <input type="text" id="email" name="email" placeholder="Nhập số email của bạn">
                     <small class="error"></small>
                 </div>
 
@@ -114,7 +120,8 @@
 
                 <div class="form-group">
                     <label for="confirm-password">Xác nhận mật khẩu *</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận lại mật khẩu">
+                    <input type="password" id="confirm-password" name="confirm-password"
+                           placeholder="Xác nhận lại mật khẩu">
                     <small class="error"></small>
                 </div>
 
@@ -184,16 +191,13 @@
     const toggle = document.getElementById("togglePassword");
     const form = document.getElementById("registerForm");
 
-    // Ẩn/hiện mật khẩu
     toggle.addEventListener("click", () => {
         const type = password.type === "password" ? "text" : "password";
         password.type = type;
         confirmPassword.type = type;
     });
 
-    // Hiển thị lỗi
     function setError(inputElement, message) {
-        // Sử dụng .closest('.form-group') để tìm phần tử cha gần nhất có class .form-group
         const group = inputElement.closest('.form-group');
         if (group) {
             const error = group.querySelector('.error');
@@ -216,7 +220,7 @@
         inputElement.style.border = '1px solid #0d3164';
     }
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         let hasError = false;
 
@@ -228,7 +232,7 @@
 
         // Email
         if (email.value.trim() === "") {
-            setError(email, "Vui lòng nhập số điện thoại hoặc email");
+            setError(email, "Vui lòng nhập email");
             hasError = true;
         } else if (!email.value.includes("@")) {
             setError(email, "Email không hợp lệ");
@@ -254,10 +258,8 @@
             clearError(confirmPassword);
         }
 
-        // Nếu không có lỗi thì xử lý
         if (!hasError) {
-            alert("Tạo tài khoản thành công!");
-            window.location.href = "login.jsp";
+            form.submit();
         }
     });
 </script>

@@ -74,7 +74,7 @@
                         <i class="fa-solid fa-user"></i>
                         <span>
                             <c:if test="${not empty user}">
-                            ${user}
+                                ${user}
                             </c:if>
                             <c:if test="${empty user}">
                                 Tài khoản
@@ -113,7 +113,7 @@
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksList}" begin="0" end="4">
                         <div class="card">
-                            <a href="productDetail.jsp">
+                            <a href="productDetail?id=${book.id}">
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
                             </a>
                             <p class="book-name">${book.title}</p>

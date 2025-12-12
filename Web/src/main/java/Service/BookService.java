@@ -1,15 +1,18 @@
 package Service;
 
-import dao.HomeDao;
+import dao.BookDao;
 import dao.UserDao;
 import model.Book;
 import model.User;
 
 import java.util.List;
 
-public class HomeService {
-    private HomeDao hd=new HomeDao();
+public class BookService {
+    private BookDao hd=new BookDao();
     public List<Book> getBooksDiscounted(){
         return hd.getBooksDiscounted();
+    }
+    public Book getBooksById(int id){
+        return hd.getBookById(id);
     }
 }
