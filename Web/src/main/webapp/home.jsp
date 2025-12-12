@@ -111,7 +111,7 @@
             <div class="sachh sale">
                 <div class="title t"><span>Giảm giá</span><img src="assets/img/icon/sale.png" alt=""></div>
                 <div class="dsbooks">
-                    <c:forEach var="book" items="${booksList}">
+                    <c:forEach var="book" items="${booksList}" begin="0" end="4">
                         <div class="card">
                             <a href="productDetail.jsp">
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
