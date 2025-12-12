@@ -105,10 +105,10 @@
     margin-bottom: 20px;
     font-family: "Lobster", sans-serif;
 }
-.sale .price{
+.card .price{
     margin-left: 22%;
 }
-.sale .price s{
+.card .price s{
     color: gray;
 }
 .sachh .bt{
@@ -273,4 +273,6 @@
     width: 100px;
 
 }
-
+a{
+    text-decoration: none;
+}

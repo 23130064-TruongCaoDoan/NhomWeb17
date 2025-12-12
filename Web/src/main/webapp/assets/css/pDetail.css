@@ -43,7 +43,6 @@
     border-radius: 5px;
     object-fit: cover;
     cursor: pointer;
-    transform: scale(0.8);
 }
 .detail-container .detail .thumbnail.active {
     border: 2px solid #007bff;
@@ -53,14 +52,14 @@
     float: none;
     flex-grow: 1;
     text-align: center;
+    width: 200px;
+    margin-top: -20px;
 }
 
 .detail-container .detail .main-img img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    transform: scale(1.1);
-
 }
 .detail-container .detail .describe{
     width: 44%;

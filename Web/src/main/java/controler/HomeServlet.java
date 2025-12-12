@@ -14,16 +14,15 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = new BookService();
-        List<Book> booksList = bookService.getBooksDiscounted();
-        request.setAttribute("booksList", booksList);
+        List<Book> booksListSale = bookService.getBooksDiscounted();
+        List<Book> booksListNew = bookService.getBooksNew();
+        request.setAttribute("booksListSale", booksListSale);
+        request.setAttribute("booksListNew", booksListNew);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookService bookService = new BookService();
-        List<Book> list = bookService.getBooksDiscounted();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+
     }
 }
