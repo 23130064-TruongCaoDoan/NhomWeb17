@@ -72,10 +72,12 @@
 
 .detail-container .detail .book-name{
     float: left;
+    text-align: left;
     font-size: 30px;
     margin-bottom: 10px;
     color: #0d3164;
     font-weight: bold;
+    margin-top: 14px;
 }
 .detail-container .detail .rating{
     float: left;
