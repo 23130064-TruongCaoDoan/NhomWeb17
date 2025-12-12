@@ -14,4 +14,10 @@ public class UserDao extends BaseDao {
         UserDao ud = new UserDao();
         System.out.println(ud.finduser("123@gmail.com"));
     }
+
+    public void addUser(String fullname, String email, String password) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("insert into USER(name,email,password_hash) values(:username, :email, :password)").bind("username", fullname).bind("email", email).bind("password", password).execute()
+        );
+    }
 }

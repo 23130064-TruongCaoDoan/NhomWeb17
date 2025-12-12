@@ -1,6 +1,6 @@
 package controler;
 
-import Service.HomeService;
+import Service.BookService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,16 +13,16 @@ import java.util.List;
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HomeService homeService = new HomeService();
-        List<Book> booksList = homeService.getBooksDiscounted();
+        BookService bookService = new BookService();
+        List<Book> booksList = bookService.getBooksDiscounted();
         request.setAttribute("booksList", booksList);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HomeService homeService = new HomeService();
-        List<Book> list = homeService.getBooksDiscounted();
+        BookService bookService = new BookService();
+        List<Book> list = bookService.getBooksDiscounted();
         request.setAttribute("list", list);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

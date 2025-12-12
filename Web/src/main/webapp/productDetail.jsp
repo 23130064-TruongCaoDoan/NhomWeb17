@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,7 +108,7 @@
 
                     <div class="main-img">
                         <img id="mainImageDisplay"
-                             src="assets/img/books/365TruyenKeHangDemMuaHe.png"
+                             src="${book.coverImgUrl}"
                              alt="Ảnh sách chính">
                     </div>
                 </div>

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +79,12 @@
 </div>
 <div id="content">
     <div class="container">
+        <c:if test="${not empty message}">
+            <div class="login-success-alert">
+                <div><i class="fa-solid fa-check-circle"></i> <strong>${message}</strong></div>
+                <button type="button" class="close-btn" onclick="this.parentElement.remove()">&times;</button>
+            </div>
+        </c:if>
         <form action="login" method="post" class="login">
             <div class="title">Đăng nhập</div>
             <div class="inputIfor">
@@ -89,7 +97,7 @@
             <div class="forget"><a href="" class="qmk"><span>quên mật khẩu</span></a></div>
             <div class="buttonLoginAndSignUp">
                 <button type="submit" class="dangNhap">Đăng nhập</button>
-                <div class="signUp"><a href="errol.jsp"><span>Đăng ký</span></a></div>
+                <div class="signUp"><a href="<c:url value='dangki' />"><span>Đăng ký</span></a></div>
             </div>
         </form>
     </div>
@@ -226,7 +234,15 @@
             alert("Mật khẩu đã được gửi bên email của bạn");
         }
     });
-
+    const successAlert = document.querySelector('.login-success-alert');
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.transition = 'all 0.6s ease';
+            successAlert.style.opacity = '0';
+            successAlert.style.transform = 'scale(0.9)';
+            setTimeout(() => successAlert.remove(), 600);
+        }, 2500);
+    }
 
 
 
