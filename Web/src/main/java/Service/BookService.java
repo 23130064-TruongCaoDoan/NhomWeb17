@@ -15,4 +15,6 @@ public class BookService {
     public Book getBooksById(int id){
         return hd.getBookById(id);
     }
+    public List<Book> getAllBook() {return hd.getAllBook();};
+
 }
