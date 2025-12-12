@@ -16,6 +16,28 @@
     <link rel="stylesheet" href="assets/css/errolpage.css">
 </head>
 <body>
+<c:if test="${showOTP == true}">
+    <div id="otpModal" class="modal active">
+        <div class="modal-content">
+            <h3>Xác thực tài khoản</h3>
+            <p>Mã xác thực đã được gửi đến email của bạn.</p>
+
+            <form action="Verify" method="post">
+                <input type="hidden" name="email" value="${email}">
+                <label for="otp">Nhập mã:</label>
+                <input type="text" id="otp" name="otp" maxlength="16" placeholder="Nhập mã gồm 16 ký tự">
+
+                <button type="submit" class="btn-confirm">Xác nhận</button>
+                <div style="color: red">${error}</div>
+            </form>
+
+            <form action="ReSendMail" method="post">
+                <button type="submit" class="btn-resend">Gửi lại mã</button>
+            </form>
+        </div>
+    </div>
+</c:if>
+
 <div id="home-page">
     <div id="page-header">
         <div class="header-message">
@@ -262,6 +284,16 @@
             form.submit();
         }
     });
+
+    const modal = document.getElementById("otpModal");
+
+    if (modal) {
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("active");
+            }
+        });
+    }
 </script>
 
 </html>

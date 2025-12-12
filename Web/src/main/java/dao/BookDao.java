@@ -10,7 +10,7 @@ import java.util.Locale;
 public class BookDao extends BaseDao{
     public List<Book> getBooksDiscounted() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0")
+                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 limit 5")
                         .mapToBean(Book.class)
                         .list()
         );

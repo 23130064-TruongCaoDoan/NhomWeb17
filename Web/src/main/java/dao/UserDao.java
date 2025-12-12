@@ -2,12 +2,22 @@ package dao;
 
 import model.User;
 
+import java.util.List;
+
 public class UserDao extends BaseDao {
-    public  User finduser(String username) {
+    public User finduser(String username) {
         return getJdbi().withHandle(handle ->
-                    handle.createQuery("select * from USER where phone=:username OR email=:username")
-                            .bind("username", username).mapToBean(User.class).findFirst().orElse(null)
-    );
+                handle.createQuery("select * from USER where phone=:username OR email=:username")
+                        .bind("username", username).mapToBean(User.class).findFirst().orElse(null)
+        );
+    }
+
+    public List<User> getListUser() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM User")
+                        .mapToBean(User.class)
+                        .list()
+        );
     }
 
     public static void main(String[] args) {
@@ -20,4 +30,5 @@ public class UserDao extends BaseDao {
                 handle.createUpdate("insert into USER(name,email,password_hash) values(:username, :email, :password)").bind("username", fullname).bind("email", email).bind("password", password).execute()
         );
     }
+
 }
