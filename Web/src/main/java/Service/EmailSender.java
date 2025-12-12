@@ -1,4 +1,4 @@
-package model;
+package Service;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -21,13 +21,12 @@ public class EmailSender {
         return props;
     }
 
-    public static void sendVerificationEmail(String toEmail, String username, String verificationLink) {
+    public void sendVerificationEmail(String toEmail, String title, String username, String verificationLink) {
         Properties mailProps = loadMailProperties();
 
         String fromEmail = mailProps.getProperty("mail.from");
         String password = mailProps.getProperty("mail.password");
 
-        // Cấu hình SMTP từ properties
         Properties props = new Properties();
         props.put("mail.smtp.auth", mailProps.getProperty("mail.smtp.auth"));
         props.put("mail.smtp.starttls.enable", mailProps.getProperty("mail.smtp.starttls.enable"));
@@ -45,15 +44,14 @@ public class EmailSender {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromEmail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("Xác nhận tài khoản trên Website");
+            message.setSubject(title);
 
             String htmlContent = "<h2>Xin chào " + username + ",</h2>"
                     + "<p>Cảm ơn bạn đã đăng ký!</p>"
-                    + "<p>Nhấp nút để xác nhận:</p>"
+                    + "<p>Mã xác thực tài khoản:</p>"
                     + "<p style=\"text-align: center;\">"
-                    + "<a href=\"" + verificationLink + "\" style=\"background-color: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px;\">Xác Nhận Ngay</a>"
-                    + "</p>"
-                    + "<p>Hoặc link: " + verificationLink + "</p>";
+                    + "<div style=\"background-color: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px;\">"+verificationLink+"</a>"
+                    + "</p>";
 
             message.setContent(htmlContent, "text/html; charset=utf-8");
 

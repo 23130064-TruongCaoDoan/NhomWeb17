@@ -21,9 +21,6 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookService bookService = new BookService();
-        List<Book> list = bookService.getBooksDiscounted();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+
     }
 }
