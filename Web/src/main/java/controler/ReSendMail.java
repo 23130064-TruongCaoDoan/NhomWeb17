@@ -17,17 +17,26 @@ public class ReSendMail extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Token16 token =new Token16();
-        EmailSender emailSender = new EmailSender();
-        String verifyCode=token.generateToken16();
-        session.setAttribute("verifyCode", verifyCode);
+        HttpSession session = request.getSession(false);
         String email = session.getAttribute("email").toString();
         String fullname = session.getAttribute("fullname").toString();
-        String password = session.getAttribute("password").toString();
-        emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode);
+        if (session == null ||
+                email == null ||
+                fullname == null) {
 
-        request.getRequestDispatcher("errol.jsp").forward(request,response);
+            request.setAttribute("type", "danger");
+            request.setAttribute("message", "Phiên xác thực đã hết hạn. Vui lòng đăng ký lại.");
+            request.getRequestDispatcher("errol.jsp").forward(request, response);
+            return;
+        }
+        Token16 token = new Token16();
+        EmailSender emailSender = new EmailSender();
+        String verifyCode = token.generateToken16();
+        session.setAttribute("verifyCode", verifyCode);
+        emailSender.sendVerificationEmail(email, "Mã xác thực tài khoản", fullname, verifyCode);
+        request.setAttribute("showOTP", true);
+        request.setAttribute("error", "Đã gửi lại mã");
+        request.getRequestDispatcher("errol.jsp").forward(request, response);
 
     }
 }

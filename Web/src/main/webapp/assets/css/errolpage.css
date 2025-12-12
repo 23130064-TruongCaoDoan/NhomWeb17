@@ -175,4 +175,8 @@
     border-radius: 8px;
     cursor: pointer;
 }
+.btn-confirm:hover, .btn-resend:hover{
+    transform: translateY(-2px);
+}
+
 

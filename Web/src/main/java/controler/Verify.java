@@ -30,7 +30,6 @@ public class Verify extends HttpServlet {
         String otp =request.getParameter("otp");
         UserService userService = new UserService();
         if (verifyCode == null || email == null || fullname == null || password == null) {
-            session.invalidate(); // dọn rác luôn
             request.setAttribute("message", "Phiên xác thực không hợp lệ. Vui lòng đăng ký lại.");
             request.setAttribute("type", "danger");
             request.getRequestDispatcher("errol.jsp").forward(request, response);
@@ -39,7 +38,6 @@ public class Verify extends HttpServlet {
 
         if(otp.isEmpty()){
             request.setAttribute("showOTP", true);
-            request.setAttribute("email", email);
             request.setAttribute("error", "Vui lòng nhập mã xác thực!");
             request.getRequestDispatcher("errol.jsp").forward(request, response);
             return;
@@ -54,7 +52,6 @@ public class Verify extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             request.setAttribute("showOTP", true);
-            request.setAttribute("email", email);
             request.setAttribute("error", "Mã xác thực không đúng!");
             request.getRequestDispatcher("errol.jsp").forward(request, response);
         }

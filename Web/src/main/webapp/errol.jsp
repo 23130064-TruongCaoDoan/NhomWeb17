@@ -31,8 +31,7 @@
                 <div style="color: red">${error}</div>
             </form>
 
-            <form action="resend" method="post">
-                <input type="hidden" name="email" value="${email}">
+            <form action="ReSendMail" method="post">
                 <button type="submit" class="btn-resend">Gửi lại mã</button>
             </form>
         </div>

@@ -35,14 +35,12 @@ public class SignupServlet extends HttpServlet {
             session.setAttribute("password", password);
             emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode);
             request.setAttribute("showOTP", true);
-            request.setAttribute("email", email);
             request.getRequestDispatcher("errol.jsp").forward(request, response);
         }
         else{
             request.setAttribute("type","danger");
             request.setAttribute("message","Tài khoản đã tồn tại");
             request.setAttribute("fullname",fullname);
-            request.setAttribute("email",email);
             request.setAttribute("password",password);
             request.setAttribute("confirmPassword",confirmPassword);
             request.getRequestDispatcher("errol.jsp").forward(request, response);
