@@ -20,8 +20,6 @@ public class User {
 
     private boolean status;
     private String email;
-    private boolean active;
-    private String token;
 
     public int getId() {
         return id;
@@ -103,21 +101,6 @@ public class User {
         this.email = email;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     @Override
     public String toString() {
