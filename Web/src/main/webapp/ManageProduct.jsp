@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,191 +75,85 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
+                        <c:forEach var="p" items="${lsbook}">
+                            <tr>
+                                <td>${p.book_code}</td>
+                                <td>${p.title}</td>
+                                <td>${p.author}</td>
+                                <td>${p.price}</td>
+                                <td>${p.stock}</td>
+                                <td>${p.type}</td>
+                                <td>${p.age}+</td>
+                                <td><img src="${p.coverImgUrl}" width="60"></td>
+                                <td><i class="fa-solid fa-pen sua"></i>
+                                    <i class="fa-solid fa-trash xoa"></i></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div id="overlay"></div>
-        <form id="bookForm">
+        <form id="bookForm" method="post" enctype="multipart/form-data">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Mã Sách</label>
-                    <input type="text" id="code" placeholder="Nhập mã sách" required>
+                    <input type="text" id="code" name="code" placeholder="Nhập mã sách" required>
                 </div>
 
                 <div class="form-group">
                     <label>Tên sách</label>
-                    <input type="text" id="title" placeholder="Nhập tên sách">
+                    <input type="text" id="title" name="title" placeholder="Nhập tên sách">
                 </div>
 
                 <div class="form-group">
                     <label>Tác giả</label>
-                    <input type="text" id="author" placeholder="Tên tác giả">
+                    <input type="text" id="author" name="author" placeholder="Tên tác giả">
                 </div>
 
                 <div class="form-group">
                     <label>Số lượng</label>
-                    <input type="number" id="quantity" placeholder="VD: 50" required>
+                    <input type="number" id="quantity" name="stock" placeholder="VD: 50" required>
                 </div>
                 <div class="form-group">
                     <label>Ảnh bìa</label>
-                    <input type="text" id="img-main" placeholder="link ảnh" required>
+                    <input type="file" id="img-main" name="img-main" accept="image/*" placeholder="link ảnh" required>
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh chi tiết</label>
-                    <input type="text" id="img" placeholder="VD: link ảnh 1, link ảnh 2..." required>
+                    <input type="file" id="img" name="img" accept="image/*" placeholder="VD: link ảnh 1, link ảnh 2..." required multiple>
                 </div>
                 <div class="form-group">
                     <label>Loại sách</label>
-                    <input type="text" id="type" placeholder="Truyện tranh, sách ảnh...." required>
+                    <input type="text" id="type" name="type" placeholder="Truyện tranh, sách ảnh...." required>
                 </div>
                 <div class="form-group">
                     <label>Nhà xuất bản</label>
-                    <input type="text" id="publisher" placeholder="Tên nhà xuất bản" required>
+                    <input type="text" id="publisher" name="publisher" placeholder="Tên nhà xuất bản" required>
                 </div>
                 <div class="form-group">
                     <label>Trọng lượng sách</label>
-                    <input type="number" id="weight" placeholder="VD: 10 gram">
+                    <input type="number" id="weight" name="weight" placeholder="VD: 10 gram">
                 </div>
                 <div class="form-group">
                     <label>Kích thước</label>
-                    <input type="text" id="size" placeholder="VD: 17x14">
+                    <input type="text" id="size" name="size" placeholder="VD: 17x14">
                 </div>
                 <div class="form-group">
                     <label>Số Trang</label>
-                    <input type="number" id="page_number" placeholder="VD: 30">
+                    <input type="number" id="page_number" name="pageNumber" placeholder="VD: 30">
                 </div>
                 <div class="form-group-inline">
                     <div>
                         <label>Ngày xuất bản</label>
-                        <input type="date" id="start_date" required>
+                        <input type="date" id="start_date" name="startDate"  required>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea name="" id="description" cols="10" rows="4" placeholder="mô tả về sách"></textarea>
+                <textarea name="decription" id="description" cols="10" rows="4" placeholder="mô tả về sách"></textarea>
             </div>
             <button type="submit" class="btn-save">Thêm sản phẩm</button>
         </form>

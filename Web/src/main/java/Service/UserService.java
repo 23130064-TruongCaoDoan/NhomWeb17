@@ -30,4 +30,5 @@ public class UserService {
     public void addUser(String fullname, String email, String password) {
         userDao.addUser(fullname,email, password);
     }
+
 }
