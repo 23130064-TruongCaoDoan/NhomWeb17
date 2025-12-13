@@ -15,4 +15,10 @@ public class BookService {
     public Book getBooksById(int id){
         return hd.getBookById(id);
     }
+    public List<Book> getBookRecommendInDetail(String type){
+        return hd.getBookRecommendInDetail(type);
+    }
+    public List<Book> getBooksNew(){
+        return hd.getBooksNew();
+    }
 }

@@ -52,14 +52,14 @@
     float: none;
     flex-grow: 1;
     text-align: center;
+    width: 200px;
+    margin-top: -20px;
 }
 
 .detail-container .detail .main-img img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    transform: scale(1.1);
-
 }
 .detail-container .detail .describe{
     width: 44%;
@@ -72,10 +72,12 @@
 
 .detail-container .detail .book-name{
     float: left;
+    text-align: left;
     font-size: 30px;
     margin-bottom: 10px;
     color: #0d3164;
     font-weight: bold;
+    margin-top: 14px;
 }
 .detail-container .detail .rating{
     float: left;

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Book {
     private int id;
-    private String model;
+    private String bookCode;
     private String title;
     private String author;
     private double price;
@@ -32,12 +32,12 @@ public class Book {
     }
 
     // Constructor đầy đủ
-    public Book(int id, String model, String title, String author, double price, double priceDiscounted,
+    public Book(int id, String bookCode, String title, String author, double price, double priceDiscounted,
                 String type, int age, String coverImgUrl, String description, String publisher,
                 String provider, int publishedDate, double weight, String bookSize,
                 int pagesNumber, String format, boolean isSell,  LocalDate add_date, int quantitySold, int stock) {
         this.id = id;
-        this.model = model;
+        this.bookCode = bookCode;
         this.title = title;
         this.author = author;
         this.price = price;
@@ -62,8 +62,8 @@ public class Book {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public String getModel() { return model; }
-    public void setModel(String model) { this.model = model; }
+    public String getBookCode() { return bookCode; }
+    public void setBookCode(String bookCode) { this.bookCode = bookCode; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
@@ -127,7 +127,7 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "id='" + id + '\'' +
-                ", model='" + model + '\'' +
+                ", model='" + bookCode + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", price=" + price +

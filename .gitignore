@@ -12,7 +12,7 @@ target/
 *.iws
 *.iml
 *.ipr
-./src/main/resources/db.properties
+
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -38,4 +38,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-db.properties/
+db.properties
+.idea/
+*.iml

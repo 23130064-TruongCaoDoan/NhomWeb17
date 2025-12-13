@@ -113,12 +113,12 @@
                     </div>
                 </div>
                 <div class="describe">
-                    <p class="book-name">365 Truyện kể hằng đêm 1</p>
+                    <p class="book-name">${book.title}</p>
                     <p class="rating">⭐⭐⭐⭐⭐</p>
                     <div class="price-cart">
                         <div class="price">
-                            <strike>65.000 Đ</strike>
-                            <p>50.000 Đ</p>
+                            <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
+                            <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
                         </div>
                         <div class="quantity">
                             <div class="number-input">
@@ -133,57 +133,53 @@
                     </div>
                     <div class="program">
                         <p>🛡️ Đổi trả miễn phí 7 ngày</p>
-                        <p>🔥 Chỉ còn 35 cuốn</p>
+                        <p>🔥 Chỉ còn ${book.stock}</p>
+                        <p>Đã bán: ${book.quantitySold}</p>
                     </div>
                     <div class="product-info">
                         <h3>Thông tin chi tiết</h3>
                         <div class="info-row">
                             <span class="label">Mã hàng</span>
-                            <span class="value">8936067604153</span>
+                            <span class="value">${book.bookCode}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Tên Nhà Cung Cấp</span>
-                            <span class="value">Minh Long</span>
+                            <span class="value">${book.provider}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Tác giả</span>
-                            <span class="value">Lưu Hồng Hà</span>
+                            <span class="value">${book.author}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">NXB</span>
-                            <span class="value">Mỹ Thuật</span>
+                            <span class="value">${book.publisher}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Năm XB</span>
-                            <span class="value">2021</span>
+                            <span class="value">${book.publishedDate}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Trọng lượng (gr)</span>
-                            <span class="value">371</span>
+                            <span class="value">${book.weight}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Kích Thước Bao Bì</span>
-                            <span class="value">23 x 17 x 1.3 cm</span>
+                            <span class="value">${book.bookSize}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Số trang</span>
-                            <span class="value">216</span>
+                            <span class="value">${book.pagesNumber}</span>
                         </div>
                         <div class="info-row">
                             <span class="label">Hình thức</span>
-                            <span class="value">Bìa Mềm</span>
+                            <span class="value">${book.format}</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="book-content">
                 <h5>📖 Mô tả sách: </h5>
-                <p>
-                    "365 Truyện kể hằng đêm 1" là tuyển tập các câu chuyện cổ tích, ngụ ngôn nhẹ nhàng và những câu chuyện về cuộc sống gần gũi (thế giới động vật, thiên nhiên, gia đình). Sách được biên soạn với mục đích giáo dục sớm, mỗi truyện đều chứa đựng một bài học nhỏ về lòng dũng cảm, sự sẻ chia, tình yêu thương và tôn trọng.
-                </p>
-                <p>
-                    Cuốn sách là chìa khóa giúp cha mẹ xây dựng thói quen đọc sách cho con, biến giờ đi ngủ thành khoảnh khắc gắn kết tuyệt vời.
-                </p>
+                <p>${book.description}</p>
             </div>
         </div>
         <div class="reviews-section">
@@ -291,51 +287,23 @@
             </div>
             <div class="slogan"><h3>Những quyển sách có thể bạn sẽ thích</h3></div>
             <div class="list-product">
-                <div class="card">
-                    <img src="assets/img/books/CoTichTheGioi.jpg" alt="" />
-                    <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/books/guongDungCam.png" alt="" />
-                    <p class="book-name">Gương Dũng Cảm</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/books/ThoiQuenTot.jpg" alt="" />
-                    <p class="book-name">Bồi dưỡng thói quen tốt</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/books/suThanVietNam.jpg" alt="" />
-                    <p class="book-name">Sứ Thần Việt Nam</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/books/guongHieuHoc.jpg" alt="" />
-                    <p class="book-name">Gương hiếu học</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
+                <c:forEach var="book" items="${bookListRe}" begin="0" end="4">
+                    <a href="productDetail?id=${book.id}&type=${book.type}">
+                        <div class="card">
+                            <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                            <p class="book-name">${book.title}</p>
+                            <p class="rating">
+                                ⭐⭐⭐⭐⭐
+                            </p>
+                            <div class="price-cart">
+                                <p class="price">
+                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                </p>
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </div></a>
+                </c:forEach>
             </div>
         </div>
     </main>
