@@ -71,7 +71,9 @@
     font-weight: bold;
     color: #003366;
     margin: 10px 0 5px 0;
-    height: 44px;
+    height: 51px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card .book-name:hover{
@@ -105,10 +107,10 @@
     margin-bottom: 20px;
     font-family: "Lobster", sans-serif;
 }
-.sale .price{
+.card .price{
     margin-left: 22%;
 }
-.sale .price s{
+.card .price s{
     color: gray;
 }
 .sachh .bt{
@@ -273,4 +275,6 @@
     width: 100px;
 
 }
-
+a{
+    text-decoration: none;
+}

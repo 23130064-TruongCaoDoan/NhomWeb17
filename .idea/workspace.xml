@@ -11,9 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/HomeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/HomeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/img/books/minhlongbook-vn-2025-12-10.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +71,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.BookDao.executor&quot;: &quot;Run&quot;,
     &quot;Application.HomeDao.executor&quot;: &quot;Run&quot;,
     &quot;Application.UserDao.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -316,6 +316,8 @@
       <workItem from="1765384020244" duration="282000" />
       <workItem from="1765428688410" duration="5000" />
       <workItem from="1765456455236" duration="919000" />
+      <workItem from="1765523446348" duration="9884000" />
+      <workItem from="1765568351992" duration="1250000" />
     </task>
     <servers />
   </component>
