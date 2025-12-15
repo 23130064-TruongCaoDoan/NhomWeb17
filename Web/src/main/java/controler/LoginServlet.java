@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                oldSession.invalidate();
            }
            HttpSession session = request.getSession();
-           session.setAttribute("user",user.getName());
+           session.setAttribute("user",user);
            response.sendRedirect("home");
        }
        else{
