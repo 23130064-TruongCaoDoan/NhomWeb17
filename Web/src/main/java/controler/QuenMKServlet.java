@@ -1,11 +1,14 @@
 package controler;
 
-import Service.EmailSender;
+import Util.EmailSender;
 import Service.UserService;
+import Util.PasswordUtil;
+import Util.Token8;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.User;
+import org.springframework.security.core.token.TokenService;
 
 import java.io.IOException;
 
@@ -19,10 +22,14 @@ public class QuenMKServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email=request.getParameter("emailMK");
         UserService userService=new UserService();
+        Token8 token8=new Token8();
+        PasswordUtil passwordUtil=new PasswordUtil();
         if(userService.checkExit(email)){
             User user =userService.findUser(email);
             EmailSender  emailSender=new EmailSender();
-            emailSender.sendVerificationEmail(email,"Mật khẩu khôi phục",user.getName(), user.getPassword_hash(), "Mật khẩu:","Vui lòng không cung cấp cho bất cứ ai");
+            String pass=token8.generateToken8();
+            userService.updatePass(email,passwordUtil.hashPassword(pass));
+            emailSender.sendVerificationEmail(email,"Mật khẩu khôi phục",user.getName(), pass, "Mật khẩu:","Vui lòng không cung cấp cho bất cứ ai");
             request.setAttribute("message", "Mật khẩu đã được gửi tới email của bạn");
         }
         else{

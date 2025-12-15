@@ -1,12 +1,11 @@
 package controler;
 
-import Service.Token16;
+import Util.Token8;
 import Service.UserService;
-import jakarta.mail.Session;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import Service.EmailSender;
+import Util.EmailSender;
 
 import java.io.IOException;
 
@@ -25,10 +24,10 @@ public class SignupServlet extends HttpServlet {
         String confirmPassword = request.getParameter("confirm-password")==null?"":request.getParameter("confirm-password");
         UserService userService = new UserService();
         EmailSender emailSender =new EmailSender();
-        Token16 token = new Token16();
+        Token8 token = new Token8();
         HttpSession session = request.getSession();
         if(!userService.checkExit(email)&&(password.equals(confirmPassword))){
-            String verifyCode=token.generateToken16();
+            String verifyCode=token.generateToken8();
             session.setAttribute("verifyCode", verifyCode);
             session.setAttribute("email", email);
             session.setAttribute("fullname", fullname);
