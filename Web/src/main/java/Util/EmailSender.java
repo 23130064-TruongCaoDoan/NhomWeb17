@@ -1,4 +1,4 @@
-package Service;
+package Util;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;

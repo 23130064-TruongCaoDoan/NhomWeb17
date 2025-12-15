@@ -1,5 +1,6 @@
 package Service;
 
+import Util.PasswordUtil;
 import dao.UserDao;
 import model.User;
 
@@ -16,7 +17,8 @@ public class UserService {
     }
 
     public boolean checkPass(User user, String password) {
-        return user.getPassword_hash().equals(password);
+        PasswordUtil passwordUtil = new PasswordUtil();
+        return passwordUtil.checkPassword(password,user.getPassword_hash());
     }
 
     public boolean checkExit(String email) {
@@ -32,4 +34,9 @@ public class UserService {
         userDao.addUser(fullname, email, password);
     }
 
+    public void updatePass(String email, String password) {
+        if (checkExit(email)) {
+            userDao.updatePass(password);
+        }
+    }
 }

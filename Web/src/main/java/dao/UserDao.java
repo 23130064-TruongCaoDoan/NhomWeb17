@@ -31,4 +31,9 @@ public class UserDao extends BaseDao {
         );
     }
 
+    public void updatePass(String password) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("update USER set password_hash=:password").bind("password", password).execute()
+        );
+    }
 }
