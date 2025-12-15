@@ -21,7 +21,7 @@ public class EmailSender {
         return props;
     }
 
-    public void sendVerificationEmail(String toEmail, String title, String username, String verificationLink) {
+    public void sendVerificationEmail(String toEmail, String title, String username, String verificationLink, String content,String thanks) {
         Properties mailProps = loadMailProperties();
 
         String fromEmail = mailProps.getProperty("mail.from");
@@ -47,8 +47,8 @@ public class EmailSender {
             message.setSubject(title);
 
             String htmlContent = "<h2>Xin chào " + username + ",</h2>"
-                    + "<p>Cảm ơn bạn đã đăng ký!</p>"
-                    + "<p>Mã xác thực tài khoản:</p>"
+                    + "<p>"+thanks+"!</p>"
+                    + "<p>"+content+":</p>"
                     + "<p style=\"text-align: center;\">"
                     + "<div style=\"background-color: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px;\">"+verificationLink+"</a>"
                     + "</p>";

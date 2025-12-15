@@ -21,4 +21,7 @@ public class BookService {
     public List<Book> getBooksNew(){
         return hd.getBooksNew();
     }
+
+//    public List<Book> getAllBook() {
+//    }
 }

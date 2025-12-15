@@ -33,7 +33,7 @@ public class SignupServlet extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("fullname", fullname);
             session.setAttribute("password", password);
-            emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode);
+            emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
             request.setAttribute("showOTP", true);
             request.getRequestDispatcher("errol.jsp").forward(request, response);
         }
