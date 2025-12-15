@@ -22,7 +22,7 @@ public class QuenMKServlet extends HttpServlet {
         if(userService.checkExit(email)){
             User user =userService.findUser(email);
             EmailSender  emailSender=new EmailSender();
-            emailSender.sendVerificationEmail(email,"Mật khẩu khôi phục","email", user.getPassword_hash(), "Mật khẩu:","Vui lòng không cung cấp cho bất cứ ai");
+            emailSender.sendVerificationEmail(email,"Mật khẩu khôi phục",user.getName(), user.getPassword_hash(), "Mật khẩu:","Vui lòng không cung cấp cho bất cứ ai");
             request.setAttribute("message", "Mật khẩu đã được gửi tới email của bạn");
         }
         else{
