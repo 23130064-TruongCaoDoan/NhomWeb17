@@ -1,10 +1,8 @@
 package dao;
-import com.mysql.cj.protocol.a.LocalDateValueEncoder;
 import model.Book;
+import model.CommentView;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Locale;
 
 public class BookDao extends BaseDao{
     public List<Book> getBooksDiscounted() {
@@ -39,6 +37,7 @@ public class BookDao extends BaseDao{
                         .list()
         );
     }
+
 
 
 }

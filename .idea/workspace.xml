@@ -11,8 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Web/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/ProductDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/ProductDetailServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/ProductManageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/ProductManageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +79,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.BookDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CommentDao.executor&quot;: &quot;Run&quot;,
     &quot;Application.HomeDao.executor&quot;: &quot;Run&quot;,
     &quot;Application.UserDao.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -97,7 +105,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -318,6 +326,15 @@
       <workItem from="1765456455236" duration="919000" />
       <workItem from="1765523446348" duration="9884000" />
       <workItem from="1765568351992" duration="1250000" />
+      <workItem from="1765607441275" duration="759000" />
+      <workItem from="1765608847129" duration="6000" />
+      <workItem from="1765792041797" duration="12000" />
+      <workItem from="1765792056829" duration="84000" />
+      <workItem from="1765792162606" duration="278000" />
+      <workItem from="1765793389148" duration="187000" />
+      <workItem from="1765803416252" duration="6177000" />
+      <workItem from="1765813513251" duration="3410000" />
+      <workItem from="1765818296148" duration="318000" />
     </task>
     <servers />
   </component>

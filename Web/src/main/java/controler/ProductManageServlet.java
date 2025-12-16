@@ -18,9 +18,9 @@ public class ProductManageServlet extends HttpServlet {
     BookService bookService = new BookService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> lsBook = bookService.getAllBook();
-        request.setAttribute("lsbook",lsBook);
-        request.getRequestDispatcher("ManageProduct.jsp").forward(request,response);
+//        List<Book> lsBook = bookService.getAllBook();
+//        request.setAttribute("lsbook",lsBook);
+//        request.getRequestDispatcher("ManageProduct.jsp").forward(request,response);
     }
 
     @Override

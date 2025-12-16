@@ -71,9 +71,16 @@
                         <input type="search" placeholder="Tìm kiếm sách"/>
                         <button>Tìm Kiếm</button>
                     </div>
-                    <a href="login.jsp" class="button bt taikhoan">
+                    <a href="<c:url value="/login" />" class="button bt taikhoan">
                         <i class="fa-solid fa-user"></i>
-                        <span>Tài khoản</span>
+                        <span>
+                            <c:if test="${not empty user}">
+                                ${user}
+                            </c:if>
+                            <c:if test="${empty user}">
+                                Tài khoản
+                            </c:if>
+                        </span>
                     </a>
                     <a href="shoppingCart.jsp" class="button bt gio">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -204,18 +211,19 @@
                 </div>
             </div>
 
-            <div id="reviewForm">
+            <form id="reviewForm" action=""${pageContext.request.contextPath}/productDetail"" method="post">
                 <h3>Viết đánh giá</h3>
-                <select id="reviewStars">
-                    <option value="5">5 ★★★★★</option>
-                    <option value="4">4 ★★★★</option>
-                    <option value="3">3 ★★★</option>
-                    <option value="2">2 ★★</option>
-                    <option value="1">1 ★</option>
+                <input type="hidden" name="bookId" value="${book.id}">
+                <select id="reviewStars" name="rating" required>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="3">★★★</option>
+                    <option value="2">★★</option>
+                    <option value="1">★</option>
                 </select>
-                <textarea id="reviewText" rows="4" placeholder="Nội dung đánh giá..."></textarea>
-                <button id="submitReview">Hoàn thành</button>
-            </div>
+                <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..." required></textarea>
+                <button type="submit" id="submitReview">Hoàn thành</button>
+            </form>
 
 
             <div class="review-navigation">
@@ -234,30 +242,19 @@
             </div>
 
             <div class="comment-list">
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Lê Vân Trường</span>
-                        <span class="comment-date">02/14/2025</span>
+                <c:forEach var="cmt" items="${commentViewList}" >
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <span class="comment-author">${cmt.name}</span>
+                            <span class="comment-date">${cmt.createAt}</span>
+                        </div>
+                        <p class="comment-rating" style="color: #FFD700">
+                            <c:forEach begin="1" end="${cmt.rating}">
+                            ★
+                            </c:forEach></p>
+                        <p class="comment-text">${cmt.content}</p>
                     </div>
-                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
-                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
-                </div>
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Trương Cao Đòn</span>
-                        <span class="comment-date">02/14/2025</span>
-                    </div>
-                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
-                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
-                </div>
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <span class="comment-author">Nguyễn Gia Hi</span>
-                        <span class="comment-date">02/14/2025</span>
-                    </div>
-                    <p class="comment-rating" style="color: #FFD700">★★★★★</p>
-                    <p class="comment-text">"Tuyệt vời! Sách giúp bé ngủ ngon hơn."</p>
-                </div>
+                </c:forEach>
 
             </div>
 

@@ -3,6 +3,7 @@ package Service;
 import dao.BookDao;
 import dao.UserDao;
 import model.Book;
+import model.CommentView;
 import model.User;
 
 import java.util.List;
@@ -21,4 +22,5 @@ public class BookService {
     public List<Book> getBooksNew(){
         return hd.getBooksNew();
     }
+
 }
