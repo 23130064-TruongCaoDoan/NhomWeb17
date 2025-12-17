@@ -1,138 +1,171 @@
+/* ===== LAYOUT CHÍNH ===== */
 .content {
-  display: grid;
-  grid-template-columns: 20vw 1fr;
-
+    display: grid;
+    grid-template-columns: 20vw 1fr;
+    gap: 30px;
 }
 
-
+/* ===== LIST PRODUCT ===== */
 .listProducts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 40px;
+    padding-right: 30px;
 }
 
+/* ===== CARD ===== */
 .card {
-  background-color: #fff;
-  width: 200px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
     font-size: 14px;
-}
-
-.card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-
+    border-radius: 6px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
+    transform: translateY(-4px);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 10px;
     cursor: pointer;
+}
 
+/* ===== IMAGE ===== */
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
 }
-.price-cart {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 8px;
-}
+
+/* ===== BOOK NAME ===== */
 .card .book-name {
-  font-weight: bold;
-  color: #003366;
-  margin: 10px 0 5px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    font-weight: 600;
+    color: #003366;
+    margin: 10px 0 5px;
+    line-height: 1.4;
+    min-height: calc(1.4em * 2);
 }
 
-.card .book-name:hover{
+.card .book-name:hover {
     text-decoration: underline;
 }
+
+/* ===== RATING ===== */
 .card .rating {
-  color: gold;
-  margin: 5px 0;
+    color: gold;
+    margin: 5px 0;
+}
+
+/* ===== PRICE + CART ===== */
+.price-cart {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
 }
 
 .card .price {
-  color: #008000;
-  margin-left: 35%;
-  font-weight: bold;
+    justify-self: center;
 }
 
+/* ===== PRICE ===== */
+.card .price {
+    color: #008000;
+    font-weight: bold;
+    margin: 0;
+    gap: 10px;
+}
+
+.card .price s {
+    color: gray;
+    font-weight: normal;
+    margin-right: 5px;
+}
+
+/* ===== CART ICON ===== */
 .card i {
-  color: #003366;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 20px;
+    color: #003366;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .card i:hover {
-  color: #008000;
+    color: #008000;
 }
 
+/* ===== BANNER ===== */
 .page-wrapper .banner {
-  width: 100%;
-  min-height: 20vh;
-  background-color: #6899c9;
-  margin-bottom: 5vh;
-}
-.page-wrapper .banner h1 {
-  color: white;
-  margin-left: 14vw;
-  margin-top: 7vh;
+    width: 100%;
+    min-height: 20vh;
+    background-color: #6899c9;
+    margin-bottom: 5vh;
 }
 
+.page-wrapper .banner h1 {
+    color: white;
+    margin-left: 14vw;
+    margin-top: 7vh;
+}
+
+/* ===== FILTER ===== */
 .filter {
-  position: sticky;
-  top: 10px; 
-  border: 1px solid #eee;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  margin-left: 0.5vw;
-  padding: 20px;
-  margin-top: 2vh;
-  border-radius: 5px;
-  min-height: 10vh;
-  height: fit-content;
+    position: sticky;
+    top: 15px;
+    border: 1px solid #eee;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
+    padding: 20px;
+    border-radius: 6px;
+    height: fit-content;
 }
+
+.filter .filter-header {
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .filter .filter-options {
-  margin-top: 10px;
-  display: none; 
-  flex-wrap: wrap;
-  gap: 10px;
+    margin-top: 10px;
+    display: none;
+    gap: 10px;
 }
+
 .filter .filter-options button {
-    padding: 5px 10px;
+    padding: 6px 10px;
     border: 1px solid #aaa;
     border-radius: 4px;
-    width: 7vw;
-    background-color: white;
+    background: white;
     cursor: pointer;
-    color:#003366;
-    margin-left: 0.5vw;
+    color: #003366;
 }
+
 .filter .filter-options button:hover {
-  background-color: rgb(238, 238, 238);
+    background-color: #f1f1f1;
 }
-.filter .filter-title {
-  margin-left: 6vw;
-}
-.filter .filter-header {
-  margin-left: 1vw;
-  cursor: pointer;
-}
+
+/* ===== CLEAR FILTER ===== */
 .clear-filter {
-  border: none;
-  font-size: 14px;
-  font-weight: 700;
-  width: 10vw;
-  padding: 1vw;
-  border-radius: 50px;
-  margin-top: 2vh;
-  margin-left: 3.5vw;
-  cursor: pointer;
-  color: white;
-  background-color: #0d3164;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    background-color: #0d3164;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
+
 .clear-filter:hover {
-  background-color: rgb(255, 255, 255);
-  color:#0d3164;
-  border: solid black 1px;
+    background-color: white;
+    color: #0d3164;
+    border: 1px solid #0d3164;
+}
+
+/* ===== LINK ===== */
+a {
+    text-decoration: none;
 }

@@ -127,8 +127,13 @@
                         </c:forEach></p>
                     <div class="price-cart">
                         <div class="price">
-                            <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
-                            <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
+                            <c:if test="${book.priceDiscounted > 0}" >
+                                <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
+                                <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
+                            </c:if>
+                            <c:if test="${book.priceDiscounted == 0}" >
+                                <p><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
+                            </c:if>
                         </div>
                         <div class="quantity">
                             <div class="number-input">

@@ -25,7 +25,78 @@
 </head>
 <body>
 <div class="page-wrapper">
+<<<<<<< HEAD:Web/src/main/webapp/home.jsp
+    <div id="home-page">
+        <div id="page-header">
+            <div class="header-message">
+                <div class="message"></div>
+                <div class="messageBorder"></div>
+            </div>
+            <div class="container">
+                <div class="header-title">
+                    <a href="" class="logo">
+                        <img
+                                src="assets/img/logo/logoChinh.png"
+                                alt="Sách thiếu nhi cho bé"
+                        />
+                    </a>
+                </div>
+                <div class="header-menu">
+                    <a href="#" class="button bt"
+                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
+                    >
+                    <div class="button category">
+                        <a href="dsSanPham?page=1" class="button bt danhmuc">
+                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
+                        >
+                        <div class="danhMuc sach">
+                            <div class="item truyenTranh">
+                                <a href="dsSanPham.jsp" class="it truyen-tranh"
+                                ><span>Truyện tranh</span></a
+                                >
+                            </div>
+                            <div class="item anh">
+                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
+                            </div>
+                            <div class="item giaoDuc">
+                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
+                            </div>
+                            <div class="item toMau">
+                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" placeholder="Tìm kiếm sách"/>
+                        <button>Tìm Kiếm</button>
+                    </div>
+                    <a href="<c:url value="/login" />" class="button bt taikhoan">
+                        <i class="fa-solid fa-user"></i>
+                        <span>
+                            <c:if test="${not empty user}">
+                                ${user.getName()}
+                            </c:if>
+                            <c:if test="${empty user}">
+                                Tài khoản
+                            </c:if>
+                        </span>
+                    </a>
+                    <a href="shoppingCart.jsp" class="button bt gio">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng</span>
+                    </a>
+                    <a href="user-thongbao.jsp" class="button bt thongbao">
+                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                        <span>Thông báo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+=======
     <c:import url="headerUser.jsp"> </c:import>
+>>>>>>> 27f460416c163dc4468abee716e670c5fb2873cf:Web/src/main/webapp/user/home.jsp
     <div class="content">
         <div class="container">
             <div class="event-carousel">
@@ -50,12 +121,16 @@
                             <img src="${book.coverImgUrl}" alt="${book.title}"/>
                             <p class="book-name">${book.title}</p>
                             <p class="rating">
-                                ⭐⭐⭐⭐⭐
                             </p>
                             <div class="price-cart">
                                 <p class="price">
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted > 0}" >
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+                                    <c:if test="${book.priceDiscounted == 0}" >
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
                                 </p>
                                 <i class="fa-solid fa-cart-plus"></i>
                             </div>
@@ -76,12 +151,16 @@
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
                                 <p class="book-name">${book.title}</p>
                                 <p class="rating">
-                                    ⭐⭐⭐⭐⭐
                                 </p>
                                 <div class="price-cart">
                                     <p class="price">
-                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        <c:if test="${book.priceDiscounted > 0}" >
+                                            <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                            <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
+                                        <c:if test="${book.priceDiscounted == 0}" >
+                                            <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
                                     </p>
                                     <i class="fa-solid fa-cart-plus"></i>
                                 </div>

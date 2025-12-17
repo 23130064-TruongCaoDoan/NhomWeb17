@@ -147,6 +147,10 @@
 .detail-container .detail .price{
     line-height: 1.8px;
     margin-top: 15px;
+    color: #008000;
+}
+.detail-container .detail .price strike{
+    color: gray;
 }
 .detail-container .detail .program{
     margin-top: 10px;
@@ -187,7 +191,6 @@
     margin: 30px auto;
 
 }
-
 .detail-container .product-info h3 {
     font-size: 18px;
     font-weight: 700;
