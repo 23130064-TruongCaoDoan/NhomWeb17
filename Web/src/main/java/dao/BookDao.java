@@ -1,10 +1,11 @@
 package dao;
+
 import model.Book;
 import model.CommentView;
 
 import java.util.List;
 
-public class BookDao extends BaseDao{
+public class BookDao extends BaseDao {
     public List<Book> getBooksDiscounted() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1")
@@ -12,6 +13,7 @@ public class BookDao extends BaseDao{
                         .list()
         );
     }
+
     public List<Book> getBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
@@ -29,6 +31,7 @@ public class BookDao extends BaseDao{
                         .orElse(null)
         );
     }
+
     public List<Book> getBookRecommendInDetail(String type) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE type = :type AND is_sell=1 ORDER BY quantity_sold DESC")
@@ -39,5 +42,9 @@ public class BookDao extends BaseDao{
     }
 
 
-
+    public List<Book> findListBook(String search) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM BOOKS WHERE title like :search or author like :search or type like :search").bind("search","%"+search+"%").mapToBean(Book.class).list()
+        );
+    }
 }

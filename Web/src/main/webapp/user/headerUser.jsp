@@ -47,11 +47,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="search">
+                <form action="search" method="get" class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="search" placeholder="Tìm kiếm sách"/>
-                    <button>Tìm Kiếm</button>
-                </div>
+                    <input type="search" name="bSearch" placeholder="Tìm kiếm sách"/>
+                    <button type="submit">Tìm Kiếm</button>
+                </form>
                 <a href="<c:url value="/login" />" class="button bt taikhoan">
                     <i class="fa-solid fa-user"></i>
                     <span>
