@@ -18,6 +18,10 @@ public class HomeServlet extends HttpServlet {
         List<Book> booksListNew = bookService.getBooksNew();
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            request.setAttribute("user", session.getAttribute("user"));
+        }
         request.getRequestDispatcher("user/home.jsp").forward(request, response);
     }
 

@@ -22,7 +22,7 @@ public class Book {
     private int pagesNumber;
     private String format;
     private boolean isSell;
-    private LocalDate add_date;
+    private String add_date;
     private int quantitySold;
     private int stock;
 
@@ -35,7 +35,7 @@ public class Book {
     public Book(int id, String bookCode, String title, String author, double price, double priceDiscounted,
                 String type, int age, String coverImgUrl, String description, String publisher,
                 String provider, int publishedDate, double weight, String bookSize,
-                int pagesNumber, String format, boolean isSell,  LocalDate add_date, int quantitySold, int stock) {
+                int pagesNumber, String format, boolean isSell,  String add_date, int quantitySold, int stock) {
         this.id = id;
         this.bookCode = bookCode;
         this.title = title;
@@ -113,8 +113,8 @@ public class Book {
     public boolean getSell() { return isSell; }
     public void setSell(boolean isSell) { this.isSell = isSell; }
 
-    public LocalDate getAdd_date() { return add_date; }
-    public void setAdd_date(LocalDate add_date) { this.add_date = add_date; }
+    public String getAdd_date() { return add_date; }
+    public void setAdd_date(String add_date) { this.add_date = add_date; }
 
     public int getQuantitySold() { return quantitySold; }
     public void setQuantitySold(int quantitySold) { this.quantitySold = quantitySold; }
