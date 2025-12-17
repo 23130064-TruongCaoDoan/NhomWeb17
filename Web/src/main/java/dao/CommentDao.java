@@ -39,7 +39,6 @@ public class CommentDao extends BaseDao{
                         .orElse(0.0)
         );
     }
-
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
         List<CommentView> comments = dao.getAllComment(2);

@@ -45,7 +45,7 @@
                     ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
                     >
                     <div class="button category">
-                        <a href="dsSanPham.jsp" class="button bt danhmuc">
+                        <a href="dsSanPham?page=1" class="button bt danhmuc">
                             <i class="fa-solid fa-list"></i><span>Danh mục</span></a
                         >
                         <div class="danhMuc sach">
@@ -117,12 +117,16 @@
                             <img src="${book.coverImgUrl}" alt="${book.title}"/>
                             <p class="book-name">${book.title}</p>
                             <p class="rating">
-                                ⭐⭐⭐⭐⭐
                             </p>
                             <div class="price-cart">
                                 <p class="price">
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted > 0}" >
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+                                    <c:if test="${book.priceDiscounted == 0}" >
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
                                 </p>
                                 <i class="fa-solid fa-cart-plus"></i>
                             </div>
@@ -143,12 +147,16 @@
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
                                 <p class="book-name">${book.title}</p>
                                 <p class="rating">
-                                    ⭐⭐⭐⭐⭐
                                 </p>
                                 <div class="price-cart">
                                     <p class="price">
-                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        <c:if test="${book.priceDiscounted > 0}" >
+                                            <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                            <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
+                                        <c:if test="${book.priceDiscounted == 0}" >
+                                            <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
                                     </p>
                                     <i class="fa-solid fa-cart-plus"></i>
                                 </div>
