@@ -22,6 +22,13 @@ public class BookService {
     public List<Book> getBooksNew(){
         return hd.getBooksNew();
     }
+    public List<Book> getAllBooks(int limit, int offset){
+        return hd.getAllBooks(limit, offset);
+    }
+    public List<Book> getAllBooks(){
+        return hd.getAllBooks();
+    }
+    public int countBooks(){return hd.countBooks();}
 
     public List<Book> findListBook(String search) {
         return hd.findListBook(search);
