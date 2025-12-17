@@ -94,7 +94,7 @@
                 </div>
                 <div class="error" style="color: red">${error}</div>
             </div>
-            <div class="forget"><a href="" class="qmk"><span>quên mật khẩu</span></a></div>
+            <div class="forget"><a href="" class="qmk"><span>Quên mật khẩu</span></a></div>
             <div class="buttonLoginAndSignUp">
                 <button type="submit" class="dangNhap">Đăng nhập</button>
                 <div class="signUp"><a href="<c:url value='dangki' />"><span>Đăng ký</span></a></div>

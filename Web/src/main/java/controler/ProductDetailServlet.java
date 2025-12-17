@@ -27,11 +27,13 @@ public class ProductDetailServlet extends HttpServlet {
 
         List<Book> bookListRe = bookService.getBookRecommendInDetail(type);
         List<CommentView> commentViewList = commentService.getCommentView(bookId);
+        Double averageRating = commentService.getAverageRating(bookId);
 
         request.setAttribute("book", book);
         request.setAttribute("bookListRe", bookListRe);
         request.setAttribute("commentViewList", commentViewList);
-        request.getRequestDispatcher("/productDetail.jsp").forward(request,response);;
+        request.setAttribute("averageRating", averageRating);
+        request.getRequestDispatcher("/productDetail.jsp").forward(request,response);
     }
 
     @Override

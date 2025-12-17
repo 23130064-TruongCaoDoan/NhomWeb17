@@ -121,7 +121,10 @@
                 </div>
                 <div class="describe">
                     <p class="book-name">${book.title}</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
+                    <p class="rating">
+                        <c:forEach begin="1" end="${averageRating}">
+                        ⭐
+                        </c:forEach></p>
                     <div class="price-cart">
                         <div class="price">
                             <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
@@ -193,8 +196,11 @@
 
             <div class="rating-summary">
                 <div class="rating-score">
-                    <h2>5</h2>
-                    <div class="stars">★★★★★</div>
+                    <h2>${averageRating}</h2>
+                    <div class="stars"style="color: #FFD700">
+                        <c:forEach begin="1" end="${averageRating}">
+                            ★
+                        </c:forEach></p></div>
                     <p>Dựa trên phần đánh giá</p>
                 </div>
 

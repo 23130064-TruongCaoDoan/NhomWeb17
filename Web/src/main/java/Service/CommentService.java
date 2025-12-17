@@ -14,4 +14,7 @@ public class CommentService {
     public void insertComment(int userId, int bookId, int rating, String content) {
         hd.insertComment(userId, bookId, rating, content);
     }
+    public Double getAverageRating(int bookId){
+        return hd.getAverageRating(bookId);
+    }
 }

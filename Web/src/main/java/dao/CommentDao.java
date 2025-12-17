@@ -30,6 +30,15 @@ public class CommentDao extends BaseDao{
                         .execute()
         );
     }
+    public Double getAverageRating(int bookId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT AVG(rating) FROM comments WHERE book_id=:book_id")
+                        .bind("book_id", bookId)
+                        .mapTo(double.class)
+                        .findOne()
+                        .orElse(0.0)
+        );
+    }
 
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
