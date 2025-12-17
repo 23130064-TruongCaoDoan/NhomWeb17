@@ -35,7 +35,7 @@ public class DanhMucServlet extends HttpServlet {
         request.setAttribute("bookList", bookList);
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages",totalPages);
-        request.getRequestDispatcher("dsSanPham.jsp").forward(request, response);
+        request.getRequestDispatcher("user/dsSanPham.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 }

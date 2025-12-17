@@ -30,8 +30,8 @@ public class BookService {
     }
     public int countBooks(){return hd.countBooks();}
 
-    public List<Book> findListBook(String search) {
-        return hd.findListBook(search);
+    public List<Book> findListBook(String search, int limit, int offset) {
+        return hd.findListBook(search, limit, offset);
     }
 
 }
