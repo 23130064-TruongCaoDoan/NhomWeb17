@@ -20,7 +20,7 @@ public class ProductManageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        List<Book> lsBook = bookService.getAllBook();
 //        request.setAttribute("lsbook",lsBook);
-//        request.getRequestDispatcher("ManageProduct.jsp").forward(request,response);
+//        request.getRequestDispatcher("admin/ManageProduct.jsp").forward(request,response);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("home");
             return;
         }
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("user/login.jsp").forward(request, response);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
            request.setAttribute("username",username);
            request.setAttribute("password",password);
            request.setAttribute("error","Vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu");
-           request.getRequestDispatcher("login.jsp").forward(request, response);
+           request.getRequestDispatcher("user/login.jsp").forward(request, response);
        }
     }
 }

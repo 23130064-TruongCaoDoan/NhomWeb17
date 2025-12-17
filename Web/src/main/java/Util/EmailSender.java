@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    private static Properties loadMailProperties() {
+    private Properties loadMailProperties() {
         Properties props = new Properties();
         try (InputStream input = EmailSender.class.getClassLoader().getResourceAsStream("email.properties")) {
             if (input == null) {

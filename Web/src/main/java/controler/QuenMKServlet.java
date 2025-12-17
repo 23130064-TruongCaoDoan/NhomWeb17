@@ -36,6 +36,6 @@ public class QuenMKServlet extends HttpServlet {
             request.setAttribute("openQMKPopup", true);
             request.setAttribute("errorMail", "Email này chưa được đăng ký");
         }
-        request.getRequestDispatcher("login.jsp").forward(request,response);
+        request.getRequestDispatcher("user/login.jsp").forward(request,response);
     }
 }

@@ -9,18 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/dsSanPham.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/dsSanPham.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/dsSanPham.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/productDetail.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -338,6 +327,7 @@
       <workItem from="1765852749210" duration="1592000" />
       <workItem from="1765949578752" duration="5049000" />
       <workItem from="1765963320830" duration="3831000" />
+      <workItem from="1765967353885" duration="177000" />
     </task>
     <servers />
   </component>

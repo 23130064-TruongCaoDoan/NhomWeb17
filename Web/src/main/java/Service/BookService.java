@@ -30,4 +30,7 @@ public class BookService {
     }
     public int countBooks(){return hd.countBooks();}
 
+    public List<Book> findListBook(String search) {
+        return hd.findListBook(search);
+    }
 }

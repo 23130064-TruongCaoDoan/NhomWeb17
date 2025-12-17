@@ -18,7 +18,7 @@ public class HomeServlet extends HttpServlet {
         List<Book> booksListNew = bookService.getBooksNew();
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("user/home.jsp").forward(request, response);
     }
 
     @Override
