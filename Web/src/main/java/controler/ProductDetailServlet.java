@@ -33,7 +33,7 @@ public class ProductDetailServlet extends HttpServlet {
         request.setAttribute("bookListRe", bookListRe);
         request.setAttribute("commentViewList", commentViewList);
         request.setAttribute("averageRating", averageRating);
-        request.getRequestDispatcher("/productDetail.jsp").forward(request,response);
+        request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ProductDetailServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         if (user == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
             return;
         }
 
