@@ -23,4 +23,7 @@ public class BookService {
         return hd.getBooksNew();
     }
 
+    public List<Book> findListBook(String search) {
+        return hd.findListBook(search);
+    }
 }
