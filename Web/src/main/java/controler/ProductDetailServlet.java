@@ -21,7 +21,7 @@ public class ProductDetailServlet extends HttpServlet {
         List<Book> bookListRe = bookService.getBookRecommendInDetail(type);
         request.setAttribute("book", book);
         request.setAttribute("bookListRe", bookListRe);
-        request.getRequestDispatcher("/productDetail.jsp").forward(request,response);;
+        request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);;
     }
 
     @Override
