@@ -26,7 +26,7 @@ public class ReSendMail extends HttpServlet {
 
             request.setAttribute("type", "danger");
             request.setAttribute("message", "Phiên xác thực đã hết hạn. Vui lòng đăng ký lại.");
-            request.getRequestDispatcher("errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
             return;
         }
         Token8 token = new Token8();
@@ -36,7 +36,7 @@ public class ReSendMail extends HttpServlet {
         emailSender.sendVerificationEmail(email, "Mã xác thực tài khoản", fullname, verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
         request.setAttribute("showOTP", true);
         request.setAttribute("error", "Đã gửi lại mã");
-        request.getRequestDispatcher("errol.jsp").forward(request, response);
+        request.getRequestDispatcher("user/errol.jsp").forward(request, response);
 
     }
 }
