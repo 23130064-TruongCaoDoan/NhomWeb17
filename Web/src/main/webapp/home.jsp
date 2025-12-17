@@ -74,7 +74,7 @@
                         <i class="fa-solid fa-user"></i>
                         <span>
                             <c:if test="${not empty user}">
-                                ${user}
+                                ${user.getName()}
                             </c:if>
                             <c:if test="${empty user}">
                                 Tài khoản
@@ -349,32 +349,35 @@
     </footer>
 </div>
 <script>
-    const carousel = document.querySelector('.event-carousel');
-    const slides = carousel.querySelectorAll('.slide');
-    const nextBtn = carousel.querySelector('.next');
-    const prevBtn = carousel.querySelector('.prev');
+    document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.querySelector('.event-carousel');
+        const slides = carousel.querySelectorAll('.slide');
+        const nextBtn = carousel.querySelector('.next');
+        const prevBtn = carousel.querySelector('.prev');
 
-    let index = 0;
-    const total = slides.length;
+        let index = 0;
+        const total = slides.length;
 
-    function showSlide(i) {
-        carousel.querySelector('.slides').style.transform = `translateX(-${i * 100}%)`;
-    }
+        function showSlide(i) {
+            carousel.querySelector('.slides').style.transform = `translateX(-${i * 100}%)`;
+        }
 
-    nextBtn.addEventListener('click', () => {
-        index = (index + 1) % total;
-        showSlide(index);
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % total;
+            showSlide(index);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + total) % total;
+            showSlide(index);
+        });
+
+        setInterval(() => {
+            index = (index + 1) % total;
+            showSlide(index);
+        }, 3000);
     });
 
-    prevBtn.addEventListener('click', () => {
-        index = (index - 1 + total) % total;
-        showSlide(index);
-    });
-
-    setInterval(() => {
-        index = (index + 1) % total;
-        showSlide(index);
-    }, 3000);
 
 </script>
 </body>

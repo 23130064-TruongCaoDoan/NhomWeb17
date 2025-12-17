@@ -565,7 +565,7 @@
         }
         if(money.checked){
             alert("Đặt hàng thành công!");
-            window.location.href = "home.html";
+            window.location.href = "home.jsp";
         }
     })
 

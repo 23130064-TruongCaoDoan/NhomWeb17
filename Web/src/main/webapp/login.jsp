@@ -88,8 +88,10 @@
         <form action="login" method="post" class="login">
             <div class="title">Đăng nhập</div>
             <div class="inputIfor">
-                <div class="khung user"><input value="${username}" type="text" id="iUser" name="user" placeholder="Số điện thoại hoặc email" required></div>
-                <div class="khung MK"><input value="${password}" type="password" id="iPass" name="password" placeholder="Mật khẩu" required>
+                <div class="khung user"><input value="${username}" type="text" id="iUser" name="user"
+                                               placeholder="Số điện thoại hoặc email" required></div>
+                <div class="khung MK"><input value="${password}" type="password" id="iPass" name="password"
+                                             placeholder="Mật khẩu" required>
                     <button type="button" class="show"><i class="fa-solid fa-eye "></i></button>
                 </div>
                 <div class="error" style="color: red">${error}</div>
@@ -153,46 +155,16 @@
     </div>
 </footer>
 <div class="overlay" id="overlay"></div>
-<form class="quenmk">
+<form action="quenMK" method="post" class="quenmk">
     <p>GỬI LẠI MẬT KHẨU</p>
     <div class="khung">
-        <input type="email" class="nhapemail" placeholder="Nhập email lấy lại mật khẩu">
-        <div class="error Email"></div>
+        <input type="email" name="emailMK" class="nhapemail" placeholder="Nhập email lấy lại mật khẩu" required>
+        <div class="errorEmail" style="color: red; font-size: 14px;margin-top: 5px">${errorMail}</div>
     </div>
-    <button class="send">Chấp nhận</button>
+    <button type="submit" class="send">Chấp nhận</button>
 </form>
 <script>
-    // const userInput = document.getElementById('iUser');
-    // const khungPass = document.querySelector(".MK")
-    // const btnLogin = document.querySelector('.dangNhap');
-    //
-    // const errorUser = document.querySelector('.User');
-    // const errorPass = document.querySelector('.Pass');
-    //
-    // btnLogin.addEventListener('click', (e) => {
-    //
-    //     let hasError = false;
-    //     if (userInput.value.trim() === '') {
-    //         userInput.style.border = '1px solid red';
-    //         errorUser.textContent = 'Vui lòng nhập tên đăng nhập hoặc email';
-    //         errorUser.style.color = 'red';
-    //         hasError = true;
-    //     } else {
-    //         userInput.style.border = '1px solid #0d3164';
-    //         errorUser.textContent = '';
-    //     }
-    //     if (passInput.value.trim() === '') {
-    //         khungPass.style.border = '1px solid red';
-    //         errorPass.textContent = 'Vui lòng nhập mật khẩu';
-    //         errorPass.style.color = 'red';
-    //         hasError = true;
-    //     } else {
-    //         passInput.style.border = '1px solid #0d3164';
-    //         errorPass.textContent = '';
-    //     }
-    //     if (!hasError) {
-    //     }
-    // });
+
     const passInput = document.getElementById('iPass');
     const bShow = document.querySelector(".show")
     bShow.addEventListener("click", function () {
@@ -213,27 +185,15 @@
         overlay.style.display = "block";
         popup.style.display = "block";
     });
-
     overlay.addEventListener('click', () => {
         overlay.style.display = "none";
         popup.style.display = "none";
     });
+    <c:if test="${openQMKPopup}">
+    overlay.style.display = "block";
+    popup.style.display = "block";
+    </c:if>
     const errorEmail = document.querySelector(".error.Email");
-
-    send.addEventListener('click', (e) => {
-        e.preventDefault();
-        const input =document.querySelector(".nhapemail").value.trim();
-        if (input === "") {
-            errorEmail.style.display="block"
-            errorEmail.textContent = "Vui lòng nhập email!";
-        } else {
-            errorEmail.style.display="none"
-            errorEmail.textContent = "";
-            overlay.style.display = "none";
-            popup.style.display = "none";
-            alert("Mật khẩu đã được gửi bên email của bạn");
-        }
-    });
     const successAlert = document.querySelector('.login-success-alert');
     if (successAlert) {
         setTimeout(() => {
@@ -243,7 +203,6 @@
             setTimeout(() => successAlert.remove(), 600);
         }, 2500);
     }
-
 
 
 </script>
