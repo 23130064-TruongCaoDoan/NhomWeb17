@@ -1,6 +1,7 @@
 package controler;
 
 import Service.UserService;
+import Util.PasswordUtil;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -29,6 +30,7 @@ public class Verify extends HttpServlet {
         String password = session.getAttribute("password").toString();
         String otp =request.getParameter("otp");
         UserService userService = new UserService();
+        PasswordUtil passwordUtil = new PasswordUtil();
         if (verifyCode == null || email == null || fullname == null || password == null) {
             request.setAttribute("message", "Phiên xác thực không hợp lệ. Vui lòng đăng ký lại.");
             request.setAttribute("type", "danger");
@@ -43,7 +45,7 @@ public class Verify extends HttpServlet {
             return;
         }
         if (otp.equals(verifyCode)) {
-            userService.addUser(fullname, email, password);
+            userService.addUser(fullname, email, passwordUtil.hashPassword(password));
             session.removeAttribute("verifyCode");
             session.removeAttribute("email");
             session.removeAttribute("fullname");

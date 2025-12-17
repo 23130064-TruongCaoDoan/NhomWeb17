@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/errolpage.css">
 </head>
 <body>
-<c:if test="${showOTP == true}">
+<c:if test="${showOTP}">
     <div id="otpModal" class="modal active">
         <div class="modal-content">
             <h3>Xác thực tài khoản</h3>

@@ -28,7 +28,7 @@ public class ProductManageServlet extends HttpServlet {
 //        request.setCharacterEncoding("UTF-8");
 //        String uploadPath = request.getServletContext().getRealPath("/uploads");
 //        File uploadDir = new File(uploadPath);
-//        if (!uploadDir.exists()) uploadDir.mkdirs();
+//        if (!uploadDir.exists()) uploadDir.mkdirs();git update-index --assume-unchanged ten_file
 //        String code = request.getParameter("code");
 //        String title = request.getParameter("title");
 //        String author = request.getParameter("author");

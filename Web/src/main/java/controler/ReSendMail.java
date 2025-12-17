@@ -1,7 +1,7 @@
 package controler;
 
-import Service.EmailSender;
-import Service.Token16;
+import Util.EmailSender;
+import Util.Token8;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -29,11 +29,11 @@ public class ReSendMail extends HttpServlet {
             request.getRequestDispatcher("errol.jsp").forward(request, response);
             return;
         }
-        Token16 token = new Token16();
+        Token8 token = new Token8();
         EmailSender emailSender = new EmailSender();
-        String verifyCode = token.generateToken16();
+        String verifyCode = token.generateToken8();
         session.setAttribute("verifyCode", verifyCode);
-        emailSender.sendVerificationEmail(email, "Mã xác thực tài khoản", fullname, verifyCode);
+        emailSender.sendVerificationEmail(email, "Mã xác thực tài khoản", fullname, verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
         request.setAttribute("showOTP", true);
         request.setAttribute("error", "Đã gửi lại mã");
         request.getRequestDispatcher("errol.jsp").forward(request, response);
