@@ -66,4 +66,10 @@ public class BookDao extends BaseDao{
         System.out.println(bookDao.getBookById(1));
     }
 
+    public List<Book> findListBook(String search,int limit,int offset) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM BOOKS WHERE (title like :search or author like :search or type like :search) AND is_sell=1 LIMIT :limit OFFSET :offset" ).bind("limit", limit)
+                .bind("offset", offset).bind("search","%"+search+"%").mapToBean(Book.class).list()
+        );
+    }
 }

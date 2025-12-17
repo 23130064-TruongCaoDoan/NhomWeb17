@@ -27,7 +27,7 @@
                 ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
                 >
                 <div class="button category">
-                    <a href="dsSanPham.jsp" class="button bt danhmuc">
+                    <a href="<c:url value="/dsSanPham" />" class="button bt danhmuc">
                         <i class="fa-solid fa-list"></i><span>Danh mục</span></a
                     >
                     <div class="danhMuc sach">
@@ -52,7 +52,7 @@
                     <input type="search" name="bSearch" placeholder="Tìm kiếm sách"/>
                     <button type="submit">Tìm Kiếm</button>
                 </form>
-                <a href="<c:url value="/login" />" class="button bt taikhoan">
+                <a href="<c:url value='${empty user ? "/login" : "/SetUpAccount"}' />" class="button bt taikhoan">
                     <i class="fa-solid fa-user"></i>
                     <span>
                             <c:if test="${not empty user}">

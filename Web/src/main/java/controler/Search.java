@@ -14,15 +14,32 @@ import java.util.List;
 public class Search extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String search = request.getParameter("bSearch");
+        String search = request.getParameter("bSearch").trim();
         if (search == null || search.equals("")) {
             response.sendRedirect("home");
             return;
         } else {
             BookService bookService = new BookService();
-            List<Book> books = bookService.findListBook(search);
+            int page = 1;
+            int pageSize = 28;
+
+            String p = request.getParameter("page");
+            if (p != null) {
+                page = Integer.parseInt(p);
+            }
+
+            int totalBooks = bookService.countBooks();
+            int totalPages = (int) Math.ceil((double) totalBooks / pageSize);
+            if (page > totalPages) {
+                page = totalPages;
+            }
+
+            int offset = (page - 1) * pageSize;
+            request.setAttribute("currentPage", page);
+            request.setAttribute("totalPages",totalPages);
+            List<Book> bookList = bookService.findListBook(search, pageSize, offset);
+            request.setAttribute("bookList", bookList);
             request.setAttribute("search", search);
-            request.setAttribute("listBook", books);
             request.getRequestDispatcher("user/dsSanPham.jsp").forward(request, response);
         }
     }
