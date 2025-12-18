@@ -56,4 +56,9 @@ public class ProductDetailServlet extends HttpServlet {
 
         response.sendRedirect("productDetail?id=" + bookId);
     }
+
+    public static void main(String[] args) {
+        CommentService commentService = new CommentService();
+        System.out.println(commentService.getCommentView(2));
+    }
 }
