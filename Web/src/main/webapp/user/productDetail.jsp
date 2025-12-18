@@ -26,74 +26,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <div id="home-page">
-        <div id="page-header">
-            <div class="header-message">
-                <div class="message"></div>
-                <div class="messageBorder"></div>
-            </div>
-            <div class="container">
-                <div class="header-title">
-                    <a href="" class="logo">
-                        <img
-                                src="assets/img/logo/logoChinh.png"
-                                alt="Sách thiếu nhi cho bé"
-                        />
-                    </a>
-                </div>
-                <div class="header-menu">
-                    <a href="home.jsp" class="button bt"
-                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
-                    >
-                    <div class="button category">
-                        <a href="dsSanPham.jsp" class="button bt danhmuc">
-                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
-                        >
-                        <div class="danhMuc sach">
-                            <div class="item truyenTranh">
-                                <a href="dsSanPham.jsp" class="it truyen-tranh"
-                                ><span>Truyện tranh</span></a
-                                >
-                            </div>
-                            <div class="item anh">
-                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
-                            </div>
-                            <div class="item giaoDuc">
-                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
-                            </div>
-                            <div class="item toMau">
-                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" placeholder="Tìm kiếm sách"/>
-                        <button>Tìm Kiếm</button>
-                    </div>
-                    <a href="<c:url value="/login" />" class="button bt taikhoan">
-                        <i class="fa-solid fa-user"></i>
-                        <span>
-                            <c:if test="${not empty user}">
-                                ${user}
-                            </c:if>
-                            <c:if test="${empty user}">
-                                Tài khoản
-                            </c:if>
-                        </span>
-                    </a>
-                    <a href="shoppingCart.jsp" class="button bt gio">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Giỏ hàng</span>
-                    </a>
-                    <a href="user-thongbao.jsp" class="button bt thongbao">
-                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
-                        <span>Thông báo</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <c:import url="headerUser.jsp"> </c:import>
     <main>
         <div class="detail-container">
             <div class="detail">
@@ -123,26 +56,33 @@
                     <p class="book-name">${book.title}</p>
                     <p class="rating">
                         <c:forEach begin="1" end="${averageRating}">
-                        ⭐
+                            ⭐
                         </c:forEach></p>
                     <div class="price-cart">
                         <div class="price">
-                            <c:if test="${book.priceDiscounted > 0}" >
-                                <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
-                                <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
+                            <c:if test="${book.priceDiscounted > 0}">
+                                <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                          maxFractionDigits="0"/> Đ</strike>
+                                <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true"
+                                                     maxFractionDigits="0"/> Đ</p>
                             </c:if>
-                            <c:if test="${book.priceDiscounted == 0}" >
-                                <p><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
+                            <c:if test="${book.priceDiscounted == 0}">
+                                <p><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                     maxFractionDigits="0"/> Đ</p>
                             </c:if>
                         </div>
-                        <div class="quantity">
-                            <div class="number-input">
-                                <button class="minus" onclick="minus()">-</button>
-                                <input type="number" value="1" min="1" id="number-quantity" class="no-spinners" />
-                                <button class="plus" onclick="plus()">+</button>
+                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                            <div class="quantity" style="padding-top: 10px;">
+                                <div class="number-input">
+                                    <button class="minus" onclick="minus()">-</button>
+                                    <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
+                                    <button class="plus" onclick="plus()">+</button>
+                                </div>
                             </div>
-                        </div>
-                        <button id="cart"><a href="shoppingCart.jsp">Thêm vào giỏ hàng</a> <i class="fa-solid fa-cart-plus"></i></button>
+                            <button type="submit" id="cart">Thêm vào giỏ hàng<i
+                                    class="fa-solid fa-cart-plus"></i></button>
+                        </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
                         <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
                     </div>
@@ -202,19 +142,39 @@
             <div class="rating-summary">
                 <div class="rating-score">
                     <h2>${averageRating}</h2>
-                    <div class="stars"style="color: #FFD700">
+                    <div class="stars" style="color: #FFD700">
                         <c:forEach begin="1" end="${averageRating}">
                             ★
-                        </c:forEach></p></div>
+                        </c:forEach></div>
                     <p>Dựa trên phần đánh giá</p>
                 </div>
 
                 <div class="rating-bars">
-                    <div class="rating-row"><span>5</span><div class="rating-bar"><div class="rating-fill" style="width: 90%;"></div></div></div>
-                    <div class="rating-row"><span>4</span><div class="rating-bar"><div class="rating-fill" style="width: 2%;"></div></div></div>
-                    <div class="rating-row"><span>3</span><div class="rating-bar"><div class="rating-fill" style="width: 1%;"></div></div></div>
-                    <div class="rating-row"><span>2</span><div class="rating-bar"><div class="rating-fill" style="width: 0%;"></div></div></div>
-                    <div class="rating-row"><span>1</span><div class="rating-bar"><div class="rating-fill" style="width: 3%;"></div></div></div>
+                    <div class="rating-row"><span>5</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-row"><span>4</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 2%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-row"><span>3</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-row"><span>2</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-row"><span>1</span>
+                        <div class="rating-bar">
+                            <div class="rating-fill" style="width: 3%;"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="review-actions">
@@ -222,18 +182,19 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action=""${pageContext.request.contextPath}/productDetail"" method="post">
-                <h3>Viết đánh giá</h3>
-                <input type="hidden" name="bookId" value="${book.id}">
-                <select id="reviewStars" name="rating" required>
-                    <option value="5">★★★★★</option>
-                    <option value="4">★★★★</option>
-                    <option value="3">★★★</option>
-                    <option value="2">★★</option>
-                    <option value="1">★</option>
-                </select>
-                <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..." required></textarea>
-                <button type="submit" id="submitReview">Hoàn thành</button>
+            <form id="reviewForm" action=""
+            ${pageContext.request.contextPath}/productDetail"" method="post">
+            <h3>Viết đánh giá</h3>
+            <input type="hidden" name="bookId" value="${book.id}">
+            <select id="reviewStars" name="rating" required>
+                <option value="5">★★★★★</option>
+                <option value="4">★★★★</option>
+                <option value="3">★★★</option>
+                <option value="2">★★</option>
+                <option value="1">★</option>
+            </select>
+            <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..." required></textarea>
+            <button type="submit" id="submitReview">Hoàn thành</button>
             </form>
 
 
@@ -253,7 +214,7 @@
             </div>
 
             <div class="comment-list">
-                <c:forEach var="cmt" items="${commentViewList}" >
+                <c:forEach var="cmt" items="${commentViewList}">
                     <div class="comment-item">
                         <div class="comment-header">
                             <span class="comment-author">${cmt.name}</span>
@@ -261,7 +222,7 @@
                         </div>
                         <p class="comment-rating" style="color: #FFD700">
                             <c:forEach begin="1" end="${cmt.rating}">
-                            ★
+                                ★
                             </c:forEach></p>
                         <p class="comment-text">${cmt.content}</p>
                     </div>
@@ -305,79 +266,33 @@
                             </p>
                             <div class="price-cart">
                                 <p class="price">
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                         maxFractionDigits="0"/> Đ</s>
+                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                            groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                 </p>
                                 <i class="fa-solid fa-cart-plus"></i>
                             </div>
-                        </div></a>
+                        </div>
+                    </a>
                 </c:forEach>
             </div>
         </div>
     </main>
-    <footer class="footer">
-        <div class="wave-container">
-            <svg
-                    viewBox="0 0 120 15"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-            >
-                <path
-                        d="M0,10
-                C10,15 20,5 30,10
-                C40,15 50,5 60,10
-                C70,15 80,5 90,10
-                C100,15 115,5 120,10
-                L120,20 0,20 Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Liên hệ chúng tôi</h3>
-                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-                <a href="#"
-                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
-                >
-            </div>
-
-            <div class="footer-column">
-                <h3>Dịch vụ khách hàng</h3>
-                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
-                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
-                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
-
-            </div>
-
-            <div class="footer-column">
-                <h3>Đối tác</h3>
-                <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
-                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Bảo mật</h3>
-                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
-                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright ©. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <c:import url="footerUser.jsp"> </c:import>
 </div>
-<script >
+<script>
     //heart
     const heart = document.getElementById('addHeart');
-    heart.addEventListener('click', function ()   {
-        heart.style.color=heart.style.color==='red'?'gray':'red';
+    heart.addEventListener('click', function () {
+        heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
     })
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const mainImage = document.getElementById('mainImageDisplay');
         const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
 
         thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
+            thumbnail.addEventListener('click', function () {
                 thumbnails.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 mainImage.src = this.dataset.mainImage;
@@ -386,34 +301,34 @@
     });
     // quantity
     const input = document.querySelector(".number-input input");
-    const minus =()=>{
-        input.value =   input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
+    const minus = () => {
+        input.value = input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
     }
-    const plus = () =>{
+    const plus = () => {
         input.value = parseInt(input.value) + 1;
     }
 
-        const writeBtn = document.getElementById("writeReviewBtn");
-        const form = document.getElementById("reviewForm");
-        const submitBtn = document.getElementById("submitReview");
-        const commentList = document.querySelector(".comment-list");
+    const writeBtn = document.getElementById("writeReviewBtn");
+    const form = document.getElementById("reviewForm");
+    const submitBtn = document.getElementById("submitReview");
+    const commentList = document.querySelector(".comment-list");
 
-        // Bấm Write a Review
-        writeBtn.addEventListener("click", () => {
+    // Bấm Write a Review
+    writeBtn.addEventListener("click", () => {
         form.style.display = "block";
         writeBtn.style.display = "none";
     });
 
-        //  Bấm Hoàn thành
-        submitBtn.addEventListener("click", () => {
+    //  Bấm Hoàn thành
+    submitBtn.addEventListener("click", () => {
         const name = document.getElementById("reviewName").value;
         const stars = document.getElementById("reviewStars").value;
         const text = document.getElementById("reviewText").value;
 
         if (!name || !text) {
-        alert("Vui lòng nhập đầy đủ thông tin.");
-        return;
-    }
+            alert("Vui lòng nhập đầy đủ thông tin.");
+            return;
+        }
 
     });
 

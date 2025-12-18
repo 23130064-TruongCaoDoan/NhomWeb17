@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -32,18 +31,18 @@
                     >
                     <div class="danhMuc sach">
                         <div class="item truyenTranh">
-                            <a href="dsSanPham.jsp" class="it truyen-tranh"
+                            <a href="search?bSearch=Truyện tranh" class="it truyen-tranh"
                             ><span>Truyện tranh</span></a
                             >
                         </div>
                         <div class="item anh">
-                            <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
+                            <a href="search?bSearch=Sách ảnh" class="it sach-anh"><span>Sách ảnh</span></a>
                         </div>
                         <div class="item giaoDuc">
-                            <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
+                            <a href="search?bSearch=Giáo dục" class="it giao-duc"><span>Giáo dục</span></a>
                         </div>
                         <div class="item toMau">
-                            <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
+                            <a href="search?bSearch=Sách tô màu" class="it to-mau"><span>Sách tô màu</span></a>
                         </div>
                     </div>
                 </div>
@@ -63,12 +62,12 @@
                             </c:if>
                         </span>
                 </a>
-                <a href="shoppingCart.jsp" class="button bt gio">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                <a href="<c:url value="/ShoppingCart" />" class="button bt gio">
+                    <i class="fa-solid fa-cart-shopping"><span class="number">${cart.totalQuantity}</span></i>
                     <span>Giỏ hàng</span>
                 </a>
                 <a href="user-thongbao.jsp" class="button bt thongbao">
-                    <i class="fa-solid fa-bell"><span class="number">11</span></i>
+                    <i class="fa-solid fa-bell"><span class="number">${numNotiFy}</span></i>
                     <span>Thông báo</span>
                 </a>
             </div>

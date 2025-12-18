@@ -4,21 +4,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Danh sách sản phẩm</title>
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/dsSanPham.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="assets/css/header.css"/>
+    <link rel="stylesheet" href="assets/css/dsSanPham.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
             href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/footer.css"/>
 </head>
 <body>
 <div class="page-wrapper">
@@ -58,6 +58,7 @@
             </div>
             <button class="clear-filter">Xoá bộ lọc</button>
         </div>
+        <c:if test="${empty bookList}"><span STYLE="text-align: center; font-size: 20px; color: gray; margin: auto">KHÔNG CÓ SẢN PHẨM</span></c:if>
         <div class="listProducts">
             <c:forEach var="book" items="${bookList}">
                 <a href="productDetail?id=${book.id}&type=${book.type}">
@@ -68,35 +69,41 @@
                         </p>
                         <div class="price-cart">
                             <p class="price">
-                                <c:if test="${book.priceDiscounted > 0}" >
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                <c:if test="${book.priceDiscounted > 0}">
+                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                            groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                         maxFractionDigits="0"/> Đ</s>
                                 </c:if>
-                                <c:if test="${book.priceDiscounted == 0}" >
-                                    <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                <c:if test="${book.priceDiscounted == 0}">
+                                    <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                            maxFractionDigits="0"/> Đ</span>
                                 </c:if>
                             </p>
                             <span><i class="fa-solid fa-cart-plus"></i></span>
                         </div>
-                    </div></a>
-            </c:forEach>
-        </div>
-        <div id="pagination">
-            <c:if test="${currenPage > 1}">
-                <a href="dsSanPham?page=${currentPage - 1}">«</a>
-            </c:if>
-
-            <c:forEach begin="1" end="${totalPages}" var="i">
-                <a href="dsSanPham?page=${i}"
-                   class="${i == currentPage ? 'active' : ''}">
-                        ${i}
+                    </div>
                 </a>
             </c:forEach>
-
-            <c:if test="${currentPage < totalPages}">
-                <a href="dsSanPham?page=${currentPage + 1}">»</a>
-            </c:if>
         </div>
+        <c:if test="${not empty bookList}">
+            <div id="pagination">
+                <c:if test="${currenPage > 1}">
+                    <a href="dsSanPham?page=${currentPage - 1}">«</a>
+                </c:if>
+
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <a href="dsSanPham?page=${i}"
+                       class="${i == currentPage ? 'active' : ''}">
+                            ${i}
+                    </a>
+                </c:forEach>
+
+                <c:if test="${currentPage < totalPages}">
+                    <a href="dsSanPham?page=${currentPage + 1}">»</a>
+                </c:if>
+            </div>
+        </c:if>
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
