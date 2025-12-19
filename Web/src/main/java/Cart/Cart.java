@@ -54,10 +54,10 @@ public class Cart implements Serializable {
         }
         return total;
     }
-    public double totalBill() {
+    public double getTotalBill() {
         double total = 0;
         for (CartItem item : data.values()) {
-            total += item.getPrice();
+            total += item.getPrice()*item.getQuantity();
         }
         return total;
     }

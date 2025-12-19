@@ -1,4 +1,4 @@
-package controler;
+package controler.Cart;
 
 import Cart.Cart;
 import Service.BookService;
@@ -31,9 +31,6 @@ public class addItemShoppingInHome extends HttpServlet {
         List<Book> booksListNew = bookService.getBooksNew();
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
-        if (session != null && session.getAttribute("user") != null) {
-            request.setAttribute("user", session.getAttribute("user"));
-        }
         request.getRequestDispatcher("user/home.jsp").forward(request, response);
     }
 

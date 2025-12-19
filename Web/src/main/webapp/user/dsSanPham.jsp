@@ -61,29 +61,29 @@
         <c:if test="${empty bookList}"><span STYLE="text-align: center; font-size: 20px; color: gray; margin: auto">KHÔNG CÓ SẢN PHẨM</span></c:if>
         <div class="listProducts">
             <c:forEach var="book" items="${bookList}">
-                <a href="productDetail?id=${book.id}&type=${book.type}">
-                    <div class="card">
+                <div class="card">
+                    <a href="productDetail?id=${book.id}&type=${book.type}">
                         <img src="${book.coverImgUrl}" alt="${book.title}"/>
                         <p class="book-name">${book.title}</p>
-                        <p class="rating">
-                        </p>
-                        <div class="price-cart">
-                            <p class="price">
-                                <c:if test="${book.priceDiscounted > 0}">
+                    </a>
+                    <p class="rating">
+                    </p>
+                    <div class="price-cart">
+                        <p class="price">
+                            <c:if test="${book.priceDiscounted > 0}">
                                     <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
                                                             groupingUsed="true" maxFractionDigits="0"/> Đ</span>
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
-                                                         maxFractionDigits="0"/> Đ</s>
-                                </c:if>
-                                <c:if test="${book.priceDiscounted == 0}">
+                                <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                     maxFractionDigits="0"/> Đ</s>
+                            </c:if>
+                            <c:if test="${book.priceDiscounted == 0}">
                                     <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
                                                             maxFractionDigits="0"/> Đ</span>
-                                </c:if>
-                            </p>
-                            <span><i class="fa-solid fa-cart-plus"></i></span>
-                        </div>
+                            </c:if>
+                        </p>
+                        <a href="addItemShoppingInDanhMuc?bookId=${book.id}&quantity=1"><span><i class="fa-solid fa-cart-plus"></i></span></a>
                     </div>
-                </a>
+                </div>
             </c:forEach>
         </div>
         <c:if test="${not empty bookList}">
