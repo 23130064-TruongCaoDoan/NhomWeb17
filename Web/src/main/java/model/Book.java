@@ -8,8 +8,8 @@ public class Book {
     private String bookCode;
     private String title;
     private String author;
-    private double price;
-    private double priceDiscounted;
+    private int price;
+    private int priceDiscounted;
     private String type;
     private int age;
     private String coverImgUrl;
@@ -32,7 +32,7 @@ public class Book {
     }
 
     // Constructor đầy đủ
-    public Book(int id, String bookCode, String title, String author, double price, double priceDiscounted,
+    public Book(int id, String bookCode, String title, String author, int price, int priceDiscounted,
                 String type, int age, String coverImgUrl, String description, String publisher,
                 String provider, int publishedDate, double weight, String bookSize,
                 int pagesNumber, String format, boolean isSell,  String add_date, int quantitySold, int stock) {
@@ -71,11 +71,11 @@ public class Book {
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public int getPrice() { return price; }
+    public void setPrice(int price) { this.price = price; }
 
-    public double getPriceDiscounted() { return priceDiscounted; }
-    public void setPriceDiscounted(double priceDiscounted) { this.priceDiscounted = priceDiscounted; }
+    public int getPriceDiscounted() { return priceDiscounted; }
+    public void setPriceDiscounted(int priceDiscounted) { this.priceDiscounted = priceDiscounted; }
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }

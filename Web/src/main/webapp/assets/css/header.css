@@ -144,11 +144,10 @@ body{
     background-color: black;
     color: white;
 }
-#page-header .thongbao i{
-    position: relative;
+#page-header .thongbao i,#page-header .gio i{
 }
-#page-header .thongbao .number{
-    position: absolute;
+#page-header .thongbao .number, #page-header .gio .number{
+    margin-top: 0;
     color: red;
     font-size: 10px;
 }
