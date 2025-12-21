@@ -21,7 +21,7 @@ public class Verify extends HttpServlet {
         if (session == null) {
             request.setAttribute("message", "Phiên xác thực đã hết hạn. Vui lòng đăng ký lại.");
             request.setAttribute("type", "danger");
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
             return;
         }
         String verifyCode = session.getAttribute("verifyCode").toString();
@@ -34,14 +34,14 @@ public class Verify extends HttpServlet {
         if (verifyCode == null || email == null || fullname == null || password == null) {
             request.setAttribute("message", "Phiên xác thực không hợp lệ. Vui lòng đăng ký lại.");
             request.setAttribute("type", "danger");
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
             return;
         }
 
         if(otp.isEmpty()){
             request.setAttribute("showOTP", true);
             request.setAttribute("error", "Vui lòng nhập mã xác thực!");
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
             return;
         }
         if (otp.equals(verifyCode)) {
@@ -55,7 +55,7 @@ public class Verify extends HttpServlet {
         } else {
             request.setAttribute("showOTP", true);
             request.setAttribute("error", "Mã xác thực không đúng!");
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
         }
     }
 }

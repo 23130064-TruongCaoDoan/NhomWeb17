@@ -13,7 +13,7 @@ import java.io.IOException;
 public class SignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+        request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SignupServlet extends HttpServlet {
             session.setAttribute("password", password);
             emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
             request.setAttribute("showOTP", true);
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
         }
         else{
             request.setAttribute("type","danger");
@@ -42,7 +42,7 @@ public class SignupServlet extends HttpServlet {
             request.setAttribute("fullname",fullname);
             request.setAttribute("password",password);
             request.setAttribute("confirmPassword",confirmPassword);
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            request.getRequestDispatcher("user/enroll.jsp").forward(request, response);
         }
     }
 }
