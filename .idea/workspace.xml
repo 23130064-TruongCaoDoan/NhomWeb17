@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/ProductDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/ProductDetailServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,9 +69,7 @@
   &quot;keyToString&quot;: {
     &quot;Application.BookDao.executor&quot;: &quot;Run&quot;,
     &quot;Application.CommentDao.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CommentService.executor&quot;: &quot;Run&quot;,
     &quot;Application.HomeDao.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductDetailServlet.executor&quot;: &quot;Run&quot;,
     &quot;Application.UserDao.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JavaScript Debug.ThanhToan.html.executor&quot;: &quot;Run&quot;,
@@ -335,11 +328,6 @@
       <workItem from="1765949578752" duration="5049000" />
       <workItem from="1765963320830" duration="3831000" />
       <workItem from="1765967353885" duration="177000" />
-      <workItem from="1765989042282" duration="427000" />
-      <workItem from="1766060097046" duration="4031000" />
-      <workItem from="1766064212303" duration="16000" />
-      <workItem from="1766161805837" duration="622000" />
-      <workItem from="1766311769455" duration="2822000" />
     </task>
     <servers />
   </component>

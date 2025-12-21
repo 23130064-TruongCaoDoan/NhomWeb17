@@ -169,21 +169,3 @@
 a {
     text-decoration: none;
 }
-.pagination {
-    margin: 40px 0;
-    text-align: center;
-}
-
-.pagination a {
-    padding: 6px 12px;
-    margin: 0 3px;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    color: #003366;
-}
-
-.pagination a.active {
-    background: #003366;
-    color: white;
-}
-

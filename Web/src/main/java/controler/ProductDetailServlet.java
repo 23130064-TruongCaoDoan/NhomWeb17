@@ -11,8 +11,6 @@ import model.CommentView;
 import model.User;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,22 +48,11 @@ public class ProductDetailServlet extends HttpServlet {
         int userId = user.getId();
         int bookId = Integer.parseInt(request.getParameter("bookId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
-        String type = request.getParameter("type");
         String content = request.getParameter("content");
 
         CommentDao commentDao = new CommentDao();
         commentDao.insertComment(userId, bookId, rating, content);
 
-
-        String typeEncoded = URLEncoder.encode(type, StandardCharsets.UTF_8);
-
-        response.sendRedirect(
-                "productDetail?id=" + bookId + "&type=" + typeEncoded
-        );
-    }
-
-    public static void main(String[] args) {
-        CommentService commentService = new CommentService();
-        System.out.println(commentService.getCommentView(2));
+        response.sendRedirect("productDetail?id=" + bookId);
     }
 }
