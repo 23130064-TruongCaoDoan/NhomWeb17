@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <c:import url="/user/headerUser.jsp"></c:import>
+    <c:import url="headerUser.jsp"></c:import>
     <div class="banner">
         <h1><c:if test="${not empty search}">
             ${search}
@@ -98,7 +98,7 @@
             </c:if>
         </div>
     </div>
-    <c:import url="/user/footerUser.jsp"></c:import>
+    <c:import url="footerUser.jsp"></c:import>
 </div>
 </body>
 

@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <c:import url="headerUser.jsp"> </c:import>
+    <c:import url="headerUser.jsp"></c:import>
     <main>
         <div class="detail-container">
             <div class="detail">
@@ -61,7 +61,7 @@
                     <div class="price-cart">
                         <div class="price">
                             <c:if test="${book.priceDiscounted > 0}" >
-                                <strike id="price-strike"><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/></strike>
+                                <strike><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</strike>
                                 <p><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</p>
                             </c:if>
                             <c:if test="${book.priceDiscounted == 0}" >
@@ -155,9 +155,10 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action=${pageContext.request.contextPath}/productDetail" method="post">
+            <form id="reviewForm" action=productDetail?id=${book.id}&type=${book.type} method="post">
                 <h3>Viết đánh giá</h3>
                 <input type="hidden" name="bookId" value="${book.id}">
+                <input type="hidden" name="bookId" value="${book.type}">
                 <select id="reviewStars" name="rating" required>
                     <option value="5">★★★★★</option>
                     <option value="4">★★★★</option>
@@ -199,6 +200,7 @@
                         <p class="comment-text">${cmt.content}</p>
                     </div>
                 </c:forEach>
+
             </div>
 
         </div>
@@ -247,7 +249,7 @@
             </div>
         </div>
     </main>
-    <c:import url="footerUser.jsp"> </c:import>
+    <c:import url="footerUser.jsp"></c:import>
 
 </div>
 <script >
