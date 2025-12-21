@@ -17,11 +17,4 @@ public class CommentService {
     public Double getAverageRating(int bookId){
         return hd.getAverageRating(bookId);
     }
-
-    public static void main(String[] args) {
-         CommentDao hd=new CommentDao();
-        System.out.println(hd.getAllComment(2));
-
-    }
-
 }
