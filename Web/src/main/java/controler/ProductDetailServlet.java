@@ -35,7 +35,6 @@ public class ProductDetailServlet extends HttpServlet {
         request.setAttribute("averageRating", averageRating);
         request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

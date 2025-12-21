@@ -45,10 +45,11 @@
                 <div class="title t"><span>Giảm giá</span><img src="assets/img/icon/sale.png" alt=""></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListSale}" begin="0" end="4">
-                        <a href="productDetail?id=${book.id}&type=${book.type}">
-                            <div class="card">
-                            <img src="${book.coverImgUrl}" alt="${book.title}"/>
-                            <p class="book-name">${book.title}</p>
+                        <div class="card">
+                            <a href="productDetail?id=${book.id}&type=${book.type}">
+                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                                <p class="book-name">${book.title}</p>
+                            </a>
                             <p class="rating">
                             </p>
                             <div class="price-cart">
@@ -61,9 +62,9 @@
                                         <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                     </c:if>
                                 </p>
-                                <i class="fa-solid fa-cart-plus"></i>
+                                <a href="addItemShoppingInHome?bookId=${book.id}&quantity=1"><i class="fa-solid fa-cart-plus"></i></a>
                             </div>
-                        </div></a>
+                        </div>
                     </c:forEach>
                 </div>
                 <div class="bt btsale">
@@ -75,10 +76,11 @@
                 <div class="title"><span>Góc sách mới cho bé</span><img src="assets/img/icon/iconNew.png"></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListNew}" begin="0" end="4">
-                        <a href="productDetail?id=${book.id}&type=${book.type}">
                             <div class="card">
+                                <a href="productDetail?id=${book.id}&type=${book.type}">
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
                                 <p class="book-name">${book.title}</p>
+                                </a>
                                 <p class="rating">
                                 </p>
                                 <div class="price-cart">
@@ -91,9 +93,9 @@
                                             <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                         </c:if>
                                     </p>
-                                    <i class="fa-solid fa-cart-plus"></i>
+                                    <a href="addItemShoppingInHome?bookId=${book.id}&quantity=1"><i class="fa-solid fa-cart-plus"></i></a>
                                 </div>
-                            </div></a>
+                            </div>
                     </c:forEach>
                 </div>
                 <div class="bt btmoi">
@@ -181,51 +183,23 @@
                 </div>
                 <div class="slogan"><h3>Những quyến sách có thể bạn sẽ thích</h3></div>
                 <div class="list-product">
-                    <div class="card">
-                        <img src="assets/img/books/CoTichTheGioi.jpg" alt=""/>
-                        <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/guongDungCam.png" alt=""/>
-                        <p class="book-name">Gương Dũng Cảm</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/ThoiQuenTot.jpg" alt=""/>
-                        <p class="book-name">Bồi dưỡng thói quen tốt</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/suThanVietNam.jpg" alt=""/>
-                        <p class="book-name">Sứ Thần Việt Nam</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/guongHieuHoc.jpg" alt=""/>
-                        <p class="book-name">Gương hiếu học</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
+                    <c:forEach var="book" items="${bookListRe}" begin="0" end="4">
+                        <a href="productDetail?id=${book.id}&type=${book.type}">
+                            <div class="card">
+                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                                <p class="book-name">${book.title}</p>
+                                <p class="rating">
+                                    ⭐⭐⭐⭐⭐
+                                </p>
+                                <div class="price-cart">
+                                    <p class="price">
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </p>
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </div>
+                            </div></a>
+                    </c:forEach>
                 </div>
             </div>
         </div>
