@@ -77,7 +77,7 @@
                         <tbody>
                         <c:forEach var="p" items="${lsbook}">
                             <tr>
-                                <td>${p.book_code}</td>
+                                <td>${p.bookCode}</td>
                                 <td>${p.title}</td>
                                 <td>${p.author}</td>
                                 <td>${p.price}</td>
@@ -95,7 +95,7 @@
             </div>
         </div>
         <div id="overlay"></div>
-        <form id="bookForm" method="post" enctype="multipart/form-data">
+        <form id="bookForm" method="post" action="${pageContext.request.contextPath}/product-manage" enctype="multipart/form-data">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Mã Sách</label>
@@ -109,7 +109,28 @@
 
                 <div class="form-group">
                     <label>Tác giả</label>
-                    <input type="text" id="author" name="author" placeholder="Tên tác giả">
+                    <select name="author_id" required>
+                        <c:forEach var="a" items="${authors}">
+                            <option value="${a.id}">${a.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Giá gốc</label>
+                    <input type="number" name="price" placeholder="VD: 50000" required>
+                </div>
+                <div class="form-group">
+                    <label>Giá khuyến mãi</label>
+                    <input type="number" name="price_discounted" placeholder="VD: 45000">
+                </div>
+                <div class="form-group">
+                    <label>Độ tuổi</label>
+                    <input type="number" name="age" placeholder="VD: 6" required>
+                </div>
+                <div class="form-group">
+                    <label>Nhà phát hành</label>
+                    <input type="text" name="provider" placeholder="VD: Kim Đồng">
                 </div>
 
                 <div class="form-group">
@@ -122,7 +143,7 @@
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh chi tiết</label>
-                    <input type="file" id="img" name="img" accept="image/*" placeholder="VD: link ảnh 1, link ảnh 2..." required multiple>
+                    <input type="file" name="imgDetail" multiple>
                 </div>
                 <div class="form-group">
                     <label>Loại sách</label>
@@ -150,10 +171,14 @@
                         <input type="date" id="start_date" name="startDate"  required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label>Định dạng</label>
+                    <input type="text" name="format" placeholder="Bìa mềm / Bìa cứng" required>
+                </div>
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea name="decription" id="description" cols="10" rows="4" placeholder="mô tả về sách"></textarea>
+                <textarea name="description" id="description" cols="10" rows="4" placeholder="mô tả về sách"></textarea>
             </div>
             <button type="submit" class="btn-save">Thêm sản phẩm</button>
         </form>
