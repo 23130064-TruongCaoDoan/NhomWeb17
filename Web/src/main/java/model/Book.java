@@ -7,9 +7,10 @@ public class Book {
     private int id;
     private String bookCode;
     private String title;
+    private Integer authorId;
     private String author;
-    private int price;
-    private int priceDiscounted;
+    private double price;
+    private double priceDiscounted;
     private String type;
     private int age;
     private String coverImgUrl;
@@ -32,13 +33,12 @@ public class Book {
     }
 
     // Constructor đầy đủ
-    public Book(int id, String bookCode, String title, String author, int price, int priceDiscounted,
-                String type, int age, String coverImgUrl, String description, String publisher,
-                String provider, int publishedDate, double weight, String bookSize,
-                int pagesNumber, String format, boolean isSell,  String add_date, int quantitySold, int stock) {
+
+    public Book(int id, String bookCode, String title, Integer authorId, String author, int price, int priceDiscounted, String type, int age, String coverImgUrl, String description, String publisher, String provider, int publishedDate, double weight, String bookSize, int pagesNumber, String format, boolean isSell, String add_date, int quantitySold, int stock) {
         this.id = id;
         this.bookCode = bookCode;
         this.title = title;
+        this.authorId = authorId;
         this.author = author;
         this.price = price;
         this.priceDiscounted = priceDiscounted;
@@ -58,6 +58,21 @@ public class Book {
         this.quantitySold = quantitySold;
         this.stock = stock;
     }
+
+    public boolean getIsSell() {
+        return isSell;
+    }
+    public void setIsSell(boolean isSell) {
+        this.isSell = isSell;
+    }
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
+
     // Getter và Setter cho tất cả thuộc tính
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -71,11 +86,11 @@ public class Book {
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 
-    public int getPrice() { return price; }
-    public void setPrice(int price) { this.price = price; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
-    public int getPriceDiscounted() { return priceDiscounted; }
-    public void setPriceDiscounted(int priceDiscounted) { this.priceDiscounted = priceDiscounted; }
+    public double getPriceDiscounted() { return priceDiscounted; }
+    public void setPriceDiscounted(double priceDiscounted) { this.priceDiscounted = priceDiscounted; }
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
