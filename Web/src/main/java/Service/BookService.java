@@ -59,12 +59,12 @@ public class BookService {
         int pagesNumber = Integer.parseInt(request.getParameter("pageNumber"));
         int age = Integer.parseInt(request.getParameter("age"));
 
-        double price = Double.parseDouble(request.getParameter("price"));
+        int price = Integer.parseInt(request.getParameter("price"));
 
         String priceDiscountStr = request.getParameter("price_discounted");
-        double priceDiscounted = (priceDiscountStr == null || priceDiscountStr.isBlank())
+        int priceDiscounted = (priceDiscountStr == null || priceDiscountStr.isBlank())
                 ? price
-                : Double.parseDouble(priceDiscountStr);
+                : Integer.parseInt(priceDiscountStr);
 
         String weightStr = request.getParameter("weight");
         double weight = (weightStr == null || weightStr.isBlank())

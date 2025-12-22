@@ -62,7 +62,7 @@
                                         <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                     </c:if>
                                 </p>
-                                <a href="addItemShoppingInHome?bookId=${book.id}&quantity=1"><i class="fa-solid fa-cart-plus"></i></a>
+                                <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
                             </div>
                         </div>
                     </c:forEach>
@@ -93,7 +93,7 @@
                                             <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                         </c:if>
                                     </p>
-                                    <a href="addItemShoppingInHome?bookId=${book.id}&quantity=1"><i class="fa-solid fa-cart-plus"></i></a>
+                                    <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
                                 </div>
                             </div>
                     </c:forEach>
@@ -235,7 +235,24 @@
             showSlide(index);
         }, 3000);
     });
+    function addToCart(bookId, quantity) {
+        fetch("addItemShopping?bookId="+ bookId + "&quantity=" + quantity)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("totalItem").innerText = data.total;
+                showToast("Đã thêm vào giỏ hàng");
+            })
+            .catch(err => console.log(err));
+    }
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
 
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 
 </script>
 </body>

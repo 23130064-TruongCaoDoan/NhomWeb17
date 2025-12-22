@@ -71,18 +71,16 @@
                                                      maxFractionDigits="0"/> Đ</p>
                             </c:if>
                         </div>
-                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px">
-                            <input type="hidden" name="bookId" value="${book.id}">
+                            <input type="hidden" name="bookId" id="bookId" value="${book.id}">
                             <div class="quantity" style="padding-top: 10px;">
                                 <div class="number-input">
                                     <button class="minus" onclick="minus()">-</button>
-                                    <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
+                                    <input type="number" id="number-quantity" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
                                     <button class="plus" onclick="plus()">+</button>
                                 </div>
                             </div>
-                            <button type="submit" id="cart">Thêm vào giỏ hàng<i
+                            <button type="submit" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
                                     class="fa-solid fa-cart-plus"></i></button>
-                        </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
                         <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
                     </div>
@@ -327,6 +325,27 @@
         }
 
     });
+    function addToCartDetail() {
+        const bookId = document.getElementById("bookId").value;
+        const quantity = document.getElementById("number-quantity").value;
+
+        fetch("addItemShopping?bookId=" + bookId + "&quantity=" + quantity)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("totalItem").innerText = data.total;
+                showToast("Đã thêm vào giỏ hàng");
+            })
+            .catch(err => console.log(err));
+    }
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 
 
 </script>

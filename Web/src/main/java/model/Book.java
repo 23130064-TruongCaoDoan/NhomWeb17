@@ -9,8 +9,8 @@ public class Book {
     private String title;
     private Integer authorId;
     private String author;
-    private double price;
-    private double priceDiscounted;
+    private int price;
+    private int priceDiscounted;
     private String type;
     private int age;
     private String coverImgUrl;
@@ -86,11 +86,11 @@ public class Book {
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public int getPrice() { return price; }
+    public void setPrice(int price) { this.price = price; }
 
-    public double getPriceDiscounted() { return priceDiscounted; }
-    public void setPriceDiscounted(double priceDiscounted) { this.priceDiscounted = priceDiscounted; }
+    public int getPriceDiscounted() { return priceDiscounted; }
+    public void setPriceDiscounted(int priceDiscounted) { this.priceDiscounted = priceDiscounted; }
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
