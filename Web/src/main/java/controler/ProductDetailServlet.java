@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
 import model.CommentView;
+import model.RatingStartView;
 import model.User;
 
 import java.io.IOException;
@@ -28,11 +29,15 @@ public class ProductDetailServlet extends HttpServlet {
         List<Book> bookListRe = bookService.getBookRecommendInDetail(type);
         List<CommentView> commentViewList = commentService.getCommentView(bookId);
         Double averageRating = commentService.getAverageRating(bookId);
+        List<RatingStartView> ratingList = commentService.getRatingStartView(bookId);
+
+
 
         request.setAttribute("book", book);
         request.setAttribute("bookListRe", bookListRe);
         request.setAttribute("commentViewList", commentViewList);
         request.setAttribute("averageRating", averageRating);
+        request.setAttribute("ratingList", ratingList);
         request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);
     }
     @Override
