@@ -87,7 +87,7 @@
                             </form>
                         </div>
                         <div class="total-cost" style="text-align: center">
-                            <p class="cost">${item.price}</p>
+                            <p class="cost"><fmt:formatNumber value="${item.price}" pattern="#,###"/> VNĐ</p>
                         </div>
                         <i class="fa-solid fa-trash" style="color: black"
                            onclick="updateItem(${item.getBook().getId()},0)"></i>
@@ -121,9 +121,9 @@
             <div class="bill">
                 <div class="thanh-tien">
                     <p>Thành tiền</p>
-                    <p><c:if test="${empty cart.items}">0</c:if>
+                    <p><c:if test="${empty cart.items}">0 VNĐ</c:if>
                         <c:if test="${not empty cart.items}">
-                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/>VNĐ
+                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/> VNĐ
                         </c:if></p>
                 </div>
                 <div>

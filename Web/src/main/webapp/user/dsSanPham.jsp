@@ -92,18 +92,18 @@
         <c:if test="${not empty bookList}">
             <div id="pagination">
                 <c:if test="${currenPage > 1}">
-                    <a href="dsSanPham?page=${currentPage - 1}">«</a>
+                    <a href="dsSanPham?page=${currentPage - 1}&type=${type}">«</a>
                 </c:if>
 
                 <c:forEach begin="1" end="${totalPages}" var="i">
-                    <a href="dsSanPham?page=${i}"
+                    <a href="dsSanPham?page=${i}&type=${type}"
                        class="${i == currentPage ? 'active' : ''}">
                             ${i}
                     </a>
                 </c:forEach>
 
                 <c:if test="${currentPage < totalPages}">
-                    <a href="dsSanPham?page=${currentPage + 1}">»</a>
+                    <a href="dsSanPham?page=${currentPage + 1}&type=${type}">»</a>
                 </c:if>
             </div>
         </c:if>

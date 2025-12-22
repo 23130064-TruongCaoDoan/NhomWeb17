@@ -23,15 +23,24 @@ public class DanhMucServlet extends HttpServlet {
         if (p != null) {
             page = Integer.parseInt(p);
         }
+        int totalBooks;
+        int type = Integer.parseInt(request.getParameter("type")==null?"0":request.getParameter("type"));
+        switch (type) {
+            case 1:
+                totalBooks = bookService.countBooksDiscounted();
+                break;
+            case 2:
+                totalBooks = bookService.countBooksNew();
+                break;
+            default:
+                totalBooks = bookService.countBooks();
+        }
 
-        int totalBooks = bookService.countBooks();
         int totalPages = (int) Math.ceil((double) totalBooks / pageSize);
         if (page > totalPages) {
             page = totalPages;
         }
-
         int offset = (page - 1) * pageSize;
-        int type = Integer.parseInt(request.getParameter("type")==null?"0":request.getParameter("type"));
         List<Book> bookList;
         String search="";
         String icon="";
@@ -54,6 +63,7 @@ public class DanhMucServlet extends HttpServlet {
                 break;
             }
         }
+        request.setAttribute("type", type);
         request.setAttribute("color", color);
         request.setAttribute("search", search);
         request.setAttribute("icon", icon);
