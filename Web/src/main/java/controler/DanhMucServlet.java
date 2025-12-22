@@ -31,8 +31,33 @@ public class DanhMucServlet extends HttpServlet {
         }
 
         int offset = (page - 1) * pageSize;
-        int type = Integer.parseInt(request.getParameter("type"));
-        List<Book> bookList = bookService.getAllBooks(pageSize, offset);
+        int type = Integer.parseInt(request.getParameter("type")==null?"0":request.getParameter("type"));
+        List<Book> bookList;
+        String search="";
+        String icon="";
+        String color="";
+        switch (type) {
+            case 1:{
+                bookList=bookService.getAllBooksDiscounted(pageSize, offset);
+                search = "Sách Đang Giảm Giá";
+                icon="assets/img/icon/sale.png";
+                color="#FF4C4C";
+                break; }
+            case 2:{
+                bookList=bookService.getAllBooksNew(pageSize, offset);
+                search="Góc Sách Mới";
+                icon="assets/img/icon/iconNew.png";
+                break;
+            }
+            default:{
+                bookList = bookService.getAllBooks(pageSize, offset);
+                break;
+            }
+        }
+        request.setAttribute("color", color);
+        request.setAttribute("search", search);
+        request.setAttribute("icon", icon);
+
         request.setAttribute("bookList", bookList);
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages",totalPages);

@@ -23,13 +23,16 @@
 <body>
 <div class="page-wrapper">
     <c:import url="/user/headerUser.jsp"></c:import>
-    <div class="banner">
+    <div class="banner" style="background-color: ${color}">
         <h1><c:if test="${not empty search}">
             ${search}
         </c:if>
             <c:if test="${empty search}">
                 Sản Phẩm
             </c:if></h1>
+        <c:if test="${not empty icon}">
+        <img src="${icon}" alt="">
+        </c:if>
     </div>
     <div class="content">
         <div class="filter">
@@ -153,7 +156,7 @@
 <%--  </script>--%>
 <script>
     function addToCart(bookId, quantity) {
-        fetch("addItemShopping?bookId="+ bookId + "&quantity=" + quantity)
+        fetch("addItemShopping?bookId=" + bookId + "&quantity=" + quantity)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
@@ -161,6 +164,7 @@
             })
             .catch(err => console.log(err));
     }
+
     function show(message) {
         const toast = document.getElementById("toast");
         toast.innerText = message;

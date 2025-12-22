@@ -68,7 +68,7 @@
                     </c:forEach>
                 </div>
                 <div class="bt btsale">
-                    <button onclick="location.href='dsSanPham.jsp'" class="xemThem">Xem Thêm<i
+                    <button onclick="window.location.href='dsSanPham?type=1'" class="xemThem">Xem Thêm<i
                             class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
@@ -99,8 +99,8 @@
                     </c:forEach>
                 </div>
                 <div class="bt btmoi">
-                    <a href="dsSanPham?type=1" class="xemThem">Xem Thêm<i
-                            class="fa-solid fa-arrow-right"></i></a>
+                    <button onclick="window.location.href='dsSanPham?type=2'" class="xemThem">Xem Thêm<i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
             <div class="sachh yeuThich">

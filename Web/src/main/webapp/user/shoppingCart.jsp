@@ -464,22 +464,11 @@
         fetch("updateItem?id=" + id + "&quantity=" + quantity)
             .then(res => res.json())
             .then(data => {
-                location.reload();
                 document.getElementById("totalItem").innerText = data.total;
-                show("Đã thêm vào giỏ hàng");
+                    location.reload();
             })
             .catch(err => console.log(err));
 
-    }
-
-    function show(message) {
-        const toast = document.getElementById("toast");
-        toast.innerText = message;
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 2000);
     }
 </script>
 </body>
