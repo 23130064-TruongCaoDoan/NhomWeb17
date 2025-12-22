@@ -31,6 +31,7 @@ public class DanhMucServlet extends HttpServlet {
         }
 
         int offset = (page - 1) * pageSize;
+        int type = Integer.parseInt(request.getParameter("type"));
         List<Book> bookList = bookService.getAllBooks(pageSize, offset);
         request.setAttribute("bookList", bookList);
         request.setAttribute("currentPage", page);

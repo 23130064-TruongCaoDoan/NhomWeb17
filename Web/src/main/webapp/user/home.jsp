@@ -99,8 +99,8 @@
                     </c:forEach>
                 </div>
                 <div class="bt btmoi">
-                    <button onclick="location.href='dsSanPham.jsp'" class="xemThem">Xem Thêm<i
-                            class="fa-solid fa-arrow-right"></i></button>
+                    <a href="dsSanPham?type=1" class="xemThem">Xem Thêm<i
+                            class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="sachh yeuThich">
@@ -240,11 +240,11 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
-                showToast("Đã thêm vào giỏ hàng");
+                show("Đã thêm vào giỏ hàng");
             })
             .catch(err => console.log(err));
     }
-    function showToast(message) {
+    function show(message) {
         const toast = document.getElementById("toast");
         toast.innerText = message;
         toast.classList.add("show");

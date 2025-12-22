@@ -7,8 +7,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "removeItem", value = "/removeItem")
-public class removeItem extends HttpServlet {
+@WebServlet(name = "updateItem", value = "/updateItem")
+public class updateItem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -28,8 +28,11 @@ public class removeItem extends HttpServlet {
                 cart.removeAllItems();
             }
         }
-
-        response.sendRedirect("ShoppingCart");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().print(
+                "{\"total\":" + cart.getTotalQuantity() + "}"
+        );
     }
 
     @Override

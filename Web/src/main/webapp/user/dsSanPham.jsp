@@ -157,11 +157,11 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
-                showToast("Đã thêm vào giỏ hàng");
+                show("Đã thêm vào giỏ hàng");
             })
             .catch(err => console.log(err));
     }
-    function showToast(message) {
+    function show(message) {
         const toast = document.getElementById("toast");
         toast.innerText = message;
         toast.classList.add("show");

@@ -18,6 +18,9 @@ public class BookService {
     public List<Book> getBooksDiscounted(){
         return hd.getBooksDiscounted();
     }
+    public List<Book> getAllBooksDiscounted(int limit, int offset) {
+        return hd.getAllBooksDiscounted(limit, offset);
+    }
     public Book getBooksById(int id){
         return hd.getBookById(id);
     }
@@ -26,6 +29,9 @@ public class BookService {
     }
     public List<Book> getBooksNew(){
         return hd.getBooksNew();
+    }
+    public List<Book> getAllBooksNew(int limit, int offset){
+        return hd.getAllBooksNew(limit,offset);
     }
     public List<Book> getAllBooks(int limit, int offset){
         return hd.getAllBooks(limit, offset);

@@ -49,7 +49,7 @@
 
                     <span class="center">Số lượng</span>
                     <span class="center">Thành tiền</span>
-                    <a href="<c:url value="/removeItem" />" class="delete-all">
+                    <a href="#" onclick="updateItem(0,0)" class="delete-all">
                         <i class="fa-solid fa-trash"></i> Xóa tất cả
                     </a>
 
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="quantity">
-                            <form class="number-input" action="removeItem" method="get">
+                            <form class="number-input">
                                 <input type="hidden" name="id" value="${item.book.id}">
                                 <button type="button" class="minus" onclick="changeQty(this, -1)">-</button>
                                 <input type="number"
@@ -89,9 +89,8 @@
                         <div class="total-cost" style="text-align: center">
                             <p class="cost">${item.price}</p>
                         </div>
-                        <a href="<c:url value="/removeItem?id=${item.getBook().getId()}" />">
-                            <i class="fa-solid fa-trash" style="color: black"></i>
-                        </a>
+                        <i class="fa-solid fa-trash" style="color: black"
+                           onclick="updateItem(${item.getBook().getId()},0)"></i>
                     </div>
                 </c:forEach>
             </div>
@@ -386,12 +385,11 @@
     function changeQty(btn, delta) {
         const form = btn.closest("form");
         const input = form.querySelector("input[name='quantity']");
+        const id = form.querySelector("input[name='id']").value;
 
         let value = parseInt(input.value) + delta;
         if (value < 1) value = 1;
-
-        input.value = value;
-        form.submit(); // gửi lên servlet
+        updateItem(id, value);
     }
 
 
@@ -461,6 +459,28 @@
 
     setupSectionToggle('.layout.discounts', '.list.discount', '.toggle-btnDis');
     setupSectionToggle('.layout.ships', '.list.ship', '.toggle-btnShip');
+
+    function updateItem(id, quantity) {
+        fetch("updateItem?id=" + id + "&quantity=" + quantity)
+            .then(res => res.json())
+            .then(data => {
+                location.reload();
+                document.getElementById("totalItem").innerText = data.total;
+                show("Đã thêm vào giỏ hàng");
+            })
+            .catch(err => console.log(err));
+
+    }
+
+    function show(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 </script>
 </body>
 </html>
