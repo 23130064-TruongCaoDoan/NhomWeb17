@@ -103,13 +103,23 @@
     min-height: 20vh;
     background-color: #6899c9;
     margin-bottom: 5vh;
+    display: flex;
+    align-items: center;      /* canh giữa theo chiều dọc */
+    gap: 10px;
 }
 
 .page-wrapper .banner h1 {
     color: white;
+    margin: 0;
     margin-left: 14vw;
-    margin-top: 7vh;
+    white-space: nowrap;
 }
+
+.page-wrapper .banner img {
+    height: 70px;
+    width: auto;
+}
+
 
 /* ===== FILTER ===== */
 .filter {
