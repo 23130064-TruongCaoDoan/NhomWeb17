@@ -130,7 +130,7 @@
                     <h3 class="total-price">Tổng số tiền (bao gồm VAT)</h3>
                     <p>80.000VNĐ</p>
                 </div>
-                <button class="check-out" onclick="window.location.href='ThanhToan.jsp'">Đặt hàng</button>
+                <button class="check-out" onclick="window.location.href='<c:url value="/ThanhToan" />'">Đặt hàng</button>
             </div>
         </div>
     </div>

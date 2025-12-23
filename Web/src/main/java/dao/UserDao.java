@@ -27,13 +27,21 @@ public class UserDao extends BaseDao {
 
     public void addUser(String fullname, String email, String password) {
         getJdbi().withHandle(handle ->
-                handle.createUpdate("insert into USER(name,email,password_hash) values(:username, :email, :password)").bind("username", fullname).bind("email", email).bind("password", password).execute()
+                handle.createUpdate("insert into USER(name,email,password_hash,role) values(:username, :email, :password,:role)").bind("username", fullname).bind("email", email).bind("password", password).bind("role",0).execute()
         );
     }
 
     public void updatePass(String password) {
         getJdbi().withHandle(handle ->
                 handle.createUpdate("update USER set password_hash=:password").bind("password", password).execute()
+        );
+    }
+
+    public boolean checkRole(String email) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT role FROM USER where email=:email")
+                        .bind("email", email)
+                        .mapTo(boolean.class).one()
         );
     }
 }
