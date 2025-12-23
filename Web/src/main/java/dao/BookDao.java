@@ -124,4 +124,21 @@ public class BookDao extends BaseDao{
         });
     }
 
+    public List<Book> getAllBooksDiscounted(int limit, int offset) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1 LIMIT :limit OFFSET :offset").bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
+
+    public List<Book> getAllBooksNew(int limit, int offset) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC LIMIT :limit OFFSET :offset").bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
 }

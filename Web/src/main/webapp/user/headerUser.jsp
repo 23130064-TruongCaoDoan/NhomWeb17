@@ -63,7 +63,7 @@
                         </span>
                 </a>
                 <a href="<c:url value="/ShoppingCart" />" class="button bt gio">
-                    <i class="fa-solid fa-cart-shopping"><span class="number">${cart.totalQuantity}</span></i>
+                    <i class="fa-solid fa-cart-shopping"><span class="number" id="totalItem">${cart.totalQuantity}</span></i>
                     <span>Giỏ hàng</span>
                 </a>
                 <a href="user-thongbao" class="button bt thongbao">
@@ -74,5 +74,6 @@
         </div>
     </div>
 </div>
+<div id="toast" class="toast"></div>
 </body>
 </html>

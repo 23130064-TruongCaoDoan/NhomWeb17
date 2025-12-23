@@ -18,6 +18,9 @@ public class BookService {
     public List<Book> getBooksDiscounted(){
         return hd.getBooksDiscounted();
     }
+    public List<Book> getAllBooksDiscounted(int limit, int offset) {
+        return hd.getAllBooksDiscounted(limit, offset);
+    }
     public Book getBooksById(int id){
         return hd.getBookById(id);
     }
@@ -26,6 +29,9 @@ public class BookService {
     }
     public List<Book> getBooksNew(){
         return hd.getBooksNew();
+    }
+    public List<Book> getAllBooksNew(int limit, int offset){
+        return hd.getAllBooksNew(limit,offset);
     }
     public List<Book> getAllBooks(int limit, int offset){
         return hd.getAllBooks(limit, offset);
@@ -59,12 +65,12 @@ public class BookService {
         int pagesNumber = Integer.parseInt(request.getParameter("pageNumber"));
         int age = Integer.parseInt(request.getParameter("age"));
 
-        double price = Double.parseDouble(request.getParameter("price"));
+        int price = Integer.parseInt(request.getParameter("price"));
 
         String priceDiscountStr = request.getParameter("price_discounted");
-        double priceDiscounted = (priceDiscountStr == null || priceDiscountStr.isBlank())
+        int priceDiscounted = (priceDiscountStr == null || priceDiscountStr.isBlank())
                 ? price
-                : Double.parseDouble(priceDiscountStr);
+                : Integer.parseInt(priceDiscountStr);
 
         String weightStr = request.getParameter("weight");
         double weight = (weightStr == null || weightStr.isBlank())
