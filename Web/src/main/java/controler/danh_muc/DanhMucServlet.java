@@ -36,6 +36,7 @@ public class DanhMucServlet extends HttpServlet {
         String search="";
         String icon="";
         String color="";
+        String title= request.getParameter("title");
         switch (type) {
             case 1:{
                 bookList=bookService.getAllBooksDiscounted(pageSize, offset);
@@ -47,6 +48,11 @@ public class DanhMucServlet extends HttpServlet {
                 bookList=bookService.getAllBooksNew(pageSize, offset);
                 search="Góc Sách Mới";
                 icon="assets/img/icon/iconNew.png";
+                break;
+            }
+            case 4:{
+                bookList=bookService.getBookByEvent(pageSize, offset, title);
+                search="Sách Giáng Sinh";
                 break;
             }
             default:{

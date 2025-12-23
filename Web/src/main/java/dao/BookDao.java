@@ -22,7 +22,12 @@ public class BookDao extends BaseDao{
 
     public Book getBookById(int bookId) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE id = :id AND is_sell=1")
+                handle.createQuery(
+                                "SELECT b.*, a.name AS author " +
+                                        "FROM BOOKS b " +
+                                        "INNER JOIN AUTHORS a ON b.author_id = a.id " +
+                                        "WHERE b.id = :id AND b.is_sell = 1"
+                        )
                         .bind("id", bookId)
                         .mapToBean(Book.class)
                         .findOne()
@@ -61,11 +66,6 @@ public class BookDao extends BaseDao{
                         .mapTo(int.class)
                         .one()
         );
-    }
-
-    public static void main(String[] args) {
-        BookDao bookDao = new BookDao();
-        System.out.println(bookDao.getBookById(1));
     }
 
     public List<Book> findListBook(String search,int limit,int offset) {
@@ -141,4 +141,18 @@ public class BookDao extends BaseDao{
                         .list()
         );
     }
-}
+    public List<Book> getAllBookByEvent(int limit, int offset, String title) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT b.* " +
+                                "FROM BOOKS b " +
+                                "INNER JOIN event_books eb ON eb.book_id = b.id " +
+                                "INNER JOIN events e ON e.id = eb.event_id " +
+                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "ORDER BY add_date DESC LIMIT :limit OFFSET :offset")
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .bind("title","%" +title+"%")
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }}

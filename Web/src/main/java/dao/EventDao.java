@@ -18,7 +18,7 @@ public class EventDao extends BaseDao{
 
     public List<Event> getListEvent(){
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM events WHERE start_date <= NOW() AND end_date >= NOW()")
+                handle.createQuery("SELECT * FROM events WHERE start_date <= NOW() AND end_date >= NOW() ORDER BY start_date DESC")
                         .mapToBean(Event.class)
                         .list()
         );

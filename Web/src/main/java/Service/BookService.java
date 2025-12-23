@@ -132,5 +132,8 @@ public class BookService {
     public List<Book> findListBook(String search, int limit, int offset) {
         return hd.findListBook(search, limit, offset);
     }
+    public List<Book> getBookByEvent(int limit, int offset,String title) {
+        return hd.getAllBookByEvent(limit, offset,title);
+    }
 
 }

@@ -33,7 +33,8 @@
 /* ===== IMAGE ===== */
 .card img {
     width: 100%;
-    height: 300px;
+    height: auto;
+    max-height: 237px;
     object-fit: contain;
 }
 
