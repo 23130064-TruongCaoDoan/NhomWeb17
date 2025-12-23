@@ -75,11 +75,12 @@
                             <input type="hidden" name="bookId" value="${book.id}">
                             <div class="quantity" style="padding-top: 10px;">
                                 <div class="number-input">
-                                    <button class="minus" onclick="minus()">-</button>
+                                    <button type="button" class="minus" onclick="minus()">-</button>
                                     <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
-                                    <button class="plus" onclick="plus()">+</button>
+                                    <button type="button" class="plus" onclick="plus()">+</button>
                                 </div>
                             </div>
+
                             <button type="submit" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
                                     class="fa-solid fa-cart-plus"></i></button>
                         </form>
@@ -289,15 +290,18 @@
         });
     });
     // quantity
-    const input = document.querySelector(".number-input input");
-    const minus = () => {
-        input.value = input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
-    }
-    const plus = () => {
-        input.value = parseInt(input.value) + 1;
+        const input = document.getElementById("number-quantity");
+
+        function minus() {
+        input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
     }
 
-    const writeBtn = document.getElementById("writeReviewBtn");
+        function plus() {
+        input.value = Math.min(parseInt(input.value) + 1, parseInt(input.max));
+    }
+
+
+const writeBtn = document.getElementById("writeReviewBtn");
     const form = document.getElementById("reviewForm");
     const submitBtn = document.getElementById("submitReview");
     const commentList = document.querySelector(".comment-list");

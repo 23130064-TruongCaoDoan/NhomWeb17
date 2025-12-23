@@ -10,33 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/Service/VoucherService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/controler/ThanhToan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/controler/admin/KhoVoucher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/controler/admin/addVoucher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/dao/VoucherDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/java/model/Voucher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/webapp/admin/MenuFunctionAdmin.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/src/main/webapp/admin/headerAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Cart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Cart/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Cart/CartItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/Cart/addItemShopping.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/Cart/addItemShopping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/ThongKeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/ThongKeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/danh_muc/DanhMucServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/danh_muc/DanhMucServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/admin/ThongKe.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/admin/ThongKe.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/admin/khoVoucher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/admin/khoVoucher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/errol.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/errol.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/headerUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/headerUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/shoppingCart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/shoppingCart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +89,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Tomcat Server.Tomcat 10.1.482.executor": "Run",
     "Tomcat Server.Tomcat.executor": "Run",
-    "git-widget-placeholder": "Merging spYeuThich",
+    "git-widget-placeholder": "spYeuThich",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/hoc tap/NhomWeb17/Web/src/main/webapp/assets/img/event",
@@ -362,7 +337,7 @@
       <workItem from="1765963320830" duration="3831000" />
       <workItem from="1765967353885" duration="177000" />
       <workItem from="1766403641763" duration="12340000" />
-      <workItem from="1766455824084" duration="6857000" />
+      <workItem from="1766455824084" duration="7293000" />
     </task>
     <servers />
   </component>
