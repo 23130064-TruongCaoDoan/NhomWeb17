@@ -29,24 +29,28 @@
     <div class="content">
         <div class="container">
             <div class="event-carousel">
-                <div class="slides">
-                    <div class="slide active">
-                        <a href="dsSanPham.jsp" class="halloween"><img src="assets/img/event/halloween.jpg"
-                                                                       alt="Halloween"></a>
-                    </div>
-                    <div class="slide">
-                        <a href="dsSanPham.jsp" class="10-10"><img src="assets/img/event/10-10.jpg" alt="10-10"></a>
-                    </div>
-                </div>
                 <button class="prev">&#10094;</button>
+                <div class="slides">
+                    <c:forEach var="event" items="${events}" varStatus="st">
+                        <div class="slide ${st.first ? 'active' : ''}">
+                            <a href="${pageContext.request.contextPath}/dsSanPham?title=${event.title}">
+                                <img src="${event.imgUrl}" alt="event-img">
+                            </a>
+                        </div>
+                    </c:forEach>
+                </div>
                 <button class="next">&#10095;</button>
             </div>
             <div class="sachh sale">
                 <div class="title t"><span>Giảm giá</span><img src="assets/img/icon/sale.png" alt=""></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListSale}" begin="0" end="4">
+                        <c:url var="detailUrl" value="/productDetail">
+                            <c:param name="id" value="${book.id}" />
+                            <c:param name="type" value="${book.type}" />
+                        </c:url>
                         <div class="card">
-                            <a href="productDetail?id=${book.id}&type=${book.type}">
+                            <a href="${detailUrl}">
                                 <img src="${book.coverImgUrl}" alt="${book.title}"/>
                                 <p class="book-name">${book.title}</p>
                             </a>

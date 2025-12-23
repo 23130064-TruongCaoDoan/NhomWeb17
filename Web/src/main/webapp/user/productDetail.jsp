@@ -175,10 +175,10 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action="">
-                ${pageContext.request.contextPath}/productDetail"" method="post">
+            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post">
                 <h3>Viết đánh giá</h3>
                 <input type="hidden" name="bookId" value="${book.id}">
+                <input type="hidden" name="type" value="${book.type}">
                 <select id="reviewStars" name="rating" required>
                     <option value="5">★★★★★</option>
                     <option value="4">★★★★</option>

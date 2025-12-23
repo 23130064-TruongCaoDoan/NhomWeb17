@@ -1,4 +1,4 @@
-package controler;
+package controler.product_detail;
 
 import Service.BookService;
 import Service.CommentService;
@@ -12,7 +12,6 @@ import model.RatingStartView;
 import model.User;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @WebServlet(name = "productDetail", value = "/productDetail")
@@ -42,22 +41,6 @@ public class ProductDetailServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
 
-        if (user == null) {
-            response.sendRedirect("login");
-            return;
-        }
-
-        int userId = user.getId();
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        String content = request.getParameter("content");
-
-        CommentDao commentDao = new CommentDao();
-        commentDao.insertComment(userId, bookId, rating, content);
-
-        response.sendRedirect("productDetail?id=" + bookId);
     }
 }

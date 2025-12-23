@@ -66,7 +66,7 @@
                     <i class="fa-solid fa-cart-shopping"><span class="number">${cart.totalQuantity}</span></i>
                     <span>Giỏ hàng</span>
                 </a>
-                <a href="user-thongbao.jsp" class="button bt thongbao">
+                <a href="user-thongbao" class="button bt thongbao">
                     <i class="fa-solid fa-bell"><span class="number">${numNotiFy}</span></i>
                     <span>Thông báo</span>
                 </a>
