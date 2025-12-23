@@ -22,9 +22,12 @@ public class Cart implements Serializable {
         if (get(book.getId()) != null) {
             data.get(book.getId()).updateQuantity(quantity);
         } else {
-            data.put(book.getId(), new CartItem(book, quantity, book.getPrice()));
+            if (book.getPriceDiscounted() > 0) {
+                data.put(book.getId(), new CartItem(book, quantity, book.getPriceDiscounted()));
+            } else {
+                data.put(book.getId(), new CartItem(book, quantity, book.getPrice()));
+            }
         }
-
     }
 
     public boolean updateItem(int bookID, int quantity) {
@@ -44,9 +47,11 @@ public class Cart implements Serializable {
         data.clear();
         return list;
     }
+
     public List<CartItem> getItems() {
         return new ArrayList<>(data.values());
     }
+
     public int getTotalQuantity() {
         int total = 0;
         for (CartItem item : data.values()) {
@@ -54,10 +59,11 @@ public class Cart implements Serializable {
         }
         return total;
     }
+
     public double getTotalBill() {
         double total = 0;
         for (CartItem item : data.values()) {
-            total += item.getPrice()*item.getQuantity();
+            total += item.getPrice()* item.getQuantity();
         }
         return total;
     }
@@ -65,6 +71,7 @@ public class Cart implements Serializable {
     private CartItem get(int id) {
         return data.get(id);
     }
+
     public void updateUser(User user) {
         user = new User();
     }

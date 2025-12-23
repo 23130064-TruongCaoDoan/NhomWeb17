@@ -136,4 +136,19 @@ public class BookService {
         return hd.getAllBookByEvent(limit, offset,title);
     }
 
+    public int countBooksBySearch(String search) {
+        return hd.countBooksBySearch(search);
+    }
+
+    public int countBooksDiscounted() {
+        return hd.countBooksDiscounted();
+    }
+
+    public int countBooksNew() {
+        return hd.countBooksNew();
+    }
+
+    public int countBooksByEvent(String title) {
+        return hd.countBooksByEvent(title);
+    }
 }

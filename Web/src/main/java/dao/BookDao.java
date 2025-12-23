@@ -4,7 +4,7 @@ import model.CommentView;
 
 import java.util.List;
 
-public class BookDao extends BaseDao{
+public class BookDao extends BaseDao {
     public List<Book> getBooksDiscounted() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1")
@@ -54,7 +54,7 @@ public class BookDao extends BaseDao{
     public List<Book> getAllBooks() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(
-                            "SELECT b.id, b.book_code, b.title, a.name AS author, b.price, b.stock, b.type, b.age, b.cover_img_url FROM books b LEFT JOIN authors a ON b.author_id = a.id WHERE b.is_sell = 1"                        )
+                                "SELECT b.id, b.book_code, b.title, a.name AS author, b.price, b.stock, b.type, b.age, b.cover_img_url FROM books b LEFT JOIN authors a ON b.author_id = a.id WHERE b.is_sell = 1")
                         .mapToBean(Book.class)
                         .list()
         );
@@ -68,10 +68,15 @@ public class BookDao extends BaseDao{
         );
     }
 
-    public List<Book> findListBook(String search,int limit,int offset) {
+    public static void main(String[] args) {
+        BookDao bookDao = new BookDao();
+        System.out.println(bookDao.getBookById(1));
+    }
+
+    public List<Book> findListBook(String search, int limit, int offset) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE (title like :search or author like :search or type like :search) AND is_sell=1 LIMIT :limit OFFSET :offset" ).bind("limit", limit)
-                .bind("offset", offset).bind("search","%"+search+"%").mapToBean(Book.class).list()
+                handle.createQuery("SELECT * FROM BOOKS WHERE (title like :search or author like :search or type like :search) AND is_sell=1 LIMIT :limit OFFSET :offset").bind("limit", limit)
+                        .bind("offset", offset).bind("search", "%" + search + "%").mapToBean(Book.class).list()
         );
     }
 
@@ -155,4 +160,42 @@ public class BookDao extends BaseDao{
                         .mapToBean(Book.class)
                         .list()
         );
-    }}
+    }
+
+    public int countBooksBySearch(String search) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell = 1 AND (title like :search or author like :search or type like :search)").bind("search", search)
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+
+    public int countBooksDiscounted() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE price_discounted > 0 AND is_sell=1")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+    public int countBooksNew() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+
+    public int countBooksByEvent(String title) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*)" +
+                                "FROM BOOKS b " +
+                                "INNER JOIN event_books eb ON eb.book_id = b.id " +
+                                "INNER JOIN events e ON e.id = eb.event_id " +
+                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "ORDER BY add_date DESC")
+                        .bind("title","%" +title+"%")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+}

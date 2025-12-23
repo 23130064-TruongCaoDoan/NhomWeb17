@@ -87,7 +87,7 @@
                             </form>
                         </div>
                         <div class="total-cost" style="text-align: center">
-                            <p class="cost">${item.price}</p>
+                            <p class="cost"><fmt:formatNumber value="${item.price}" pattern="#,###"/> VNĐ</p>
                         </div>
                         <i class="fa-solid fa-trash" style="color: black"
                            onclick="updateItem(${item.getBook().getId()},0)"></i>
@@ -121,16 +121,16 @@
             <div class="bill">
                 <div class="thanh-tien">
                     <p>Thành tiền</p>
-                    <p><c:if test="${empty cart.items}">0</c:if>
+                    <p><c:if test="${empty cart.items}">0 VNĐ</c:if>
                         <c:if test="${not empty cart.items}">
-                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/>VNĐ
+                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/> VNĐ
                         </c:if></p>
                 </div>
                 <div>
                     <h3 class="total-price">Tổng số tiền (bao gồm VAT)</h3>
                     <p>80.000VNĐ</p>
                 </div>
-                <button class="check-out" onclick="window.location.href='ThanhToan.jsp'">Đặt hàng</button>
+                <button class="check-out" onclick="window.location.href='<c:url value="/ThanhToan" />'">Đặt hàng</button>
             </div>
         </div>
     </div>

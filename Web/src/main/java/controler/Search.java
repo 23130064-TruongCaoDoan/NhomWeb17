@@ -27,13 +27,13 @@ public class Search extends HttpServlet {
             if (p != null) {
                 page = Integer.parseInt(p);
             }
-
-            int totalBooks = bookService.countBooks();
+            int totalBooks = bookService.countBooksBySearch(search);
             int totalPages = (int) Math.ceil((double) totalBooks / pageSize);
-            if (page > totalPages) {
+            if (totalPages == 0) {
+                page = 1;
+            } else if (page > totalPages) {
                 page = totalPages;
             }
-
             int offset = (page - 1) * pageSize;
             request.setAttribute("currentPage", page);
             request.setAttribute("totalPages",totalPages);

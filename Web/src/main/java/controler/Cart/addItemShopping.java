@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
 import model.CommentView;
+import model.User;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +26,13 @@ public class addItemShopping extends HttpServlet {
         }
         BookService bookService = new BookService();
         Book book=bookService.getBooksById(bookId);
+        User user = (User) request.getSession().getAttribute("user");
         if(book!=null){
             cart.addItem(book, quantity);
             session.setAttribute("cart",cart);
+            if(user!=null){
+                cart.updateUser(user);
+            }
         }
 //        CommentService commentService = new CommentService();
 //        List<Book> bookListRe = bookService.getBookRecommendInDetail(book.getType());

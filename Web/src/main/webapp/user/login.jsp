@@ -29,9 +29,9 @@
             <div class="title">Đăng nhập</div>
             <div class="inputIfor">
                 <div class="khung user"><input value="${username}" type="text" id="iUser" name="user"
-                                               placeholder="Số điện thoại hoặc email" required></div>
+                                               placeholder="Email"></div>
                 <div class="khung MK"><input value="${password}" type="password" id="iPass" name="password"
-                                             placeholder="Mật khẩu" required>
+                                             placeholder="Mật khẩu">
                     <button type="button" class="show"><i class="fa-solid fa-eye "></i></button>
                 </div>
                 <div class="error" style="color: red">${error}</div>
@@ -94,6 +94,36 @@
             setTimeout(() => successAlert.remove(), 600);
         }, 2500);
     }
+    const form = document.querySelector(".login");
+    const userInput = document.getElementById("iUser");
+    const errorDiv = document.querySelector(".error");
+    function checkPassword(password) {
+        const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+        return regex.test(password);
+    }
+    form.addEventListener("submit", function (e) {
+        let hasError = false;
+        errorDiv.innerText = "";
+
+        if (userInput.value.trim() === "") {
+            errorDiv.innerText = "Vui lòng nhập email";
+            hasError = true;
+        }
+        else if (passInput.value.trim() === "") {
+            errorDiv.innerText = "Vui lòng nhập mật khẩu";
+            hasError = true;
+        }
+        else if (passInput.value.length < 8 && !checkPassword(passInput.value.trim)) {
+            errorDiv.innerText = "Mật khẩu phải có ít nhất 8 ký tự, có số và kí tự đặc biệt";
+            hasError = true;
+        }
+
+        if (hasError) {
+            e.preventDefault(); // ❗ chặn submit
+        }
+    });
+
+
 
 
 </script>

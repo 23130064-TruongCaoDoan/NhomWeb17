@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class CartItem implements Serializable {
     private Book book;
     private int quantity;
-    private double price;
+    private int price;
 
-    public CartItem(Book book, int quantity, double price) {
+    public CartItem(Book book, int quantity, int price) {
         this.book = book;
         this.quantity = quantity;
         this.price = price;
@@ -31,11 +31,11 @@ public class CartItem implements Serializable {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     public void updateQuantity(int quantity) {

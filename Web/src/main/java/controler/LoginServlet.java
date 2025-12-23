@@ -33,7 +33,12 @@ public class LoginServlet extends HttpServlet {
            }
            HttpSession session = request.getSession();
            session.setAttribute("user",user);
-           response.sendRedirect("home");
+           if(userService.checkRole(user)){
+               response.sendRedirect("ThongKe");
+           }
+           else {
+               response.sendRedirect("home");
+           }
        }
        else{
            request.setAttribute("username",username);
