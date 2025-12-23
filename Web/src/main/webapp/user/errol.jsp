@@ -134,6 +134,10 @@
         }
         inputElement.style.border = '1px solid #0d3164';
     }
+    function checkPassword(pass) {
+        const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+        return regex.test(pass);
+    }
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -158,18 +162,21 @@
         if (password.value.trim() === "") {
             setError(password, "Vui lòng nhập mật khẩu");
             hasError = true;
+        } else if (!checkPassword(password.value.trim())) {
+            setError(password, "Mật khẩu phải ít nhất 8 ký tự, có số và ký tự đặc biệt");
+            hasError = true;
         } else clearError(password);
 
         // Confirm password
         if (confirmPassword.value.trim() === "") {
             setError(confirmPassword, "Vui lòng xác nhận mật khẩu");
             hasError = true;
-
-        } else if (confirmPassword.value !== password.value) {
+        }
+        else if (confirmPassword.value !== password.value) {
             setError(confirmPassword, "Mật khẩu không trùng khớp");
             hasError = true;
-
-        } else {
+        }
+        else {
             clearError(confirmPassword);
         }
 

@@ -133,4 +133,15 @@ public class BookService {
         return hd.findListBook(search, limit, offset);
     }
 
+    public int countBooksBySearch(String search) {
+        return hd.countBooksBySearch(search);
+    }
+
+    public int countBooksDiscounted() {
+        return hd.countBooksDiscounted();
+    }
+
+    public int countBooksNew() {
+        return hd.countBooksNew();
+    }
 }

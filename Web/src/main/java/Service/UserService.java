@@ -40,4 +40,8 @@ public class UserService {
             userDao.updatePass(password);
         }
     }
+
+    public boolean checkRole(User user) {
+        return userDao.checkRole(user.getEmail());
+    }
 }
