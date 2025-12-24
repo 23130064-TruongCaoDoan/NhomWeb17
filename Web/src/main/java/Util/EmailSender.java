@@ -46,7 +46,7 @@ public class EmailSender {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject(title);
 
-            String htmlContent = "<h2>Xin chào " + username + ",</h2>"
+            String htmlContent = "<h2>Xin chào" + username + "</h2>"
                     + "<p>"+thanks+"!</p>"
                     + "<p>"+content+":</p>"
                     + "<p style=\"text-align: center;\">"

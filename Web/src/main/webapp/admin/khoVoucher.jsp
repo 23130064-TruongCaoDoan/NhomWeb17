@@ -7,13 +7,14 @@
     <title>Kho voucher</title>
     <link rel="stylesheet" href="assets/css_admin/khoVoucher.css">
     <link rel="stylesheet" href="assets/css_admin/admin.css">
+    <link rel="stylesheet" href="assets/css_admin/notifySuccess.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
 </head>
 <body>
 <main>
     <c:import url="headerAdmin.jsp"></c:import>
     <div class="content">
-        <c:import url="MenuFunctionAdmin.jsp" ></c:import>
+        <c:import url="MenuFunctionAdmin.jsp"></c:import>
         <div class="voucher-container">
             <h2>Kho Voucher</h2>
             <div class="function">
@@ -140,53 +141,63 @@
         </div>
     </div>
     <div id="overlay"></div>
-    <form id="voucherForm" action="addVoucher" method="get">
+    <form id="voucherForm" method="post">
         <div class="form-group">
             <label>Mã voucher</label>
-            <input type="text" id="code" placeholder="Nhập mã voucher" required>
+            <input type="text" name="code" id="code" placeholder="Nhập mã voucher">
+            <small class="error"></small>
         </div>
 
         <div class="form-group">
             <label>Mô tả</label>
-            <input type="text" id="description" placeholder="Giảm 50% cho đơn trên 200K">
+            <input type="text" name="description" id="description" placeholder="Giảm 50% cho đơn trên 200K">
         </div>
-        <div class="form-group">
+        <div class="form-group" id="condition-group">
             <label>Điều Kiện</label>
-            <input type="text" id="gia" placeholder="đơn hàng trên">
-            <input type="text" id="loaisach" placeholder="loại sách">
-            <input type="text" id="nxv" placeholder="nhà xuất bản">
+            <div class="condition-group">
+                <input type="number" name="gia" id="gia" placeholder="Đơn hàng trên">
+                <input type="text" name="loaisach" id="loaisach" placeholder="Loại sách">
+                <input type="text" name="nxb" id="nxb" placeholder="Nhà xuất bản">
+            </div>
+            <small class="error"></small>
         </div>
 
         <div class="form-group">
             <label>Loại</label>
-            <select id="type">
+            <select id="type" name="type">
+                <option value="">Chọn loại voucher</option>
                 <option value="percent">Giảm giá</option>
-                <option value="fixed">Vận chuyển</option>
+                <option value="shipp">Vận chuyển</option>
             </select>
+            <small class="error"></small>
         </div>
 
         <div class="form-group">
             <label>Giá trị</label>
-            <input type="number" id="value" placeholder="50" required>
+            <input type="number" name="value" id="value" placeholder="50">
+            <small class="error"></small>
         </div>
 
         <div class="form-group-inline">
             <div>
                 <label>Ngày bắt đầu</label>
-                <input type="date" id="start_date" required>
+                <input type="date" name="start_date" id="start_date">
+                <small class="error"></small>
             </div>
             <div>
                 <label>Ngày kết thúc</label>
-                <input type="date" id="end_date" required>
+                <input type="date" name="end_date" id="end_date">
+                <small class="error"></small>
             </div>
         </div>
 
         <div class="form-group">
             <label>Giới hạn sử dụng</label>
-            <input type="number" id="usage_limit" placeholder="10">
+            <input type="number" name="usage_limit" id="usage_limit" placeholder="10">
+            <small class="error"></small>
         </div>
 
-        <button type="submit" class="btn-save">Lưu voucher</button>
+        <button type="submit" id="btn-save">Lưu voucher</button>
     </form>
 </main>
 <script>
@@ -208,6 +219,160 @@
         overlay.style.display = "block";
         popup.style.display = "block";
     })
+    const code = document.getElementById("code");
+    const description = document.getElementById("description");
+    const price = document.getElementById("gia");
+    const loaisach = document.getElementById("loaisach");
+    const nxb = document.getElementById("nxb");
+    const type = document.getElementById("type");
+    const value = document.getElementById("value");
+    const start_date = document.getElementById("start_date");
+    const end_date = document.getElementById("end_date");
+    const usage_limit = document.getElementById("usage_limit");
+    const form = document.getElementById("voucherForm");
+
+    function setError(inputElement, message) {
+        const parent = inputElement.parentElement;
+        const error = parent.querySelector('.error');
+        if (error) {
+            error.textContent = message;
+            error.style.color = 'red';
+        }
+        inputElement.style.border = '1px solid red';
+    }
+
+    function clearError(inputElement) {
+        const parent = inputElement.parentElement;
+        const error = parent.querySelector('.error');
+        if (error) {
+            error.textContent = '';
+        }
+        inputElement.style.border = '1px solid #0d3164';
+    }
+
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let hasError = false;
+        if (code.value.trim() === "") {
+            setError(code, "Vui lòng nhập mã voucher");
+            hasError = true;
+        } else clearError(code);
+        if (description.value.trim() === "") {
+            setError(description, "Vui lòng nhập mô tả");
+            hasError = true;
+        } else clearError(description);
+
+        if (
+            price.value.trim() === "" &&
+            loaisach.value.trim() === "" &&
+            nxb.value.trim() === ""
+        ) {
+            setGroupError("condition-group", "Vui lòng nhập ít nhất 1 điều kiện");
+            hasError = true;
+            hasError = true;
+        } else {
+            clearGroupError("condition-group");
+        }
+        if (type.value === "") {
+            setError(type, "Vui lòng chọn loại voucher");
+            hasError = true;
+        } else clearError(type);
+        if (value.value.trim() === "") {
+            setError(value, "Vui lòng trị giá voucher");
+            hasError = true;
+        } else clearError(value);
+        if (!start_date.value) {
+            setError(start_date, "Vui lòng nhập ngày bắt đầu");
+            hasError = true;
+        } else {
+            clearError(start_date);
+        }
+
+        if (!end_date.value) {
+            setError(end_date, "Vui lòng nhập ngày kết thúc");
+            hasError = true;
+        } else {
+            clearError(end_date);
+        }
+        if (start_date.value && end_date.value) {
+            if (start_date.value > end_date.value) {
+                setError(start_date, "Ngày bắt đầu phải nhỏ hơn ngày kết thúc");
+                setError(end_date, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
+                hasError = true;
+            }
+        }
+        if (usage_limit.value.trim() === "") {
+            setError(usage_limit, "Vui lòng nhập giới hạn số lượng sử dụng");
+            hasError = true;
+        } else clearError(usage_limit);
+
+        if (!hasError) {
+            addVoucher();
+        }
+    });
+
+    function setGroupError(groupId, message) {
+        const group = document.getElementById(groupId);
+        if (!group) return;
+
+        const error = group.querySelector('.error');
+        if (error) {
+            error.textContent = message;
+            error.style.color = 'red';
+        }
+    }
+
+    function clearGroupError(groupId) {
+        const group = document.getElementById(groupId);
+        if (!group) return;
+
+        const error = group.querySelector('.error');
+        if (error) {
+            error.textContent = '';
+        }
+    }
+
+    function addVoucher() {
+        fetch("addVoucher", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:
+                "code=" + encodeURIComponent(code.value) +
+                "&description=" + encodeURIComponent(description.value) +
+                "&gia=" + encodeURIComponent(price.value) +
+                "&loaisach=" + encodeURIComponent(loaisach.value) +
+                "&nxb=" + encodeURIComponent(nxb.value) +
+                "&type=" + encodeURIComponent(type.value) +
+                "&start_date=" + encodeURIComponent(start_date.value) +
+                "&end_date=" + encodeURIComponent(end_date.value) +
+                "&usage_limit=" + encodeURIComponent(usage_limit.value) +
+                "&value=" + encodeURIComponent(value.value)
+        })
+            .then(res => res.json())
+            .then(data => {
+                overlay.style.display = "none";
+                popup.style.display = "none";
+                if (data.success) {
+                    show(data.message);
+                    form.reset();
+                } else {
+                    show(data.message);
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    function show(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 
 </script>
 </body>
