@@ -32,8 +32,8 @@ public class addVoucher extends HttpServlet {
 
         int usage_limit = Integer.parseInt(request.getParameter("usage_limit")==null?"0":request.getParameter("usage_limit"));
         double value = Double.parseDouble(request.getParameter("value")==null?"0":request.getParameter("value"));
-        boolean success = voucherService.addVoucher(code, description, conditionPrice, conditionBook, conditionPublisher, start_date, end_date, usage_limit, value);
-
+        String type = request.getParameter("type");
+        boolean success = voucherService.addVoucher(code, description, conditionPrice, conditionBook, conditionPublisher, start_date, end_date, usage_limit, value,type);
         String json;
         if (success) {
             json = "{\"success\":true,\"message\":\"Thêm voucher thành công\"}";

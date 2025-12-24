@@ -28,15 +28,15 @@
                 <div class="title">
                     <h3>Danh sách voucher hiện có</h3>
                     <div>
-                        <select class="locVoucher">
-                            <option>Tất cả</option>
-                            <option>Mới nhất</option>
-                            <option>Cũ nhất</option>
+                        <select class="locVoucher" onchange="sortVoucherTime(this.value)">
+                            <option value="" <c:if test="${selectedTime == null || selectedTime == ''}">selected</c:if>>Tất cả</option>
+                            <option value="1" <c:if test="${selectedTime == '1'}">selected</c:if>>Mới nhất</option>
+                            <option value="2" <c:if test="${selectedTime == '2'}">selected</c:if>>Cũ nhất</option>
                         </select>
-                        <select class="locVoucher">
-                            <option>Tất cả</option>
-                            <option>Giảm giá</option>
-                            <option>Vận chuyển</option>
+                        <select class="locVoucher" onchange="sortVoucherType(this.value)">
+                            <option value="" <c:if test="${selectedType == null || selectedType == ''}">selected</c:if>>Tất cả</option>
+                            <option value="discount" <c:if test="${selectedType == 'discount'}">selected</c:if>>Giảm giá</option>
+                            <option value="ship" <c:if test="${selectedType == 'ship'}">selected</c:if>>Vận chuyển</option>
                         </select>
                     </div>
                 </div>
@@ -54,86 +54,18 @@
                         </tr>
                         </thead>
                         <tbody id="voucherTable">
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
+                        <c:forEach items="${listVoucher}" var="voucher">
+                            <tr>
+                                <td>${voucher.code}</td>
+                                <td>${voucher.description}</td>
+                                <td>${voucher.type}</td>
+                                <td>${voucher.valuee}</td>
+                                <td>${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</td>
+                                <td>${voucher.usage_limit}</td>
+                                <td><i class="fa-solid fa-pen sua"></i>
+                                    <i class="fa-solid fa-trash xoa"></i></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -166,8 +98,8 @@
             <label>Loại</label>
             <select id="type" name="type">
                 <option value="">Chọn loại voucher</option>
-                <option value="percent">Giảm giá</option>
-                <option value="shipp">Vận chuyển</option>
+                <option value="discount">Giảm giá</option>
+                <option value="ship">Vận chuyển</option>
             </select>
             <small class="error"></small>
         </div>
@@ -358,6 +290,9 @@
                 if (data.success) {
                     show(data.message);
                     form.reset();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1800);
                 } else {
                     show(data.message);
                 }
@@ -373,6 +308,14 @@
             toast.classList.remove("show");
         }, 2000);
     }
+
+    function sortVoucherTime(type) {
+        window.location.href = "SortVoucherTime?type=" + type;
+    }
+    function sortVoucherType(type){
+        window.location.href = "SortVoucherType?type=" + type;
+    }
+
 
 </script>
 </body>

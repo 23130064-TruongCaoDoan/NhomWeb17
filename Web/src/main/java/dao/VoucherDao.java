@@ -11,9 +11,9 @@ public class VoucherDao extends BaseDao {
         );
     }
 
-    public boolean addVoucher(String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage_limit, double valuee) {
+    public boolean addVoucher(String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage_limit, double valuee, String type) {
         int i= getJdbi().withHandle(handle ->
-                handle.createUpdate("INSERT INTO VOUCHER(code,description,conditionPrice,conditionBook,conditionPublisher,start_date,end_date, usage_limit, valuee) values(:code,:description,:conditionPrice,:conditionBook,:conditionPublisher,:start_date,:end_date,:usage_limit,:valuee)")
+                handle.createUpdate("INSERT INTO VOUCHER(code,description,conditionPrice,conditionBook,conditionPublisher,start_date,end_date, usage_limit, valuee,type) values(:code,:description,:conditionPrice,:conditionBook,:conditionPublisher,:start_date,:end_date,:usage_limit,:valuee,:type)")
                         .bind("code", code)
                         .bind("description", description)
                         .bind("conditionPrice", conditionPrice)
@@ -23,11 +23,24 @@ public class VoucherDao extends BaseDao {
                         .bind("end_date", end_date)
                         .bind("usage_limit", usage_limit)
                         .bind("valuee", valuee)
+                        .bind("type", type)
                         .execute()
         );
         if(i>0){
             return true;
         }
         return false;
+    }
+
+    public List<Voucher> getListVoucherSortTime(String type) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM VOUCHER" +" ORDER BY created_at "+type).mapToBean(Voucher.class).list()
+        );
+    }
+
+    public List<Voucher> getListVoucherSortType(String type) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM VOUCHER where type like :type ORDER BY created_at DESC").bind("type",type).mapToBean(Voucher.class).list()
+        );
     }
 }

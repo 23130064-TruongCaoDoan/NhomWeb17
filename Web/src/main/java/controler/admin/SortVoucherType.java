@@ -7,16 +7,23 @@ import jakarta.servlet.annotation.*;
 import model.Voucher;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "KhoVoucher", value = "/KhoVoucher")
-public class KhoVoucher extends HttpServlet {
+@WebServlet(name = "SortVoucherType", value = "/SortVoucherType")
+public class SortVoucherType extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         VoucherService voucherService = new VoucherService();
-        List<Voucher> listVoucher=voucherService.getListVoucher();
+        String type = request.getParameter("type")==null?"":request.getParameter("type");
+        List<Voucher> listVoucher;
+        if(type.trim().equals("")){
+            listVoucher=voucherService.getListVoucher();
+        }
+        else {
+            listVoucher=voucherService.getListVoucherSortType(type);
+        }
         request.setAttribute("listVoucher",listVoucher);
+        request.setAttribute("selectedType",type);
         request.getRequestDispatcher("admin/khoVoucher.jsp").forward(request, response);
     }
 
