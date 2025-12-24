@@ -29,37 +29,44 @@
     <div class="content">
         <div class="container">
             <div class="event-carousel">
-                <div class="slides">
-                    <div class="slide active">
-                        <a href="dsSanPham.jsp" class="halloween"><img src="assets/img/event/halloween.jpg"
-                                                                       alt="Halloween"></a>
-                    </div>
-                    <div class="slide">
-                        <a href="dsSanPham.jsp" class="10-10"><img src="assets/img/event/10-10.jpg" alt="10-10"></a>
-                    </div>
-                </div>
                 <button class="prev">&#10094;</button>
+                <div class="slides">
+                    <c:forEach var="event" items="${events}" varStatus="st">
+                        <div class="slide ${st.first ? 'active' : ''}">
+                            <a href="${pageContext.request.contextPath}/dsSanPham?type=4&title=${event.title}">
+                                <img src="${event.imgUrl}" alt="event-img">
+                            </a>
+                        </div>
+                    </c:forEach>
+                </div>
                 <button class="next">&#10095;</button>
             </div>
             <div class="sachh sale">
                 <div class="title t"><span>Giảm giá</span><img src="assets/img/icon/sale.png" alt=""></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListSale}" begin="0" end="4">
+                        <c:url var="detailUrl" value="/productDetail">
+                            <c:param name="id" value="${book.id}"/>
+                            <c:param name="type" value="${book.type}"/>
+                        </c:url>
                         <div class="card">
-                            <a href="productDetail?id=${book.id}&type=${book.type}">
-                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                            <a href="${detailUrl}">
+                                <img src="${book.coverImgUrl}" alt="Ảnh sản phẩm"/>
                                 <p class="book-name">${book.title}</p>
                             </a>
                             <p class="rating">
                             </p>
                             <div class="price-cart">
                                 <p class="price">
-                                    <c:if test="${book.priceDiscounted > 0}" >
-                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted > 0}">
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                             maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                     </c:if>
-                                    <c:if test="${book.priceDiscounted == 0}" >
-                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted == 0}">
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                maxFractionDigits="0"/> Đ</span>
                                     </c:if>
                                 </p>
                                 <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
@@ -76,28 +83,38 @@
                 <div class="title"><span>Góc sách mới cho bé</span><img src="assets/img/icon/iconNew.png"></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListNew}" begin="0" end="4">
-                            <div class="card">
+                        <c:url var="detailUrl" value="/productDetail">
+                            <c:param name="id" value="${book.id}"/>
+                            <c:param name="type" value="${book.type}"/>
+                        </c:url>
+                        <div class="card">
+                            <a href="${detailUrl}">
                                 <a href="productDetail?id=${book.id}&type=${book.type}">
-                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
-                                <p class="book-name">${book.title}</p>
+                                    <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                                    <p class="book-name">${book.title}</p>
                                 </a>
                                 <p class="rating">
                                 </p>
                                 <div class="price-cart">
                                     <p class="price">
-                                        <c:if test="${book.priceDiscounted > 0}" >
-                                            <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                            <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        <c:if test="${book.priceDiscounted > 0}">
+                                            <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                 maxFractionDigits="0"/> Đ</s>
+                                            <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                    groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                         </c:if>
-                                        <c:if test="${book.priceDiscounted == 0}" >
-                                            <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        <c:if test="${book.priceDiscounted == 0}">
+                                            <span><fmt:formatNumber value="${book.price}" type="number"
+                                                                    groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                         </c:if>
                                     </p>
                                     <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
                     </c:forEach>
                 </div>
+
                 <div class="bt btmoi">
                     <button onclick="window.location.href='dsSanPham?type=2'" class="xemThem">Xem Thêm<i
                             class="fa-solid fa-arrow-right"></i></button>
@@ -193,12 +210,15 @@
                                 </p>
                                 <div class="price-cart">
                                     <p class="price">
-                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</s>
-                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number" groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                             maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                groupingUsed="true" maxFractionDigits="0"/> Đ</span>
                                     </p>
                                     <i class="fa-solid fa-cart-plus"></i>
                                 </div>
-                            </div></a>
+                            </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>
@@ -228,6 +248,7 @@
         prevBtn.addEventListener('click', () => {
             index = (index - 1 + total) % total;
             showSlide(index);
+            console.log("bbb")
         });
 
         setInterval(() => {
@@ -235,8 +256,9 @@
             showSlide(index);
         }, 3000);
     });
+
     function addToCart(bookId, quantity) {
-        fetch("addItemShopping?bookId="+ bookId + "&quantity=" + quantity)
+        fetch("addItemShopping?bookId=" + bookId + "&quantity=" + quantity)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
@@ -244,6 +266,7 @@
             })
             .catch(err => console.log(err));
     }
+
     function show(message) {
         const toast = document.getElementById("toast");
         toast.innerText = message;

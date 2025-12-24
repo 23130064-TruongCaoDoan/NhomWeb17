@@ -1,4 +1,4 @@
-package controler;
+package controler.danh_muc;
 
 import Service.BookService;
 import jakarta.servlet.ServletException;
@@ -16,6 +16,8 @@ import java.util.List;
 public class DanhMucServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = new BookService();
+        String title= request.getParameter("title");
+
         int page = 1;
         int pageSize = 28;
 
@@ -31,6 +33,9 @@ public class DanhMucServlet extends HttpServlet {
                 break;
             case 2:
                 totalBooks = bookService.countBooksNew();
+                break;
+            case 4:
+                totalBooks = bookService.countBooksByEvent(title);
                 break;
             default:
                 totalBooks = bookService.countBooks();
@@ -56,6 +61,11 @@ public class DanhMucServlet extends HttpServlet {
                 bookList=bookService.getAllBooksNew(pageSize, offset);
                 search="Góc Sách Mới";
                 icon="assets/img/icon/iconNew.png";
+                break;
+            }
+            case 4:{
+                bookList=bookService.getBookByEvent(pageSize, offset, title);
+                search="Sách Giáng Sinh";
                 break;
             }
             default:{

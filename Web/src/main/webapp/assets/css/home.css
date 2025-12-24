@@ -53,6 +53,7 @@
 .card img {
     width: 100%;
     height: auto;
+    max-height: 150px;
     object-fit: cover;
 
 }
@@ -150,9 +151,6 @@
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .event-carousel .slides {

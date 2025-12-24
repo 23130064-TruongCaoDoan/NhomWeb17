@@ -3,6 +3,7 @@ package Service;
 import dao.BookDao;
 import dao.CommentDao;
 import model.CommentView;
+import model.RatingStartView;
 
 import java.util.List;
 
@@ -16,5 +17,8 @@ public class CommentService {
     }
     public Double getAverageRating(int bookId){
         return hd.getAverageRating(bookId);
+    }
+    public List<RatingStartView> getRatingStartView(int bookId){
+        return hd.getRatingStartView(bookId);
     }
 }

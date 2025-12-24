@@ -71,16 +71,19 @@
                                                      maxFractionDigits="0"/> Đ</p>
                             </c:if>
                         </div>
-                            <input type="hidden" name="bookId" id="bookId" value="${book.id}">
+                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px">
+                            <input type="hidden" name="bookId" value="${book.id}">
                             <div class="quantity" style="padding-top: 10px;">
                                 <div class="number-input">
-                                    <button class="minus" onclick="minus()">-</button>
-                                    <input type="number" id="number-quantity" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
-                                    <button class="plus" onclick="plus()">+</button>
+                                    <button type="button" class="minus" onclick="minus()">-</button>
+                                    <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
+                                    <button type="button" class="plus" onclick="plus()">+</button>
                                 </div>
                             </div>
+
                             <button type="submit" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
                                     class="fa-solid fa-cart-plus"></i></button>
+                        </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
                         <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
                     </div>
@@ -148,31 +151,22 @@
                 </div>
 
                 <div class="rating-bars">
-                    <div class="rating-row"><span>5</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 90%;"></div>
+                    <c:forEach begin="1" end="5" var="i">
+                        <c:set var="percent" value="0"/>
+
+                        <c:forEach var="r" items="${ratingList}">
+                            <c:if test="${r.rating == i}">
+                                <c:set var="percent" value="${r.percent}"/>
+                            </c:if>
+                        </c:forEach>
+
+                        <div class="rating-row">
+                            <span>${i}</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: ${percent}%;"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="rating-row"><span>4</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 2%;"></div>
-                        </div>
-                    </div>
-                    <div class="rating-row"><span>3</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 1%;"></div>
-                        </div>
-                    </div>
-                    <div class="rating-row"><span>2</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="rating-row"><span>1</span>
-                        <div class="rating-bar">
-                            <div class="rating-fill" style="width: 3%;"></div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
 
                 <div class="review-actions">
@@ -180,19 +174,20 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action=""
-            ${pageContext.request.contextPath}/productDetail"" method="post">
-            <h3>Viết đánh giá</h3>
-            <input type="hidden" name="bookId" value="${book.id}">
-            <select id="reviewStars" name="rating" required>
-                <option value="5">★★★★★</option>
-                <option value="4">★★★★</option>
-                <option value="3">★★★</option>
-                <option value="2">★★</option>
-                <option value="1">★</option>
-            </select>
-            <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..." required></textarea>
-            <button type="submit" id="submitReview">Hoàn thành</button>
+            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post">
+                <h3>Viết đánh giá</h3>
+                <input type="hidden" name="bookId" value="${book.id}">
+                <input type="hidden" name="type" value="${book.type}">
+                <select id="reviewStars" name="rating" required>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="3">★★★</option>
+                    <option value="2">★★</option>
+                    <option value="1">★</option>
+                </select>
+                <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..."
+                          required></textarea>
+                <button type="submit" id="submitReview">Hoàn thành</button>
             </form>
 
 
@@ -260,7 +255,8 @@
                             <img src="${book.coverImgUrl}" alt="${book.title}"/>
                             <p class="book-name">${book.title}</p>
                             <div class="price-cart">
-                                <p class="price" style="display: flex;flex-direction: column; width: 100%; text-align: center; margin: auto; margin-top: 20px">
+                                <p class="price"
+                                   style="display: flex;flex-direction: column; width: 100%; text-align: center; margin: auto; margin-top: 20px">
                                     <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
                                                          maxFractionDigits="0"/> Đ</s>
                                     <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
@@ -294,23 +290,26 @@
         });
     });
     // quantity
-    const input = document.querySelector(".number-input input");
-    const minus = () => {
-        input.value = input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
-    }
-    const plus = () => {
-        input.value = parseInt(input.value) + 1;
+        const input = document.getElementById("number-quantity");
+
+        function minus() {
+        input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
     }
 
-    const writeBtn = document.getElementById("writeReviewBtn");
+        function plus() {
+        input.value = Math.min(parseInt(input.value) + 1, parseInt(input.max));
+    }
+
+
+const writeBtn = document.getElementById("writeReviewBtn");
     const form = document.getElementById("reviewForm");
     const submitBtn = document.getElementById("submitReview");
     const commentList = document.querySelector(".comment-list");
 
     // Bấm Write a Review
     writeBtn.addEventListener("click", () => {
-        form.style.display = "block";
-        writeBtn.style.display = "none";
+        form.style.display = form.style.display === "block" ? "none" : "block";
+        // writeBtn.style.display = "none";
     });
 
     //  Bấm Hoàn thành

@@ -1,6 +1,7 @@
 package dao;
 
 import model.CommentView;
+import model.RatingStartView;
 
 import java.util.List;
 
@@ -39,9 +40,25 @@ public class CommentDao extends BaseDao{
                         .orElse(0.0)
         );
     }
+    public List<RatingStartView> getRatingStartView(int bookId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT rating, COUNT(*) AS total, " +
+                                        "ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS percent " +
+                                        "FROM comments " +
+                                        "WHERE book_id = :book_id " +
+                                        "GROUP BY rating " +
+                                        "ORDER BY rating DESC"
+                        )
+                        .bind("book_id",bookId)
+                        .mapToBean(RatingStartView.class)
+                        .list()
+        );
+    }
+
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
-        List<CommentView> comments = dao.getAllComment(2);
+        List<RatingStartView> comments = dao.getRatingStartView(2);
         System.out.println(comments);
     }
 }

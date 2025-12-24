@@ -1,5 +1,4 @@
 package dao;
-
 import model.Book;
 import model.CommentView;
 
@@ -13,7 +12,6 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
-
     public List<Book> getBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
@@ -24,14 +22,18 @@ public class BookDao extends BaseDao {
 
     public Book getBookById(int bookId) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE id = :id AND is_sell=1")
+                handle.createQuery(
+                                "SELECT b.*, a.name AS author " +
+                                        "FROM BOOKS b " +
+                                        "INNER JOIN AUTHORS a ON b.author_id = a.id " +
+                                        "WHERE b.id = :id AND b.is_sell = 1"
+                        )
                         .bind("id", bookId)
                         .mapToBean(Book.class)
                         .findOne()
                         .orElse(null)
         );
     }
-
     public List<Book> getBookRecommendInDetail(String type) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE type = :type AND is_sell=1 ORDER BY quantity_sold DESC")
@@ -40,7 +42,6 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
-
     public List<Book> getAllBooks(int limit, int offset) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 LIMIT :limit OFFSET :offset")
@@ -50,7 +51,6 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
-
     public List<Book> getAllBooks() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(
@@ -146,6 +146,21 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+    public List<Book> getAllBookByEvent(int limit, int offset, String title) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT b.* " +
+                                "FROM BOOKS b " +
+                                "INNER JOIN event_books eb ON eb.book_id = b.id " +
+                                "INNER JOIN events e ON e.id = eb.event_id " +
+                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "ORDER BY add_date DESC LIMIT :limit OFFSET :offset")
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .bind("title","%" +title+"%")
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
 
     public int countBooksBySearch(String search) {
         return getJdbi().withHandle(handle ->
@@ -165,6 +180,20 @@ public class BookDao extends BaseDao {
     public int countBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+
+    public int countBooksByEvent(String title) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*)" +
+                                "FROM BOOKS b " +
+                                "INNER JOIN event_books eb ON eb.book_id = b.id " +
+                                "INNER JOIN events e ON e.id = eb.event_id " +
+                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "ORDER BY add_date DESC")
+                        .bind("title","%" +title+"%")
                         .mapTo(int.class)
                         .one()
         );

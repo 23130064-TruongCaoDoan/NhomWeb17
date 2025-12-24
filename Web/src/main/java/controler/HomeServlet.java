@@ -1,10 +1,12 @@
 package controler;
 
 import Service.BookService;
+import Service.EventService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
+import model.Event;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,9 +18,16 @@ public class HomeServlet extends HttpServlet {
         BookService bookService = new BookService();
         List<Book> booksListSale = bookService.getBooksDiscounted();
         List<Book> booksListNew = bookService.getBooksNew();
+
+        EventService eventService = new EventService();
+
+        List<Event> eventList= eventService.getListEvent();
+        request.setAttribute("events",eventList);
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
+
         HttpSession session = request.getSession(false);
+
         if (session != null && session.getAttribute("user") != null) {
             request.setAttribute("user", session.getAttribute("user"));
         }
@@ -29,4 +38,5 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
 }
