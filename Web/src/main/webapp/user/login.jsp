@@ -119,7 +119,7 @@
         }
 
         if (hasError) {
-            e.preventDefault(); // ❗ chặn submit
+            e.preventDefault();
         }
     });
 

@@ -10,8 +10,9 @@ public class Voucher {
     private String start_date;
     private String end_date;
     private int usage;
+    private double valuee;
 
-    public Voucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage) {
+    public Voucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage, double valuee) {
         this.id = id;
         this.code = code;
         this.description = description;
@@ -21,6 +22,7 @@ public class Voucher {
         this.start_date = start_date;
         this.end_date = end_date;
         this.usage = usage;
+        this.valuee = valuee;
     }
 
     public int getId() {
@@ -93,5 +95,13 @@ public class Voucher {
 
     public void setUsage(int usage) {
         this.usage = usage;
+    }
+
+    public double getValuee() {
+        return valuee;
+    }
+
+    public void setValuee(double valuee) {
+        this.valuee = valuee;
     }
 }

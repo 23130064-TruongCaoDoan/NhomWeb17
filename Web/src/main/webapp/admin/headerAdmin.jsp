@@ -20,5 +20,6 @@
         <button class="dangxuat">Đăng xuất</button>
     </div>
 </header>
+<div id="toast" class="toast"></div>
 </body>
 </html>
