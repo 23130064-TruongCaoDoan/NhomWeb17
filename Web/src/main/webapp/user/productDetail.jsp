@@ -205,7 +205,7 @@
                     <option>1 sao</option>
                 </select>
             </div>
-
+        <div id="commentSection">
             <div class="comment-list">
                 <c:forEach var="cmt" items="${commentViewList}">
                     <div class="comment-item">
@@ -222,6 +222,8 @@
                 </c:forEach>
 
             </div>
+        </div>
+
 
         </div>
 
@@ -345,8 +347,42 @@ const writeBtn = document.getElementById("writeReviewBtn");
             toast.classList.remove("show");
         }, 2000);
     }
+    document.getElementById('reviewForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
+        const form = this;
+        const formData = new FormData(form);
 
+        fetch(form.action, {
+            method: "POST",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: formData
+        })
+            .then(res => {
+                if (!res.ok) throw new Error("Submit failed");
+                return res.text();
+            })
+            .then(html => {
+                // Parse HTML trả về
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                // Lấy lại đúng section comment
+                const newComments = doc.querySelector('#commentSection').innerHTML;
+                document.getElementById('commentSection').innerHTML = newComments;
+
+                // Reset form
+                form.reset();
+                const formReview = document.getElementById('reviewForm');
+                formReview.style.display='none';
+            })
+            .catch(err => {
+                alert("Gửi đánh giá thất bại");
+                console.error(err);
+            });
+    });
 </script>
 </body>
 </html>

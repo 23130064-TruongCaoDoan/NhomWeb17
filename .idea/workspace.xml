@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,41 +72,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BookDao.executor": "Run",
-    "Application.CommentDao.executor": "Run",
-    "Application.EventDao.executor": "Run",
-    "Application.HomeDao.executor": "Run",
-    "Application.HomeServlet.executor": "Run",
-    "Application.UserDao.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.ThanhToan.html.executor": "Run",
-    "JavaScript Debug.home.html.executor": "Run",
-    "JavaScript Debug.quanlidonhang.html.executor": "Run",
-    "JavaScript Debug.user_UuDaiThanhVien.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Tomcat Server.Tomcat 10.1.482.executor": "Run",
-    "Tomcat Server.Tomcat.executor": "Run",
-    "git-widget-placeholder": "spYeuThich",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/hoc tap/NhomWeb17/Web/src/main/webapp/assets/img/event",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BookDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CommentDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EventDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HomeDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HomeServlet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserDao.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.ThanhToan.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.quanlidonhang.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.user_UuDaiThanhVien.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.482.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;spYeuThich&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/hoc tap/NhomWeb17/Web/src/main/webapp/assets/img/event&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\hoc tap\NhomWeb17\Web\src\main\webapp\assets\img\event" />
@@ -337,11 +338,28 @@
       <workItem from="1765963320830" duration="3831000" />
       <workItem from="1765967353885" duration="177000" />
       <workItem from="1766403641763" duration="12340000" />
-      <workItem from="1766455824084" duration="7293000" />
+      <workItem from="1766455824084" duration="8527000" />
+      <workItem from="1766465003074" duration="20000" />
+      <workItem from="1766465269067" duration="282000" />
+      <workItem from="1766485065876" duration="22000" />
+      <workItem from="1766540748998" duration="187000" />
+      <workItem from="1766558527540" duration="1626000" />
+      <workItem from="1766671782163" duration="4786000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

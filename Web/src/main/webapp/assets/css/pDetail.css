@@ -327,6 +327,7 @@
 
 .action-btn:hover {
     background-color: #f5f5f5;
+
 }
 
 /* --- Thanh điều hướng (Reviews, Questions) --- */
@@ -429,6 +430,9 @@
     border: none;
     border-radius: 5px;
 }
+#submitReview:hover{
+    cursor: pointer;
+}
 .comment-list {
     padding-top: 20px;
 }
@@ -477,4 +481,8 @@
 .no-spinners::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+#commentSection{
+    max-height: 500px;
+    overflow: scroll;
 }
