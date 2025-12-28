@@ -6,12 +6,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
-
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @WebServlet(name = "ProductManageServlet", value = "/product-manage")
@@ -25,9 +20,13 @@ public class ProductManageServlet extends HttpServlet {
     AuthorService authorService = new AuthorService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> lsBook = bookService.getAllBooks();
-        request.setAttribute("lsbook",lsBook);
         request.setAttribute("authors", authorService.getAllAuthors());
+        String q = request.getParameter("q");
+        String type = request.getParameter("type");
+        String stock = request.getParameter("sortStock");
+        request.setAttribute("types", bookService.getAllBookTypes());
+        List<Book> lsBook = bookService.searchAndFilter(q, type, stock);
+        request.setAttribute("lsbook", lsBook);
         request.getRequestDispatcher("admin/ManageProduct.jsp").forward(request,response);
     }
 
