@@ -1,12 +1,10 @@
 package Service;
 
 import dao.BookDao;
-import dao.UserDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import model.Book;
-import model.CommentView;
-import model.User;
+import Service.UploadService;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -15,6 +13,7 @@ import java.util.List;
 
 public class BookService {
     private BookDao hd=new BookDao();
+    private UploadService uploadService = new UploadService();
     public List<Book> getBooksDiscounted(){
         return hd.getBooksDiscounted();
     }
@@ -40,7 +39,8 @@ public class BookService {
         return hd.getAllBooks();
     }
     public int countBooks(){return hd.countBooks();}
-    public void addBook(HttpServletRequest request) throws Exception {
+    public void addBook(HttpServletRequest request, Part mainImage,
+                        List<Part> detailImages) throws Exception {
 
         request.setCharacterEncoding("UTF-8");
 
@@ -82,14 +82,11 @@ public class BookService {
         int publishedYear = Integer.parseInt(startDate.substring(0, 4));
 
         // ===== ẢNH BÌA =====
-        Part mainPart = request.getPart("img-main");
-        String coverImgUrl = null;
-        if (mainPart != null && mainPart.getSize() > 0) {
-            String fileName = Paths.get(mainPart.getSubmittedFileName())
-                    .getFileName().toString();
-            mainPart.write(uploadPath + File.separator + fileName);
-            coverImgUrl = "assets/img/books/" + fileName;
-        }
+        String coverImgUrl =
+                uploadService.upload(mainImage, "books/main");
+
+        List<String> detailImgUrls =
+                uploadService.uploadMultiple(detailImages, "books/detail");
 
         // ===== ẢNH CHI TIẾT =====
         List<String> detailImages = new ArrayList<>();

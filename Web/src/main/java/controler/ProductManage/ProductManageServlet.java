@@ -1,4 +1,4 @@
-package controler;
+package controler.ProductManage;
 
 import Service.AuthorService;
 import Service.BookService;
@@ -7,11 +7,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @WebServlet(name = "ProductManageServlet", value = "/product-manage")
@@ -36,7 +32,13 @@ public class ProductManageServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            bookService.addBook(request);
+            Part mainImage = request.getPart("img-main");
+            List<Part> detailImages = request.getParts()
+                    .stream()
+                    .filter(p -> "imgDetail".equals(p.getName()) && p.getSize() > 0)
+                    .toList();
+
+            bookService.addBook(request, mainImage, detailImages);
             response.sendRedirect(request.getContextPath() + "/product-manage");
         } catch (Exception e) {
             throw new ServletException(e);
