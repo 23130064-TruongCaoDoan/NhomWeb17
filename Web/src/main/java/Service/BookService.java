@@ -126,4 +126,17 @@ public class BookService {
     public int countBooksByEvent(String title) {
         return hd.countBooksByEvent(title);
     }
+
+    public List<String> getAllBookTypes() {
+        return hd.getAllBookTypes();
+
+    }
+
+    public List<Book> searchAndFilter(String q, String type, String stock) {
+            if (q != null && q.isBlank()) q = null;
+            if (type != null && type.isBlank()) type = null;
+            if (stock != null && stock.isBlank()) stock = null;
+
+            return hd.searchAndFilter(q, type, stock);
+    }
 }

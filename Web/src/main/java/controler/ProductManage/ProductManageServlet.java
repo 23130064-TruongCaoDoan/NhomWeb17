@@ -6,25 +6,26 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
-
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "ProductManageServlet", value = "/product-manage")
-@MultipartConfig(
-        fileSizeThreshold = 1024 * 1024,
-        maxFileSize = 10 * 1024 * 1024,
-        maxRequestSize = 50 * 1024 * 1024
-)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 10 * 1024 * 1024, maxRequestSize = 50 * 1024 * 1024)
 public class ProductManageServlet extends HttpServlet {
     BookService bookService = new BookService();
     AuthorService authorService = new AuthorService();
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Book> lsBook = bookService.getAllBooks();
-        request.setAttribute("lsbook",lsBook);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setAttribute("authors", authorService.getAllAuthors());
-        request.getRequestDispatcher("admin/ManageProduct.jsp").forward(request,response);
+        String q = request.getParameter("q");
+        String type = request.getParameter("type");
+        String stock = request.getParameter("sortStock");
+        request.setAttribute("types", bookService.getAllBookTypes());
+        List<Book> lsBook = bookService.searchAndFilter(q, type, stock);
+        request.setAttribute("lsbook", lsBook);
+        request.getRequestDispatcher("admin/ManageProduct.jsp").forward(request, response);
     }
 
     @Override
@@ -41,8 +42,7 @@ public class ProductManageServlet extends HttpServlet {
             bookService.addBook(
                     request.getParameterMap(),
                     mainImage,
-                    detailImages
-            );
+                    detailImages);
 
             response.sendRedirect(request.getContextPath() + "/product-manage");
         } catch (Exception e) {

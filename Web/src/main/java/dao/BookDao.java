@@ -198,4 +198,56 @@ public class BookDao extends BaseDao {
                         .one()
         );
     }
+
+    public List<String> getAllBookTypes() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT DISTINCT type FROM books WHERE is_sell = 1"
+                        )
+                        .mapTo(String.class)
+                        .list()
+        );
+    }
+
+    public List<Book> searchAndFilter(String q, String type, String stock) {
+
+        return getJdbi().withHandle(handle -> {
+
+            StringBuilder sql = new StringBuilder(
+                    "SELECT b.*, a.name AS author " +
+                            "FROM books b " +
+                            "LEFT JOIN authors a ON b.author_id = a.id " +
+                            "WHERE b.is_sell = 1"
+            );
+
+            if (q != null) {
+                sql.append(" AND (b.title LIKE :q OR a.name LIKE :q OR b.type LIKE :q)");
+            }
+
+            if (type != null) {
+                sql.append(" AND b.type = :type");
+            }
+
+            if ("asc".equals(stock)) {
+                sql.append(" ORDER BY b.stock ASC");
+            } else if ("desc".equals(stock)) {
+                sql.append(" ORDER BY b.stock DESC");
+            } else {
+                sql.append(" ORDER BY b.add_date DESC");
+            }
+
+
+            var query = handle.createQuery(sql.toString());
+
+            if (q != null) {
+                query.bind("q", "%" + q + "%");
+            }
+            if (type != null) {
+                query.bind("type", type);
+            }
+
+            return query.mapToBean(Book.class).list();
+        });
+    }
+
 }
