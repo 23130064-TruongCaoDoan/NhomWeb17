@@ -27,7 +27,7 @@
     margin-bottom: 10px;
 }
 
-.product-container .function #add,
+ #add,
 .product-container .function .find button {
     background-color: #0d3164;
     color: #fff;

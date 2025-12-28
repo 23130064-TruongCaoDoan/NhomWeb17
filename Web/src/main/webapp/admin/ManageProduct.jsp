@@ -36,6 +36,7 @@
                 <h2>Quản lý sản phẩm</h2>
                 <form method="get" action="${pageContext.request.contextPath}/product-manage">
                     <div class="function">
+                        <button id="add" type="button">Thêm sản phẩm</button>
                         <div class="find">
                             <input type="text"
                                    class="search"
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </form>
+
                 <div class="table-wrapper">
                     <table>
                         <thead>
