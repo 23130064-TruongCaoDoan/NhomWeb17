@@ -1,14 +1,13 @@
 package model;
 
-import java.time.LocalDate;
 
 public class CommentView {
     private  String name;
     private  int rating;
     private  String content;
-    private LocalDate createAt;
+    private String createAt;
 
-    public CommentView(String name, int rating, String content, LocalDate createAt) {
+    public CommentView(String name, int rating, String content, String createAt) {
         this.name = name;
         this.rating = rating;
         this.content = content;
@@ -41,11 +40,21 @@ public class CommentView {
         this.content = content;
     }
 
-    public LocalDate getCreateAt() {
+    public String getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(LocalDate createAt) {
+    public void setCreateAt(String createAt) {
         this.createAt = createAt;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentView{" +
+                "name='" + name + '\'' +
+                ", rating=" + rating +
+                ", content='" + content + '\'' +
+                ", createAt=" + createAt +
+                '}';
     }
 }

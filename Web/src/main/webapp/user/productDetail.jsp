@@ -1,3 +1,6 @@
+<%
+    boolean isLoggedIn = session.getAttribute("user") != null;
+%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -176,7 +179,7 @@
 
             <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post">
                 <h3>Viết đánh giá</h3>
-                <input type="hidden" name="bookId" value="${book.id}">
+                <input id="bookId" type="hidden" name="bookId" value="${book.id}">
                 <input type="hidden" name="type" value="${book.type}">
                 <select id="reviewStars" name="rating" required>
                     <option value="5">★★★★★</option>
@@ -205,24 +208,24 @@
                     <option>1 sao</option>
                 </select>
             </div>
-        <div id="commentSection">
-            <div class="comment-list">
-                <c:forEach var="cmt" items="${commentViewList}">
-                    <div class="comment-item">
-                        <div class="comment-header">
-                            <span class="comment-author">${cmt.name}</span>
-                            <span class="comment-date">${cmt.createAt}</span>
+            <div id="commentSection">
+                <div class="comment-list">
+                    <c:forEach var="cmt" items="${commentViewList}">
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">${cmt.name}</span>
+                                <span class="comment-date">${cmt.createAt}</span>
+                            </div>
+                            <p class="comment-rating" style="color: #FFD700">
+                                <c:forEach begin="1" end="${cmt.rating}">
+                                    ★
+                                </c:forEach></p>
+                            <p class="comment-text">${cmt.content}</p>
                         </div>
-                        <p class="comment-rating" style="color: #FFD700">
-                            <c:forEach begin="1" end="${cmt.rating}">
-                                ★
-                            </c:forEach></p>
-                        <p class="comment-text">${cmt.content}</p>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
 
+                </div>
             </div>
-        </div>
 
 
         </div>
@@ -292,18 +295,18 @@
         });
     });
     // quantity
-        const input = document.getElementById("number-quantity");
+    const input = document.getElementById("number-quantity");
 
-        function minus() {
+    function minus() {
         input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
     }
 
-        function plus() {
+    function plus() {
         input.value = Math.min(parseInt(input.value) + 1, parseInt(input.max));
     }
 
 
-const writeBtn = document.getElementById("writeReviewBtn");
+    const writeBtn = document.getElementById("writeReviewBtn");
     const form = document.getElementById("reviewForm");
     const submitBtn = document.getElementById("submitReview");
     const commentList = document.querySelector(".comment-list");
@@ -314,18 +317,6 @@ const writeBtn = document.getElementById("writeReviewBtn");
         // writeBtn.style.display = "none";
     });
 
-    //  Bấm Hoàn thành
-    submitBtn.addEventListener("click", () => {
-        const name = document.getElementById("reviewName").value;
-        const stars = document.getElementById("reviewStars").value;
-        const text = document.getElementById("reviewText").value;
-
-        if (!name || !text) {
-            alert("Vui lòng nhập đầy đủ thông tin.");
-            return;
-        }
-
-    });
     function addToCartDetail() {
         const bookId = document.getElementById("bookId").value;
         const quantity = document.getElementById("number-quantity").value;
@@ -347,41 +338,27 @@ const writeBtn = document.getElementById("writeReviewBtn");
             toast.classList.remove("show");
         }, 2000);
     }
-    document.getElementById('reviewForm').addEventListener('submit', function (e) {
+    const isLoggedIn = <%= isLoggedIn %>;
+    document.getElementById("reviewForm").addEventListener("submit", function (e) {
         e.preventDefault();
+        console.log("submit");
 
-        const form = this;
-        const formData = new FormData(form);
+        if (!isLoggedIn) {
+            window.location.href = "login";
+            return;
+        }
 
-        fetch(form.action, {
+        fetch(this.action, {
             method: "POST",
-            headers: {
-                "X-Requested-With": "XMLHttpRequest"
-            },
-            body: formData
+            body: new FormData(this),
+            credentials: "same-origin"
         })
             .then(res => {
-                if (!res.ok) throw new Error("Submit failed");
-                return res.text();
+                if (res.ok) {
+                    window.location.reload();
+                }
             })
-            .then(html => {
-                // Parse HTML trả về
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-
-                // Lấy lại đúng section comment
-                const newComments = doc.querySelector('#commentSection').innerHTML;
-                document.getElementById('commentSection').innerHTML = newComments;
-
-                // Reset form
-                form.reset();
-                const formReview = document.getElementById('reviewForm');
-                formReview.style.display='none';
-            })
-            .catch(err => {
-                alert("Gửi đánh giá thất bại");
-                console.error(err);
-            });
+            .catch(err => console.error(err));
     });
 </script>
 </body>
