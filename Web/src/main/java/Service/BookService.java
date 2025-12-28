@@ -1,15 +1,11 @@
 package Service;
 
 import dao.BookDao;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import model.Book;
 import Service.UploadService;
-
-import java.io.File;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BookService {
     private BookDao hd=new BookDao();
@@ -39,65 +35,47 @@ public class BookService {
         return hd.getAllBooks();
     }
     public int countBooks(){return hd.countBooks();}
-    public void addBook(HttpServletRequest request, Part mainImage,
+    public void addBook(Map<String, String[]> params, Part mainImage,
                         List<Part> detailImages) throws Exception {
 
-        request.setCharacterEncoding("UTF-8");
-
-        String uploadPath = request.getServletContext()
-                .getRealPath("/assets/img/books");
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdirs();
-
         // ===== STRING =====
-        String code = request.getParameter("code");
-        String title = request.getParameter("title");
-        String type = request.getParameter("type");
-        String publisher = request.getParameter("publisher");
-        String bookSize = request.getParameter("size");
-        String format = request.getParameter("format");
-        String description = request.getParameter("description");
-        String provider = request.getParameter("provider");
+        String code = params.get("code")[0];
+        String title = params.get("title")[0];
+        String type = params.get("type")[0];
+        String publisher = params.get("publisher")[0];
+        String bookSize = params.get("size")[0];
+        String format = params.get("format")[0];
+        String description = params.get("description")[0];
+        String provider = params.get("provider")[0];
 
         // ===== INT / DOUBLE (CÓ DEFAULT) =====
-        int authorId = Integer.parseInt(request.getParameter("author_id"));
-        int stock = Integer.parseInt(request.getParameter("stock"));
-        int pagesNumber = Integer.parseInt(request.getParameter("pageNumber"));
-        int age = Integer.parseInt(request.getParameter("age"));
+        int authorId = Integer.parseInt(params.get("author_id")[0]);
+        int stock = Integer.parseInt(params.get("stock")[0]);
+        int pagesNumber = Integer.parseInt(params.get("pageNumber")[0]);
+        int age = Integer.parseInt(params.get("age")[0]);
 
-        int price = Integer.parseInt(request.getParameter("price"));
+        int price = Integer.parseInt(params.get("price")[0]);
 
-        String priceDiscountStr = request.getParameter("price_discounted");
+        String priceDiscountStr = params.get("price_discounted")[0];
         int priceDiscounted = (priceDiscountStr == null || priceDiscountStr.isBlank())
                 ? price
                 : Integer.parseInt(priceDiscountStr);
 
-        String weightStr = request.getParameter("weight");
+        String weightStr = params.get("weight")[0];
         double weight = (weightStr == null || weightStr.isBlank())
                 ? 0
                 : Double.parseDouble(weightStr);
 
         // ===== DATE =====
-        String startDate = request.getParameter("startDate");
+        String startDate = params.get("startDate")[0];
         int publishedYear = Integer.parseInt(startDate.substring(0, 4));
 
         // ===== ẢNH BÌA =====
         String coverImgUrl =
                 uploadService.upload(mainImage, "books/main");
-
+        // ===== ẢNH CHI TIÊT =====
         List<String> detailImgUrls =
                 uploadService.uploadMultiple(detailImages, "books/detail");
-
-        // ===== ẢNH CHI TIẾT =====
-        List<String> detailImages = new ArrayList<>();
-        for (Part part : request.getParts()) {
-            if ("imgDetail".equals(part.getName()) && part.getSize() > 0) {
-                String fileName = Paths.get(part.getSubmittedFileName())
-                        .getFileName().toString();
-                part.write(uploadPath + File.separator + fileName);
-                detailImages.add("assets/img/books/" + fileName);
-            }
-        }
 
         // ===== SET BOOK =====
         Book book = new Book();
@@ -121,7 +99,7 @@ public class BookService {
         book.setAge(age);
         book.setIsSell(true);
 
-        hd.insert(book, detailImages);
+        hd.insert(book, detailImgUrls);
     }
 
 
