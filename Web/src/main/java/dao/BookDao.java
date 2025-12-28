@@ -250,4 +250,71 @@ public class BookDao extends BaseDao {
         });
     }
 
+    public void update(Book book) {
+        getJdbi().useHandle(h ->
+                h.createUpdate("""
+                    UPDATE books SET
+                        book_code = :code,
+                        title = :title,
+                        author_id = :authorId,
+                        price = :price,
+                        price_discounted = :priceDiscounted,
+                        type = :type,
+                        age = :age,
+                        cover_img_url = :cover,
+                        description = :description,
+                        publisher = :publisher,
+                        provider = :provider,
+                        published_date = :published,
+                        weight = :weight,
+                        book_size = :size,
+                        pages_number = :pages,
+                        format = :format,
+                        stock = :stock
+                    WHERE id = :id
+                """)
+                        .bind("id", book.getId())
+                        .bind("code", book.getBookCode())
+                        .bind("title", book.getTitle())
+                        .bind("authorId", book.getAuthorId())
+                        .bind("price", book.getPrice())
+                        .bind("priceDiscounted", book.getPriceDiscounted())
+                        .bind("type", book.getType())
+                        .bind("age", book.getAge())
+                        .bind("cover", book.getCoverImgUrl())
+                        .bind("description", book.getDescription())
+                        .bind("publisher", book.getPublisher())
+                        .bind("provider", book.getProvider())
+                        .bind("published", book.getPublishedDate())
+                        .bind("weight", book.getWeight())
+                        .bind("size", book.getBookSize())
+                        .bind("pages", book.getPagesNumber())
+                        .bind("format", book.getFormat())
+                        .bind("stock", book.getStock())
+                        .execute()
+        );
+    }
+
+
+    public void deleteDetailImages(int bookId) {
+        getJdbi().useHandle(h ->
+                h.createUpdate("DELETE FROM book_image_details WHERE book_id = :id")
+                        .bind("id", bookId)
+                        .execute()
+        );
+    }
+
+    public void insertDetailImages(int bookId, List<String> urls) {
+        getJdbi().useHandle(h -> {
+            for (String url : urls) {
+                h.createUpdate("""
+                    INSERT INTO book_image_details (book_id, img_url)
+                    VALUES (:id, :url)
+                """)
+                        .bind("id", bookId)
+                        .bind("url", url)
+                        .execute();
+            }
+        });
+    }
 }

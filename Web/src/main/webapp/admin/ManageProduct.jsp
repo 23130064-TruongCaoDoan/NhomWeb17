@@ -111,6 +111,7 @@
                                        data-stock="${p.stock}"
                                        data-type="${p.type}"
                                        data-publisher="${p.publisher}"
+                                       data-published="${p.publishedDate}"
                                        data-provider="${p.provider}"
                                        data-weight="${p.weight}"
                                        data-size="${p.bookSize}"
@@ -118,7 +119,6 @@
                                        data-format="${p.format}"
                                        data-description="${p.description}">
                                 </i>
-
                                     <i class="fa-solid fa-trash xoa"></i></td>
                             </tr>
                         </c:forEach>
@@ -172,7 +172,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ảnh bìa</label>
-                    <input type="file" id="img-main" name="img-main" accept="image/*" placeholder="link ảnh" required>
+                    <input type="file" id="img-main" name="img-main" accept="image/*" placeholder="link ảnh">
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh chi tiết</label>
@@ -201,7 +201,7 @@
                 <div class="form-group-inline">
                     <div>
                         <label>Ngày xuất bản</label>
-                        <input type="date" id="start_date" name="startDate"  required>
+                        <input type="date" id="start_date" name="startDate">
                     </div>
                 </div>
                 <div class="form-group">
@@ -222,6 +222,7 @@
     </div>
 </main>
 <script>
+
     const overlay = document.getElementById("overlay");
     const add = document.getElementById("add")
     const popup = document.getElementById("bookForm");
@@ -229,11 +230,14 @@
         overlay.style.display = "none";
         popup.style.display = "none";
     });
+
+
     document.querySelectorAll(".sua").forEach(btn => {
         btn.addEventListener("click", () => {
             overlay.style.display = "block";
             popup.style.display = "block";
-
+            document.getElementById("img-main").required = false;
+            document.getElementById("start_date").required = false;
             document.getElementById("bookId").value = btn.dataset.id;
             document.getElementById("code").value = btn.dataset.code;
             document.getElementById("title").value = btn.dataset.title;
@@ -250,7 +254,8 @@
             document.getElementById("page_number").value = btn.dataset.page;
             document.querySelector("input[name='format']").value = btn.dataset.format;
             document.getElementById("description").value = btn.dataset.description;
-
+            document.getElementById("start_date").value =
+                btn.dataset.published + "-01-01";
             document.querySelector(".btn-save").innerText = "Cập nhật sản phẩm";
         });
     });
@@ -260,6 +265,8 @@
         popup.reset();
         document.getElementById("bookId").value = "";
         document.querySelector(".btn-save").innerText = "Thêm sản phẩm";
+        document.getElementById("img-main").required = true;
+        document.getElementById("start_date").required = true;
     })
 </script>
 </body>
