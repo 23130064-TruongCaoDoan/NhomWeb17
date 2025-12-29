@@ -1,26 +1,21 @@
 package controler.product_detail;
 
-import Service.BookService;
 import Service.CommentService;
-import dao.CommentDao;
+import Service.UploadService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Book;
-import model.CommentView;
-import model.RatingStartView;
+import jakarta.servlet.http.*;
+
 import model.User;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+
 @WebServlet (name="comment" ,value="/comment")
-@MultipartConfig
+@MultipartConfig(
+        maxFileSize = 5 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024
+)
 public class CommentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,9 +38,12 @@ public class CommentServlet extends HttpServlet {
         int bookId = Integer.parseInt(request.getParameter("bookId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
         String content = request.getParameter("content");
+        Part imagePart = request.getPart("image");
 
+        UploadService uploadService = new UploadService();
+        String imageUrl = uploadService.upload(imagePart, "comments");
         CommentService commentService = new CommentService();
-        commentService.insertComment(user.getId(), bookId, rating, content);
+        commentService.insertComment(user.getId(), bookId, rating, content, imageUrl);
 
         response.setStatus(HttpServletResponse.SC_OK);
     }

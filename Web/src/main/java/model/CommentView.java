@@ -6,12 +6,14 @@ public class CommentView {
     private  int rating;
     private  String content;
     private String createAt;
+    private String imgComment;
 
-    public CommentView(String name, int rating, String content, String createAt) {
+    public CommentView(String name, int rating, String content, String createAt, String imgComment) {
         this.name = name;
         this.rating = rating;
         this.content = content;
         this.createAt = createAt;
+        this.imgComment = imgComment;
     }
     public CommentView() {
     }
@@ -46,6 +48,12 @@ public class CommentView {
 
     public void setCreateAt(String createAt) {
         this.createAt = createAt;
+    }
+    public String getImgComment() {
+        return imgComment;
+    }
+    public void setImgComment(String imgComment) {
+        this.imgComment = imgComment;
     }
 
     @Override

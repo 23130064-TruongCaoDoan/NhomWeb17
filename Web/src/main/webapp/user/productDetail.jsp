@@ -177,7 +177,7 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post">
+            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post" enctype="multipart/form-data">
                 <h3>Viết đánh giá</h3>
                 <input id="bookId" type="hidden" name="bookId" value="${book.id}">
                 <input type="hidden" name="type" value="${book.type}">
@@ -190,6 +190,7 @@
                 </select>
                 <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..."
                           required></textarea>
+                <input type="file" name="image" accept="image/*" >
                 <button type="submit" id="submitReview">Hoàn thành</button>
             </form>
 
@@ -221,6 +222,9 @@
                                     ★
                                 </c:forEach></p>
                             <p class="comment-text">${cmt.content}</p>
+                            <c:if test="${not empty cmt.imgComment}">
+                                <img id="imgComment" src="${cmt.imgComment}" alt="ảnh cmt">
+                            </c:if>
                         </div>
                     </c:forEach>
 
