@@ -32,33 +32,48 @@
                 <a href="DanhGia.html" class="function rating">Đánh giá</a>
             </div>
         </div>
-        <div class="product-container">
-            <h2>Quản lý sản phẩm</h2>
-            <div class="function">
-                <button id="add">Thêm sản phẩm</button>
-                <div class="find">
-                    <input type="text" class="search" placeholder="Tìm kiếm sản phẩm">
-                    <button class="buttonSearch">Tìm kiếm</button>
-                </div>
-            </div>
-            <div class="infor-table">
-                <div class="title">
-                    <h3>Danh sách sản phẩm</h3>
-                    <div>
-                        <select class="filter-sp">
-                            <option>Tất cả</option>
-                            <option>Số lượng tăng dần</option>
-                            <option>Số lượng giảm dần</option>
-                        </select>
-                        <select class="filter-sp">
-                            <option>Tất cả</option>
-                            <option>Truyện tranh</option>
-                            <option>Sách ảnh</option>
-                            <option>Sách giáo</option>
-                            <option>Sách tô màu</option>
-                        </select>
+            <div class="product-container">
+                <h2>Quản lý sản phẩm</h2>
+                <form method="get" action="${pageContext.request.contextPath}/product-manage">
+                    <div class="function">
+                        <button id="add" type="button">Thêm sản phẩm</button>
+                        <div class="find">
+                            <input type="text"
+                                   class="search"
+                                   name="q"
+                                   placeholder="Tìm kiếm sản phẩm"
+                                   value="${param.q}">
+                            <button class="buttonSearch" type="submit">Tìm kiếm</button>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="title">
+                        <h3>Danh sách sản phẩm</h3>
+                        <div>
+                            <!-- FILTER STOCK -->
+                            <select class="filter-sp" name="sortStock" onchange="this.form.submit()">
+                                <option value="">Tất cả</option>
+                                <option value="asc" ${param.stock == 'asc' ? 'selected' : ''}>
+                                    Số lượng tăng dần
+                                </option>
+                                <option value="desc" ${param.stock == 'desc' ? 'selected' : ''}>
+                                    Số lượng giảm dần
+                                </option>
+                            </select>
+
+                            <!-- FILTER TYPE  -->
+                            <select class="filter-sp" name="type"  onchange="this.form.submit()">
+                                <option value="">Tất cả</option>
+                                <c:forEach var="t" items="${types}">
+                                    <option value="${t}" ${param.type == t ? 'selected' : ''}>
+                                            ${t}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
                 <div class="table-wrapper">
                     <table>
                         <thead>

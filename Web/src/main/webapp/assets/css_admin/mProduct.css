@@ -27,7 +27,7 @@
     margin-bottom: 10px;
 }
 
-.product-container .function #add,
+ #add,
 .product-container .function .find button {
     background-color: #0d3164;
     color: #fff;
@@ -49,13 +49,13 @@
     border-radius: 6px;
 }
 /*title table and filter*/
-.product-container .infor-table .title {
+.product-container .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.product-container .infor-table .title select {
+.product-container .title .filter-sp {
     width: 12vw;
     height: 5vh;
     border-radius: 6px;
