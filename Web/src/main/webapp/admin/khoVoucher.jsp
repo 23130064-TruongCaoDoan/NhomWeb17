@@ -68,7 +68,7 @@
                                 <td>${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</td>
                                 <td>${voucher.usage_limit}</td>
                                 <td><i class="fa-solid fa-pen sua"></i>
-                                    <i class="fa-solid fa-trash xoa"></i></td>
+                                    <i class="fa-solid fa-trash xoa" onclick="deleteVoucher(${voucher.id})"></i></td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -78,6 +78,14 @@
         </div>
     </div>
     <div id="overlay"></div>
+    <div id="deletePopup" class="delete-popup">
+        <p>Bạn có chắc chắn muốn xóa voucher này không?</p>
+        <div class="delete-actions">
+            <button class="btn-delete" onclick="confirmDelete()">Xóa</button>
+            <button class="btn-cancel" onclick="closeDeletePopup()">Hủy</button>
+        </div>
+    </div>
+
     <form id="voucherForm" method="post">
         <div class="form-group">
             <label>Mã voucher</label>
@@ -147,6 +155,7 @@
     overlay.addEventListener('click', () => {
         overlay.style.display = "none";
         popup.style.display = "none";
+        closeDeletePopup();
     });
     sua.addEventListener('click', () => {
         overlay.style.display = "block";
@@ -313,6 +322,37 @@
             toast.classList.remove("show");
         }, 2000);
     }
+    let deleteId = null;
+
+    function deleteVoucher(id){
+        deleteId = id;
+        overlay.style.display = "block";
+        document.getElementById("deletePopup").style.display = "block";
+    }
+
+    function closeDeletePopup(){
+        deleteId = null;
+        overlay.style.display = "none";
+        document.getElementById("deletePopup").style.display = "none";
+    }
+
+    function confirmDelete(id){
+        if(!deleteId) return;
+
+        fetch("deleteVoucher?id="+deleteId)
+            .then(res => res.json())
+            .then(data => {
+                closeDeletePopup();
+                if(data.success){
+                    show(data.message);
+                    setTimeout(() => location.reload(), 1200);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
 
 
 </script>

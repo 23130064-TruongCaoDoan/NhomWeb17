@@ -20,12 +20,13 @@ public class VoucherService {
 //        return voucherDao.getListVoucherSortTime(type);
 //    }
 //
-//    public static void main(String[] args) {
-//        VoucherDao voucherDao = new VoucherDao();
+    public static void main(String[] args) {
+        VoucherDao voucherDao = new VoucherDao();
 //        for (Voucher voucher : voucherDao.getListVoucherSortTime("ASC")) {
 //            System.out.println(voucher.toString());
 //        }
-//    }
+        System.out.println(voucherDao.deleteVoucher(5));
+    }
 //
 //    public List<Voucher> getListVoucherSortType(String type) {
 //        return voucherDao.getListVoucherSortType(type);
@@ -33,5 +34,9 @@ public class VoucherService {
 
     public List<Voucher> filterVoucher(String keyword, String type, String time) {
         return voucherDao.filterVoucher(keyword, type, time);
+    }
+
+    public boolean deleteVoucher(int id) {
+        return voucherDao.deleteVoucher(id);
     }
 }

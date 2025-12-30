@@ -12,7 +12,7 @@ public class VoucherDao extends BaseDao {
     }
 
     public boolean addVoucher(String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage_limit, double valuee, String type) {
-        int i= getJdbi().withHandle(handle ->
+        int i = getJdbi().withHandle(handle ->
                 handle.createUpdate("INSERT INTO VOUCHER(code,description,conditionPrice,conditionBook,conditionPublisher,start_date,end_date, usage_limit, valuee,type) values(:code,:description,:conditionPrice,:conditionBook,:conditionPublisher,:start_date,:end_date,:usage_limit,:valuee,:type)")
                         .bind("code", code)
                         .bind("description", description)
@@ -26,7 +26,7 @@ public class VoucherDao extends BaseDao {
                         .bind("type", type)
                         .execute()
         );
-        if(i>0){
+        if (i > 0) {
             return true;
         }
         return false;
@@ -72,6 +72,22 @@ public class VoucherDao extends BaseDao {
             }
 
             return query.mapToBean(Voucher.class).list();
+        });
+    }
+
+    public boolean deleteVoucher(int id) {
+        return getJdbi().inTransaction(handle -> {
+
+            // Có thì xóa, không có thì thôi
+            handle.createUpdate(
+                    "DELETE FROM voucher_user WHERE voucher_id = :id"
+            ).bind("id", id).execute();
+
+            int count = handle.createUpdate(
+                    "DELETE FROM voucher WHERE id = :id"
+            ).bind("id", id).execute();
+
+            return count > 0;
         });
     }
 }
