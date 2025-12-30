@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,27 +12,9 @@
 </head>
 <body>
 <main>
-    <header>
-        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
-        <div class="right">
-            <i class="fa-solid fa-user"></i>
-            <div class="ten">admin</div>
-            <button class="dangxuat" onclick="window.location='loginAdmin.html'">Đăng xuất</button>
-        </div>
-    </header>
+    <c:import url="headerAdmin.jsp"></c:import>
     <div class="content">
-        <div class="Menu">
-            <div class="title"><span>CHỨC NĂNG</span></div>
-            <div class="menfunction">
-                <a href="ThongKe.html" class="function thongke">Thống kê</a>
-                <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
-                <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
-                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
-                <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
-                <a href="events.html" class="function event">Sự kiện</a>
-                <a href="DanhGia.html" class="function rating">Đánh giá</a>
-            </div>
-        </div>
+        <c:import url="MenuFunctionAdmin.jsp"></c:import>
         <div class="event-container">
             <h2>Quản lý Sự kiện</h2>
 

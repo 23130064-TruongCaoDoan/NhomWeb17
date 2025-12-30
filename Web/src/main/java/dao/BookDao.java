@@ -75,10 +75,22 @@ public class BookDao extends BaseDao {
 
     public List<Book> findListBook(String search, int limit, int offset) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE (title like :search or author like :search or type like :search) AND is_sell=1 LIMIT :limit OFFSET :offset").bind("limit", limit)
-                        .bind("offset", offset).bind("search", "%" + search + "%").mapToBean(Book.class).list()
+                handle.createQuery(
+                                "SELECT b.* " +
+                                        "FROM BOOKS b " +
+                                        "JOIN AUTHORS a ON b.author_id = a.id " +
+                                        "WHERE b.is_sell = 1 " +
+                                        "AND (b.title LIKE :search OR a.name LIKE :search OR b.type LIKE :search) " +
+                                        "LIMIT :limit OFFSET :offset"
+                        )
+                        .bind("search", "%" + search + "%")
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Book.class)
+                        .list()
         );
     }
+
 
     public void insert(Book book, List<String> detailImages) {
         getJdbi().useHandle(h -> {
@@ -164,11 +176,19 @@ public class BookDao extends BaseDao {
 
     public int countBooksBySearch(String search) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell = 1 AND (title like :search or author like :search or type like :search)").bind("search", search)
+                handle.createQuery(
+                                "SELECT COUNT(*) " +
+                                        "FROM BOOKS b " +
+                                        "JOIN AUTHORS a ON b.author_id = a.id " +
+                                        "WHERE b.is_sell = 1 " +
+                                        "AND (b.title LIKE :search OR a.name LIKE :search OR b.type LIKE :search)"
+                        )
+                        .bind("search", "%" + search + "%")
                         .mapTo(int.class)
                         .one()
         );
     }
+
 
     public int countBooksDiscounted() {
         return getJdbi().withHandle(handle ->
