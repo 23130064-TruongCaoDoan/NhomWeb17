@@ -34,7 +34,6 @@ public class updateItem extends HttpServlet {
                 "{\"total\":" + cart.getTotalQuantity() + "}"
         );
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

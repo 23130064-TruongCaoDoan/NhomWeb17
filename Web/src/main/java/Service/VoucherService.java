@@ -22,10 +22,10 @@ public class VoucherService {
 //
     public static void main(String[] args) {
         VoucherDao voucherDao = new VoucherDao();
-//        for (Voucher voucher : voucherDao.getListVoucherSortTime("ASC")) {
-//            System.out.println(voucher.toString());
-//        }
-        System.out.println(voucherDao.deleteVoucher(5));
+        for (Voucher voucher : voucherDao.listVoucherDiscountUser(31)) {
+            System.out.println(voucher.toString());
+        }
+//        System.out.println(voucherDao.deleteVoucher(5));
     }
 //
 //    public List<Voucher> getListVoucherSortType(String type) {
@@ -42,5 +42,12 @@ public class VoucherService {
 
     public boolean updateVoucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String startDate, String endDate, int usageLimit, double valuee, String type) {
         return voucherDao.updateVoucher(id,code,description,conditionPrice,conditionBook,conditionPublisher,startDate,endDate,usageLimit,valuee,type);
+    }
+    public List<Voucher> listVoucherDiscountUser(int id) {
+        return voucherDao.listVoucherDiscountUser(id);
+    }
+
+    public List<Voucher> listVoucherShipUser(int id) {
+        return voucherDao.listVoucherShipUser(id);
     }
 }
