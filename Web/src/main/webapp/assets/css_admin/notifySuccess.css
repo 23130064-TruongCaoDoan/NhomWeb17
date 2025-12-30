@@ -1,22 +1,26 @@
-.toast {
+#toast {
     position: fixed;
-    top: 90px;
-    left: 45%;
-
-    background: #27ae60;
-    color: #fff;
-    padding: 12px 18px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 14px 22px;
     border-radius: 8px;
-
+    color: #fff;
+    font-size: 15px;
+    z-index: 9999;
     opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-
-    z-index: 99999;
+    transition: opacity 0.3s ease;;
 }
 
-.toast.show {
+#toast.show {
     opacity: 1;
-    transform: translateY(0);
 }
+
+#toast.success {
+    background-color: #28a745;
+}
+
+#toast.error {
+    background-color: #dc3545;
+}
+

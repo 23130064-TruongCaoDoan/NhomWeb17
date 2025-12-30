@@ -39,4 +39,8 @@ public class VoucherService {
     public boolean deleteVoucher(int id) {
         return voucherDao.deleteVoucher(id);
     }
+
+    public boolean updateVoucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String startDate, String endDate, int usageLimit, double valuee, String type) {
+        return voucherDao.updateVoucher(id,code,description,conditionPrice,conditionBook,conditionPublisher,startDate,endDate,usageLimit,valuee,type);
+    }
 }

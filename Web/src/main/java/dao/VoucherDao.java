@@ -90,4 +90,39 @@ public class VoucherDao extends BaseDao {
             return count > 0;
         });
     }
+
+    public boolean updateVoucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String startDate, String endDate, int usageLimit, double valuee, String type) {
+        int i = getJdbi().withHandle(handle ->
+                handle.createUpdate(
+                                "UPDATE voucher SET " +
+                                        "code = :code, " +
+                                        "description = :description, " +
+                                        "conditionPrice = :conditionPrice, " +
+                                        "conditionBook = :conditionBook, " +
+                                        "conditionPublisher = :conditionPublisher, " +
+                                        "start_date = :start_date, " +
+                                        "end_date = :end_date, " +
+                                        "usage_limit = :usage_limit, " +
+                                        "valuee = :valuee, " +
+                                        "type = :type " +
+                                        "WHERE id = :id"
+                        )
+                        .bind("id", id)
+                        .bind("code", code)
+                        .bind("description", description)
+                        .bind("conditionPrice", conditionPrice)
+                        .bind("conditionBook", conditionBook)
+                        .bind("conditionPublisher", conditionPublisher)
+                        .bind("start_date", startDate)
+                        .bind("end_date", endDate)
+                        .bind("usage_limit", usageLimit)
+                        .bind("valuee", valuee)
+                        .bind("type", type)
+                        .execute()
+        );
+        if (i > 0) {
+            return true;
+        }
+        return false;
+    }
 }

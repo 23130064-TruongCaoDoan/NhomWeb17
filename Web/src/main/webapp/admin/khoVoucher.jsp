@@ -67,8 +67,24 @@
                                 <td>${voucher.valuee}</td>
                                 <td>${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</td>
                                 <td>${voucher.usage_limit}</td>
-                                <td><i class="fa-solid fa-pen sua"></i>
-                                    <i class="fa-solid fa-trash xoa" onclick="deleteVoucher(${voucher.id})"></i></td>
+                                <td>
+                                    <i class="fa-solid fa-pen sua"
+                                       onclick="editVoucher(
+                                           ${voucher.id},
+                                           '${voucher.code}',
+                                           '${voucher.description}',
+                                           '${voucher.type}',
+                                           ${voucher.valuee},
+                                           '${voucher.start_date}',
+                                           '${voucher.end_date}',
+                                           ${voucher.usage_limit},
+                                           ${voucher.valuee},
+                                               ${voucher.conditionPrice},
+                                               '${voucher.conditionBook}',
+                                               '${voucher.conditionPublisher}'
+                                               )"></i>
+                                    <i class="fa-solid fa-trash xoa" onclick="deleteVoucher(${voucher.id})"></i>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -146,6 +162,8 @@
     </form>
 </main>
 <script>
+    let mode = "add";
+    let editId = null;
     const overlay = document.getElementById("overlay");
     const add = document.getElementById("add")
     const sua = document.querySelector(".sua")
@@ -157,11 +175,11 @@
         popup.style.display = "none";
         closeDeletePopup();
     });
-    sua.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    })
     add.addEventListener('click', () => {
+        mode = "add";
+        editId = null;
+        form.reset();
+
         overlay.style.display = "block";
         popup.style.display = "block";
     })
@@ -254,9 +272,14 @@
         } else clearError(usage_limit);
 
         if (!hasError) {
-            addVoucher();
+            if (mode === "add") {
+                addVoucher();
+            } else {
+                updateVoucher();
+            }
         }
     });
+
 
     function setGroupError(groupId, message) {
         const group = document.getElementById(groupId);
@@ -278,6 +301,64 @@
             error.textContent = '';
         }
     }
+
+    function editVoucher(id, codeV, desc, typeV, valueV, start, end, limit, valuee, conditionPrice, conditionBook, conditionPulisher) {
+        mode = "edit";
+        editId = id;
+
+        code.value = codeV;
+        description.value = desc;
+
+        type.value = typeV;
+        value.value = valueV;
+        start_date.value = start;
+        end_date.value = end;
+        usage_limit.value = limit;
+        value.value = valuee;
+        price.value=conditionPrice;
+        loaisach.value=conditionBook;
+        nxb.value=conditionPulisher;
+
+
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    }
+
+    function updateVoucher() {
+        fetch("updateVoucher", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:
+                "id=" + editId +
+                "&code=" + encodeURIComponent(code.value) +
+                "&description=" + encodeURIComponent(description.value) +
+                "&gia=" + encodeURIComponent(price.value) +
+                "&loaisach=" + encodeURIComponent(loaisach.value) +
+                "&nxb=" + encodeURIComponent(nxb.value) +
+                "&type=" + encodeURIComponent(type.value) +
+                "&start_date=" + encodeURIComponent(start_date.value) +
+                "&end_date=" + encodeURIComponent(end_date.value) +
+                "&usage_limit=" + encodeURIComponent(usage_limit.value) +
+                "&value=" + encodeURIComponent(value.value)
+        })
+            .then(res => res.json())
+            .then(data => {
+                overlay.style.display = "none";
+                popup.style.display = "none";
+                if (data.success) {
+                    show(data.message);
+                    form.reset();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1800);
+                } else {
+                    show(data.message,false);
+                }
+            });
+    }
+
 
     function addVoucher() {
         fetch("addVoucher", {
@@ -314,47 +395,52 @@
             .catch(err => console.log(err));
     }
 
-    function show(message) {
+    function show(message, isSuccess = true) {
         const toast = document.getElementById("toast");
         toast.innerText = message;
+        toast.classList.remove("success", "error");
+        if (isSuccess) {
+            toast.classList.add("success");
+        } else {
+            toast.classList.add("error");
+        }
         toast.classList.add("show");
         setTimeout(() => {
             toast.classList.remove("show");
         }, 2000);
     }
+
+
     let deleteId = null;
 
-    function deleteVoucher(id){
+    function deleteVoucher(id) {
         deleteId = id;
         overlay.style.display = "block";
         document.getElementById("deletePopup").style.display = "block";
     }
 
-    function closeDeletePopup(){
+    function closeDeletePopup() {
         deleteId = null;
         overlay.style.display = "none";
         document.getElementById("deletePopup").style.display = "none";
     }
 
-    function confirmDelete(id){
-        if(!deleteId) return;
+    function confirmDelete(id) {
+        if (!deleteId) return;
 
-        fetch("deleteVoucher?id="+deleteId)
+        fetch("deleteVoucher?id=" + deleteId)
             .then(res => res.json())
             .then(data => {
                 closeDeletePopup();
-                if(data.success){
+                if (data.success) {
                     show(data.message);
                     setTimeout(() => location.reload(), 1200);
                 } else {
-                    alert(data.message);
+                    alert(data.message,false);
                 }
             })
             .catch(err => console.log(err));
     }
-
-
-
 </script>
 </body>
 </html>
