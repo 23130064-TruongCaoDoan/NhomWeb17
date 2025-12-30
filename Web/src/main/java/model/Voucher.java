@@ -9,10 +9,16 @@ public class Voucher {
     private String conditionPublisher;
     private String start_date;
     private String end_date;
-    private int usage;
+    private int usage_limit;
     private double valuee;
+    private String type;
 
-    public Voucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage, double valuee) {
+
+
+    public Voucher() {
+    }
+
+    public Voucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String start_date, String end_date, int usage_limit, double valuee, String type) {
         this.id = id;
         this.code = code;
         this.description = description;
@@ -21,8 +27,9 @@ public class Voucher {
         this.conditionPublisher = conditionPublisher;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.usage = usage;
+        this.usage_limit = usage_limit;
         this.valuee = valuee;
+        this.type = type;
     }
 
     public int getId() {
@@ -89,12 +96,12 @@ public class Voucher {
         this.end_date = end_date;
     }
 
-    public int getUsage() {
-        return usage;
+    public int getUsage_limit() {
+        return usage_limit;
     }
 
-    public void setUsage(int usage) {
-        this.usage = usage;
+    public void setUsage_limit(int usage_limit) {
+        this.usage_limit = usage_limit;
     }
 
     public double getValuee() {
@@ -103,5 +110,44 @@ public class Voucher {
 
     public void setValuee(double valuee) {
         this.valuee = valuee;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStartDateFormatted() {
+        if (start_date == null || start_date.isEmpty()) return "";
+        return start_date.substring(8, 10) + "/" +
+                start_date.substring(5, 7) + "/" +
+                start_date.substring(0, 4);
+    }
+
+    public String getEndDateFormatted() {
+        if (end_date == null || end_date.isEmpty()) return "";
+        return end_date.substring(8, 10) + "/" +
+                end_date.substring(5, 7) + "/" +
+                end_date.substring(0, 4);
+    }
+
+    @Override
+    public String toString() {
+        return "Voucher{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", description='" + description + '\'' +
+                ", conditionPrice=" + conditionPrice +
+                ", conditionBook='" + conditionBook + '\'' +
+                ", conditionPublisher='" + conditionPublisher + '\'' +
+                ", start_date='" + start_date + '\'' +
+                ", end_date='" + end_date + '\'' +
+                ", usage_limit=" + usage_limit +
+                ", valuee=" + valuee +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

@@ -20,7 +20,7 @@
         <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
         <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
         <a href="<c:url value="/KhoVoucher" />" class="function storeVoucher">Kho Voucher</a>
-        <a href="events.html" class="function event">Sự kiện</a>
+        <a href="<c:url value="/Event" />" class="function event">Sự kiện</a>
         <a href="DanhGia.html" class="function rating">Đánh giá</a>
     </div>
 </div>

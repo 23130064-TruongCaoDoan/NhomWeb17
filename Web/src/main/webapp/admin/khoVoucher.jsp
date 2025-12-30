@@ -19,26 +19,31 @@
             <h2>Kho Voucher</h2>
             <div class="function">
                 <button id="add">Thêm voucher</button>
-                <div class="timkiem">
-                    <input type="text" class="search" placeholder="Tìm kiếm voucher">
-                    <button class="buttonSearch">Tìm kiếm</button>
-                </div>
+                <form action="filterVoucher" method="get" class="timkiem">
+                    <input type="text"
+                           name="keyword"
+                           class="search"
+                           placeholder="Tìm kiếm voucher"
+                           value="${param.keyword}">
+
+                    <select name="time" class="locVoucher">
+                        <option value="">Tất cả</option>
+                        <option value="1" ${param.time == '1' ? 'selected' : ''}>Mới nhất</option>
+                        <option value="2" ${param.time == '2' ? 'selected' : ''}>Cũ nhất</option>
+                    </select>
+
+                    <select name="type" class="locVoucher">
+                        <option value="">Tất cả</option>
+                        <option value="discount" ${param.type == 'discount' ? 'selected' : ''}>Giảm giá</option>
+                        <option value="ship" ${param.type == 'ship' ? 'selected' : ''}>Vận chuyển</option>
+                    </select>
+
+                    <button type="submit" class="buttonSearch">Tìm kiếm</button>
+                </form>
             </div>
             <div class="voucher-list">
                 <div class="title">
                     <h3>Danh sách voucher hiện có</h3>
-                    <div>
-                        <select class="locVoucher">
-                            <option>Tất cả</option>
-                            <option>Mới nhất</option>
-                            <option>Cũ nhất</option>
-                        </select>
-                        <select class="locVoucher">
-                            <option>Tất cả</option>
-                            <option>Giảm giá</option>
-                            <option>Vận chuyển</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="table-wrapper">
                     <table>
@@ -54,86 +59,34 @@
                         </tr>
                         </thead>
                         <tbody id="voucherTable">
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
-                        <tr>
-                            <td>SALE50</td>
-                            <td>Giảm 50% cho đơn trên 200K</td>
-                            <td>Giảm giá</td>
-                            <td>0.5</td>
-                            <td>2025-11-01 - 2025-11-30</td>
-                            <td>10</td>
-                            <td><i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i></td>
-                        </tr>
+                        <c:forEach items="${listVoucher}" var="voucher">
+                            <tr>
+                                <td>${voucher.code}</td>
+                                <td>${voucher.description}</td>
+                                <td>${voucher.type}</td>
+                                <td>${voucher.valuee}</td>
+                                <td>${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</td>
+                                <td>${voucher.usage_limit}</td>
+                                <td>
+                                    <i class="fa-solid fa-pen sua"
+                                       onclick="editVoucher(
+                                           ${voucher.id},
+                                           '${voucher.code}',
+                                           '${voucher.description}',
+                                           '${voucher.type}',
+                                           ${voucher.valuee},
+                                           '${voucher.start_date}',
+                                           '${voucher.end_date}',
+                                           ${voucher.usage_limit},
+                                           ${voucher.valuee},
+                                               ${voucher.conditionPrice},
+                                               '${voucher.conditionBook}',
+                                               '${voucher.conditionPublisher}'
+                                               )"></i>
+                                    <i class="fa-solid fa-trash xoa" onclick="deleteVoucher(${voucher.id})"></i>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -141,6 +94,14 @@
         </div>
     </div>
     <div id="overlay"></div>
+    <div id="deletePopup" class="delete-popup">
+        <p>Bạn có chắc chắn muốn xóa voucher này không?</p>
+        <div class="delete-actions">
+            <button class="btn-delete" onclick="confirmDelete()">Xóa</button>
+            <button class="btn-cancel" onclick="closeDeletePopup()">Hủy</button>
+        </div>
+    </div>
+
     <form id="voucherForm" method="post">
         <div class="form-group">
             <label>Mã voucher</label>
@@ -166,8 +127,8 @@
             <label>Loại</label>
             <select id="type" name="type">
                 <option value="">Chọn loại voucher</option>
-                <option value="percent">Giảm giá</option>
-                <option value="shipp">Vận chuyển</option>
+                <option value="discount">Giảm giá</option>
+                <option value="ship">Vận chuyển</option>
             </select>
             <small class="error"></small>
         </div>
@@ -201,6 +162,8 @@
     </form>
 </main>
 <script>
+    let mode = "add";
+    let editId = null;
     const overlay = document.getElementById("overlay");
     const add = document.getElementById("add")
     const sua = document.querySelector(".sua")
@@ -210,12 +173,13 @@
     overlay.addEventListener('click', () => {
         overlay.style.display = "none";
         popup.style.display = "none";
+        closeDeletePopup();
     });
-    sua.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    })
     add.addEventListener('click', () => {
+        mode = "add";
+        editId = null;
+        form.reset();
+
         overlay.style.display = "block";
         popup.style.display = "block";
     })
@@ -308,9 +272,14 @@
         } else clearError(usage_limit);
 
         if (!hasError) {
-            addVoucher();
+            if (mode === "add") {
+                addVoucher();
+            } else {
+                updateVoucher();
+            }
         }
     });
+
 
     function setGroupError(groupId, message) {
         const group = document.getElementById(groupId);
@@ -332,6 +301,64 @@
             error.textContent = '';
         }
     }
+
+    function editVoucher(id, codeV, desc, typeV, valueV, start, end, limit, valuee, conditionPrice, conditionBook, conditionPulisher) {
+        mode = "edit";
+        editId = id;
+
+        code.value = codeV;
+        description.value = desc;
+
+        type.value = typeV;
+        value.value = valueV;
+        start_date.value = start;
+        end_date.value = end;
+        usage_limit.value = limit;
+        value.value = valuee;
+        price.value=conditionPrice;
+        loaisach.value=conditionBook;
+        nxb.value=conditionPulisher;
+
+
+        overlay.style.display = "block";
+        popup.style.display = "block";
+    }
+
+    function updateVoucher() {
+        fetch("updateVoucher", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:
+                "id=" + editId +
+                "&code=" + encodeURIComponent(code.value) +
+                "&description=" + encodeURIComponent(description.value) +
+                "&gia=" + encodeURIComponent(price.value) +
+                "&loaisach=" + encodeURIComponent(loaisach.value) +
+                "&nxb=" + encodeURIComponent(nxb.value) +
+                "&type=" + encodeURIComponent(type.value) +
+                "&start_date=" + encodeURIComponent(start_date.value) +
+                "&end_date=" + encodeURIComponent(end_date.value) +
+                "&usage_limit=" + encodeURIComponent(usage_limit.value) +
+                "&value=" + encodeURIComponent(value.value)
+        })
+            .then(res => res.json())
+            .then(data => {
+                overlay.style.display = "none";
+                popup.style.display = "none";
+                if (data.success) {
+                    show(data.message);
+                    form.reset();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1800);
+                } else {
+                    show(data.message,false);
+                }
+            });
+    }
+
 
     function addVoucher() {
         fetch("addVoucher", {
@@ -358,6 +385,9 @@
                 if (data.success) {
                     show(data.message);
                     form.reset();
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1800);
                 } else {
                     show(data.message);
                 }
@@ -365,15 +395,52 @@
             .catch(err => console.log(err));
     }
 
-    function show(message) {
+    function show(message, isSuccess = true) {
         const toast = document.getElementById("toast");
         toast.innerText = message;
+        toast.classList.remove("success", "error");
+        if (isSuccess) {
+            toast.classList.add("success");
+        } else {
+            toast.classList.add("error");
+        }
         toast.classList.add("show");
         setTimeout(() => {
             toast.classList.remove("show");
         }, 2000);
     }
 
+
+    let deleteId = null;
+
+    function deleteVoucher(id) {
+        deleteId = id;
+        overlay.style.display = "block";
+        document.getElementById("deletePopup").style.display = "block";
+    }
+
+    function closeDeletePopup() {
+        deleteId = null;
+        overlay.style.display = "none";
+        document.getElementById("deletePopup").style.display = "none";
+    }
+
+    function confirmDelete(id) {
+        if (!deleteId) return;
+
+        fetch("deleteVoucher?id=" + deleteId)
+            .then(res => res.json())
+            .then(data => {
+                closeDeletePopup();
+                if (data.success) {
+                    show(data.message);
+                    setTimeout(() => location.reload(), 1200);
+                } else {
+                    alert(data.message,false);
+                }
+            })
+            .catch(err => console.log(err));
+    }
 </script>
 </body>
 </html>
