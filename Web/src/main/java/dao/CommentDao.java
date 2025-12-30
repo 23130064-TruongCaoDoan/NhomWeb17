@@ -9,31 +9,32 @@ public class CommentDao extends BaseDao{
     public List<CommentView> getAllComment(int bookId) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(
-                                "SELECT  u.name AS name , c.rating AS rating, c.content  AS content, c.create_at AS createdAt" +
+                                "SELECT  u.name AS name , c.rating AS rating, c.content  AS content, DATE_FORMAT(c.create_at, '%d/%m/%Y') AS createAt, c.img_comment AS imgComment" +
                                         " FROM comments c" +
                                         " INNER JOIN USER u ON u.id = c.user_id" +
-                                        " WHERE c.book_id = :book_id")
+                                        " WHERE c.book_id = :book_id ORDER BY c.create_at DESC")
                         .bind("book_id", bookId)
                         .mapToBean(CommentView.class)
                         .list()
         );
     }
-    public void insertComment(int userId, int bookId, int rating, String content) {
+    public void insertComment(int userId, int bookId, int rating, String content, String imgURL) {
         getJdbi().useHandle(handle ->
                 handle.createUpdate(
-                                "INSERT INTO comments(user_id, book_id, rating, content, create_at) " +
-                                        "VALUES (:userId, :bookId, :rating, :content, NOW())"
+                                "INSERT INTO comments(user_id, book_id, rating, content, create_at, img_comment) " +
+                                        "VALUES (:userId, :bookId, :rating, :content, NOW(), :imgURL)"
                         )
                         .bind("userId", userId)
                         .bind("bookId", bookId)
                         .bind("rating", rating)
                         .bind("content", content)
+                        .bind("imgURL", imgURL)
                         .execute()
         );
     }
     public Double getAverageRating(int bookId) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT AVG(rating) FROM comments WHERE book_id=:book_id")
+                handle.createQuery("SELECT ROUND(AVG(rating),1) FROM comments WHERE book_id=:book_id")
                         .bind("book_id", bookId)
                         .mapTo(double.class)
                         .findOne()
@@ -59,6 +60,6 @@ public class CommentDao extends BaseDao{
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
         List<RatingStartView> comments = dao.getRatingStartView(2);
-        System.out.println(comments);
+        System.out.println(dao.getAllComment(2));
     }
 }

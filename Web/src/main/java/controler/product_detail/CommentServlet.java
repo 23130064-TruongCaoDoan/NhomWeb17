@@ -1,56 +1,51 @@
 package controler.product_detail;
 
-import Service.BookService;
 import Service.CommentService;
-import dao.CommentDao;
+import Service.UploadService;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Book;
-import model.CommentView;
-import model.RatingStartView;
+import jakarta.servlet.http.*;
+
 import model.User;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+
 @WebServlet (name="comment" ,value="/comment")
+@MultipartConfig(
+        maxFileSize = 5 * 1024 * 1024,
+        maxRequestSize = 10 * 1024 * 1024
+)
 public class CommentServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
-
     }
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        User user = (session != null) ? (User) session.getAttribute("user") : null;
 
         if (user == null) {
-            response.sendRedirect("login");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-        BookService bookService = new BookService();
-        int userId = user.getId();
+
         int bookId = Integer.parseInt(request.getParameter("bookId"));
         int rating = Integer.parseInt(request.getParameter("rating"));
         String content = request.getParameter("content");
-        Book book = bookService.getBooksById(bookId);
-        String type = bookService.getBooksById(bookId).getType();
-        String typeEncoded = URLEncoder.encode(type, StandardCharsets.UTF_8);
+        Part imagePart = request.getPart("image");
 
+        UploadService uploadService = new UploadService();
+        String imageUrl = uploadService.upload(imagePart, "comments");
+        CommentService commentService = new CommentService();
+        commentService.insertComment(user.getId(), bookId, rating, content, imageUrl);
 
-        CommentDao commentDao = new CommentDao();
-        commentDao.insertComment(userId, bookId, rating, content);
-
-
-        response.sendRedirect(request.getContextPath()+"/productDetail?id=" + bookId+"&type=" +typeEncoded);
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
-    public static void main(String[] args) {
-    }
 }

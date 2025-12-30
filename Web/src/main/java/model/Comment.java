@@ -9,15 +9,18 @@ public class Comment {
     private int rating;
     private String comment;
     private LocalDate createdAt;
+    private String imgComment;
 
-    public Comment(int id, int bookId, int userId, int rating, String comment, LocalDate createdAt) {
+    public Comment(int id, int bookId, int userId, int rating, String comment, LocalDate createdAt, String imgComment) {
         this.id = id;
         this.bookId = bookId;
         this.userId = userId;
         this.rating = rating;
         this.comment = comment;
         this.createdAt = createdAt;
+        this.imgComment = imgComment;
     }
+    public Comment() {}
 
     public int getId() {
         return id;
@@ -65,5 +68,11 @@ public class Comment {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+    public String getImgComment() {
+        return imgComment;
+    }
+    public void setImgComment(String imgComment) {
+        this.imgComment = imgComment;
     }
 }

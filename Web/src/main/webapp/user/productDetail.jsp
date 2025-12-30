@@ -1,3 +1,6 @@
+<%
+    boolean isLoggedIn = session.getAttribute("user") != null;
+%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -174,9 +177,9 @@
                 </div>
             </div>
 
-            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post">
+            <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post" enctype="multipart/form-data">
                 <h3>Viết đánh giá</h3>
-                <input type="hidden" name="bookId" value="${book.id}">
+                <input id="bookId" type="hidden" name="bookId" value="${book.id}">
                 <input type="hidden" name="type" value="${book.type}">
                 <select id="reviewStars" name="rating" required>
                     <option value="5">★★★★★</option>
@@ -187,6 +190,7 @@
                 </select>
                 <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..."
                           required></textarea>
+                <input type="file" name="image" accept="image/*" >
                 <button type="submit" id="submitReview">Hoàn thành</button>
             </form>
 
@@ -205,23 +209,28 @@
                     <option>1 sao</option>
                 </select>
             </div>
-
-            <div class="comment-list">
-                <c:forEach var="cmt" items="${commentViewList}">
-                    <div class="comment-item">
-                        <div class="comment-header">
-                            <span class="comment-author">${cmt.name}</span>
-                            <span class="comment-date">${cmt.createAt}</span>
+            <div id="commentSection">
+                <div class="comment-list">
+                    <c:forEach var="cmt" items="${commentViewList}">
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">${cmt.name}</span>
+                                <span class="comment-date">${cmt.createAt}</span>
+                            </div>
+                            <p class="comment-rating" style="color: #FFD700">
+                                <c:forEach begin="1" end="${cmt.rating}">
+                                    ★
+                                </c:forEach></p>
+                            <p class="comment-text">${cmt.content}</p>
+                            <c:if test="${not empty cmt.imgComment}">
+                                <img id="imgComment" src="${cmt.imgComment}" alt="ảnh cmt">
+                            </c:if>
                         </div>
-                        <p class="comment-rating" style="color: #FFD700">
-                            <c:forEach begin="1" end="${cmt.rating}">
-                                ★
-                            </c:forEach></p>
-                        <p class="comment-text">${cmt.content}</p>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
 
+                </div>
             </div>
+
 
         </div>
 
@@ -290,18 +299,18 @@
         });
     });
     // quantity
-        const input = document.getElementById("number-quantity");
+    const input = document.getElementById("number-quantity");
 
-        function minus() {
+    function minus() {
         input.value = Math.max(parseInt(input.value) - 1, parseInt(input.min));
     }
 
-        function plus() {
+    function plus() {
         input.value = Math.min(parseInt(input.value) + 1, parseInt(input.max));
     }
 
 
-const writeBtn = document.getElementById("writeReviewBtn");
+    const writeBtn = document.getElementById("writeReviewBtn");
     const form = document.getElementById("reviewForm");
     const submitBtn = document.getElementById("submitReview");
     const commentList = document.querySelector(".comment-list");
@@ -312,18 +321,6 @@ const writeBtn = document.getElementById("writeReviewBtn");
         // writeBtn.style.display = "none";
     });
 
-    //  Bấm Hoàn thành
-    submitBtn.addEventListener("click", () => {
-        const name = document.getElementById("reviewName").value;
-        const stars = document.getElementById("reviewStars").value;
-        const text = document.getElementById("reviewText").value;
-
-        if (!name || !text) {
-            alert("Vui lòng nhập đầy đủ thông tin.");
-            return;
-        }
-
-    });
     function addToCartDetail() {
         const bookId = document.getElementById("bookId").value;
         const quantity = document.getElementById("number-quantity").value;
@@ -345,8 +342,28 @@ const writeBtn = document.getElementById("writeReviewBtn");
             toast.classList.remove("show");
         }, 2000);
     }
+    const isLoggedIn = <%= isLoggedIn %>;
+    document.getElementById("reviewForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("submit");
 
+        if (!isLoggedIn) {
+            window.location.href = "login";
+            return;
+        }
 
+        fetch(this.action, {
+            method: "POST",
+            body: new FormData(this),
+            credentials: "same-origin"
+        })
+            .then(res => {
+                if (res.ok) {
+                    window.location.reload();
+                }
+            })
+            .catch(err => console.error(err));
+    });
 </script>
 </body>
 </html>
