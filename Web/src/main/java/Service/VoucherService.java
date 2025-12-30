@@ -16,18 +16,22 @@ public class VoucherService {
         return voucherDao.getVoucherList();
     }
 
-    public List<Voucher> getListVoucherSortTime(String type) {
-        return voucherDao.getListVoucherSortTime(type);
-    }
+//    public List<Voucher> getListVoucherSortTime(String type) {
+//        return voucherDao.getListVoucherSortTime(type);
+//    }
+//
+//    public static void main(String[] args) {
+//        VoucherDao voucherDao = new VoucherDao();
+//        for (Voucher voucher : voucherDao.getListVoucherSortTime("ASC")) {
+//            System.out.println(voucher.toString());
+//        }
+//    }
+//
+//    public List<Voucher> getListVoucherSortType(String type) {
+//        return voucherDao.getListVoucherSortType(type);
+//    }
 
-    public static void main(String[] args) {
-        VoucherDao voucherDao = new VoucherDao();
-        for (Voucher voucher : voucherDao.getListVoucherSortTime("ASC")) {
-            System.out.println(voucher.toString());
-        }
-    }
-
-    public List<Voucher> getListVoucherSortType(String type) {
-        return voucherDao.getListVoucherSortType(type);
+    public List<Voucher> filterVoucher(String keyword, String type, String time) {
+        return voucherDao.filterVoucher(keyword, type, time);
     }
 }

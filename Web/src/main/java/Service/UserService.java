@@ -19,7 +19,7 @@ public class UserService {
 
     public boolean checkPass(User user, String password) {
         PasswordUtil passwordUtil = new PasswordUtil();
-        return passwordUtil.checkPassword(password,user.getPassword_hash());
+        return passwordUtil.checkPassword(password, user.getPassword_hash());
     }
 
     public boolean checkExit(String email) {
@@ -43,5 +43,10 @@ public class UserService {
 
     public boolean checkRole(User user) {
         return userDao.checkRole(user.getEmail());
+    }
+
+    public boolean isValidPassword(String password) {
+        String regex = "^(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        return password != null && password.matches(regex);
     }
 }

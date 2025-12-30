@@ -19,26 +19,31 @@
             <h2>Kho Voucher</h2>
             <div class="function">
                 <button id="add">Thêm voucher</button>
-                <div class="timkiem">
-                    <input type="text" class="search" placeholder="Tìm kiếm voucher">
-                    <button class="buttonSearch">Tìm kiếm</button>
-                </div>
+                <form action="filterVoucher" method="get" class="timkiem">
+                    <input type="text"
+                           name="keyword"
+                           class="search"
+                           placeholder="Tìm kiếm voucher"
+                           value="${param.keyword}">
+
+                    <select name="time" class="locVoucher">
+                        <option value="">Tất cả</option>
+                        <option value="1" ${param.time == '1' ? 'selected' : ''}>Mới nhất</option>
+                        <option value="2" ${param.time == '2' ? 'selected' : ''}>Cũ nhất</option>
+                    </select>
+
+                    <select name="type" class="locVoucher">
+                        <option value="">Tất cả</option>
+                        <option value="discount" ${param.type == 'discount' ? 'selected' : ''}>Giảm giá</option>
+                        <option value="ship" ${param.type == 'ship' ? 'selected' : ''}>Vận chuyển</option>
+                    </select>
+
+                    <button type="submit" class="buttonSearch">Tìm kiếm</button>
+                </form>
             </div>
             <div class="voucher-list">
                 <div class="title">
                     <h3>Danh sách voucher hiện có</h3>
-                    <div>
-                        <select class="locVoucher" onchange="sortVoucherTime(this.value)">
-                            <option value="" <c:if test="${selectedTime == null || selectedTime == ''}">selected</c:if>>Tất cả</option>
-                            <option value="1" <c:if test="${selectedTime == '1'}">selected</c:if>>Mới nhất</option>
-                            <option value="2" <c:if test="${selectedTime == '2'}">selected</c:if>>Cũ nhất</option>
-                        </select>
-                        <select class="locVoucher" onchange="sortVoucherType(this.value)">
-                            <option value="" <c:if test="${selectedType == null || selectedType == ''}">selected</c:if>>Tất cả</option>
-                            <option value="discount" <c:if test="${selectedType == 'discount'}">selected</c:if>>Giảm giá</option>
-                            <option value="ship" <c:if test="${selectedType == 'ship'}">selected</c:if>>Vận chuyển</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="table-wrapper">
                     <table>
@@ -307,13 +312,6 @@
         setTimeout(() => {
             toast.classList.remove("show");
         }, 2000);
-    }
-
-    function sortVoucherTime(type) {
-        window.location.href = "SortVoucherTime?type=" + type;
-    }
-    function sortVoucherType(type){
-        window.location.href = "SortVoucherType?type=" + type;
     }
 
 

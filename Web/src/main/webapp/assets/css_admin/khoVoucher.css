@@ -209,3 +209,49 @@ input, select {
     flex-direction: column;
     gap: 8px;
 }
+/* Căn đều form tìm kiếm */
+.voucher-container .function .timkiem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Input tìm kiếm */
+.voucher-container .function .timkiem input {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Select lọc */
+.voucher-container .function .timkiem select {
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Nút tìm kiếm */
+.voucher-container .function .timkiem button {
+    height: 40px;
+    padding: 0 18px;
+    background-color: #0d3164;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+}
+
+.voucher-container .function .timkiem button:hover {
+    background-color: #0a254b;
+}
+

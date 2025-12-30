@@ -1,6 +1,7 @@
 package controler.admin;
 
 import Service.VoucherService;
+import dao.VoucherDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -9,21 +10,17 @@ import model.Voucher;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "SortVoucherType", value = "/SortVoucherType")
-public class SortVoucherType extends HttpServlet {
+@WebServlet(name = "filterVoucher", value = "/filterVoucher")
+public class filterVoucher extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String keyword = request.getParameter("keyword");
+        String time = request.getParameter("time");
+        String type = request.getParameter("type");
         VoucherService voucherService = new VoucherService();
-        String type = request.getParameter("type")==null?"":request.getParameter("type");
-        List<Voucher> listVoucher;
-        if(type.trim().equals("")){
-            listVoucher=voucherService.getListVoucher();
-        }
-        else {
-            listVoucher=voucherService.getListVoucherSortType(type);
-        }
-        request.setAttribute("listVoucher",listVoucher);
-        request.setAttribute("selectedType",type);
+        List<Voucher> list = voucherService.filterVoucher(keyword, type, time);
+        request.setAttribute("listVoucher", list);
         request.getRequestDispatcher("admin/khoVoucher.jsp").forward(request, response);
     }
 

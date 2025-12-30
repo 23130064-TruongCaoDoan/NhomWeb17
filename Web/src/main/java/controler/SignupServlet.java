@@ -18,31 +18,44 @@ public class SignupServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String fullname = request.getParameter("fullname")==null?"":request.getParameter("fullname");
-        String email = request.getParameter("email")==null?"":request.getParameter("email");
-        String password = request.getParameter("password")==null?"":request.getParameter("password");
-        String confirmPassword = request.getParameter("confirm-password")==null?"":request.getParameter("confirm-password");
+        String fullname = request.getParameter("fullname") == null ? "" : request.getParameter("fullname");
+        String email = request.getParameter("email") == null ? "" : request.getParameter("email");
+        String password = request.getParameter("password") == null ? "" : request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm-password") == null ? "" : request.getParameter("confirm-password");
         UserService userService = new UserService();
-        EmailSender emailSender =new EmailSender();
+        EmailSender emailSender = new EmailSender();
         Token8 token = new Token8();
         HttpSession session = request.getSession();
-        if(!userService.checkExit(email)&&(password.equals(confirmPassword))){
-            String verifyCode=token.generateToken8();
+        if (userService.checkExit(email)) {
+            request.setAttribute("type", "danger");
+            request.setAttribute("message", "Email đã tồn tại");
+        } else if (!password.equals(confirmPassword)) {
+            request.setAttribute("type", "danger");
+            request.setAttribute("message", "Mật khẩu xác nhận không khớp");
+        } else if (!userService.isValidPassword(password)) {
+            request.setAttribute("type", "danger");
+            request.setAttribute(
+                    "message",
+                    "Mật khẩu phải ít nhất 8 ký tự, có số và ký tự đặc biệt"
+            );
+        } else {
+            String verifyCode = token.generateToken8();
             session.setAttribute("verifyCode", verifyCode);
             session.setAttribute("email", email);
             session.setAttribute("fullname", fullname);
             session.setAttribute("password", password);
-            emailSender.sendVerificationEmail(email,"Mã xác thực tài khoản",fullname,verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
+
+            emailSender.sendVerificationEmail(
+                    email,
+                    "Mã xác thực tài khoản",
+                    fullname,
+                    verifyCode,
+                    "Mã xác thực:",
+                    "Cảm ơn bạn đã đăng ký"
+            );
             request.setAttribute("showOTP", true);
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
         }
-        else{
-            request.setAttribute("type","danger");
-            request.setAttribute("message","Tài khoản đã tồn tại");
-            request.setAttribute("fullname",fullname);
-            request.setAttribute("password",password);
-            request.setAttribute("confirmPassword",confirmPassword);
-            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+
     }
 }

@@ -32,15 +32,46 @@ public class VoucherDao extends BaseDao {
         return false;
     }
 
-    public List<Voucher> getListVoucherSortTime(String type) {
-        return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM VOUCHER" +" ORDER BY created_at "+type).mapToBean(Voucher.class).list()
-        );
-    }
+//    public List<Voucher> getListVoucherSortTime(String type) {
+//        return getJdbi().withHandle(handle ->
+//                handle.createQuery("SELECT * FROM VOUCHER" +" ORDER BY created_at "+type).mapToBean(Voucher.class).list()
+//        );
+//    }
+//
+//    public List<Voucher> getListVoucherSortType(String type) {
+//        return getJdbi().withHandle(handle ->
+//                handle.createQuery("SELECT * FROM VOUCHER where type like :type ORDER BY created_at DESC").bind("type",type).mapToBean(Voucher.class).list()
+//        );
+//    }
 
-    public List<Voucher> getListVoucherSortType(String type) {
-        return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM VOUCHER where type like :type ORDER BY created_at DESC").bind("type",type).mapToBean(Voucher.class).list()
-        );
+    public List<Voucher> filterVoucher(String keyword, String type, String time) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM voucher WHERE 1=1 ");
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            sql.append(" AND (code LIKE :kw OR description LIKE :kw OR type LIKE :kw)");
+        }
+
+        if (type != null && !type.isEmpty()) {
+            sql.append(" AND type = :type");
+        }
+
+        if ("new".equals(time)) {
+            sql.append(" ORDER BY start_date DESC");
+        } else if ("old".equals(time)) {
+            sql.append(" ORDER BY start_date ASC");
+        }
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                query.bind("kw", "%" + keyword + "%");
+            }
+            if (type != null && !type.isEmpty()) {
+                query.bind("type", type);
+            }
+
+            return query.mapToBean(Voucher.class).list();
+        });
     }
 }
