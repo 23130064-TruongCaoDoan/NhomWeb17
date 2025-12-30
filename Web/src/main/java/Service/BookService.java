@@ -139,4 +139,114 @@ public class BookService {
 
             return hd.searchAndFilter(q, type, stock);
     }
+    public void updateBook(int id,
+                           Map<String, String[]> params,
+                           Part mainImage,
+                           List<Part> detailImages) throws Exception {
+
+        Book old = hd.getBookById(id);
+        if (old == null) return;
+        
+        Book incoming = buildBookFromParams(new Book(), params);
+        incoming.setId(id);
+        
+        if (!old.getBookCode().equals(incoming.getBookCode()))
+            old.setBookCode(incoming.getBookCode());
+
+        if (!old.getTitle().equals(incoming.getTitle()))
+            old.setTitle(incoming.getTitle());
+
+        if (old.getAuthorId() != incoming.getAuthorId())
+            old.setAuthorId(incoming.getAuthorId());
+
+        if (old.getPrice() != incoming.getPrice())
+            old.setPrice(incoming.getPrice());
+
+        if (old.getPriceDiscounted() != incoming.getPriceDiscounted())
+            old.setPriceDiscounted(incoming.getPriceDiscounted());
+
+        if (!old.getType().equals(incoming.getType()))
+            old.setType(incoming.getType());
+
+        if (old.getAge() != incoming.getAge())
+            old.setAge(incoming.getAge());
+
+        if (old.getStock() != incoming.getStock())
+            old.setStock(incoming.getStock());
+
+        if (!old.getPublisher().equals(incoming.getPublisher()))
+            old.setPublisher(incoming.getPublisher());
+
+        if (!old.getProvider().equals(incoming.getProvider()))
+            old.setProvider(incoming.getProvider());
+
+        if (!old.getFormat().equals(incoming.getFormat()))
+            old.setFormat(incoming.getFormat());
+
+        if (!old.getDescription().equals(incoming.getDescription()))
+            old.setDescription(incoming.getDescription());
+
+        if (old.getPagesNumber() != incoming.getPagesNumber())
+            old.setPagesNumber(incoming.getPagesNumber());
+
+        if (Double.compare(old.getWeight(), incoming.getWeight()) != 0)
+            old.setWeight(incoming.getWeight());
+
+        if (!old.getBookSize().equals(incoming.getBookSize()))
+            old.setBookSize(incoming.getBookSize());
+
+        if (incoming.getPublishedDate() != 0 &&
+                old.getPublishedDate() != incoming.getPublishedDate()) {
+            old.setPublishedDate(incoming.getPublishedDate());
+        }
+
+
+        if (mainImage != null && mainImage.getSize() > 0) {
+            String newCover = uploadService.upload(mainImage, "books/main");
+            old.setCoverImgUrl(newCover);
+        }
+
+        hd.update(old);
+
+        if (detailImages != null && !detailImages.isEmpty()) {
+            hd.deleteDetailImages(id);
+            List<String> urls = uploadService.uploadMultiple(detailImages, "books/detail");
+            hd.insertDetailImages(id, urls);
+        }
+    }
+
+    private Book buildBookFromParams(Book book, Map<String, String[]> p) {
+        book.setBookCode(p.get("code")[0]);
+        book.setTitle(p.get("title")[0]);
+        book.setAuthorId(Integer.parseInt(p.get("author_id")[0]));
+        book.setPrice(Integer.parseInt(p.get("price")[0]));
+
+        String pd = p.get("price_discounted")[0];
+        book.setPriceDiscounted(
+                (pd == null || pd.isBlank())
+                        ? book.getPrice()
+                        : Integer.parseInt(pd)
+        );
+
+        book.setType(p.get("type")[0]);
+        book.setAge(Integer.parseInt(p.get("age")[0]));
+        book.setStock(Integer.parseInt(p.get("stock")[0]));
+        book.setPublisher(p.get("publisher")[0]);
+        book.setProvider(p.get("provider")[0]);
+        book.setFormat(p.get("format")[0]);
+        book.setDescription(p.get("description")[0]);
+        book.setPagesNumber(Integer.parseInt(p.get("pageNumber")[0]));
+        book.setWeight(
+                p.get("weight")[0].isBlank() ? 0 :
+                        Double.parseDouble(p.get("weight")[0])
+        );
+        book.setBookSize(p.get("size")[0]);
+
+        String startDate = p.get("startDate")[0];
+        if (startDate != null && !startDate.isBlank()) {
+            book.setPublishedDate(Integer.parseInt(startDate.substring(0, 4)));
+        }
+
+        return book;
+    }
 }

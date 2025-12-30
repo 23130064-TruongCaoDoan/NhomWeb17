@@ -33,16 +33,22 @@ public class ProductManageServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
+
             Part mainImage = request.getPart("img-main");
 
             List<Part> detailImages = request.getParts().stream()
                     .filter(p -> "imgDetail".equals(p.getName()) && p.getSize() > 0)
                     .toList();
-
-            bookService.addBook(
-                    request.getParameterMap(),
-                    mainImage,
-                    detailImages);
+            String idStr = request.getParameter("id");
+            if (idStr != null && !idStr.isBlank()) {
+                int id = Integer.parseInt(idStr);
+                bookService.updateBook(id, request.getParameterMap(), mainImage, detailImages);
+            } else {
+                bookService.addBook(
+                        request.getParameterMap(),
+                        mainImage,
+                        detailImages);
+            }
 
             response.sendRedirect(request.getContextPath() + "/product-manage");
         } catch (Exception e) {

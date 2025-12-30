@@ -100,7 +100,25 @@
                                 <td>${p.type}</td>
                                 <td>${p.age}+</td>
                                 <td><img src="${p.coverImgUrl}" width="60"></td>
-                                <td><i class="fa-solid fa-pen sua"></i>
+                                <td><i class="fa-solid fa-pen sua"
+                                       data-id="${p.id}"
+                                       data-code="${p.bookCode}"
+                                       data-title="${p.title}"
+                                       data-author="${p.authorId}"
+                                       data-price="${p.price}"
+                                       data-price-discounted="${p.priceDiscounted}"
+                                       data-age="${p.age}"
+                                       data-stock="${p.stock}"
+                                       data-type="${p.type}"
+                                       data-publisher="${p.publisher}"
+                                       data-published="${p.publishedDate}"
+                                       data-provider="${p.provider}"
+                                       data-weight="${p.weight}"
+                                       data-size="${p.bookSize}"
+                                       data-page="${p.pagesNumber}"
+                                       data-format="${p.format}"
+                                       data-description="${p.description}">
+                                </i>
                                     <i class="fa-solid fa-trash xoa"></i></td>
                             </tr>
                         </c:forEach>
@@ -154,7 +172,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ảnh bìa</label>
-                    <input type="file" id="img-main" name="img-main" accept="image/*" placeholder="link ảnh" required>
+                    <input type="file" id="img-main" name="img-main" accept="image/*" placeholder="link ảnh">
                 </div>
                 <div class="form-group">
                     <label>Hình ảnh chi tiết</label>
@@ -183,7 +201,7 @@
                 <div class="form-group-inline">
                     <div>
                         <label>Ngày xuất bản</label>
-                        <input type="date" id="start_date" name="startDate"  required>
+                        <input type="date" id="start_date" name="startDate">
                     </div>
                 </div>
                 <div class="form-group">
@@ -195,6 +213,7 @@
                 <label>Mô tả</label>
                 <textarea name="description" id="description" cols="10" rows="4" placeholder="mô tả về sách"></textarea>
             </div>
+            <input type="hidden" name="id" id="bookId">
             <button type="submit" class="btn-save">Thêm sản phẩm</button>
         </form>
     </div>
@@ -203,21 +222,51 @@
     </div>
 </main>
 <script>
+
     const overlay = document.getElementById("overlay");
     const add = document.getElementById("add")
-    const sua = document.querySelector(".sua")
     const popup = document.getElementById("bookForm");
     overlay.addEventListener('click', () => {
         overlay.style.display = "none";
         popup.style.display = "none";
     });
-    sua.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    })
+
+
+    document.querySelectorAll(".sua").forEach(btn => {
+        btn.addEventListener("click", () => {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+            document.getElementById("img-main").required = false;
+            document.getElementById("start_date").required = false;
+            document.getElementById("bookId").value = btn.dataset.id;
+            document.getElementById("code").value = btn.dataset.code;
+            document.getElementById("title").value = btn.dataset.title;
+            document.querySelector("select[name='author_id']").value = btn.dataset.author;
+            document.querySelector("input[name='price']").value = btn.dataset.price;
+            document.querySelector("input[name='price_discounted']").value = btn.dataset.priceDiscounted;
+            document.querySelector("input[name='age']").value = btn.dataset.age;
+            document.querySelector("input[name='stock']").value = btn.dataset.stock;
+            document.getElementById("type").value = btn.dataset.type;
+            document.getElementById("publisher").value = btn.dataset.publisher;
+            document.querySelector("input[name='provider']").value = btn.dataset.provider;
+            document.getElementById("weight").value = btn.dataset.weight;
+            document.getElementById("size").value = btn.dataset.size;
+            document.getElementById("page_number").value = btn.dataset.page;
+            document.querySelector("input[name='format']").value = btn.dataset.format;
+            document.getElementById("description").value = btn.dataset.description;
+            document.getElementById("start_date").value =
+                btn.dataset.published + "-01-01";
+            document.querySelector(".btn-save").innerText = "Cập nhật sản phẩm";
+        });
+    });
     add.addEventListener('click', () => {
         overlay.style.display = "block";
         popup.style.display = "block";
+        popup.reset();
+        document.getElementById("bookId").value = "";
+        document.querySelector(".btn-save").innerText = "Thêm sản phẩm";
+        document.getElementById("img-main").required = true;
+        document.getElementById("start_date").required = true;
     })
 </script>
 </body>
