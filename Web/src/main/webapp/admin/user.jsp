@@ -4,21 +4,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quan li user</title>
+    <title>Quản lý user</title>
     <link rel="stylesheet" href="assets/css_admin/admin.css">
     <link rel="stylesheet" href="assets/css_admin/user.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
 </head>
 <body>
+
 <main>
     <header>
-        <div class="logo left"><img src="assets/img/logo/logoChinh.png" alt="logo"></div>
+        <div class="logo left">
+            <img src="assets/img/logo/logoChinh.png" alt="logo">
+        </div>
         <div class="right">
             <i class="fa-solid fa-user"></i>
             <div class="ten">admin</div>
             <button class="dangxuat" onclick="window.location='loginAdmin.html'">Đăng xuất</button>
         </div>
     </header>
+
     <div class="content">
         <div class="Menu">
             <div class="title"><span>CHỨC NĂNG</span></div>
@@ -34,27 +39,48 @@
         </div>
         <div class="user">
             <h2>Quản lý khách hàng</h2>
-            <div class="function">
-                <div class="but">
-                    <button id="add">Tặng voucher</button>
-                    <button id="notify">Tạo thông báo</button>
+            <form method="get" action="${pageContext.request.contextPath}/user-manage">
+
+                <div class="function">
+                    <div>
+                        <button id="add" type="button">Tặng voucher</button>
+                        <button id="notify" type="button">Tạo thông báo</button>
+                    </div>
+
+                    <div class="timkiem">
+                        <input type="text"
+                               class="search"
+                               name="q"
+                               placeholder="Tìm kiếm khách hàng"
+                               value="${param.q}">
+                        <button class="buttonSearch" type="submit">Tìm kiếm</button>
+                    </div>
                 </div>
-                <div class="timkiem">
-                    <input type="text" class="search" placeholder="Tìm kiếm khách hàng">
-                    <button class="buttonSearch">Tìm kiếm</button>
-                </div>
-            </div>
-            <div class="user-list">
+
                 <div class="title">
-                    <h3>Danh sách khách hàng hiện có</h3>
-                    <select class="locUser">
-                        <option>Tất cả</option>
-                        <option>Điểm tăng dần</option>
-                        <option>Giảm dần</option>
-                        <option>Tổng tiền mua tăng dần</option>
-                        <option>Tổng tiền mua giảm dần</option>
-                    </select>
+                    <h3>Danh sách khách hàng</h3>
+                    <div>
+                        <select class="filter-sp" name="sortStock" onchange="this.form.submit()">
+                            <option value="">Tất cả</option>
+                            <option value="pAsc"  ${param.sortStock == 'pAsc'  ? 'selected' : ''}>
+                                Điểm tăng dần
+                            </option>
+                            <option value="pDesc" ${param.sortStock == 'pDesc' ? 'selected' : ''}>
+                                Điểm giảm dần
+                            </option>
+                            <option value="mAsc"  ${param.sortStock == 'mAsc'  ? 'selected' : ''}>
+                                Tổng tiền tăng dần
+                            </option>
+                            <option value="mDesc" ${param.sortStock == 'mDesc' ? 'selected' : ''}>
+                                Tổng tiền giảm dần
+                            </option>
+                        </select>
+                    </div>
                 </div>
+
+            </form>
+
+            <div class="user-list">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -68,15 +94,14 @@
                         </thead>
                         <tbody id="userTable">
                         <c:forEach var="u" items="${users}">
-                        <tr class="infUser">
-                            <td>${u.getCustomerCode()}</td>
-                            <td>${u.name}</td>
-                            <td>${u.email}</td>
-                            <td>${u.point}</td>
-                            <td>${u.totalSpent}</td>
-                        </tr>
+                            <tr class="infUser">
+                                <td>${u.customerCode}</td>
+                                <td>${u.name}</td>
+                                <td>${u.email}</td>
+                                <td>${u.point}</td>
+                                <td>${u.totalSpent}</td>
+                            </tr>
                         </c:forEach>
-
                         </tbody>
                     </table>
                 </div>
@@ -84,11 +109,11 @@
         </div>
     </div>
     <div id="overlay"></div>
-    <div id="tangVoucherForm">
+    <form id="tangVoucherForm" method="post" action="${pageContext.request.contextPath}/gift-voucher">
         <h3>TẶNG VOUCHER</h3>
         <div class="form-group">
             <label>Mã Voucher</label>
-            <input type="text" id="voucherCode" placeholder="Nhập mã voucher" required>
+            <input type="text" name="voucherCode" placeholder="Nhập mã voucher" required>
         </div>
         <div class="form-group">
             <label>Chọn Khách Hàng</label>
@@ -97,61 +122,49 @@
                 <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
             </div>
         </div>
+
         <button type="submit" class="confirm">Xác nhận</button>
-    </div>
-    <div id="taoThongBao">
+    </form>
+
+    <form id="taoThongBao" method="post" action="${pageContext.request.contextPath}/notify-user">
         <h3>THÔNG BÁO</h3>
         <div class="form-group">
             <label>Tiêu Đề</label>
-            <input type="text" id="title" placeholder="Nhập tiêu đề" required>
+            <input type="text" name="title" placeholder="Nhập tiêu đề" required>
         </div>
         <div class="form-group">
             <label>Mô tả</label>
-            <textarea name="" id="" class="mota" cols="30" rows="10" placeholder="Nhập mô tả"></textarea>
-        </div>
-        <div class="form-group">
-            <label>Loại thông báo</label>
-            <select name="" id="">
-                <option value="Đơn hàng">Đơn hàng</option>
-                <option value="Sự kiện">Sự kiện</option>
-                <option value="Mã giảm giá">Mã giảm giá</option>
-                <option value="Xác nhận">Xác nhận</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Chọn Khách Hàng</label>
-            <div class="cacluaChon">
-                <div class="chonAll"><input type="radio" name="chon"><label>Tất cả khách hàng</label></div>
-                <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
-            </div>
+            <textarea name="content" class="mota" placeholder="Nhập mô tả"></textarea>
         </div>
 
         <button type="submit" class="confirm">Xác nhận</button>
-    </div>
-    <div class="infor-user"></div>
+    </form>
+
 </main>
+
 <script>
     const overlay = document.getElementById("overlay");
-    const add = document.getElementById("add")
-    const thongbao = document.getElementById("notify")
-    const popupTB= document.getElementById("taoThongBao");
-    const popup = document.getElementById("tangVoucherForm");
+    const add = document.getElementById("add");
+    const notify = document.getElementById("notify");
+    const popupVoucher = document.getElementById("tangVoucherForm");
+    const popupNotify = document.getElementById("taoThongBao");
 
-
-    overlay.addEventListener('click', () => {
+    overlay.addEventListener("click", () => {
         overlay.style.display = "none";
-        popup.style.display = "none";
-        popupTB.style.display = "none";
+        popupVoucher.style.display = "none";
+        popupNotify.style.display = "none";
     });
-    add.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    })
-    thongbao.addEventListener('click', () => {
-        overlay.style.display = "block";
-        popupTB.style.display = "block";
-    })
 
+    add.addEventListener("click", () => {
+        overlay.style.display = "block";
+        popupVoucher.style.display = "block";
+    });
+
+    notify.addEventListener("click", () => {
+        overlay.style.display = "block";
+        popupNotify.style.display = "block";
+    });
 </script>
+
 </body>
 </html>
