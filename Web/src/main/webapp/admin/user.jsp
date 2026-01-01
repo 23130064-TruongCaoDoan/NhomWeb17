@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,55 +67,16 @@
                         </tr>
                         </thead>
                         <tbody id="userTable">
-                        <tr class="infUser" onclick="window.location='userDetail.html'">
-                            <td>KH002</td>
-                            <td>Lê Vân Trường</td>
-                            <td>truongDepTrai@gmail.com</td>
-                            <td>50000</td>
-                            <td>50.000.000₫</td>
-                        </tr>
+                        <c:foreach var="u" items="users">
                         <tr class="infUser">
-                            <td>KH003</td>
-                            <td>Trần Nguyễn Thanh Tú</td>
-                            <td>tuDepTrai@gmail.com</td>
-                            <td>5000</td>
-                            <td>50.000.000₫</td>
+                            <td>${u.id}<td>
+                            <td>${u.name}</td>
+                            <td>${u.email}</td>
+                            <td>${u.point}</td>
+                            <td>${u.totalSpent}</td>
                         </tr>
-                        <tr class="infUser">
-                            <td>KH004</td>
-                            <td>Nguyên Gia Huy</td>
-                            <td>huyDepTrai@gmail.com</td>
-                            <td>10500</td>
-                            <td>50.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>50.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>50.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>50.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>50.000.000₫</td>
-                        </tr>
+                        </c:foreach>
+
                         </tbody>
                     </table>
                 </div>
