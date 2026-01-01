@@ -15,8 +15,14 @@ public class UserManageServlet extends HttpServlet {
     UserService userService = new UserService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        List<UserWithTotalSpentDTO> lsUser = userService.getUserWithTotalSpent();
+        String q = request.getParameter("q");
+        if (q != null) {
+            q = q.trim();
+            if (q.isEmpty()) q = null;
+        }
+        String stock = request.getParameter("sortStock");
+        if (stock.isEmpty()) stock = null;
+        List<UserWithTotalSpentDTO> lsUser = userService.getUserWithTotalSpent(q,stock);
         request.setAttribute("users", lsUser);
         request.getRequestDispatcher("admin/user.jsp").forward(request,response);
     }

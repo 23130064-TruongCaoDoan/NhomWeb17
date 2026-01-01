@@ -63,16 +63,16 @@
                         <select class="filter-sp" name="sortStock" onchange="this.form.submit()">
                             <option value="">Tất cả</option>
                             <option value="pAsc"  ${param.sortStock == 'pAsc'  ? 'selected' : ''}>
-                                Điểm tăng dần
-                            </option>
-                            <option value="pDesc" ${param.sortStock == 'pDesc' ? 'selected' : ''}>
                                 Điểm giảm dần
                             </option>
+                            <option value="pDesc" ${param.sortStock == 'pDesc' ? 'selected' : ''}>
+                                Điểm tăng dần
+                            </option>
                             <option value="mAsc"  ${param.sortStock == 'mAsc'  ? 'selected' : ''}>
-                                Tổng tiền tăng dần
+                                Tổng tiền giảm dần
                             </option>
                             <option value="mDesc" ${param.sortStock == 'mDesc' ? 'selected' : ''}>
-                                Tổng tiền giảm dần
+                                Tổng tiền tăng dần
                             </option>
                         </select>
                     </div>

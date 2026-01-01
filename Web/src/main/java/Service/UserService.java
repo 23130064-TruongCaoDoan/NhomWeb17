@@ -53,7 +53,7 @@ public class UserService {
         return password != null && password.matches(regex);
     }
 
-    public List<UserWithTotalSpentDTO> getUserWithTotalSpent() {
-        return userDao.getUserWithTotalSpent();
+    public List<UserWithTotalSpentDTO> getUserWithTotalSpent(String q, String stock) {
+        return userDao.getUserWithTotalSpent(q,stock);
     }
 }
