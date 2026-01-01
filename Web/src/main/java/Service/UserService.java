@@ -1,8 +1,11 @@
 package Service;
 
+import DTO.UserWithTotalSpentDTO;
 import Util.PasswordUtil;
 import dao.UserDao;
 import model.User;
+
+import java.util.List;
 
 public class UserService {
     private UserDao userDao = new UserDao();
@@ -48,5 +51,9 @@ public class UserService {
     public boolean isValidPassword(String password) {
         String regex = "^(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
         return password != null && password.matches(regex);
+    }
+
+    public List<UserWithTotalSpentDTO> getUserWithTotalSpent() {
+        return userDao.getUserWithTotalSpent();
     }
 }

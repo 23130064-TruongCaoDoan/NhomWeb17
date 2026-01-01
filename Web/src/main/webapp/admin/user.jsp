@@ -67,15 +67,15 @@
                         </tr>
                         </thead>
                         <tbody id="userTable">
-                        <c:foreach var="u" items="users">
+                        <c:forEach var="u" items="${users}">
                         <tr class="infUser">
-                            <td>${u.id}<td>
+                            <td>${u.getCustomerCode()}</td>
                             <td>${u.name}</td>
                             <td>${u.email}</td>
                             <td>${u.point}</td>
                             <td>${u.totalSpent}</td>
                         </tr>
-                        </c:foreach>
+                        </c:forEach>
 
                         </tbody>
                     </table>

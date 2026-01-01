@@ -7,10 +7,12 @@ public class UserWithTotalSpentDTO {
     private int point;
     private double totalSpent;
 
-    public String getId() {
+    public int getId() {
+        return id;
+    }
+    public String getCustomerCode() {
         return String.format("KH%02d", id);
     }
-
     public void setId(int id) {
         this.id = id;
     }

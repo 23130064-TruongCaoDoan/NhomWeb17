@@ -1,5 +1,6 @@
 package dao;
 
+import DTO.UserWithTotalSpentDTO;
 import model.User;
 
 import java.util.List;
@@ -42,6 +43,14 @@ public class UserDao extends BaseDao {
                 handle.createQuery("SELECT role FROM USER where email=:email")
                         .bind("email", email)
                         .mapTo(boolean.class).one()
+        );
+    }
+
+    public List<UserWithTotalSpentDTO> getUserWithTotalSpent() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT u.id, u.name, u.email,u.point, SUM(o.total_amount) AS total_spent FROM user u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id, u.name, u.email ")
+                        .mapToBean(UserWithTotalSpentDTO.class)
+                        .list()
         );
     }
 }
