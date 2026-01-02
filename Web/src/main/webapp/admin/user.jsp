@@ -113,13 +113,13 @@
         <h3>TẶNG VOUCHER</h3>
         <div class="form-group">
             <label>Mã Voucher</label>
-            <input type="text" name="voucherCode" placeholder="Nhập mã voucher" required>
+            <input type="text" name="voucherCode" placeholder="Nhập mã voucher " required>
         </div>
         <div class="form-group">
             <label>Chọn Khách Hàng</label>
             <div class="cacluaChon">
-                <div class="chonAll"><input type="radio" name="chon"><label>Tất cả khách hàng</label></div>
-                <div class="dieukien"><input type="radio" name="chon"><input type="text" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
+                <div class="chonAll"><input type="radio" name="chon" value="all"><label>Tất cả khách hàng</label></div>
+                <div class="dieukien"><input type="radio" name="chon" value="selected"><input type="text" name="userIds" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
             </div>
         </div>
 
