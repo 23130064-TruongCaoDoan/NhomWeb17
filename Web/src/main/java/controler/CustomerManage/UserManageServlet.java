@@ -20,8 +20,9 @@ public class UserManageServlet extends HttpServlet {
             q = q.trim();
             if (q.isEmpty()) q = null;
         }
+
         String stock = request.getParameter("sortStock");
-        if (stock.isEmpty()) stock = null;
+        stock = (stock == null || stock.isEmpty()) ? null : stock;
         List<UserWithTotalSpentDTO> lsUser = userService.getUserWithTotalSpent(q,stock);
         request.setAttribute("users", lsUser);
         request.getRequestDispatcher("admin/user.jsp").forward(request,response);

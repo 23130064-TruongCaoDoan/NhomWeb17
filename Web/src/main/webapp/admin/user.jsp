@@ -118,10 +118,17 @@
         <div class="form-group">
             <label>Chọn Khách Hàng</label>
             <div class="cacluaChon">
-                <div class="chonAll"><input type="radio" name="chon" value="all"><label>Tất cả khách hàng</label></div>
+                <div class="chonAll"><input type="radio" name="chon" value="all" selected><label>Tất cả khách hàng</label></div>
                 <div class="dieukien"><input type="radio" name="chon" value="selected"><input type="text" name="userIds" placeholder="Nhập mã khách hàng (ngăn cách bởi dấu phẩy)"></div>
             </div>
         </div>
+        <c:if test="${param.error == 'invalid_code'}">
+            <p class="error">Mã voucher không hợp lệ</p>
+        </c:if>
+
+        <c:if test="${param.error == 'no_user_selected'}">
+            <p class="error">Chưa chọn khách hàng</p>
+        </c:if>
 
         <button type="submit" class="confirm">Xác nhận</button>
     </form>
@@ -141,6 +148,23 @@
     </form>
 
 </main>
+<c:if test="${param.error == 'invalid_code'}">
+    <script>
+        alert("❌ Mã voucher không hợp lệ");
+    </script>
+</c:if>
+
+<c:if test="${param.error == 'no_user_selected'}">
+    <script>
+        alert("❌ Chưa chọn khách hàng");
+    </script>
+</c:if>
+
+<c:if test="${param.success == 'gifted'}">
+    <script>
+        alert("🎉 Tặng voucher thành công");
+    </script>
+</c:if>
 
 <script>
     const overlay = document.getElementById("overlay");

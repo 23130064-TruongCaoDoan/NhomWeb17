@@ -125,4 +125,61 @@ public class VoucherDao extends BaseDao {
         }
         return false;
     }
+
+    public void insertVoucherForAll(int voucher_id, List<Integer> userIds) {
+
+        String sql = "INSERT IGNORE INTO voucher_user (user_id, voucher_id) VALUES (:userId, :voucher_id)";
+        getJdbi().useHandle(handle -> {
+            var batch = handle.prepareBatch(sql);
+
+            for (Integer id : userIds) {
+                batch
+                        .bind("userId", id)
+                        .bind("voucher_id", voucher_id)
+                        .add();
+            }
+
+            batch.execute();
+        });
+    }
+
+    public void insertVoucherForUsers(int voucher_id, List<Integer> userIds) {
+
+        String sql = """
+        INSERT IGNORE INTO voucher_user (user_id, voucher_id)
+        VALUES (:userId, :voucher_id)
+        """;
+
+        getJdbi().useHandle(handle -> {
+            var batch = handle.prepareBatch(sql);
+
+            for (Integer id : userIds) {
+                batch.bind("userId", id)
+                        .bind("voucher_id", voucher_id)
+                        .add();
+            }
+
+            batch.execute();
+        });
+    }
+
+    public int getVoucherIdByCode(String code) {
+        String sql = """
+        SELECT id
+        FROM voucher
+        WHERE code = :code
+        LIMIT 1
+        """;
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("code", code)
+                        .mapTo(Integer.class)
+                        .findOne()
+                        .orElseThrow(() ->
+                                new IllegalArgumentException("Voucher không tồn tại: " + code)
+                        )
+        );
+    }
+
 }

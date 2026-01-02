@@ -55,4 +55,25 @@ public class UserDao extends BaseDao {
                         .list()
         );
     }
+
+    public User findUserById(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("select * from USER where id=:id")
+                        .bind("id", id).mapToBean(User.class).findFirst().orElse(null)
+        );
+    }
+
+    public boolean existsById(int id) {
+
+        String sql = "SELECT 1 FROM user WHERE id = :id LIMIT 1";
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(sql)
+                        .bind("id", id)
+                        .mapTo(Integer.class)
+                        .findFirst()
+                        .isPresent()
+        );
+    }
+
 }
