@@ -28,38 +28,10 @@
 </head>
 
 <body>
-<div id="home-page">
-    <c:import url="headerUser.jsp"> </c:import>
-</div>
+<c:import url="/user/headerUser.jsp"></c:import>
 <div class="content">
     <div class="container">
-        <div class="menuUser">
-            <div class="nameUser">
-                <div class="anh"><i class="fa-solid fa-user"></i></div>
-                <div class="name"> Lê Vân Trường</div>
-                <div class="bacThanhVien">Thành viên bạc</div>
-                <div class="point">10000 point</div>
-            </div>
-            <div class="menuMain">
-                <a href="user-hoSoCaNhan.jsp" class="menu ttcn"><i class="fa-regular fa-user"></i><span>Thông tin cá nhân</span><i
-                        class="fa-solid fa-arrow-down"></i></a>
-                <div class="menuInfor">
-                    <a href="user-hoSoCaNhan.jsp" class="title prof"><span>Hồ sơ cá nhân</span></a>
-                    <a href="user-address.jsp" class="title address"><span>Sổ địa chỉ</span></a>
-                    <a href="user-changePassword.jsp" class="title passw"><span>Đổi mật khẩu</span></a>
-                    <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
-                </div>
-                <a href="user-myOrders.jsp" class="menu donhang"><i class="fa-solid fa-receipt"></i><span>Đơn hàng của tôi</span></a>
-                <a href="ViVoucher.jsp" class="menu Voucher"><i class="fa-solid fa-ticket"></i></i>
-                    <span>Ví voucher</span></a>
-                <a href="user-thongbao.jsp" class="menu thongbao"><i class="fa-regular fa-bell"></i><span>Thông báo</span></a>
-                <a href="user-spYeuThich.html" class="menu spYeuThich"><i
-                        class="fa-regular fa-heart"></i><span>Sản phẩm yêu thích</span></a>
-            </div>
-            <div class="btDangXuat">
-                <a href="login.jsp" class="dangXuat">Đăng xuất</a>
-            </div>
-        </div>
+        <c:import url="/user/menuUser.jsp"></c:import>
         <div class="favorite-products">
             <h2>Sản phẩm yêu thích của tôi</h2>
             <div class="listProducts">
