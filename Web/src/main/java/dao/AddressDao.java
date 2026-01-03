@@ -32,5 +32,11 @@ public class AddressDao extends BaseDao{
 
         );
     }
-    publi
+    public void deleteAddress(int id) {
+        getJdbi().useHandle(handle -> {
+            handle.createUpdate("DELETE FROM ADDRESS WHERE id = :id")
+                    .bind("id", id)
+                    .execute();
+        });
+    }
 }

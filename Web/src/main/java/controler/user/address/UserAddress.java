@@ -1,4 +1,4 @@
-package controler.user;
+package controler.user.address;
 
 import Service.AddressService;
 import jakarta.servlet.*;
@@ -8,7 +8,6 @@ import model.Address;
 import model.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "address", value = "/address")

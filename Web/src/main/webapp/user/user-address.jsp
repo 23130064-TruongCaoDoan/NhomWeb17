@@ -38,16 +38,15 @@
                                 </div>
                                 <p>
                                         ${addr.specificAddress}<br>
-                                        ${addr.ward}, ${addr.district}, ${addr.city}, VN
+                                        ${addr.ward}, ${addr.district}, ${addr.city}
                                 </p>
                             </div>
                             <div class="address-actions">
                                 <a href="editAddress?id=${addr.id}"><i class="fa-solid fa-pen"></i></a>
                                 <span class="divider">|</span>
-                                <form action="deleteAddress" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" value="${addr.id}" />
-                                    <button type="submit" class="delete"><i class="fa-solid fa-trash"></i></button>
-                                </form>
+                                <button type="button" class="delete-btn" data-id="${addr.id}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </div>
                         </div>
                     </c:forEach>
@@ -60,9 +59,40 @@
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
 <script>
+    // Xóa địa chỉ bằng AJAX
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.dataset.id;
+            const card = this.closest(".address-card");
+
+            if (!confirm("Bạn có chắc muốn xóa địa chỉ này không?")) return;
+
+            fetch("deleteAddress", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "id=" + encodeURIComponent(id)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        card.remove(); // remove card khỏi DOM
+                        checkEmpty();
+                        alert("Xóa địa chỉ thành công!");
+                    } else {
+                        alert("Lỗi: " + data.message);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Có lỗi xảy ra khi xóa!");
+                });
+        });
+    });
+
+    // Kiểm tra nếu không còn địa chỉ nào thì hiển thị emtyCard
     function checkEmpty() {
         const emtyCard = document.querySelector(".emtyCard");
-        const cards = document.querySelectorAll('.card1, .card2');
+        const cards = document.querySelectorAll('.address-card');
 
         if (cards.length === 0) {
             emtyCard.style.display = "block";
@@ -71,21 +101,9 @@
         }
     }
 
+    // Khởi chạy checkEmpty lúc load page
+    checkEmpty();
 
-    document.querySelector('.delete1')?.addEventListener('click', () => {
-        if (confirm('Bạn có chắc muốn xóa địa chỉ thanh toán mặc định này không?')) {
-            document.querySelector('.card1')?.remove();
-            checkEmpty();
-        }
-    });
-
-
-    document.querySelector('.delete2')?.addEventListener('click', () => {
-        if (confirm('Bạn có chắc muốn xóa địa chỉ này không?')) {
-            document.querySelector('.card2')?.remove();
-            checkEmpty();
-        }
-    });
 
 </script>
 </body>

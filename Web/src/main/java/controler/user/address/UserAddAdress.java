@@ -1,4 +1,4 @@
-package controler.user;
+package controler.user.address;
 
 import Service.AddressService;
 import jakarta.servlet.*;

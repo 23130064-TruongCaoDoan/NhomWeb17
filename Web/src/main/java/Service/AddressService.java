@@ -13,4 +13,7 @@ public class AddressService {
     public List<Address> getAddress(int userId){
         return addressDao.getAddress(userId);
     }
+    public void deleteAddress(int id){
+        addressDao.deleteAddress(id);
+    }
 }

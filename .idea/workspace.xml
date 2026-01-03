@@ -11,8 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddAdress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -352,12 +355,23 @@
       <workItem from="1766993348271" duration="5449000" />
       <workItem from="1767157569547" duration="803000" />
       <workItem from="1767359244973" duration="6662000" />
-      <workItem from="1767412397648" duration="11824000" />
+      <workItem from="1767412397648" duration="13306000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
