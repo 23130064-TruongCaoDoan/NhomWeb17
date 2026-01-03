@@ -11,17 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/ViVoucher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/ViVoucher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/headerUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/headerUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/SetUpAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/SetUpAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/menuUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/menuUser.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-changePassword.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-changePassword.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-order-detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-order-detail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-spYeuThich.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-spYeuThich.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-thongbao.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-thongbao.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user_UuDaiThanhVien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user_UuDaiThanhVien.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +30,8 @@
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -360,7 +355,8 @@
       <workItem from="1766934293194" duration="8183000" />
       <workItem from="1766993348271" duration="5449000" />
       <workItem from="1767157569547" duration="803000" />
-      <workItem from="1767359244973" duration="4675000" />
+      <workItem from="1767359244973" duration="6662000" />
+      <workItem from="1767412397648" duration="11196000" />
     </task>
     <servers />
   </component>
@@ -370,11 +366,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Web/src/main/webapp/user/user_UuDaiThanhVien.jsp</url>
           <line>15</line>

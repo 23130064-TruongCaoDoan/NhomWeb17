@@ -1,6 +1,12 @@
+<%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect(request.getContextPath() + "/login");
+        return;
+    }
+%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,106 +22,122 @@
     <c:import url="/user/headerUser.jsp"></c:import>
     <div class="content">
         <div class="container">
-            <c:import url="/user/menuUser.jsp"></c:import>
+            <div class="menuUser">
+                <c:import url="/user/menuUser.jsp"></c:import>
+            </div>
             <div class="address-container">
                 <h2>Thêm địa chỉ mới</h2>
-             <form id="addressForm" action="add-address" method="post" novalidate>
-                <div class="form-group">
-                    <label>Tỉnh/Thành phố</label>
-                    <select id="tinh">
-                        <option value="">Chọn tỉnh</option>
-                    </select>
-                    <small class="error-msg"></small>
-                </div>
+                <form id="addressForm" class="address-form" action="addAddress" method="post" novalidate>                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên">
+                        <small class="error-msg"></small>
+                    </div>
 
-                <div class="form-group">
-                    <label>Quận/Huyện</label>
-                    <select id="quan">
-                        <option value="">Chọn quận</option>
-                    </select>
-                    <small class="error-msg"></small>
-                </div>
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input type="text" id="sdt" name="sdt" placeholder="Ex: 0972xxxxxx">
+                        <small class="error-msg"></small>
+                    </div>
 
-                <div class="form-group">
-                    <label>Xã/Phường</label>
-                    <select id="xa">
-                        <option value="">Chọn phường</option>
-                    </select>
-                    <small class="error-msg"></small>
-                </div><button type="submit" class="save-btn">Lưu địa chỉ</button>
-             </form>
+                    <div class="form-group">
+                        <label>Tỉnh/Thành phố</label>
+                            <select id="tinh" name="tinh">
+                                <option value="">Chọn tỉnh</option>
+                            </select> <small class="error-msg"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Quận/Huyện</label>
+                        <select id="quan" name="quan">
+                            <option value="">Chọn quận</option>
+                        </select>
+                        <small class="error-msg"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Xã/Phường</label>
+                        <select id="xa" name="xa">
+                            <option value="">Chọn phường</option>
+                        </select>
+                        <small class="error-msg"></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ cụ thể">
+                        <small class="error-msg"></small>
+                    </div>
+                    <input type="hidden" id="tinhInput" name="tinhName">
+                    <input type="hidden" id="quanInput" name="quanName">
+                    <input type="hidden" id="xaInput" name="xaName">
+                    <button type="submit" class="save-btn">Lưu địa chỉ</button>
+                </form>
             </div>
         </div>
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
+
 <script>
     const tinh = document.getElementById("tinh");
     const quan = document.getElementById("quan");
     const xa = document.getElementById("xa");
 
-    /* =====================
-       LOAD DANH SÁCH TỈNH
-    ===================== */
     fetch("https://provinces.open-api.vn/api/p/")
         .then(res => res.json())
         .then(data => {
             data.forEach(p => {
                 const opt = document.createElement("option");
-                opt.value = p.code;       // code tỉnh
-                opt.textContent = p.name; // tên tỉnh
+                opt.value = p.code;
+                opt.textContent = p.name;
+                opt.setAttribute("data-name", p.name);
                 tinh.appendChild(opt);
             });
-        })
-        .catch(err => console.error("Lỗi load tỉnh:", err));
+        });
 
-    /* =====================
-       CHỌN TỈNH → LOAD QUẬN
-    ===================== */
     tinh.addEventListener("change", function () {
         quan.innerHTML = `<option value="">-- Chọn quận/huyện --</option>`;
         xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
 
         if (!this.value) return;
 
-        fetch(`https://provinces.open-api.vn/api/p/${this.value}?depth=2`)
+        fetch("https://provinces.open-api.vn/api/p/" + this.value + "?depth=2")
             .then(res => res.json())
             .then(data => {
                 data.districts.forEach(d => {
                     const opt = document.createElement("option");
                     opt.value = d.code;
                     opt.textContent = d.name;
+                    opt.setAttribute("data-name", d.name);
                     quan.appendChild(opt);
                 });
-            })
-            .catch(err => console.error("Lỗi load quận:", err));
+            });
     });
 
-    /* =====================
-       CHỌN QUẬN → LOAD PHƯỜNG
-    ===================== */
     quan.addEventListener("change", function () {
         xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
 
         if (!this.value) return;
 
-        fetch(`https://provinces.open-api.vn/api/d/${this.value}?depth=2`)
+        fetch("https://provinces.open-api.vn/api/d/" + this.value + "?depth=2")
             .then(res => res.json())
             .then(data => {
                 data.wards.forEach(w => {
                     const opt = document.createElement("option");
                     opt.value = w.code;
                     opt.textContent = w.name;
+                    opt.setAttribute("data-name", w.name);
                     xa.appendChild(opt);
                 });
-            })
-            .catch(err => console.error("Lỗi load phường:", err));
+            });
     });
+
 </script>
 
 <script>
     document.getElementById("addressForm").addEventListener("submit", function (e) {
-        e.preventDefault();
+
+        // Cập nhật hidden input trước khi validate
+        document.getElementById("tinhInput").value = tinh.options[tinh.selectedIndex]?.textContent || "";
+        document.getElementById("quanInput").value = quan.options[quan.selectedIndex]?.textContent || "";
+        document.getElementById("xaInput").value   = xa.options[xa.selectedIndex]?.textContent || "";
 
         const fields = [
             { id: "hoten", name: "Họ và tên" },
@@ -143,7 +165,6 @@
                 input.classList.remove("error");
             }
 
-
             if (field.id === "sdt" && input.value.trim()) {
                 const phoneRegex = /^(0[1-9][0-9]{8})$/;
                 if (!phoneRegex.test(input.value)) {
@@ -153,9 +174,11 @@
                     isValid = false;
                 }
             }
+
         });
 
-        if (isValid) {
+        if (!isValid) {
+            e.preventDefault(); // chặn submit nếu có lỗi
         }
     });
 

@@ -28,10 +28,13 @@
 </head>
 
 <body>
+<div class="page-wrapper">
 <c:import url="/user/headerUser.jsp"></c:import>
 <div class="content">
     <div class="container">
-        <c:import url="/user/menuUser.jsp"></c:import>
+        <div class="menuUser">
+            <c:import url="/user/menuUser.jsp"></c:import>
+        </div>
         <div class="favorite-products">
             <h2>Sản phẩm yêu thích của tôi</h2>
             <div class="listProducts">
@@ -123,6 +126,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <c:import url="footerUser.jsp"> </c:import>
 

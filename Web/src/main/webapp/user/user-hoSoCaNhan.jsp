@@ -61,56 +61,8 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="wave-container">
-            <svg
-                    viewBox="0 0 120 15"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-            >
-                <path
-                        d="M0,10
-                C10,15 20,5 30,10
-                C40,15 50,5 60,10
-                C70,15 80,5 90,10
-                C100,15 115,5 120,10
-                L120,20 0,20 Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Liên hệ chúng tôi</h3>
-                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-                <a href="#"
-                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
-                >
-            </div>
+    <c:import url="/user/footerUser.jsp"></c:import>
 
-            <div class="footer-column">
-                <h3>Dịch vụ khách hàng</h3>
-                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
-                <a href="user-hoSoCaNhan.html">Tài khoản</a>
-                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
-
-            </div>
-
-            <div class="footer-column">
-                <h3>Đối tác</h3>
-                <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
-                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Bảo mật</h3>
-                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
-                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright ©. All Rights Reserved.</p>
-        </div>
-    </footer>
 </div>
 <div class="overlay" id="overlay"></div>
 <div class="popup" id="thaydoDT">

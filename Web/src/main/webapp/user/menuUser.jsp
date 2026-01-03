@@ -16,15 +16,15 @@
     </div>
 </div>
 <div class="menuMain">
-    <a href="user-hoSoCaNhan.jsp" class="menu ttcn">
+    <a href="SetUpAccount" class="menu ttcn">
         <i class="fa-regular fa-user"></i>
         <span>Thông tin cá nhân</span>
         <i class="fa-solid fa-arrow-down"></i>
     </a>
 
     <div class="menuInfor">
-        <a href="user-hoSoCaNhan.jsp" class="title prof"><span>Hồ sơ cá nhân</span></a>
-        <a href="user-address.jsp" class="title address"><span>Sổ địa chỉ</span></a>
+        <a href="SetUpAccount" class="title prof"><span>Hồ sơ cá nhân</span></a>
+        <a href="address" class="title address"><span>Sổ địa chỉ</span></a>
         <a href="user-changePassword.jsp" class="title passw"><span>Đổi mật khẩu</span></a>
         <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
     </div>
