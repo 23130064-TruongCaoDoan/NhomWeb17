@@ -80,7 +80,7 @@ public class BookDao extends BaseDao {
                                         "FROM BOOKS b " +
                                         "JOIN AUTHORS a ON b.author_id = a.id " +
                                         "WHERE b.is_sell = 1 " +
-                                        "AND (b.title LIKE :search OR a.name LIKE :search OR b.type LIKE :search) " +
+                                        "AND (b.title LIKE :search OR a.name LIKE :search OR b.type LIKE :search OR a.name like :search) " +
                                         "LIMIT :limit OFFSET :offset"
                         )
                         .bind("search", "%" + search + "%")

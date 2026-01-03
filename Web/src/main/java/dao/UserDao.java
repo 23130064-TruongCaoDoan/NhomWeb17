@@ -27,7 +27,7 @@ public class UserDao extends BaseDao {
 
     public void addUser(String fullname, String email, String password) {
         getJdbi().withHandle(handle ->
-                handle.createUpdate("insert into USER(name,email,password_hash,role) values(:username, :email, :password,:role)").bind("username", fullname).bind("email", email).bind("password", password).bind("role",0).execute()
+                handle.createUpdate("insert into USER(name,email,password_hash,role,status, point) values(:username, :email, :password,:role,:status,:point)").bind("username", fullname).bind("email", email).bind("password", password).bind("role",0).bind("status",1).bind("point",0).execute()
         );
     }
 

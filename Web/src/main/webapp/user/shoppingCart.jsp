@@ -87,7 +87,10 @@
                             </form>
                         </div>
                         <div class="total-cost" style="text-align: center">
-                            <p class="cost"><fmt:formatNumber value="${item.price}" pattern="#,###"/> VNĐ</p>
+                            <p class="cost"><fmt:formatNumber value="${item.price}" pattern="#,###"/> đ</p>
+                            <c:if test="${item.book.getPriceDiscounted() >0}">
+                            <div class="order-price-old"><p class="cost"><fmt:formatNumber value="${item.book.getPrice()}" pattern="#,###"/> đ</p></div>
+                            </c:if>
                         </div>
                         <i class="fa-solid fa-trash" style="color: black"
                            onclick="updateItem(${item.getBook().getId()},0)"></i>
@@ -102,31 +105,41 @@
                     <p><i class="fa-solid fa-ticket"></i> Khuyến Mãi</p>
                     <p>Xem thêm ></p>
                 </a>
-                <div class="info-voucher">
-                    <h4>Mã Giảm 10K - Toàn Cửa Hàng</h4>
-                    <p>Đơn hàng từ 130k - Không bao gồm giá trị của sản phẩm sau: Manga,...</p>
-                    <div class="expired">
-                        <div>
-                            <p>HSD: 30/11/2025</p>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.appliedDiscountVoucher}">
+                        <div class="info-voucher">
+                            <h4>${sessionScope.appliedDiscountVoucher.description}</h4>
+                            <p>Đơn hàng từ <fmt:formatNumber value="${sessionScope.appliedDiscountVoucher.conditionPrice}" pattern="#,###"/> đ</p>
+                            <div class="expired">
+                                <div>
+                                    <p>HSD: ${sessionScope.appliedDiscountVoucher.getEndDateFormatted()}</p>
+                                </div>
+                                <form action="cancelVoucher" method="post" style="display:inline;">
+                                    <input type="hidden" name="page" value="1">
+                                    <input type="hidden" name="type" value="discount">
+                                    <button type="submit">Hủy</button>
+                                </form>
+                            </div>
                         </div>
-
-                        <button>hủy</button>
-                    </div>
-
-
-                </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="info-voucher">
+                            <p style="text-align:center; color:#888; font-style:italic;">Chưa áp dụng mã giảm giá</p>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="bill">
                 <div class="thanh-tien">
                     <p>Thành tiền</p>
-                    <p><c:if test="${empty cart.items}">0 VNĐ</c:if>
+                    <p><c:if test="${empty cart.items}">0 đ</c:if>
                         <c:if test="${not empty cart.items}">
-                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/> VNĐ
+                            <fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/> đ
                         </c:if></p>
                 </div>
                 <div>
-                    <h3 class="total-price">Tổng số tiền (bao gồm VAT)</h3>
-                    <p>80.000VNĐ</p>
+                    <h3 class="total-price">Tổng số tiền (áp dụng mã giảm giá)</h3>
+                    <p><fmt:formatNumber value="${finalTotal}" pattern="#,###"/> đ</p>
                 </div>
                 <button class="check-out" onclick="window.location.href='<c:url value="/ThanhToan"/>'">Đặt hàng</button>
             </div>
@@ -167,51 +180,39 @@
                             <div class="voucher-code">${voucher.code}</div>
                             <div class="voucher-footer">
                                 <span>HSD:${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</span>
-                                <button>Áp dụng</button>
+                                <c:choose>
+                                    <c:when test="${sessionScope.appliedDiscountVoucher != null && sessionScope.appliedDiscountVoucher.id == voucher.id}">
+                                        <form action="cancelVoucher" method="post">
+                                            <button type="submit" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                <input type="hidden" name="page" value="1">
+                                                <input type="hidden" name="type" value="discount">
+                                                Hủy
+                                            </button>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:if test="${empty sessionScope.appliedDiscountVoucher}">
+                                            <form action="applyVoucher" method="post">
+                                                <input type="hidden" name="page" value="1">
+                                                <input type="hidden" name="voucherId" value="${voucher.id}">
+                                                <button type="submit" style="background:#28a745;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                    Áp dụng
+                                                </button>
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${not empty sessionScope.appliedDiscountVoucher}">
+                                            <button disabled style="opacity:0.6;cursor:not-allowed;padding:6px 12px;border-radius:4px;">
+                                                Áp dụng
+                                            </button>
+                                        </c:if>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
             <c:if test="${listVoucherDiscount.size()>2}">
-                <button class="toggle-btnDis">Xem thêm</button>
-            </c:if>
-        </div>
-        <div class="layout ships">
-            <div class="title Ship">
-                <div class="ten">Mã vận chuyển</div>
-                <div class="numberAply">Áp dụng tối đa: 1</div>
-            </div>
-            <div class="list ship">
-                <c:if test="${empty listVoucherShip}">
-                    <div style="text-align: center; color: #444444; margin: 10px 0px">KHÔNG CÓ VOUCHER</div>
-                </c:if>
-                <c:forEach var="voucher" items="${listVoucherShip}">
-                    <div class="voucher-item"
-                         data-code="${voucher.code}"
-                         data-description="${voucher.description}"
-                         data-condition-price="${voucher.conditionPrice}"
-                         data-categories="${voucher.conditionBook}"
-                         data-publishers="${voucher.conditionPublisher}"
-                         data-start="${voucher.getStartDateFormatted()}"
-                         data-end="${voucher.getEndDateFormatted()}"
-                    >
-                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                        <div class="voucher-right">
-                            <b>${voucher.description}</b>
-                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                            <br>
-                            Đơn hàng từ ${voucher.conditionPrice} - Không bao gồm Manga, Ngoại Văn<br>
-                            <div class="voucher-code">${voucher.code}</div>
-                            <div class="voucher-footer">
-                                <span>HSD:${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</span>
-                                <button>Áp dụng</button>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <c:if test="${listVoucherShip.size()>2}">
                 <button class="toggle-btnDis">Xem thêm</button>
             </c:if>
         </div>
@@ -240,8 +241,6 @@
                 <p class="note-combine">Có thể sử dụng đồng thời với mã giảm phí vận chuyển.</p>
             </div>
         </div>
-
-        <button class="apply-code" id="detailApplyBtn">ÁP DỤNG</button>
         <button class="cancel">×</button>
     </div>
 </div>
@@ -317,14 +316,6 @@
                 publishersLi.style.display = "none";
             }
 
-            // Nút áp dụng (có thể thêm logic thực tế sau)
-            document.getElementById("detailApplyBtn").onclick = () => {
-                // Ở đây bạn có thể thêm logic áp dụng voucher thực tế
-                alert(`Đã áp dụng mã: ${code}`);
-                voucherPopup.style.display = "none";
-                overlay.style.display = "none";
-            };
-
             popup.style.display = "none";
             voucherPopup.style.display = "block";
         });
@@ -338,21 +329,18 @@
 
     function setupSectionToggle(layoutSelector, listSelector, toggleBtnClass) {
         const layout = document.querySelector(layoutSelector);
-        if (!layout) return; // Nếu không có section này thì bỏ qua
+        if (!layout) return;
 
         const items = layout.querySelectorAll(listSelector + ' .voucher-item');
         const toggleBtn = layout.querySelector(toggleBtnClass);
 
-        // Nếu không có nút "Xem thêm" (vì ít hơn 3 voucher) thì bỏ qua
         if (!toggleBtn) return;
 
-        // Ẩn các item từ thứ 3 trở đi
         items.forEach((v, i) => {
             if (i > 1) v.style.display = 'none';
             else v.style.display = 'flex';
         });
 
-        // Sự kiện click nút Xem thêm / Thu gọn
         toggleBtn.addEventListener('click', () => {
             const hiddenItems = Array.from(items).filter(v => v.style.display === 'none');
 
@@ -388,6 +376,12 @@
         console.log("  Description:", item.dataset.description);
         console.log("  Start date:", "'" + item.dataset.start + "'");
         console.log("  End date:", "'" + item.dataset.end + "'");
+    });
+    document.querySelectorAll('.voucher-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('voucherListPopup').style.display = 'none';
+        });
     });
 </script>
 </body>

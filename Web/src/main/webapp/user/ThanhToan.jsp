@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,78 +14,18 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <div id="home-page">
-        <div id="page-header">
-            <div class="header-message">
-                <div class="message"></div>
-                <div class="messageBorder"></div>
-            </div>
-            <div class="container">
-                <div class="header-title">
-                    <a href="" class="logo">
-                        <img
-                                src="assets/img/logo/logoChinh.png"
-                                alt="Sách thiếu nhi cho bé"
-                        />
-                    </a>
-                </div>
-                <div class="header-menu">
-                    <a href="home.jsp" class="button bt"
-                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
-                    >
-                    <div class="button category">
-                        <a href="dsSanPham.jsp" class="button bt danhmuc">
-                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
-                        >
-                        <div class="danhMuc sach">
-                            <div class="item truyenTranh">
-                                <a href="dsSanPham.jsp" class="it truyen-tranh"
-                                ><span>Truyện tranh</span></a
-                                >
-                            </div>
-                            <div class="item anh">
-                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
-                            </div>
-                            <div class="item giaoDuc">
-                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
-                            </div>
-                            <div class="item toMau">
-                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" placeholder="Tìm kiếm sách"/>
-                        <button>Tìm Kiếm</button>
-                    </div>
-                    <a href="login.jsp" class="button bt taikhoan">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Tài khoản</span>
-                    </a>
-                    <a href="shoppingCart.jsp" class="button bt gio">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Giỏ hàng</span>
-                    </a>
-                    <a href="user-thongbao.jsp" class="button bt thongbao">
-                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
-                        <span>Thông báo</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <c:import url="headerUser.jsp"> </c:import>
     <div class="content">
         <div class="container">
 
             <!-- address  -->
             <div class="checkout-section">
                 <div class="section-title">ĐỊA CHỈ GIAO HÀNG</div>
-
+                <c:forEach var="address" items="${listAddress}">
                 <div class="address-item">
                     <div class="address-info">
-                        <input type="radio" name="address" checked>
-                        <span><b>Trương Đoàn</b> | 699, Trường Tiểu Học Phước Lâm, Xã Phước Hậu, Huyện Cần Giuộc, Long An, VN | 0859934939</span>
+                        <input type="radio" name="address" value="${address.getId()}" ${address.getIsDefault()? "checked":""}>
+                        <span><b>${address.getName()}</b> | ${address.getSpecificAddress()}, ${address.getWard()}, ${address.getDistrict()}, ${address.getCity()}| ${address.getPhone()}</span>
                     </div>
                     <div class="address-actions">
                         <a href="user-newAddress.jsp" class="edit-btn" title="Chỉnh sửa">
@@ -94,24 +36,9 @@
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
-                </div>
 
-                <div class="address-item">
-                    <div class="address-info">
-                        <input type="radio" name="address">
-                        <span><b>Trương Đoàn</b> | 699, Trường Tiểu Học Phước Lâm, Xã Dũng Liệt, Huyện Yên Phong, Bắc Ninh, VN | 0859934939</span>
-                    </div>
-                    <div class="address-actions">
-                        <a href="user-newAddress.jsp" class="edit-btn" title="Chỉnh sửa">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                        <span class="divider">|</span>
-                        <button class="delete-btn" title="Xóa">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
                 </div>
-
+                </c:forEach>
                 <a class="add-address" href="user-newAddress.jsp"><i class="fa-solid fa-plus"></i> Giao hàng đến địa
                     chỉ khác</a>
             </div>
@@ -120,9 +47,16 @@
             <div class="checkout-section">
                 <div class="section-title">PHƯƠNG THỨC VẬN CHUYỂN</div>
                 <div class="shipping-item">
-                    <input type="radio" name="shipping" checked>
+                    <input type="radio" value="standard" name="ship" checked>
                     <div>
-                        <strong>Giao hàng tiêu chuẩn: 32.000 đ</strong><br>
+                        <strong>Giao hàng nhanh: 60.000 đ</strong><br>
+                        Dự kiến giao: Chủ Nhật - 09/11
+                    </div>
+                </div>
+                <div class="shipping-item">
+                    <input type="radio" value="express" name="ship">
+                    <div>
+                        <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong><br>
                         Dự kiến giao: Chủ Nhật - 09/11
                     </div>
                 </div>
@@ -132,19 +66,19 @@
             <div class="checkout-section">
                 <div class="section-title">PHƯƠNG THỨC THANH TOÁN</div>
                 <div class="payment-item">
-                    <input type="radio" class="vnpay" name="payment">
+                    <input type="radio" class="vnpay" value="1" name="payment">
                     <img src="https://vinadesign.vn/uploads/images/2023/05/vnpay-logo-vinadesign-25-12-57-55.jpg"
                          alt="">
                     <span>VNPAY</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" class="momo" name="payment">
+                    <input type="radio" class="momo" value="2" name="payment">
                     <img src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjA0NjgzMiwicHVyIjoiYmxvYl9pZCJ9fQ==--6d1081fa86f1300daa38e2cb2fd3ffc5a28b6592/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOlszMDAsMzAwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--e1d036817a0840c585f202e70291f5cdd058753d/MoMo%20Logo.png"
                          alt="">
                     <span>Ví Momo</span>
                 </div>
                 <div class="payment-item">
-                    <input type="radio" class="money" name="payment">
+                    <input type="radio" class="money" value="3" name="payment" checked>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5lvx2wxsU3oCisTG1mwVJfl7Jb8et02zZwg&s"
                          alt="">
                     <span>Thanh toán tiền mặt khi nhận hàng</span>
@@ -155,24 +89,23 @@
             <div class="checkout-section">
                 <div class="section-title">THÀNH VIÊN</div>
                 <div class="member-info">
-                    <div>Số Point hiện có: <span class="highlight">0</span></div>
-                    <label><input type="checkbox"> Dùng <span class="highlight">0 đ</span> Point để thanh
+                    <div>Số Point hiện có: <span class="highlight">${user.getPoint()}</span></div>
+                    <label><input type="checkbox" id="usePoint"> Dùng point để thanh
                         toán</label><br>
-                    <div>Số lần freeship: <span class="highlight">0 lần</span></div>
-                    <label><input type="checkbox"> Sử dụng freeship</label>
                 </div>
             </div>
 
             <!-- gift  -->
             <div class="checkout-section">
-                <div class="section-title">MÃ KHUYẾN MÃI / GIFT CARD</div>
+                <div class="section-title">VOUCHER</div>
                 <div class="gift-infor">
                     <div class="input-row">
-                        <label for="giftcode">Mã khuyến mãi / Gift Card</label>
                         <div class="input-group">
-                            <input type="text" id="giftcode" placeholder="Nhập mã khuyến mãi / Gift Card">
-                            <button class="apply-btn">Áp dụng</button>
-                            <a href="#" id="choose-code">Chọn mã khuyến mãi</a>
+                            <a href="#" class="more-voucher" id="choose-code">Chọn mã khuyến mãi</a>
+                        </div>
+                        <div style="color: #f7941d">
+                            <c:if test="${numApplyVoucher >0}"> <span >Đã áp dụng ${numApplyVoucher} voucher </span> </c:if>
+                            <c:if test="${numApplyVoucher <=0}"><span > Chưa voucher nào được áp dụng </span> </c:if>
                         </div>
                     </div>
                 </div>
@@ -191,35 +124,42 @@
             <div class="checkout-section">
                 <div class="section-title">KIỂM TRA LẠI ĐƠN HÀNG</div>
                 <div class="order-review">
+                    <c:forEach var="item" items="${cart.items}">
                     <div class="order-item">
-                        <img src="assets/img/books/DeMen.jpg" alt="De men" class="order-img">
+                        <img src="${item.book.coverImgUrl}" alt="De men" class="order-img">
                         <div class="order-info">
-                            <div class="order-name">Dế Mèn Phiêu Lưu Kí</div>
+                            <div class="order-name">${item.book.title}</div>
                         </div>
                         <div class="order-prices">
-                            <div class="order-price-current">132.000 đ</div>
-                            <div class="order-price-old">189.000 đ</div>
+                            <div class="order-price-current"><p class="cost"><fmt:formatNumber value="${item.price}" pattern="#,###"/> đ</p></div>
+                            <c:if test="${item.book.getPriceDiscounted() >0}">
+                            <div class="order-price-old"><p class="cost"><fmt:formatNumber value="${item.book.getPrice()}" pattern="#,###"/> đ</p></div>
+                            </c:if>
                         </div>
-                        <div class="order-qty">1</div>
-                        <div class="order-total">132.000 đ</div>
+                        <div class="order-qty">${item.quantity}</div>
+                        <div class="order-total"><p class="cost"><fmt:formatNumber value="${item.price*item.quantity}" pattern="#,###"/> đ</p></div>
                     </div>
+                    </c:forEach>
                 </div>
             </div>
-
         </div>
         <div class="checkout-summary">
             <div class="container">
                 <div class="checkout-total">
                     <div class="total-row">
                         <span>Thành tiền</span>
-                        <span>132.000 đ</span>
+                        <span><fmt:formatNumber value="${cart.totalBill}" pattern="#,###"/> đ</span>
                     </div>
                     <div class="total-row">
-                        <span>Phí vận chuyển (Giao hàng tiêu chuẩn)</span>
+                        <span>Phí vận chuyển ()</span>
                         <span>32.000 đ</span>
                     </div>
+                    <div class="total-row" id="pointDiscountRow" style="display:none;">
+                        <span>Giảm bằng point</span>
+                        <span class="highlight">-<span id="pointDiscount">0</span> đ</span>
+                    </div>
                     <div class="total-row total-final">
-                        <strong>Tổng Số Tiền (gồm VAT)</strong>
+                        <strong>Tổng Số Tiền (giảm giá và vận chuyển)</strong>
                         <strong class="total-price">164.000 đ</strong>
                     </div>
                 </div>
@@ -235,17 +175,11 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 <div class="overlay" id="overlay"></div>
 <div class="popup">
     <h3>CHỌN KHUYẾN MÃI</h3>
-    <div class="search">
-        <input type="text" placeholder="Mã khuyến mãi / Gift card">
-        <button class="apply">Áp dụng</button>
-    </div>
     <div class="listVoucher">
         <div class="layout discounts">
             <div class="title Discount">
@@ -253,239 +187,162 @@
                 <div class="numberAply">Áp dụng tối đa: 1</div>
             </div>
             <div class="list discount">
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
+                <c:if test="${empty listVoucherDiscount}">
+                    <div style="text-align: center; color: #444444; margin: 10px 0px">KHÔNG CÓ VOUCHER</div>
+                </c:if>
+                <c:forEach var="voucher" items="${listVoucherDiscount}">
+                    <div class="voucher-item"
+                         data-code="${voucher.code}"
+                         data-description="${voucher.description}"
+                         data-condition-price="${voucher.conditionPrice}"
+                         data-categories="${voucher.conditionBook}"
+                         data-publishers="${voucher.conditionPublisher}"
+                         data-start="${voucher.getStartDateFormatted()}"
+                         data-end="${voucher.getEndDateFormatted()}"
+                    >
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>${voucher.description}</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ ${voucher.conditionPrice} <br>
+                            <div class="voucher-code">${voucher.code}</div>
+                            <div class="voucher-footer">
+                                <span>HSD:${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</span>
+                                <c:choose>
+                                    <c:when test="${sessionScope.appliedDiscountVoucher != null && sessionScope.appliedDiscountVoucher.id == voucher.id}">
+                                        <form action="cancelVoucher" method="post">
+                                            <button type="submit" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                <input type="hidden" name="page" value="2">
+                                                <input type="hidden" name="type" value="discount">
+                                                Hủy
+                                            </button>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:if test="${empty sessionScope.appliedDiscountVoucher}">
+                                            <form action="applyVoucher" method="post">
+                                                <input type="hidden" name="voucherId" value="${voucher.id}">
+                                                <input type="hidden" name="page" value="2">
+                                                <button type="submit" style="background:#28a745;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                    Áp dụng
+                                                </button>
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${not empty sessionScope.appliedDiscountVoucher}">
+                                            <button disabled style="opacity:0.6;cursor:not-allowed;padding:6px 12px;border-radius:4px;">
+                                                Áp dụng
+                                            </button>
+                                        </c:if>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-            <button class="toggle-btnDis">Xem thêm</button>
+            <c:if test="${listVoucherDiscount.size()>2}">
+                <button class="toggle-btnDis">Xem thêm</button>
+            </c:if>
         </div>
         <div class="layout ships">
-            <div class="title Ship">
+            <div class="title Discount">
                 <div class="ten">Mã vận chuyển</div>
                 <div class="numberAply">Áp dụng tối đa: 1</div>
             </div>
             <div class="list ship">
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
+                <c:if test="${empty listVoucherShip}">
+                    <div style="text-align: center; color: #444444; margin: 10px 0px">KHÔNG CÓ VOUCHER</div>
+                </c:if>
+                <c:forEach var="voucher" items="${listVoucherShip}">
+                    <div class="voucher-item"
+                         data-code="${voucher.code}"
+                         data-description="${voucher.description}"
+                         data-condition-price="${voucher.conditionPrice}"
+                         data-categories="${voucher.conditionBook}"
+                         data-publishers="${voucher.conditionPublisher}"
+                         data-start="${voucher.getStartDateFormatted()}"
+                         data-end="${voucher.getEndDateFormatted()}"
+                    >
+                        <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="voucher-right">
+                            <b>${voucher.description}</b>
+                            <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
+                            <br>
+                            Đơn hàng từ ${voucher.conditionPrice} <br>
+                            <div class="voucher-code">${voucher.code}</div>
+                            <div class="voucher-footer">
+                                <span>HSD:${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</span>
+                                <c:choose>
+                                    <c:when test="${sessionScope.appliedShipVoucher != null && sessionScope.appliedShipVoucher.id == voucher.id}">
+                                        <form action="cancelVoucher" method="post">
+                                            <input type="hidden" name="page" value="2">
+                                            <input type="hidden" name="type" value="ship">
+                                            <button type="submit" style="background:#dc3545;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                Hủy
+                                            </button>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:if test="${empty sessionScope.appliedShipVoucher}">
+                                            <form action="applyVoucher" method="post">
+                                                <input type="hidden" name="page" value="2">
+                                                <input type="hidden" name="voucherId" value="${voucher.id}">
+                                                <button type="submit" style="background:#28a745;color:white;border:none;padding:6px 12px;border-radius:4px;">
+                                                    Áp dụng
+                                                </button>
+                                            </form>
+                                        </c:if>
+                                        <c:if test="${not empty sessionScope.appliedShipVoucher}">
+                                            <button disabled style="opacity:0.6;cursor:not-allowed;padding:6px 12px;border-radius:4px;">
+                                                Áp dụng
+                                            </button>
+                                        </c:if>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="voucher-item">
-                    <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
-                    <div class="voucher-right">
-                        <b>Mã Giảm 10K - Toàn Sàn</b>
-                        <button class="voucher-detail" data-voucher="voucher1">Chi tiết</button>
-                        <br>
-                        Đơn hàng từ 130k - Không bao gồm Manga, Ngoại Văn<br>
-                        <div class="voucher-code">FHS10KT11</div>
-                        <div class="voucher-footer">
-                            <span>HSD: 30/11/2025</span>
-                            <button>Áp dụng</button>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-            <button class="toggle-btnShip">Xem thêm</button>
+            <c:if test="${listVoucherShip.size()>2}">
+                <button class="toggle-btnDis">Xem thêm</button>
+            </c:if>
         </div>
     </div>
 </div>
 <div id="voucherPopup" class="popup">
     <div class="popup-content">
-        <h3>ĐIỀU KIỆN ÁP DỤNG</h3>
+        <h3>CHI TIẾT KHUYẾN MÃI</h3>
         <div class="popup-body">
-            <div class="voucher-list-detail">
-                <p class="voucher-item-detail">Mã giảm giá 10K cho đơn hàng từ 130K</p>
-                <p class="voucher-item-detail">Mã giảm giá 20K cho đơn hàng từ 249K</p>
-                <p class="voucher-item-detail">Mã giảm giá 40K cho đơn hàng từ 499K</p>
-                <p class="voucher-item-detail">Mã giảm giá 80K cho đơn hàng từ 999K</p>
+            <div class="voucher-header-detail">
+                <div class="voucher-left"><i class="fa-solid fa-ticket"></i></div>
+                <div class="voucher-right-detail">
+                    <b id="detailDescription"></b>
+                    <div class="voucher-code" id="detailCode"></div>
+                    <div class="voucher-expiry" id="detailExpiry"></div>
+                </div>
             </div>
-            <div class="voucher-condition">
-                <p>- Áp dụng cho đơn hàng KHÔNG bao gồm giá trị của các sản phẩm Ngoại Văn, Manga, Phiếu Quà Tặng, Sách Giáo Khoa, Máy Tính và Giấy Photo cùng một số loại giấy và bảng khác.</p>
-                <p>- Khách hàng có thể áp dụng cùng lúc với mã giảm phí vận chuyển.</p>
+
+            <div class="voucher-conditions-detail">
+                <h4>Điều kiện áp dụng</h4>
+                <ul id="detailConditionsList">
+                    <li>Đơn hàng tối thiểu: <span id="detailMinPrice"></span> VNĐ</li>
+                    <li id="detailCategoriesLi" style="display:none;">Áp dụng cho các danh mục: <span id="detailCategories"></span></li>
+                    <li id="detailPublishersLi" style="display:none;">Áp dụng cho nhà xuất bản: <span id="detailPublishers"></span></li>
+                </ul>
+                <p class="note-combine">Có thể sử dụng đồng thời với mã giảm phí vận chuyển.</p>
             </div>
         </div>
-        <button class="copy-code">ÁP DỤNG</button>
         <button class="cancel">×</button>
     </div>
 </div>
 <script>
     //voucher
 
-    const openPopup = document.getElementById("choose-code");
+    //voucher
+
+    const openPopup = document.querySelector(".more-voucher");
     const overlay = document.getElementById("overlay");
     const popup = document.querySelector(".popup");
 
@@ -502,7 +359,6 @@
     });
 
 
-
     // hiển thị chi tiết voucher
     const detailBtns = document.querySelectorAll(".voucher-detail");
     const voucherPopup = document.getElementById("voucherPopup");
@@ -510,6 +366,41 @@
 
     detailBtns.forEach(btn => {
         btn.addEventListener("click", () => {
+            const voucherItem = btn.closest(".voucher-item");
+
+            // Lấy dữ liệu từ data attributes
+            const description = voucherItem.dataset.description || voucherItem.querySelector("b").textContent;
+            const code = voucherItem.dataset.code || voucherItem.querySelector(".voucher-code").textContent;
+            const start = voucherItem.dataset.start || "";
+            const endDate = voucherItem.dataset.end || "";
+            const minPrice = parseInt(voucherItem.dataset.conditionPrice || 0).toLocaleString();
+            const categories = voucherItem.dataset.categories;
+            const publishers = voucherItem.dataset.publishers;
+
+            // Cập nhật nội dung popup
+            document.getElementById("detailDescription").textContent = description;
+            document.getElementById("detailCode").textContent = code;
+            document.getElementById("detailExpiry").textContent = 'Hiệu lực: '+ start +' - '+endDate;
+            document.getElementById("detailMinPrice").textContent = minPrice + " đ";
+
+            // Xử lý danh mục và NXB (nếu có)
+            const categoriesLi = document.getElementById("detailCategoriesLi");
+            const publishersLi = document.getElementById("detailPublishersLi");
+
+            if (categories && categories.trim() !== "") {
+                document.getElementById("detailCategories").textContent = categories;
+                categoriesLi.style.display = "list-item";
+            } else {
+                categoriesLi.style.display = "none";
+            }
+
+            if (publishers && publishers.trim() !== "") {
+                document.getElementById("detailPublishers").textContent = publishers;
+                publishersLi.style.display = "list-item";
+            } else {
+                publishersLi.style.display = "none";
+            }
+
             popup.style.display = "none";
             voucherPopup.style.display = "block";
         });
@@ -523,10 +414,12 @@
 
     function setupSectionToggle(layoutSelector, listSelector, toggleBtnClass) {
         const layout = document.querySelector(layoutSelector);
+        if (!layout) return;
 
         const items = layout.querySelectorAll(listSelector + ' .voucher-item');
         const toggleBtn = layout.querySelector(toggleBtnClass);
 
+        if (!toggleBtn) return;
 
         items.forEach((v, i) => {
             if (i > 1) v.style.display = 'none';
@@ -551,6 +444,23 @@
     setupSectionToggle('.layout.discounts', '.list.discount', '.toggle-btnDis');
     setupSectionToggle('.layout.ships', '.list.ship', '.toggle-btnShip');
 
+
+    document.querySelectorAll(".voucher-item").forEach((item, index) => {
+        console.log(`Voucher ${index + 1}:`);
+        console.log("  Code:", item.dataset.code);
+        console.log("  Description:", item.dataset.description);
+        console.log("  Start date:", "'" + item.dataset.start + "'");
+        console.log("  End date:", "'" + item.dataset.end + "'");
+    });
+    document.querySelectorAll('.voucher-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('voucherListPopup').style.display = 'none';
+        });
+    });
+
+    //
+
     const vnpay=document.querySelector(".vnpay");
     const momo=document.querySelector(".momo");
     const money=document.querySelector(".money");
@@ -568,6 +478,37 @@
             window.location.href = "home.jsp";
         }
     })
+
+
+
+    const usePointCheckbox = document.getElementById("usePoint");
+    const pointDiscountRow = document.getElementById("pointDiscountRow");
+    const pointDiscountEl = document.getElementById("pointDiscount");
+
+    const userPoint = ${user.getPoint()};
+
+    function formatMoney(n) {
+        return n.toLocaleString("vi-VN");
+    }
+
+    if (userPoint < 100) {
+        usePointCheckbox.disabled = true;
+        pointWarning.style.display = "block";
+    }
+
+    usePointCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+            pointDiscountEl.innerText = formatMoney(userPoint);
+            pointDiscountRow.style.display = "flex";
+        } else {
+            pointDiscountRow.style.display = "none";
+        }
+    });
+
+
+
+
+
 
 
 </script>
