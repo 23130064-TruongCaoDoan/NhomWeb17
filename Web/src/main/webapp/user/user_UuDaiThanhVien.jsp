@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,67 +13,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <div id="home-page">
-        <div id="page-header">
-            <div class="header-message">
-                <div class="message"></div>
-                <div class="messageBorder"></div>
-            </div>
-            <div class="container">
-                <div class="header-title">
-                    <a href="" class="logo">
-                        <img
-                                src="assets/img/logo/logoChinh.png"
-                                alt="Sách thiếu nhi cho bé"
-                        />
-                    </a>
-                </div>
-                <div class="header-menu">
-                    <a href="home.jsp" class="button bt"
-                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
-                    >
-                    <div class="button category">
-                        <a href="dsSanPham.jsp" class="button bt danhmuc">
-                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
-                        >
-                        <div class="danhMuc sach">
-                            <div class="item truyenTranh">
-                                <a href="dsSanPham.jsp" class="it truyen-tranh"
-                                ><span>Truyện tranh</span></a
-                                >
-                            </div>
-                            <div class="item anh">
-                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
-                            </div>
-                            <div class="item giaoDuc">
-                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
-                            </div>
-                            <div class="item toMau">
-                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" placeholder="Tìm kiếm sách"/>
-                        <button>Tìm Kiếm</button>
-                    </div>
-                    <a href="login.jsp" class="button bt taikhoan">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Tài khoản</span>
-                    </a>
-                    <a href="shoppingCart.jsp" class="button bt gio">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Giỏ hàng</span>
-                    </a>
-                    <a href="user-thongbao.jsp" class="button bt thongbao">
-                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
-                        <span>Thông báo</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <c:import url="/user/headerUser.jsp"></c:import>
     <div class="content">
         <div class="container">
             <div class="menuUser">
