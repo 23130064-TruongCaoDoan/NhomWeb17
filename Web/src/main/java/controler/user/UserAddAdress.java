@@ -30,9 +30,9 @@ public class UserAddAdress extends HttpServlet {
 
         String name = request.getParameter("hoten");
         String phone = request.getParameter("sdt");
-        String city = request.getParameter("tinh");
-        String district = request.getParameter("quan");
-        String ward = request.getParameter("xa");
+        String city = request.getParameter("tinhName");
+        String district = request.getParameter("quanName");
+        String ward = request.getParameter("xaName");
         String specificAddress = request.getParameter("diachi");
 
 

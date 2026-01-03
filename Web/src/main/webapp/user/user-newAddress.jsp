@@ -27,7 +27,8 @@
             </div>
             <div class="address-container">
                 <h2>Thêm địa chỉ mới</h2>
-                <form id="addressForm" class="address-form" action="addAddress" method="post" novalidate>                    <div class="form-group">
+                <form id="addressForm" class="address-form" action="addAddress" method="post" novalidate>
+                    <div class="form-group">
                         <label>Họ và tên</label>
                         <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên">
                         <small class="error-msg"></small>
@@ -41,10 +42,12 @@
 
                     <div class="form-group">
                         <label>Tỉnh/Thành phố</label>
-                            <select id="tinh" name="tinh">
-                                <option value="">Chọn tỉnh</option>
-                            </select> <small class="error-msg"></small>
+                        <select id="tinh" name="tinh">
+                            <option value="">Chọn tỉnh</option>
+                        </select>
+                        <small class="error-msg"></small>
                     </div>
+
                     <div class="form-group">
                         <label>Quận/Huyện</label>
                         <select id="quan" name="quan">
@@ -52,6 +55,7 @@
                         </select>
                         <small class="error-msg"></small>
                     </div>
+
                     <div class="form-group">
                         <label>Xã/Phường</label>
                         <select id="xa" name="xa">
@@ -59,14 +63,18 @@
                         </select>
                         <small class="error-msg"></small>
                     </div>
+
                     <div class="form-group">
                         <label>Địa chỉ</label>
                         <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ cụ thể">
                         <small class="error-msg"></small>
                     </div>
+
+                    <!-- hidden inputs để gửi textContent lên server -->
                     <input type="hidden" id="tinhInput" name="tinhName">
                     <input type="hidden" id="quanInput" name="quanName">
                     <input type="hidden" id="xaInput" name="xaName">
+
                     <button type="submit" class="save-btn">Lưu địa chỉ</button>
                 </form>
             </div>
@@ -80,6 +88,7 @@
     const quan = document.getElementById("quan");
     const xa = document.getElementById("xa");
 
+    // Lấy danh sách Tỉnh
     fetch("https://provinces.open-api.vn/api/p/")
         .then(res => res.json())
         .then(data => {
@@ -92,6 +101,7 @@
             });
         });
 
+    // Khi thay đổi Tỉnh => load Quận/Huyện
     tinh.addEventListener("change", function () {
         quan.innerHTML = `<option value="">-- Chọn quận/huyện --</option>`;
         xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
@@ -111,6 +121,7 @@
             });
     });
 
+    // Khi thay đổi Quận => load Xã/Phường
     quan.addEventListener("change", function () {
         xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
 
@@ -129,15 +140,12 @@
             });
     });
 
-</script>
-
-<script>
+    // Submit form
     document.getElementById("addressForm").addEventListener("submit", function (e) {
-
-        // Cập nhật hidden input trước khi validate
+        // Cập nhật hidden input textContent trước khi validate
         document.getElementById("tinhInput").value = tinh.options[tinh.selectedIndex]?.textContent || "";
         document.getElementById("quanInput").value = quan.options[quan.selectedIndex]?.textContent || "";
-        document.getElementById("xaInput").value   = xa.options[xa.selectedIndex]?.textContent || "";
+        document.getElementById("xaInput").value = xa.options[xa.selectedIndex]?.textContent || "";
 
         const fields = [
             { id: "hoten", name: "Họ và tên" },
@@ -174,14 +182,12 @@
                     isValid = false;
                 }
             }
-
         });
 
         if (!isValid) {
-            e.preventDefault(); // chặn submit nếu có lỗi
+            e.preventDefault();
         }
     });
-
 </script>
 </body>
 </html>

@@ -11,12 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/SetUpAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/SetUpAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/menuUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/menuUser.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/UserAddAdress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-spYeuThich.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-spYeuThich.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +352,7 @@
       <workItem from="1766993348271" duration="5449000" />
       <workItem from="1767157569547" duration="803000" />
       <workItem from="1767359244973" duration="6662000" />
-      <workItem from="1767412397648" duration="11196000" />
+      <workItem from="1767412397648" duration="11824000" />
     </task>
     <servers />
   </component>
