@@ -2,6 +2,7 @@ package dao;
 
 import model.Voucher;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class VoucherDao extends BaseDao {
@@ -124,5 +125,48 @@ public class VoucherDao extends BaseDao {
             return true;
         }
         return false;
+    }
+    public List<Voucher> listVoucherDiscountUser(int id){
+        LocalDate today = LocalDate.now();
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                SELECT v.* FROM voucher v
+                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
+                WHERE 
+                  type='discount' 
+                  AND vu.user_id = :userId
+                  AND v.start_date <= :today
+                  AND v.end_date >= :today
+                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
+                ORDER BY v.end_date ASC, v.valuee DESC
+                """)
+                        .bind("userId", id)
+                        .bind("today", today)
+                        .mapToBean(Voucher.class)
+                        .list()
+        );
+
+    }
+
+    public List<Voucher> listVoucherShipUser(int id) {
+        LocalDate today = LocalDate.now();
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                SELECT v.* FROM voucher v
+                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
+                WHERE  type='ship'
+                  AND vu.user_id = :userId
+                  AND v.start_date <= :today
+                  AND v.end_date >= :today
+                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
+                ORDER BY v.end_date ASC, v.valuee DESC
+                """)
+                        .bind("userId", id)
+                        .bind("today", today)
+                        .mapToBean(Voucher.class)
+                        .list()
+        );
     }
 }
