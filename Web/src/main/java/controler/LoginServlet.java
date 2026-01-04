@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         UserService userService = new UserService();
         User user = userService.findUser(username);
-       if(user!=null&&userService.checkPass(user, password)){
+       if(user!=null&&userService.checkPass(user, password)&& user.isStatus()==true){
            HttpSession oldSession = request.getSession(false);
            if (oldSession != null) {
                oldSession.invalidate();

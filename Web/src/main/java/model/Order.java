@@ -5,20 +5,22 @@ import java.time.LocalDateTime;
 public class Order {
     private int id;
     private int userId;
-    private String voucherCode;
     private LocalDateTime orderDate;
     private String status;
     private double totalAmount;
     private String note;
+    private String disVoucherId;
+    private String shipVoucherId;
 
-    public Order(int id, int userId, String voucherCode, LocalDateTime orderDate, String status, double totalAmount, String note) {
+    public Order(int id, int userId, LocalDateTime orderDate, String status, double totalAmount, String note, String disVoucherId, String shipVoucherId) {
         this.id = id;
         this.userId = userId;
-        this.voucherCode = voucherCode;
         this.orderDate = orderDate;
         this.status = status;
         this.totalAmount = totalAmount;
         this.note = note;
+        this.disVoucherId = disVoucherId;
+        this.shipVoucherId = shipVoucherId;
     }
 
     public int getId() {
@@ -35,14 +37,6 @@ public class Order {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getVoucherCode() {
-        return voucherCode;
-    }
-
-    public void setVoucherCode(String voucherCode) {
-        this.voucherCode = voucherCode;
     }
 
     public LocalDateTime getOrderDate() {
@@ -75,5 +69,21 @@ public class Order {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getDisVoucherId() {
+        return disVoucherId;
+    }
+
+    public void setDisVoucherId(String disVoucherId) {
+        this.disVoucherId = disVoucherId;
+    }
+
+    public String getShipVoucherId() {
+        return shipVoucherId;
+    }
+
+    public void setShipVoucherId(String shipVoucherId) {
+        this.shipVoucherId = shipVoucherId;
     }
 }

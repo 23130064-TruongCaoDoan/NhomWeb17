@@ -26,7 +26,7 @@ public class addItemShopping extends HttpServlet {
         }
         BookService bookService = new BookService();
         Book book=bookService.getBooksById(bookId);
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if(book!=null){
             cart.addItem(book, quantity);
             session.setAttribute("cart",cart);
