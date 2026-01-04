@@ -129,7 +129,11 @@
         <c:if test="${param.error == 'no_user_selected'}">
             <p class="error">Chưa chọn khách hàng</p>
         </c:if>
-
+        <c:if test="${param.success == 'notify'}">
+            <script>
+                alert("🔔 Tạo thông báo thành công");
+            </script>
+        </c:if>
         <button type="submit" class="confirm">Xác nhận</button>
     </form>
 
@@ -150,7 +154,7 @@
             <label>Người nhận</label>
             <select name="userIds" class="mota" multiple required>
                 <c:forEach items="${users}" var="u">
-                    <option value="${u.customerCode}">${u.name}</option>
+                    <option value="${u.id}">${u.name}</option>
                 </c:forEach>
             </select>
         </div>

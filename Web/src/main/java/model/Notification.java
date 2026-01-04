@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public class Notification {
 
-    private Integer notiId;
-    private Integer userId;
+    private int notiId;
+    private int userId;
     private String title;
     private String noti;
     private LocalDateTime createdAt;
@@ -13,26 +13,26 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(Integer userId, String title, String noti, LocalDateTime createdAt) {
+    public Notification(int userId, String title, String noti, LocalDateTime createdAt) {
         this.userId = userId;
         this.title = title;
         this.noti = noti;
         this.createdAt = createdAt;
     }
 
-    public Integer getNotiId() {
+    public int getNotiId() {
         return notiId;
     }
 
-    public void setNotiId(Integer notiId) {
+    public void setNotiId(int notiId) {
         this.notiId = notiId;
     }
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
