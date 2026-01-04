@@ -135,17 +135,29 @@
 
     <form id="taoThongBao" method="post" action="${pageContext.request.contextPath}/notify-user">
         <h3>THÔNG BÁO</h3>
+
         <div class="form-group">
             <label>Tiêu Đề</label>
             <input type="text" name="title" placeholder="Nhập tiêu đề" required>
         </div>
+
         <div class="form-group">
             <label>Mô tả</label>
             <textarea name="content" class="mota" placeholder="Nhập mô tả"></textarea>
         </div>
 
+        <div class="form-group">
+            <label>Người nhận</label>
+            <select name="userIds" class="mota" multiple required>
+                <c:forEach items="${users}" var="u">
+                    <option value="${u.customerCode}">${u.name}</option>
+                </c:forEach>
+            </select>
+        </div>
+
         <button type="submit" class="confirm">Xác nhận</button>
     </form>
+
 
 </main>
 <c:if test="${param.error == 'invalid_code'}">
