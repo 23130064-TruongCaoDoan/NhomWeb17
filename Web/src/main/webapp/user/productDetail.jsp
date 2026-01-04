@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
+                            <button type="button" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
                                     class="fa-solid fa-cart-plus"></i></button>
                         </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>

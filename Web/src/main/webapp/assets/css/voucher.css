@@ -13,7 +13,7 @@
 .voucher-left {
     background: #18a055;
     width: 80px;
-    height: 100%;
+    height: 22vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,4 +171,98 @@
 
 #voucherPopup .cancel:hover {
     color: #154c99;
+}
+#voucherPopup .voucher-header-detail {
+    display: flex;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#voucherPopup .voucher-left {
+    background: #18a055;
+    width: 100px;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+#voucherPopup .voucher-right-detail {
+    flex: 1;
+    padding: 15px;
+}
+
+#voucherPopup .voucher-right-detail b {
+    font-size: 18px;
+    color: #0d3164;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#voucherPopup .voucher-code {
+    background: #f0f0f0;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#voucherPopup .voucher-expiry {
+    color: #666;
+    font-size: 14px;
+}
+
+.voucher-conditions-detail h4 {
+    color: #0d3164;
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+
+.voucher-conditions-detail ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.voucher-conditions-detail ul li {
+    margin: 8px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.voucher-conditions-detail ul li span {
+    font-weight: 600;
+    color: #0d3164;
+}
+
+.note-exclude, .note-combine {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+    margin: 12px 0 0;
+}
+
+.apply-code {
+    display: block;
+    width: 100%;
+    background: #0d3164;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px 0;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.apply-code:hover {
+    background: #154c99;
 }
