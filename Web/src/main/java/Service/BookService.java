@@ -258,4 +258,7 @@ public class BookService {
     public void deleteFavouriteBook(int bookId,  int userId) {
         hd.deleteFavouriteBook(bookId, userId);
     }
+    public boolean isFavouriteBook(int bookId,  int userId) {
+        return hd.isFavouriteBook(bookId, userId);
+    }
 }

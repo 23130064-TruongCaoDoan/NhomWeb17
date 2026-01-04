@@ -30,13 +30,18 @@ public class ProductDetailServlet extends HttpServlet {
         Double averageRating = commentService.getAverageRating(bookId);
         List<RatingStartView> ratingList = commentService.getRatingStartView(bookId);
 
-
-
+        boolean isFavouriteBook = false;
+        HttpSession session = request.getSession(false);
+        User user = (session != null) ? (User) session.getAttribute("user") : null;
+        if (user != null) {
+            isFavouriteBook = bookService.isFavouriteBook(bookId, user.getId());
+        }
         request.setAttribute("book", book);
         request.setAttribute("bookListRe", bookListRe);
         request.setAttribute("commentViewList", commentViewList);
         request.setAttribute("averageRating", averageRating);
         request.setAttribute("ratingList", ratingList);
+        request.setAttribute("isFavouriteBook", isFavouriteBook);
         request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);
     }
     @Override

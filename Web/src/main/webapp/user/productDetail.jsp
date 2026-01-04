@@ -88,7 +88,9 @@
                                     class="fa-solid fa-cart-plus"></i></button>
                         </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
-                        <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
+                        <span>
+                            <i id="addHeart" class="fa-solid fa-heart ${isFavouriteBook ? 'active' : ''}" onclick="toggleFavourite(${book.id})"></i>
+</span>
                     </div>
                     <div class="program">
                         <p>🛡️ Đổi trả miễn phí 7 ngày</p>
@@ -282,11 +284,43 @@
     <c:import url="footerUser.jsp"> </c:import>
 </div>
 <script>
-    //heart
-    const heart = document.getElementById('addHeart');
-    heart.addEventListener('click', function () {
-        heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
-    })
+    const contextPath = "${pageContext.request.contextPath}";
+
+    let isProcessing = false;
+
+    function toggleFavourite(bookId) {
+        if (isProcessing) return;
+        isProcessing = true;
+
+        const heart = document.getElementById("addHeart");
+        const isActive = heart.classList.contains("active");
+
+        const url = isActive ? contextPath + "/deleteFavouriteBook" : contextPath + "/addFavouriteBook";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "id=" + bookId
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    heart.classList.toggle("active", data.active);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(err => console.error(err))
+            .finally(() => {
+                isProcessing = false;
+            });
+    }
+
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const mainImage = document.getElementById('mainImageDisplay');
         const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');

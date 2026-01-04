@@ -19,7 +19,9 @@ public class DeleteFavouriteBook extends HttpServlet {
 
     }
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
@@ -33,26 +35,18 @@ public class DeleteFavouriteBook extends HttpServlet {
         User user = (User) session.getAttribute("user");
         int userId = user.getId();
 
-        String idParam = request.getParameter("id");
-        System.out.println("idParam = " + idParam);
-        System.out.println("userId = " + userId);
-        boolean success = false;
-        String message = "";
-
         try {
-            int bookId = Integer.parseInt(idParam);
+            int bookId = Integer.parseInt(request.getParameter("id"));
+
             BookService bookService = new BookService();
             bookService.deleteFavouriteBook(bookId, userId);
-            success = true;
-            message = "Đã xóa khỏi yêu thích";
+
+            response.getWriter().write("{\"success\": true, \"active\": false}");
+
         } catch (Exception e) {
             e.printStackTrace();
-            message = "Xóa sách yêu thích thất bại!";
+            response.getWriter().write("{\"success\": false, \"message\": \"Xóa yêu thích thất bại\"}");
         }
-
-        response.getWriter().write(
-                "{\"success\": " + success + ", \"message\": \"" + message + "\"}"
-        );
     }
 
 }

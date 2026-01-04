@@ -18,8 +18,10 @@ public class AddFavouriteBook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
@@ -32,9 +34,21 @@ public class AddFavouriteBook extends HttpServlet {
 
         User user = (User) session.getAttribute("user");
         int userId = user.getId();
-        int  bookId = Integer.parseInt(request.getParameter("id"));
-        BookService bookService = new BookService();
-        bookService.insertFavoriteBook(bookId, userId);
-    }
 
+        try {
+            int bookId = Integer.parseInt(request.getParameter("id"));
+
+            BookService bookService = new BookService();
+            bookService.insertFavoriteBook(bookId, userId);
+
+            response.getWriter().write("{\"success\": true, \"active\": true}");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.getWriter().write("{\"success\": false, \"message\": \"Thêm yêu thích thất bại\"}");
+        }
+    }
 }
+
+
+

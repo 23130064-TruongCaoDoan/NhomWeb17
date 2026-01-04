@@ -369,5 +369,21 @@ public class BookDao extends BaseDao {
                     .execute();
         });
     }
+    public boolean isFavouriteBook(int bookId, int userId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                            SELECT 1
+                            FROM favourite_books
+                            WHERE book_id = :bookId
+                              AND user_id = :userId
+                            LIMIT 1
+                        """)
+                        .bind("bookId", bookId)
+                        .bind("userId", userId)
+                        .mapTo(Integer.class)
+                        .findFirst()
+                        .isPresent()
+        );
+    }
 
 }
