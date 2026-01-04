@@ -35,21 +35,81 @@
     padding: 10px;
     transition: transform 0.3s ease;
 }
-.content .container .listProducts .card{
-    width: 180px;
+.card {
+    background-color: #fff;
+    width: 150px;
     height: 300px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
-.content .container .listProducts .card img{
-    width: 70%;
-    height: 200px;
-    transform: scale(0.8);
-}
-.content .container .listProducts .card img:hover{
-    transform: scale(1.05);
+
+.card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
 
 }
-.content .container .listProducts .card .rating{
-    margin-top: -20px;
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(-4px);
+}
+.price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+.card .book-name {
+    font-weight: bold;
+    color: #003366;
+    margin: 10px 0 5px 0;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .book-name:hover{
+    text-decoration: underline;
+}
+.card .rating {
+    color: gold;
+    margin: 5px 0;
+}
+
+.card .price {
+    color: #008000;
+    margin-left: 35%;
+    font-weight: bold;
+}
+.card i {
+    color: #003366;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.card i:hover {
+    color: #008000;
+}
+.sachh .title{
+    padding-left: 24px;
+    color:#FF4C4C;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Lobster", sans-serif;
+}
+.card .price{
+    margin-left: 22%;
+}
+.card .price s{
+    color: gray;
 }
 .content .container .listProducts .card .remove-btn{
     float: right;

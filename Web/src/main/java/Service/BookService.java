@@ -249,4 +249,13 @@ public class BookService {
 
         return book;
     }
+    public void insertFavoriteBook(int BookId, int userId){
+        hd.insertFavouriteBook(BookId, userId);
+    }
+    public List<Book> getFavouriteBook(int userId) {
+        return hd.getFavouriteBook(userId);
+    }
+    public void deleteFavouriteBook(int bookId,  int userId) {
+        hd.deleteFavouriteBook(bookId, userId);
+    }
 }

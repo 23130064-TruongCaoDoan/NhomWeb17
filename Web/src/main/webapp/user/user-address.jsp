@@ -104,7 +104,6 @@
     // Khởi chạy checkEmpty lúc load page
     checkEmpty();
 
-
 </script>
 </body>
 </html>

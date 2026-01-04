@@ -337,4 +337,37 @@ public class BookDao extends BaseDao {
             }
         });
     }
+    public void insertFavouriteBook(int bookId, int userId) {
+        getJdbi().useHandle(h -> {
+            h.createUpdate("""
+                    INSERT INTO favourite_books(book_id, user_id)
+                    VALUES (:bookId, :userId)
+                    """)
+                    .bind("bookId", bookId)
+                    .bind("userId", userId)
+                    .execute();
+        });
+    }
+    public List<Book> getFavouriteBook(int userId) {
+        return getJdbi().withHandle(handle ->
+            handle.createQuery("""
+                    SELECT *
+                    FROM BOOKS
+                    WHERE id IN (SELECT book_id FROM favourite_books WHERE user_id = :userId)
+                    ORDER BY id DESC
+                    """)
+                    .bind("userId", userId)
+                    .mapToBean(Book.class)
+                    .list()
+        );
+    }
+    public void deleteFavouriteBook(int bookId,  int userId) {
+        getJdbi().useHandle(h -> {
+            h.createUpdate("DELETE FROM favourite_books WHERE book_id = :bookId AND user_id = :userId")
+                    .bind("bookId", bookId)
+                    .bind("userId", userId)
+                    .execute();
+        });
+    }
+
 }

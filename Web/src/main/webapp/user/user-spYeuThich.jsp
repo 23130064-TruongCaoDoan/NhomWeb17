@@ -4,7 +4,6 @@
         return;
     }
 %>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -38,114 +37,64 @@
         <div class="favorite-products">
             <h2>Sản phẩm yêu thích của tôi</h2>
             <div class="listProducts">
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="assets/img/books/DeMen.jpg" alt="" />
-                    <p class="book-name">Dế Mèn phiêu lưu ký</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
+                <c:forEach var="book" items="${favoriteBookList}">
+                    <c:url var="detailUrl" value="/productDetail">
+                        <c:param name="id" value="${book.id}"/>
+                        <c:param name="type" value="${book.type}"/>
+                    </c:url>
+                    <div class="card">
+                        <span class="remove-btn" onclick="removeFavourite(${book.id}, this)">
+                            <i class="fa-solid fa-xmark" style="color: #ed1212;"></i>
+                        </span>
+                        <a href="${detailUrl}">
+                            <img src="${book.coverImgUrl}" alt="Ảnh sản phẩm"/>
+                            <p class="book-name">${book.title}</p>
+                        </a>
+                        <p class="rating"></p>
+                        <div class="price-cart">
+                            <p class="price">
+                                <c:if test="${book.priceDiscounted > 0}">
+                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                         maxFractionDigits="0"/> Đ</s>
+                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                            groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                </c:if>
+                                <c:if test="${book.priceDiscounted == 0}">
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                maxFractionDigits="0"/> Đ</span>
+                                </c:if>
+                            </p>
+                            <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <a href="productDetail.jsp">
-                        <img src="assets/img/books/365TruyenKeHangDem.png" alt="" />
-                    </a>
-                    <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="assets/img/books/CoTichTheGioi.jpg" alt="" />
-                    <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="assets/img/books/guongDungCam.png" alt="" />
-                    <p class="book-name">Gương Dũng Cảm</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="assets/img/books/ThoiQuenTot.jpg" alt="" />
-                    <p class="book-name">Bồi dưỡng thói quen tốt</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <img src="assets/img/books/suThanVietNam.jpg" alt="" />
-                    <p class="book-name">Sứ Thần Việt Nam</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-
-                    <img src="assets/img/books/guongHieuHoc.jpg" alt="" />
-                    <p class="book-name">Gương hiếu học</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <span class="remove-btn"><i class="fa-solid fa-xmark" style="color: #ed1212;"></i></span>
-                    <img src="assets/img/books/thanDongVietNam.jpg" alt="" />
-                    <p class="book-name">Thần Đồng Việt Nam</p>
-                    <p class="rating">⭐⭐⭐⭐⭐</p>
-                    <div class="price-cart">
-                        <p class="price">50.000 Đ</p>
-                        <i class="fa-solid fa-cart-plus"></i>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div>
 </div>
 </div>
 <c:import url="footerUser.jsp"> </c:import>
-
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('mainImageDisplay');
-    const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
+    const contextPath = "${pageContext.request.contextPath}";
 
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', function() {
-            thumbnails.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            mainImage.src = this.dataset.mainImage;
-        });
-    });
-});
-const heart = document.getElementById('addHeart')
-heart.addEventListener('click', function() {
-    heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
-})</script>
+    function removeFavourite(bookId, btn) {
+        fetch(contextPath + "/deleteFavouriteBook", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "id=" + bookId
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    btn.closest(".card").remove();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(err => console.error(err));
+    }
+</script>
 </body>
 </html>
