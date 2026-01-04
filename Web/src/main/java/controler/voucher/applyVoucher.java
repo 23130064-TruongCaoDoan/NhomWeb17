@@ -34,11 +34,11 @@ public class applyVoucher extends HttpServlet {
         Integer numApplyVoucher= (Integer) session.getAttribute("numApplyVoucher");
         if (numApplyVoucher == null) numApplyVoucher = 0;
         if (valid) {
-            if (voucher.getType().equals("discount")) {
+            if (voucher.getType().equals("discount")&& session.getAttribute("appliedDiscountVoucher") == null) {
                 session.setAttribute("appliedDiscountVoucher", voucher);
                 numApplyVoucher++;
             }
-            if (voucher.getType().equals("ship")) {
+            if (voucher.getType().equals("ship")&& session.getAttribute("appliedShipVoucher") == null) {
                 session.setAttribute("appliedShipVoucher", voucher);
                 numApplyVoucher++;
             }

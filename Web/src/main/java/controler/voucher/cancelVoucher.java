@@ -18,11 +18,11 @@ public class cancelVoucher extends HttpServlet {
         HttpSession session = request.getSession();
         String type = request.getParameter("type");
         int numApplyVoucher= (int) session.getAttribute("numApplyVoucher");
-        if ("discount".equals(type)) {
+        if ("discount".equals(type) && session.getAttribute("appliedDiscountVoucher") != null) {
             session.removeAttribute("appliedDiscountVoucher");
             numApplyVoucher--;
         }
-        else if ("ship".equals(type)) {
+        else if ("ship".equals(type) && session.getAttribute("appliedShipVoucher") != null) {
             session.removeAttribute("appliedShipVoucher");
             numApplyVoucher--;
         }
