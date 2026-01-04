@@ -10,14 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/ProductDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/ProductDetailServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/favouriteBook/AddFavouriteBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/favouriteBook/AddFavouriteBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/favouriteBook/DeleteFavouriteBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/favouriteBook/DeleteFavouriteBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/pDetail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,7 +354,7 @@
       <workItem from="1767426467876" duration="72000" />
       <workItem from="1767444474186" duration="99000" />
       <workItem from="1767516364660" duration="4728000" />
-      <workItem from="1767526101836" duration="11934000" />
+      <workItem from="1767526101836" duration="12410000" />
     </task>
     <servers />
   </component>
