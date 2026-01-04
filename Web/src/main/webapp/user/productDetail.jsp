@@ -200,17 +200,18 @@
             </div>
 
             <div class="sort-area">
-                <select>
-                    <option>Sắp xếp</option>
-                    <option>5 sao</option>
-                    <option>4 sao</option>
-                    <option>3 sao</option>
-                    <option>2 sao</option>
-                    <option>1 sao</option>
+                <select id="ratingFilter" data-book-id="${book.id}">
+                    <option value="0">Tất cả</option>
+                    <option value="5">5 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="1">1 sao</option>
                 </select>
             </div>
+
             <div id="commentSection">
-                <div class="comment-list">
+                <div class="comment-list" id="commentList">
                     <c:forEach var="cmt" items="${commentViewList}">
                         <div class="comment-item">
                             <div class="comment-header">
@@ -361,6 +362,19 @@
                 if (res.ok) {
                     window.location.reload();
                 }
+            })
+            .catch(err => console.error(err));
+    });
+</script>
+<script>
+    document.getElementById("ratingFilter").addEventListener("change", function () {
+        const rating = this.value;
+        const bookId = this.dataset.bookId;
+
+        fetch("sortComment?bookId=" + bookId + "&rating=" + rating)
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("commentList").innerHTML = html;
             })
             .catch(err => console.error(err));
     });

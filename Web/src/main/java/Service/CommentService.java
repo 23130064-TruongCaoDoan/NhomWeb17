@@ -21,4 +21,7 @@ public class CommentService {
     public List<RatingStartView> getRatingStartView(int bookId){
         return hd.getRatingStartView(bookId);
     }
+    public List<CommentView> getCommentByRating(int bookId, int rating){
+        return hd.getCommentByRating(bookId, rating);
+    }
 }
