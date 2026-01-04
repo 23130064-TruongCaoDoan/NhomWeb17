@@ -156,7 +156,7 @@
     margin-top: 10px;
     line-height: 2px;
     height: fit-content;
-    width:550px;
+    width:100%;
     display: flex;
     flex-direction: column;
     background-color: #d5ebdb;
@@ -187,7 +187,7 @@
     padding: 20px 25px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     font-family: "Sarabun", sans-serif;
-    width: 500px;
+    width: 92%;
     margin: 30px auto;
 
 }
@@ -219,7 +219,7 @@
 
 .detail-container .product-info .value {
     color: #222;
-    text-align: right;
+    text-align: left;
     width: 50%;
     display: flex;
     justify-content: start;
@@ -508,4 +508,13 @@ input[type="file"]:focus {
     outline: none;
     box-shadow: 0 0 3px 1px rgba(100, 150, 250, 0.5);
     border-color: #6496FA;
+}
+#addHeart {
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#addHeart.active {
+    color: red;
 }

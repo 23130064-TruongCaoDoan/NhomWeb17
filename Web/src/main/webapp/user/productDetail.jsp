@@ -88,7 +88,9 @@
                                     class="fa-solid fa-cart-plus"></i></button>
                         </form>
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
-                        <span><i id="addHeart" class="fa-solid fa-heart"></i></span>
+                        <span>
+                            <i id="addHeart" class="fa-solid fa-heart ${isFavouriteBook ? 'active' : ''}" onclick="toggleFavourite(${book.id})"></i>
+</span>
                     </div>
                     <div class="program">
                         <p>🛡️ Đổi trả miễn phí 7 ngày</p>
@@ -200,17 +202,18 @@
             </div>
 
             <div class="sort-area">
-                <select>
-                    <option>Sắp xếp</option>
-                    <option>5 sao</option>
-                    <option>4 sao</option>
-                    <option>3 sao</option>
-                    <option>2 sao</option>
-                    <option>1 sao</option>
+                <select id="ratingFilter" data-book-id="${book.id}">
+                    <option value="0">Tất cả</option>
+                    <option value="5">5 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="1">1 sao</option>
                 </select>
             </div>
+
             <div id="commentSection">
-                <div class="comment-list">
+                <div class="comment-list" id="commentList">
                     <c:forEach var="cmt" items="${commentViewList}">
                         <div class="comment-item">
                             <div class="comment-header">
@@ -281,11 +284,43 @@
     <c:import url="footerUser.jsp"> </c:import>
 </div>
 <script>
-    //heart
-    const heart = document.getElementById('addHeart');
-    heart.addEventListener('click', function () {
-        heart.style.color = heart.style.color === 'red' ? 'gray' : 'red';
-    })
+    const contextPath = "${pageContext.request.contextPath}";
+
+    let isProcessing = false;
+
+    function toggleFavourite(bookId) {
+        if (isProcessing) return;
+        isProcessing = true;
+
+        const heart = document.getElementById("addHeart");
+        const isActive = heart.classList.contains("active");
+
+        const url = isActive ? contextPath + "/deleteFavouriteBook" : contextPath + "/addFavouriteBook";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "id=" + bookId
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    heart.classList.toggle("active", data.active);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(err => console.error(err))
+            .finally(() => {
+                isProcessing = false;
+            });
+    }
+
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
         const mainImage = document.getElementById('mainImageDisplay');
         const thumbnails = document.querySelectorAll('.thumbnail-column .thumbnail');
@@ -361,6 +396,19 @@
                 if (res.ok) {
                     window.location.reload();
                 }
+            })
+            .catch(err => console.error(err));
+    });
+</script>
+<script>
+    document.getElementById("ratingFilter").addEventListener("change", function () {
+        const rating = this.value;
+        const bookId = this.dataset.bookId;
+
+        fetch("sortComment?bookId=" + bookId + "&rating=" + rating)
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("commentList").innerHTML = html;
             })
             .catch(err => console.error(err));
     });

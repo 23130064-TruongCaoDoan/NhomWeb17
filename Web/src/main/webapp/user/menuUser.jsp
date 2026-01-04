@@ -44,7 +44,7 @@
         <span>Thông báo</span>
     </a>
 
-    <a href="user-spYeuThich.jsp" class="menu spYeuThich">
+    <a href="favoriteBook" class="menu spYeuThich">
         <i class="fa-regular fa-heart"></i>
         <span>Sản phẩm yêu thích</span>
     </a>
