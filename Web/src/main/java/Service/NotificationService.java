@@ -1,0 +1,27 @@
+package Service;
+
+import dao.NotificationDAO;
+import model.Notification;
+
+public class NotificationService {
+
+    private NotificationDAO notificationDAO = new NotificationDAO();
+
+    public void sendToUsers(String title, String content, String[] userCodes) {
+
+        if (userCodes == null || userCodes.length == 0) {
+            throw new IllegalArgumentException("No user selected");
+        }
+
+        for (String code : userCodes) {
+            Notification n = new Notification();
+            int id = Integer.parseInt(code);
+            n.setUserId(id);
+            n.setTitle(title);
+            n.setNoti(content);
+
+            notificationDAO.insert(n);
+        }
+    }
+}
+

@@ -129,23 +129,39 @@
         <c:if test="${param.error == 'no_user_selected'}">
             <p class="error">Chưa chọn khách hàng</p>
         </c:if>
-
+        <c:if test="${param.success == 'notify'}">
+            <script>
+                alert("🔔 Tạo thông báo thành công");
+            </script>
+        </c:if>
         <button type="submit" class="confirm">Xác nhận</button>
     </form>
 
     <form id="taoThongBao" method="post" action="${pageContext.request.contextPath}/notify-user">
         <h3>THÔNG BÁO</h3>
+
         <div class="form-group">
             <label>Tiêu Đề</label>
             <input type="text" name="title" placeholder="Nhập tiêu đề" required>
         </div>
+
         <div class="form-group">
             <label>Mô tả</label>
             <textarea name="content" class="mota" placeholder="Nhập mô tả"></textarea>
         </div>
 
+        <div class="form-group">
+            <label>Người nhận</label>
+            <select name="userIds" class="mota" multiple required>
+                <c:forEach items="${users}" var="u">
+                    <option value="${u.id}">${u.name}</option>
+                </c:forEach>
+            </select>
+        </div>
+
         <button type="submit" class="confirm">Xác nhận</button>
     </form>
+
 
 </main>
 <c:if test="${param.error == 'invalid_code'}">
