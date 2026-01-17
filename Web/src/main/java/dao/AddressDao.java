@@ -9,8 +9,8 @@ public class AddressDao extends BaseDao{
     public void insertAddress(Address address) {
         getJdbi().useHandle(handle -> {
             handle.createUpdate(
-                            "INSERT INTO address (user_id, name, phone, city, district, ward, specificAddress, is_default) " +
-                                    "VALUES (:userId, :name, :phone, :city, :district, :ward, :specificAddress, :isDefault)"
+                            "INSERT INTO address (user_id, name, phone, city, ward, specificAddress, is_default) " +
+                                    "VALUES (:userId, :name, :phone, :city, :ward, :specificAddress, :isDefault)"
                     )
                     .bind("userId", address.getUserId())
                     .bind("name", address.getName())

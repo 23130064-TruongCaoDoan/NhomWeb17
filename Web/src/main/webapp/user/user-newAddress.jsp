@@ -48,8 +48,6 @@
                         <small class="error-msg"></small>
                     </div>
 
-
-
                     <div class="form-group">
                         <label>Xã/Phường</label>
                         <select id="xa" name="xa">

@@ -44,7 +44,6 @@ public class UserAddAdress extends HttpServlet {
         address.setSpecificAddress(specificAddress);
         address.setIsDefault(false);
         AddressService addressService = new AddressService();
-
         try {
             addressService.insertAddress(address);
             response.sendRedirect("address");
