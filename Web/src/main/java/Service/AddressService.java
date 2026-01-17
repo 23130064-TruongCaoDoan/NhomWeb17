@@ -16,4 +16,11 @@ public class AddressService {
     public void deleteAddress(int id){
         addressDao.deleteAddress(id);
     }
+    public void updateAddress(Address address){
+        addressDao.updateAddress(address);
+    }
+
+    public Address getAddressById(int id) {
+        return addressDao.getAddressById(id);
+    }
 }

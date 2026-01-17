@@ -11,8 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-newAddress.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-address.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +27,8 @@
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -75,6 +76,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.AddressDao.executor": "Run",
     "Application.BookDao.executor": "Run",
     "Application.CommentDao.executor": "Run",
     "Application.CommentServlet.executor": "Run",
@@ -129,7 +131,7 @@
         <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
           <value>
             <map>
-              <entry key="Tomcat" value="FAILED" />
+              <entry key="Tomcat" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -358,7 +360,8 @@
       <workItem from="1767516364660" duration="4728000" />
       <workItem from="1767526101836" duration="12451000" />
       <workItem from="1767664362031" duration="6000" />
-      <workItem from="1768632712572" duration="7589000" />
+      <workItem from="1768632712572" duration="12409000" />
+      <workItem from="1768663521372" duration="1416000" />
     </task>
     <servers />
   </component>

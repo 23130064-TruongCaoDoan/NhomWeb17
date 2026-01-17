@@ -16,13 +16,13 @@ public class AddressDao extends BaseDao{
                     .bind("name", address.getName())
                     .bind("phone", address.getPhone())
                     .bind("city", address.getCity())
-                    .bind("district", address.getDistrict())
                     .bind("ward", address.getWard())
                     .bind("specificAddress", address.getSpecificAddress())
                     .bind("isDefault", address.getIsDefault() ? 1 : 0)
                     .execute();
         });
     }
+
     public List<Address> getAddress(int userId) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM ADDRESS WHERE user_id = :userId ORDER BY ID")
@@ -32,11 +32,39 @@ public class AddressDao extends BaseDao{
 
         );
     }
+    public Address getAddressById(int id) {
+        return  getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM ADDRESS WHERE id = :id")
+                        .bind("id", id)
+                        .mapToBean(Address.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
     public void deleteAddress(int id) {
         getJdbi().useHandle(handle -> {
             handle.createUpdate("DELETE FROM ADDRESS WHERE id = :id")
                     .bind("id", id)
                     .execute();
         });
+    }
+    public void updateAddress(Address address) {
+        getJdbi().useHandle(handle -> {
+           handle.createUpdate(" UPDATE address SET name= :name, phone= :phone, city= :city, ward= :ward, specificAddress= :specificAddress, is_default= :isDefault WHERE id = :id")
+                   .bind("id", address.getId())
+                   .bind("name", address.getName())
+                   .bind("phone", address.getPhone())
+                   .bind("city", address.getCity())
+                   .bind("ward", address.getWard())
+                   .bind("specificAddress", address.getSpecificAddress())
+                   .bind("isDefault", address.getIsDefault() ? 1 : 0)
+                   .execute();
+        });
+    }
+
+    public static void main(String[] args) {
+        AddressDao dao = new AddressDao();
+        Address  address = new Address();
+
     }
 }

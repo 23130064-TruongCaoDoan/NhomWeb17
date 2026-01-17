@@ -25,6 +25,11 @@
                 </div>
 
                 <div class="address-list">
+                    <c:if test="${empty listAddress}">
+                        <div class="emtyCard">
+                            <span>Bạn chưa có địa chỉ nào</span>
+                        </div>
+                    </c:if>
                     <c:forEach var="addr" items="${listAddress}">
                         <div class="address-card">
                             <div class="address-info">
@@ -51,7 +56,6 @@
                         </div>
                     </c:forEach>
                 </div>
-
                 <div class="emtyCard"><span> Bạn chưa có địa chỉ nào</span></div>
             </div>
         </div>
