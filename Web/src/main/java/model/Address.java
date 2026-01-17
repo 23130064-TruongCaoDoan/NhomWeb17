@@ -6,18 +6,17 @@ public class Address {
     private String name;
     private String phone;
     private String city;
-    private String district;
+
     private String ward;
     private String specificAddress;
     private boolean isDefault;
 
-    public Address(int id, int userId, String name, String phone, String city, String district, String ward, String specificAddress, boolean isDefault) {
+    public Address(int id, int userId, String name, String phone, String city, String ward, String specificAddress, boolean isDefault) {
         this.id = id;
         this.userId = userId;
         this.name = name;
         this.phone = phone;
         this.city = city;
-        this.district = district;
         this.ward = ward;
         this.specificAddress = specificAddress;
         this.isDefault = isDefault;
@@ -63,15 +62,6 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
     public String getWard() {
         return ward;
     }

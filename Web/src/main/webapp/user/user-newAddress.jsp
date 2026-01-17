@@ -43,23 +43,17 @@
                     <div class="form-group">
                         <label>Tỉnh/Thành phố</label>
                         <select id="tinh" name="tinh">
-                            <option value="">Chọn tỉnh</option>
+                            <option value="">-- Chọn Tỉnh/Thành phố --</option>
                         </select>
                         <small class="error-msg"></small>
                     </div>
 
-                    <div class="form-group">
-                        <label>Quận/Huyện</label>
-                        <select id="quan" name="quan">
-                            <option value="">Chọn quận</option>
-                        </select>
-                        <small class="error-msg"></small>
-                    </div>
+
 
                     <div class="form-group">
                         <label>Xã/Phường</label>
                         <select id="xa" name="xa">
-                            <option value="">Chọn phường</option>
+                            <option value="">-- Chọn xã/phường --</option>
                         </select>
                         <small class="error-msg"></small>
                     </div>
@@ -72,7 +66,6 @@
 
                     <!-- hidden inputs để gửi textContent lên server -->
                     <input type="hidden" id="tinhInput" name="tinhName">
-                    <input type="hidden" id="quanInput" name="quanName">
                     <input type="hidden" id="xaInput" name="xaName">
 
                     <button type="submit" class="save-btn">Lưu địa chỉ</button>
@@ -85,56 +78,33 @@
 
 <script>
     const tinh = document.getElementById("tinh");
-    const quan = document.getElementById("quan");
     const xa = document.getElementById("xa");
 
-    // Lấy danh sách Tỉnh
-    fetch("https://provinces.open-api.vn/api/p/")
+    // Load danh sách Tỉnh
+    fetch("https://provinces.open-api.vn/api/v2/p/")
         .then(res => res.json())
         .then(data => {
             data.forEach(p => {
                 const opt = document.createElement("option");
                 opt.value = p.code;
                 opt.textContent = p.name;
-                opt.setAttribute("data-name", p.name);
                 tinh.appendChild(opt);
             });
         });
 
-    // Khi thay đổi Tỉnh => load Quận/Huyện
+    // Khi đổi Tỉnh => load thẳng Xã/Phường
     tinh.addEventListener("change", function () {
-        quan.innerHTML = `<option value="">-- Chọn quận/huyện --</option>`;
         xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
-
         if (!this.value) return;
 
-        fetch("https://provinces.open-api.vn/api/p/" + this.value + "?depth=2")
+        fetch("https://provinces.open-api.vn/api/v2/p/" + this.value + "?depth=2")
             .then(res => res.json())
             .then(data => {
-                data.districts.forEach(d => {
-                    const opt = document.createElement("option");
-                    opt.value = d.code;
-                    opt.textContent = d.name;
-                    opt.setAttribute("data-name", d.name);
-                    quan.appendChild(opt);
-                });
-            });
-    });
-
-    // Khi thay đổi Quận => load Xã/Phường
-    quan.addEventListener("change", function () {
-        xa.innerHTML = `<option value="">-- Chọn xã/phường --</option>`;
-
-        if (!this.value) return;
-
-        fetch("https://provinces.open-api.vn/api/d/" + this.value + "?depth=2")
-            .then(res => res.json())
-            .then(data => {
+                if (!data.wards) return;
                 data.wards.forEach(w => {
                     const opt = document.createElement("option");
                     opt.value = w.code;
                     opt.textContent = w.name;
-                    opt.setAttribute("data-name", w.name);
                     xa.appendChild(opt);
                 });
             });
@@ -142,23 +112,22 @@
 
     // Submit form
     document.getElementById("addressForm").addEventListener("submit", function (e) {
-        // Cập nhật hidden input textContent trước khi validate
-        document.getElementById("tinhInput").value = tinh.options[tinh.selectedIndex]?.textContent || "";
-        document.getElementById("quanInput").value = quan.options[quan.selectedIndex]?.textContent || "";
-        document.getElementById("xaInput").value = xa.options[xa.selectedIndex]?.textContent || "";
+        document.getElementById("tinhInput").value =
+            tinh.options[tinh.selectedIndex]?.textContent || "";
+        document.getElementById("xaInput").value =
+            xa.options[xa.selectedIndex]?.textContent || "";
 
         const fields = [
             { id: "hoten", name: "Họ và tên" },
             { id: "sdt", name: "Điện thoại" },
             { id: "tinh", name: "Tỉnh/Thành phố" },
-            { id: "quan", name: "Quận/Huyện" },
             { id: "xa", name: "Xã/Phường" },
             { id: "diachi", name: "Địa chỉ" },
         ];
 
         let isValid = true;
 
-        fields.forEach((field) => {
+        fields.forEach(field => {
             const input = document.getElementById(field.id);
             const errorMsg = input.nextElementSibling;
 
@@ -184,10 +153,9 @@
             }
         });
 
-        if (!isValid) {
-            e.preventDefault();
-        }
+        if (!isValid) e.preventDefault();
     });
 </script>
+
 </body>
 </html>

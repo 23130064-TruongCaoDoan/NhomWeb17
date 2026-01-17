@@ -31,7 +31,6 @@ public class UserAddAdress extends HttpServlet {
         String name = request.getParameter("hoten");
         String phone = request.getParameter("sdt");
         String city = request.getParameter("tinhName");
-        String district = request.getParameter("quanName");
         String ward = request.getParameter("xaName");
         String specificAddress = request.getParameter("diachi");
 
@@ -41,7 +40,6 @@ public class UserAddAdress extends HttpServlet {
         address.setName(name);
         address.setPhone(phone);
         address.setCity(city);
-        address.setDistrict(district);
         address.setWard(ward);
         address.setSpecificAddress(specificAddress);
         address.setIsDefault(false);
