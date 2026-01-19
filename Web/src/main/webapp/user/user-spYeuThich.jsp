@@ -95,6 +95,26 @@
             })
             .catch(err => console.error(err));
     }
+
+
+    function addToCart(bookId, quantity) {
+        fetch("addItemShopping?bookId=" + bookId + "&quantity=" + quantity)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("totalItem").innerText = data.total;
+                show("Đã thêm vào giỏ hàng");
+            })
+            .catch(err => console.log(err));
+    }
+
+    function show(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 </script>
 </body>
 </html>

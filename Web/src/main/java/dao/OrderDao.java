@@ -2,7 +2,7 @@ package dao;
 
 public class OrderDao extends BaseDao{
 
-    public int addOrder(int userId, double totalAmount, String note, int dis, int ship) {
+    public int addOrder(int userId, double totalAmount, String note, Integer dis, Integer ship) {
         try {
             return getJdbi().withHandle(handle ->
                     handle.createUpdate("""

@@ -20,6 +20,8 @@ public class ThanhToan extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
+        VoucherService voucherService = new VoucherService();
+
 
         if (user == null) {
             response.sendRedirect("login");
@@ -30,13 +32,13 @@ public class ThanhToan extends HttpServlet {
             return;
         }
 
-        // ================= SHIP =================
+        // ship
         String shipType = request.getParameter("ship");
         if (shipType == null) shipType = "fast";
 
         boolean usePoint = request.getParameter("usePoint") != null;
 
-        // ================= ADDRESS =================
+        // dia chi
         AddressService addressService = new AddressService();
         List<Address> listAddress = addressService.getAddress(user.getId());
 
@@ -46,7 +48,7 @@ public class ThanhToan extends HttpServlet {
         if (addressIdStr != null) {
             selectedAddressId = Integer.parseInt(addressIdStr);
         } else {
-            // fallback địa chỉ mặc định
+
             for (Address a : listAddress) {
                 if (a.getIsDefault()) {
                     selectedAddressId = a.getId();
@@ -55,16 +57,39 @@ public class ThanhToan extends HttpServlet {
             }
         }
 
-        // ================= NOTE =================
+        //ghi chu
         String orderNote = request.getParameter("orderNote");
         if (orderNote == null) orderNote = "";
 
-        // ================= TÍNH TIỀN =================
+        // tinh tien
         double totalBill = cart.getTotalBill();
         double shipFee = "fast".equals(shipType) ? 60000 : 30000;
 
         Voucher voucherDis = (Voucher) session.getAttribute("appliedDiscountVoucher");
         Voucher voucherShip = (Voucher) session.getAttribute("appliedShipVoucher");
+
+        // kiểm tra lại voucher có hợp lệ không
+        if (voucherDis != null) {
+            boolean valid = voucherService.isVoucherValid(cart,voucherDis);
+            if (!valid) {
+                session.removeAttribute("appliedDiscountVoucher");
+                voucherDis = null;
+                Integer numApplyVoucher= (Integer) session.getAttribute("numApplyVoucher");
+                numApplyVoucher--;
+                session.setAttribute("numApplyVoucher", numApplyVoucher);
+            }
+        }
+
+        if (voucherShip != null) {
+            boolean valid = voucherService.isVoucherValid(cart, voucherShip);
+            if (!valid) {
+                session.removeAttribute("appliedShipVoucher");
+                voucherShip = null;
+                Integer numApplyVoucher= (Integer) session.getAttribute("numApplyVoucher");
+                numApplyVoucher--;
+                session.setAttribute("numApplyVoucher", numApplyVoucher);
+            }
+        }
 
         double discountMoney = 0;
 
@@ -90,7 +115,7 @@ public class ThanhToan extends HttpServlet {
         double finalTotal = totalBill + shipFee - discountMoney - pointUsed;
         if (finalTotal < 0) finalTotal = 0;
 
-        // ================= SET ATTRIBUTE =================
+
         request.setAttribute("cart", cart);
         request.setAttribute("totalBill", totalBill);
         request.setAttribute("shipFee", shipFee);
@@ -100,13 +125,13 @@ public class ThanhToan extends HttpServlet {
         request.setAttribute("shipType", shipType);
         request.setAttribute("usePoint", usePoint);
 
-        // NEW
+
         request.setAttribute("listAddress", listAddress);
         request.setAttribute("selectedAddressId", selectedAddressId);
         request.setAttribute("orderNote", orderNote);
 
-        // ================= VOUCHER LIST =================
-        VoucherService voucherService = new VoucherService();
+
+
         int userId = user.getId();
 
         request.setAttribute("listVoucherDiscount", voucherService.filterVoucherValid(cart, totalBill, voucherService.listVoucherDiscountUser(userId)));

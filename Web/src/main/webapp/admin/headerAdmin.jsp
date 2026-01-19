@@ -11,13 +11,13 @@
         <i class="fa-solid fa-user"></i>
         <div class="ten">
             <c:if test="${not empty user}">
-                ${user.getName()}
+                ${user.getDisplayName()}
             </c:if>
             <c:if test="${empty user}">
                 Tài khoản
             </c:if>
         </div>
-        <button class="dangxuat">Đăng xuất</button>
+        <button class="dangxuat" onclick="window.location.href='DangXuat'">Đăng xuất</button>
     </div>
 </header>
 <div id="toast" class="toast"></div>

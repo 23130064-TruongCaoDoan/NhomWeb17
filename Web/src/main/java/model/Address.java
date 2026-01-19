@@ -85,4 +85,18 @@ public class Address {
     public void setIsDefault(boolean isDefault) {
         this.isDefault = isDefault;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", city='" + city + '\'' +
+                ", ward='" + ward + '\'' +
+                ", specificAddress='" + specificAddress + '\'' +
+                ", isDefault=" + isDefault +
+                '}';
+    }
 }

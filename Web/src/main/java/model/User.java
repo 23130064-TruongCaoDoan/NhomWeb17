@@ -106,4 +106,26 @@ public class User {
     public String toString() {
         return name;
     }
+
+    public String getDisplayName() {
+        if (name == null) return "";
+
+        String trimmed = name.trim();
+        if (trimmed.isEmpty()) return "";
+
+        String[] parts = trimmed.split("\\s+");
+
+        if (parts.length == 1) {
+            return parts[0];
+        }
+        String last = parts[parts.length - 1];
+        String secondLast = parts[parts.length - 2];
+        String twoLast = secondLast + " " + last;
+
+        if (twoLast.length() < 15) {
+            return twoLast;
+        }
+        return last;
+    }
+
 }

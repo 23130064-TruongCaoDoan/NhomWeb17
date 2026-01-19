@@ -23,4 +23,13 @@ public class AddressService {
     public Address getAddressById(int id) {
         return addressDao.getAddressById(id);
     }
+
+    public static void main(String[] args) {
+        AddressService addressService = new AddressService();
+        List<Address> listAddress = addressService.getAddress(31);
+        for(Address address:addressService.getAddress(31)){
+            System.out.println(address.toString());
+        }
+        System.out.println(listAddress);
+    }
 }
