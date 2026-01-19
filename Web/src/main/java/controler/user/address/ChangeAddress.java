@@ -62,7 +62,12 @@ public class ChangeAddress extends HttpServlet {
         System.out.println();
         try {
             addressService.updateAddress(address);
-            response.sendRedirect("address");
+            String referer = request.getHeader("Referer");
+            if (referer != null) {
+                response.sendRedirect(referer);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/address");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Lỗi sửa địa chỉ!");

@@ -27,8 +27,15 @@
             </div>
             <div class="address-container">
                 <h2>Chỉnh sửa địa chỉ</h2>
+                <div class="address_default">
+                    <label for="isDefault">Địa chỉ mặc định</label>
+                    <input type="radio" name="isDefault">
+                    <small class="error-msg"></small>
+                </div>
                 <form id="addressForm" class="address-form" action="editAddress" method="post" novalidate>
                     <input type="hidden" name="id" value="${address.id}">
+
+
                     <div class="form-group">
                         <label>Họ và tên</label>
                         <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên" value="${address.name}">
