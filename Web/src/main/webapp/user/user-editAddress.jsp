@@ -26,39 +26,42 @@
                 <c:import url="/user/menuUser.jsp"></c:import>
             </div>
             <div class="address-container">
-                <h2>Thêm địa chỉ mới</h2>
-                <form id="addressForm" class="address-form" action="addAddress" method="post" novalidate>
+                <h2>Chỉnh sửa địa chỉ</h2>
+                <form id="addressForm" class="address-form" action="editAddress" method="post" novalidate>
+                    <input type="hidden" name="id" value="${address.id}">
                     <div class="form-group">
                         <label>Họ và tên</label>
-                        <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên">
+                        <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên" value="${address.name}">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
                         <label>Điện thoại</label>
-                        <input type="text" id="sdt" name="sdt" placeholder="Ex: 0972xxxxxx">
+                        <input type="text" id="sdt" name="sdt" placeholder="Ex: 0972xxxxxx" value="${address.phone}">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
                         <label>Tỉnh/Thành phố</label>
                         <select id="tinh" name="tinh">
-                            <option value="">-- Chọn Tỉnh/Thành phố --</option>
+                            <option value="">${address.city}</option>
                         </select>
                         <small class="error-msg"></small>
                     </div>
 
+
+
                     <div class="form-group">
                         <label>Xã/Phường</label>
                         <select id="xa" name="xa">
-                            <option value="">-- Chọn xã/phường --</option>
+                            <option value="">${address.ward}</option>
                         </select>
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
                         <label>Địa chỉ</label>
-                        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ cụ thể">
+                        <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ cụ thể" value="${address.specificAddress}">
                         <small class="error-msg"></small>
                     </div>
 
