@@ -47,13 +47,7 @@ public class UserAddAdress extends HttpServlet {
         try {
             addressService.insertAddress(address);
             response.sendRedirect("address");
-            String referer = request.getHeader("Referer");
 
-            if (referer != null) {
-                response.sendRedirect(referer);
-            } else {
-                response.sendRedirect(request.getContextPath() + "/address");
-            }
 
         } catch (Exception e) {
             e.printStackTrace();

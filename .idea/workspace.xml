@@ -11,10 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/AddressService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/ChangeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/ChangeAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/AddressDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-editAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-editAddress.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/ThanhToan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/ThanhToan.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +363,7 @@
       <workItem from="1768632712572" duration="12409000" />
       <workItem from="1768663521372" duration="3673000" />
       <workItem from="1768705030906" duration="222000" />
-      <workItem from="1768834011094" duration="6288000" />
+      <workItem from="1768834011094" duration="7320000" />
     </task>
     <servers />
   </component>
