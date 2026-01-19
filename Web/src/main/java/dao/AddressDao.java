@@ -61,10 +61,41 @@ public class AddressDao extends BaseDao{
                    .execute();
         });
     }
+    public boolean isDefaultAddress(int addressId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                            SELECT 1
+                            FROM address
+                            WHERE id = :id AND is_default = 1
+                            LIMIT 1
+                        """)
+                        .bind("id", addressId)
+                        .mapTo(Integer.class)
+                        .findFirst()
+                        .isPresent()
+        );
+    }
+    public void setDefaultAddress(int addressId, int userId) {
+        resetDefaultAddress(userId);
+        getJdbi().useHandle(handle -> {
+           handle.createUpdate("UPDATE address SET is_default=1 WHERE id = :id")
+                   .bind("id", addressId)
+                    .execute();
+        });
+    }
+    public void resetDefaultAddress(int userId) {
+        getJdbi().useHandle(handle -> {
+            handle.createUpdate("UPDATE address SET is_default=0 WHERE user_id = :userId")
+            .bind("userId", userId)
+             .execute();
+
+        });
+    }
 
     public static void main(String[] args) {
         AddressDao dao = new AddressDao();
         Address  address = new Address();
+        System.out.println(dao.isDefaultAddress(8));
 
     }
 }

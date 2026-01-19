@@ -26,6 +26,8 @@ public class ChangeAddress extends HttpServlet {
         if (address == null) {
             response.sendRedirect(request.getContextPath() + "/address");
         }
+        boolean isDefault = addressService.isDefaultAddress(id);
+        request.setAttribute("isDefault", isDefault);
         request.setAttribute("address", address);
         request.getRequestDispatcher("user/user-editAddress.jsp").forward(request, response);
 
@@ -58,8 +60,6 @@ public class ChangeAddress extends HttpServlet {
         address.setWard(ward);
         address.setSpecificAddress(specificAddress);
         address.setIsDefault(false);
-
-        System.out.println();
         try {
             addressService.updateAddress(address);
             String referer = request.getHeader("Referer");

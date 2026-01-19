@@ -29,7 +29,7 @@
                 <h2>Chỉnh sửa địa chỉ</h2>
                 <div class="address_default">
                     <label for="isDefault">Địa chỉ mặc định</label>
-                    <input type="radio" name="isDefault">
+                    <input type="radio" name="isDefault" value="${address.id}" <c:if test="${isDefault}">checked</c:if>  onclick="setDefault(${address.id})">
                     <small class="error-msg"></small>
                 </div>
                 <form id="addressForm" class="address-form" action="editAddress" method="post" novalidate>
@@ -83,7 +83,17 @@
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
-
+<script>
+    function setDefault(id){
+        fetch("defaultAddress",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded"
+            },
+            body:"isDefault="+id
+        })
+    }
+</script>
 <script>
     const tinh = document.getElementById("tinh");
     const xa = document.getElementById("xa");
