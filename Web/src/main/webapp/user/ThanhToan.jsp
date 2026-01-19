@@ -27,7 +27,7 @@
                                 <input type="radio" name="addressId"
                                        value="${address.id}"
                                     ${address.id == selectedAddressId ? "checked" : ""}>
-                                <span><b>${address.getName()}</b> | ${address.getSpecificAddress()}, ${address.getWard()}, ${address.getDistrict()}, ${address.getCity()}| ${address.getPhone()}</span>
+                                <span><b>${address.getName()}</b> | ${address.getSpecificAddress()}, ${address.getWard()}, ${address.getCity()}| ${address.getPhone()}</span>
                             </div>
                             <div class="address-actions">
                                 <a href="user-newAddress.jsp" class="edit-btn" title="Chỉnh sửa">

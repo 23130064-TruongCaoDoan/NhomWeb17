@@ -38,6 +38,8 @@ body{
     width: 50vw;
 }
 #page-header .header-menu{
+    position: relative;
+    overflow: visible;
     margin-top: 10px;
     margin-bottom: 50px;
     display: flex;
@@ -56,10 +58,11 @@ body{
     color: #0d3164;
 }
 #page-header .header-menu .button{
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     flex: 1;
-    text-align: center;
     transition: 0.3s;
 }
 #page-header .header-menu .button:hover{
@@ -103,26 +106,42 @@ body{
     top:6px;
     cursor: pointer;
 }
-#page-header .header-menu .category{
+/* Cha của menu */
+#page-header .header-menu .category {
     position: relative;
 }
-#page-header .header-menu .danhMuc{
+
+/* Menu con – ẩn mặc định */
+#page-header .header-menu .category .danhMuc {
     display: none;
-}
-#page-header .header-menu .category:hover .danhMuc{
     position: absolute;
-    width: 99%;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    border-radius: 0 0 10px 10px;
+
+    z-index: 9999;
+}
+
+/* Hover vào Danh mục HOẶC menu con thì vẫn hiện */
+#page-header .header-menu .category:hover .danhMuc,
+#page-header .header-menu .category .danhMuc:hover {
     display: block;
-    top: 49px;
-    flex-direction: column;
 }
-#page-header .header-menu .category .danhMuc .item{
-    height: 35px;
-    align-content: center;
+
+/* Item */
+#page-header .header-menu .category .danhMuc .item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
     background: white;
-    transition: 0.3s;
-    border: 1px solid #0d3164;
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
 }
+
 #page-header .header-menu .category .danhMuc .item:hover{
     background: #cde7da;
     transform: translateY(-3px);
@@ -151,6 +170,18 @@ body{
     color: red;
     font-size: 10px;
 }
+
+
+#page-header .header-menu .button > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+
+
 .toast {
     position: fixed;
     top: 90px;
