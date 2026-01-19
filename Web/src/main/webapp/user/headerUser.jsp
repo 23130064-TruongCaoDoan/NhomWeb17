@@ -55,7 +55,7 @@
                     <i class="fa-solid fa-user"></i>
                     <span>
                             <c:if test="${not empty user}">
-                                ${user.getName()}
+                                ${user.getDisplayName()}
                             </c:if>
                             <c:if test="${empty user}">
                                 Tài khoản

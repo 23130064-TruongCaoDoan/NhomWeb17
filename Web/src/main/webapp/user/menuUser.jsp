@@ -51,5 +51,5 @@
 </div>
 
 <div class="btDangXuat">
-    <a href="logout" class="dangXuat">Đăng xuất</a>
+    <a href="DangXuat" class="dangXuat">Đăng xuất</a>
 </div>

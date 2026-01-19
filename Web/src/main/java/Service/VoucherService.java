@@ -48,15 +48,17 @@ public class VoucherService {
     public boolean updateVoucher(int id, String code, String description, int conditionPrice, String conditionBook, String conditionPublisher, String startDate, String endDate, int usageLimit, double valuee, String type) {
         return voucherDao.updateVoucher(id, code, description, conditionPrice, conditionBook, conditionPublisher, startDate, endDate, usageLimit, valuee, type);
     }
-    public boolean isValidVoucher(String code){
+
+    public boolean isValidVoucher(String code) {
         List<Voucher> vouchers = voucherDao.getVoucherList();
-        for (Voucher v : vouchers){
-            if (v.getCode().equals(code)){
+        for (Voucher v : vouchers) {
+            if (v.getCode().equals(code)) {
                 return true;
             }
         }
         return false;
     }
+
     public void insertVoucherForAll(String code) {
         if (!isValidVoucher(code)) return;
         List<Integer> listId = userService.getAllUserIds();
@@ -137,9 +139,6 @@ public class VoucherService {
     }
 
 
-
-
-
     private boolean matchCondition(String condition, String value) {
         if (condition == null || condition.trim().isEmpty()) return true;
         if (value == null || value.trim().isEmpty()) return false;
@@ -152,16 +151,16 @@ public class VoucherService {
         return false;
     }
 
-//    public static void main(String[] args) {
-//        VoucherService voucherService = new VoucherService();
-//        List<Voucher> lvoucher=voucherService.listVoucherDiscountUser(34);
-//        System.out.println(lvoucher.toString());
-//    }
+    public static void main(String[] args) {
+        VoucherService voucherService = new VoucherService();
+        List<Voucher> lvoucher = voucherService.listVoucherDiscountUser(31);
+        System.out.println(lvoucher.toString());
+    }
 
 
     public Voucher getById(int voucherId) {
-        for(Voucher v : voucherDao.getVoucherList()){
-            if(v.getId()==voucherId) {
+        for (Voucher v : voucherDao.getVoucherList()) {
+            if (v.getId() == voucherId) {
                 return v;
             }
         }
@@ -194,4 +193,6 @@ public class VoucherService {
         }
         return true;
     }
+
+
 }
