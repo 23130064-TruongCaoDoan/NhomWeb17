@@ -8,6 +8,7 @@ a {
 }
 
 .profile-container {
+    width: 80%;
     flex: 3;
     background: #fff;
     border: 1px solid #eee;
@@ -83,7 +84,6 @@ input:focus {
 }
 
 .birthday-group input {
-    width: 100%;
     text-align: center;
 }
 

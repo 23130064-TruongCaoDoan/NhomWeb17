@@ -4,7 +4,10 @@ import DTO.UserWithTotalSpentDTO;
 import Util.PasswordUtil;
 import dao.UserDao;
 import model.User;
+import org.springframework.cglib.core.Local;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,4 +76,7 @@ public class UserService {
         return userDao.existsById(id);
     }
 
+    public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
+        userDao.updateProfile(id, name, phone, email, birthday);
+    }
 }

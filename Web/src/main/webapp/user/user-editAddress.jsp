@@ -1,6 +1,6 @@
 <%
     if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect("login");
         return;
     }
 %>
