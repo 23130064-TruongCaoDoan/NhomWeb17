@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/ChangeAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/ChangeAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/address/UserAddAdress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/ThanhToan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/ThanhToan.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -363,7 +358,7 @@
       <workItem from="1768632712572" duration="12409000" />
       <workItem from="1768663521372" duration="3673000" />
       <workItem from="1768705030906" duration="222000" />
-      <workItem from="1768834011094" duration="7320000" />
+      <workItem from="1768834011094" duration="7384000" />
     </task>
     <servers />
   </component>
