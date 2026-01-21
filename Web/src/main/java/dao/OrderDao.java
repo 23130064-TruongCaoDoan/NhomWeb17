@@ -25,4 +25,9 @@ public class OrderDao extends BaseDao{
             return -1;
         }
     }
+
+    public static void main(String[] args) {
+        OrderDao orderDao = new OrderDao();
+        System.out.println(orderDao.addOrder(31,2000,"",13,14));
+    }
 }

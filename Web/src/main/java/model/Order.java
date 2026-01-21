@@ -5,14 +5,14 @@ import java.time.LocalDateTime;
 public class Order {
     private int id;
     private int userId;
-    private LocalDateTime orderDate;
+    private String orderDate;
     private String status;
     private double totalAmount;
     private String note;
     private String disVoucherId;
     private String shipVoucherId;
 
-    public Order(int id, int userId, LocalDateTime orderDate, String status, double totalAmount, String note, String disVoucherId, String shipVoucherId) {
+    public Order(int id, int userId, String orderDate, String status, double totalAmount, String note, String disVoucherId, String shipVoucherId) {
         this.id = id;
         this.userId = userId;
         this.orderDate = orderDate;
@@ -21,6 +21,14 @@ public class Order {
         this.note = note;
         this.disVoucherId = disVoucherId;
         this.shipVoucherId = shipVoucherId;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public int getId() {
@@ -39,11 +47,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public LocalDateTime getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -53,14 +61,6 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
     }
 
     public String getNote() {
