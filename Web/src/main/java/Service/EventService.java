@@ -16,5 +16,9 @@ public class EventService {
     public List<Event> getListEventALl(){
         return eventDao.getListEventALl();
     }
+    public boolean deleteEvent(int id) {
+        return eventDao.deleteEvent(id);
+    }
+
 
 }

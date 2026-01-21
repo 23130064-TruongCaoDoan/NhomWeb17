@@ -37,4 +37,14 @@ public class EventDao extends BaseDao{
     }
 
 
+    public boolean deleteEvent(int id) {
+        return getJdbi().inTransaction(handle -> {
+
+            int count = handle.createUpdate(
+                    "DELETE FROM events WHERE id = :id"
+            ).bind("id", id).execute();
+
+            return count > 0;
+        });
+    }
 }

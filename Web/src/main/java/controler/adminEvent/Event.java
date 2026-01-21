@@ -1,4 +1,4 @@
-package controler.admin;
+package controler.adminEvent;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

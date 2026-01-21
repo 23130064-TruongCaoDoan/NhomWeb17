@@ -435,7 +435,7 @@
         document.getElementById("deletePopup").style.display = "none";
     }
 
-    function confirmDelete(id) {
+    function confirmDelete() {
         if (!deleteId) return;
 
         fetch("deleteVoucher?id=" + deleteId)

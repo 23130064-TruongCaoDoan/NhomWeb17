@@ -203,3 +203,93 @@ textarea {
     color: #666;
     border: 1px solid #ccc;
 }
+/* wrapper */
+.book-type-group {
+    margin-top: 12px;
+}
+
+/* box chứa checkbox */
+.book-type-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid #0d3164;
+    border-radius: 6px;
+    background: #fff;
+}
+
+/* từng checkbox */
+.book-type-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* checkbox nhìn gọn */
+.book-type-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0d3164; /* màu admin */
+}
+
+/* responsive: màn nhỏ → 1 cột */
+@media (max-width: 600px) {
+    .book-type-box {
+        grid-template-columns: 1fr;
+    }
+}
+.delete-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    z-index: 102;
+    width: 320px;
+    display: none;
+}
+
+.delete-popup p {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: #333;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c9302c;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #b3b3b3;
+}
