@@ -1,4 +1,4 @@
-package controler.admin;
+package controler.adminVoucher;
 
 import Service.VoucherService;
 import jakarta.servlet.*;
@@ -7,11 +7,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "updateVoucher", value = "/updateVoucher")
-public class updateVoucher extends HttpServlet {
+@WebServlet(name = "addVoucher", value = "/addVoucher")
+public class addVoucher extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     @Override
@@ -20,7 +19,6 @@ public class updateVoucher extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        int id = Integer.parseInt(request.getParameter("id")==null?"0":request.getParameter("id"));
         String code = request.getParameter("code");
         String description = request.getParameter("description");
         String type = request.getParameter("type");
@@ -86,8 +84,7 @@ public class updateVoucher extends HttpServlet {
             );
             return;
         }
-        boolean success = voucherService.updateVoucher(
-                id,
+        boolean success = voucherService.addVoucher(
                 code,
                 description,
                 conditionPrice,
@@ -102,11 +99,11 @@ public class updateVoucher extends HttpServlet {
 
         if (success) {
             response.getWriter().write(
-                    "{\"success\":true,\"message\":\"Cập nhật voucher thành công\"}"
+                    "{\"success\":true,\"message\":\"Thêm voucher thành công\"}"
             );
         } else {
             response.getWriter().write(
-                    "{\"success\":false,\"message\":\"Cập nhật voucher thất bại\"}"
+                    "{\"success\":false,\"message\":\"Thêm voucher thất bại\"}"
             );
         }
     }

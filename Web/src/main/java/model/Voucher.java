@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Voucher {
     private int id;
     private String code;
@@ -132,6 +134,16 @@ public class Voucher {
         return end_date.substring(8, 10) + "/" +
                 end_date.substring(5, 7) + "/" +
                 end_date.substring(0, 4);
+    }
+
+    public boolean isActive() {
+        if (start_date == null || end_date == null) return false;
+
+        LocalDate today = LocalDate.now();
+        LocalDate start = LocalDate.parse(start_date);
+        LocalDate end = LocalDate.parse(end_date);
+
+        return !today.isBefore(start) && !today.isAfter(end);
     }
 
     @Override

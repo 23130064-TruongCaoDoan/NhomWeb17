@@ -1,4 +1,4 @@
-package controler.admin;
+package controler.adminVoucher;
 
 import Service.UserService;
 import Service.VoucherService;
@@ -9,7 +9,6 @@ import model.User;
 import model.Voucher;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "KhoVoucher", value = "/KhoVoucher")

@@ -1,4 +1,4 @@
-package controler.admin;
+package controler.adminVoucher;
 
 import Service.VoucherService;
 import jakarta.servlet.*;
