@@ -13,5 +13,8 @@ public class EventService {
     public List<Event> getListEvent(){
         return eventDao.getListEvent();
     }
+    public List<Event> getListEventALl(){
+        return eventDao.getListEventALl();
+    }
 
 }

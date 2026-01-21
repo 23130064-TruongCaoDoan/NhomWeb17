@@ -55,6 +55,7 @@
                             <th>Giá trị</th>
                             <th>Thời gian</th>
                             <th>Giới hạn</th>
+                            <th>Hoạt động</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                         </thead>
@@ -67,6 +68,15 @@
                                 <td>${voucher.valuee}</td>
                                 <td>${voucher.getStartDateFormatted()} - ${voucher.getEndDateFormatted()}</td>
                                 <td>${voucher.usage_limit}</td>
+                                <td>
+                                    <c:if test="${voucher.isActive()}">
+                                        <span class="status active">Còn hạn</span>
+                                    </c:if>
+                                    <c:if test="${!voucher.isActive()}">
+                                        <span class="status inactive">Hết hạn</span>
+                                    </c:if>
+                                </td>
+
                                 <td>
                                     <i class="fa-solid fa-pen sua"
                                        onclick="editVoucher(

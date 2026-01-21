@@ -183,3 +183,23 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+.status {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.status.active {
+    background-color: #e6f9ee;
+    color: #1e8e3e;
+    border: 1px solid #1e8e3e;
+}
+
+.status.inactive {
+    background-color: #f2f2f2;
+    color: #666;
+    border: 1px solid #ccc;
+}

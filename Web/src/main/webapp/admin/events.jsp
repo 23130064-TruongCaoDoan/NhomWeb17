@@ -44,99 +44,33 @@
                             <th>Tiêu đề</th>
                             <th>Giá trị</th>
                             <th>Thời gian</th>
+                            <th>Hoạt động</th>
                             <th>Loại sách áp dụng</th>
                             <th>Chỉnh sửa</th>
                         </tr>
                         </thead>
                         <tbody id="eventTable">
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>EVENT01</td>
-                            <td>Giảm giá Black Friday</td>
-                            <td>30%</td>
-                            <td>2025-11-10 → 2025-11-20</td>
-                            <td>Sach To Mau</td>
-                            <td>
-                                <i class="fa-solid fa-pen sua"></i>
-                                <i class="fa-solid fa-trash xoa"></i>
-                            </td>
-                        </tr>
+                        <c:forEach var="event" items="${listEvent}">
+                            <tr>
+                                <td>${event.eventCode}</td>
+                                <td>${event.title}</td>
+                                <td>${event.value}%</td>
+                                <td>${event.getStartDateFormatted()} - ${event.getEndDateFormatted()}</td>
+                                <td>
+                                    <c:if test="${event.isActive()}">
+                                        <span class="status active">Đang diễn ra</span>
+                                    </c:if>
+                                    <c:if test="${!event.isActive()}">
+                                        <span class="status inactive">Đã kết thúc</span>
+                                    </c:if>
+                                </td>
+                                <td>Sach To Mau</td>
+                                <td>
+                                    <i class="fa-solid fa-pen sua"></i>
+                                    <i class="fa-solid fa-trash xoa"></i>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

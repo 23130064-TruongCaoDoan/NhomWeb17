@@ -23,6 +23,14 @@ public class EventDao extends BaseDao{
                         .list()
         );
     }
+
+    public List<Event> getListEventALl(){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM events ORDER BY start_date DESC")
+                        .mapToBean(Event.class)
+                        .list()
+        );
+    }
     public static void main(String[] args) {
         EventDao eventDao = new EventDao();
         System.out.println(eventDao.getListEvent());
