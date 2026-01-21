@@ -1,6 +1,8 @@
 package controler.user.profile;
 
 import Service.UserService;
+import Util.EmailSender;
+import Util.Token8;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -47,7 +49,6 @@ public class SetUpAccount extends HttpServlet {
             user.setBirthday(birthday);
             session.setAttribute("user", user);
             response.sendRedirect("SetUpAccount");
-            return;
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Lỗi cập nhật profile!");

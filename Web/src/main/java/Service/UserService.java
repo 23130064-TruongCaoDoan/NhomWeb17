@@ -79,4 +79,7 @@ public class UserService {
     public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
         userDao.updateProfile(id, name, phone, email, birthday);
     }
+    public void updateEmail(int id, String email) {
+        userDao.updateEmail(id, email);
+    }
 }

@@ -83,5 +83,14 @@ public class UserDao extends BaseDao {
                 .execute()
                 );
     }
+    public void updateEmail(int id, String email) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE user SET email=:email WHERE id = :id")
+                        .bind("id", id)
+                        .bind("email", email)
+                        .execute()
+        );
+    }
+
 
 }

@@ -12,11 +12,8 @@
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/SetUpAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/profile/SetUpAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/user/profile/SetUpAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/user/profile/SetUpAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/hoSoCaNhan.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/hoSoCaNhan.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-editAddress.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-editAddress.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-hoSoCaNhan.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -369,6 +366,7 @@
       <workItem from="1768705030906" duration="222000" />
       <workItem from="1768834011094" duration="7384000" />
       <workItem from="1769002814618" duration="5750000" />
+      <workItem from="1769014693755" duration="5070000" />
     </task>
     <servers />
   </component>

@@ -92,24 +92,39 @@
 </div>
 <div class="popup" id="thaydoiEmail">
     <h3>THAY ĐỔI EMAIL</h3>
-    <div class="form-group">
-        <label>Email</label>
-        <div class="email-row">
-            <input type="email" placeholder="Enter Email"/>
-            <button class="otp-btn">Gửi mã OTP</button>
+
+    <form action="Confirm" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <div class="email-row">
+                <input type="email" name="email" placeholder="Enter Email" value="${newEmail}" <c:if test="${showOTP}">readonly</c:if> required/>
+                <button type="submit" formaction="changeEmail" class="otp-btn" <c:if test="${showOTP}"> style="display: none" </c:if> >
+                    Gửi mã OTP
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label>Mã xác nhận OTP</label>
-        <input type="text" placeholder="6 ký tự" maxlength="6"/>
-    </div>
+        <c:if test="${showOTP}">
+            <div class="form-group">
+                <label>Mã xác nhận OTP</label>
+                <input type="text" name="otp" maxlength="8" required>
+            </div>
 
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
+            <div class="btn-group">
+                <button type="submit" class="confirm">Xác nhận</button>
+                <button type="button" class="cancel">Trở về</button>
+            </div>
+        </c:if>
+    </form>
 </div>
+<c:if test="${showOTP}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("thaydoiEmail").style.display = "block";
+        });
+    </script>
+</c:if>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const hoten = document.getElementById('hoten');
