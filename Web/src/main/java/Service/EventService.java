@@ -97,4 +97,10 @@ public class EventService {
         );
     }
 
+    public List<Event> searchAndFilter(String q, String stock) {
+        if (q != null && q.isBlank()) q = null;
+        if (stock != null && stock.isBlank()) stock = null;
+
+        return eventDao.searchAndFilter(q, stock);
+    }
 }

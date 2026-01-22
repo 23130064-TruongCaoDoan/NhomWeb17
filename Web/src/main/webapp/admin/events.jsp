@@ -20,25 +20,35 @@
         <c:import url="MenuFunctionAdmin.jsp"></c:import>
         <div class="event-container">
             <h2>Quản lý Sự kiện</h2>
-
-            <div class="function">
-                <button id="addEvent">Thêm sự kiện</button>
-                <div class="timkiem">
-                    <input type="text" class="search" placeholder="Tìm kiếm sự kiện">
-                    <button class="buttonSearch">Tìm kiếm</button>
+            <form method="get" action="Event">
+                <div class="function">
+                    <button id="addEvent" type="button">Thêm sự kiện</button>
+                    <div class="timkiem">
+                        <input type="text"
+                               class="search"
+                               name="q"
+                               placeholder="Tìm kiếm sự kiện"
+                               value="${param.q}">
+                        <button type="submit" class="buttonSearch">Tìm kiếm</button>
+                    </div>
                 </div>
-            </div>
 
+                <div class="event-list">
+                    <div class="title">
+                        <h3>Danh sách sự kiện</h3>
+                        <select class="locEvent" name="sortDate" onchange="this.form.submit()">
+                            <option value="all">Tất cả</option>
+                            <option value="asc" ${param.sortDate == 'asc' ? 'selected' : ''}>
+                                Sự kiện cũ nhất
+                            </option>
+                            <option value="desc" ${param.sortDate == 'desc' ? 'selected' : ''}>
+                                Sự kiện mới nhất
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
             <div class="event-list">
-                <div class="title">
-                    <h3>Danh sách sự kiện</h3>
-                    <select class="locEvent">
-                        <option value="all">Tất cả</option>
-                        <option value="latest">Sự kiện gần nhất</option>
-                        <option value="oldest">Sự kiện cũ nhất</option>
-                    </select>
-                </div>
-
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -88,7 +98,6 @@
                                     </i>
 
 
-
                                     <i class="fa-solid fa-trash xoa"
                                        onclick="deleteEvent(${event.id})">
                                     </i>
@@ -113,31 +122,31 @@
     <form id="eventForm" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Mã sự kiện</label>
-            <input type="text" name="code" id="eventCode" placeholder="Nhập mã sự kiện" >
+            <input type="text" name="code" id="eventCode" placeholder="Nhập mã sự kiện">
             <span class="error"></span>
         </div>
 
         <div class="form-group">
             <label>Tiêu đề</label>
-            <input type="text" name="title" id="eventTitle" placeholder="Tiêu đề sự kiện" >
+            <input type="text" name="title" id="eventTitle" placeholder="Tiêu đề sự kiện">
             <span class="error"></span>
         </div>
 
         <div class="form-group">
             <label>Giá trị (%)</label>
-            <input type="number" name="giatri" id="eventValue" placeholder="30" >
+            <input type="number" name="giatri" id="eventValue" placeholder="30">
             <span class="error"></span>
         </div>
 
         <div class="form-group-inline">
             <div>
                 <label>Ngày bắt đầu</label>
-                <input type="date" name="startdate" id="startDate" >
+                <input type="date" name="startdate" id="startDate">
                 <span class="error"></span>
             </div>
             <div>
                 <label>Ngày kết thúc</label>
-                <input type="date" name="enddate" id="endDate" >
+                <input type="date" name="enddate" id="endDate">
                 <span class="error"></span>
             </div>
         </div>
@@ -260,7 +269,6 @@
     const bookCodes = document.getElementById("publisher");
 
 
-
     function setError(inputElement, message) {
         const parent = inputElement.parentElement;
         const error = parent.querySelector('.error');
@@ -359,7 +367,6 @@
         }
 
 
-
         if (minPoint.value !== "" && minPoint.value < 0) {
             setError(minPoint, "Point phải >= 0");
             hasError = true;
@@ -431,8 +438,6 @@
         overlay.style.display = "block";
         popup.style.display = "block";
     }
-
-
 
 
     function updateEvent() {
