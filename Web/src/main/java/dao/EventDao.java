@@ -64,6 +64,9 @@ public class EventDao extends BaseDao {
 
     public boolean deleteEvent(int id) {
         return getJdbi().inTransaction(handle -> {
+            int count1 = handle.createUpdate(
+                    "DELETE FROM event_books WHERE event_id = :id"
+            ).bind("id", id).execute();
 
             int count = handle.createUpdate(
                     "DELETE FROM events WHERE id = :id"
@@ -150,4 +153,102 @@ public class EventDao extends BaseDao {
                         .one() > 0
         );
     }
+
+    public boolean updateEvent(
+            String code,
+            String coverImgUrl,
+            String title,
+            double value,
+            String startDate,
+            String endDate,
+            String typeBookApply,
+            String pulisher,
+            String author,
+            String voucher,
+            String specialVoucher,
+            int minPoint,
+            String age,
+            List<Book> listBookEvent
+    ) {
+        return getJdbi().inTransaction(handle -> {
+
+            Integer eventId = handle.createQuery(
+                            "SELECT id FROM events WHERE event_code = :code"
+                    )
+                    .bind("code", code)
+                    .mapTo(Integer.class)
+                    .findOne()
+                    .orElse(null);
+
+            if (eventId == null) {
+                return false;
+            }
+
+            int updated = handle.createUpdate("""
+                            UPDATE events SET
+                                img_url = :img_url,
+                                title = :title,
+                                value = :value,
+                                start_date = :start_date,
+                                end_date = :end_date,
+                                type_book_apply = :type_book_apply,
+                                pulisher_apply = :pulisher_apply,
+                                author_apply = :author_apply,
+                                voucher_code = :voucher_code,
+                                special_voucher = :special_voucher,
+                                min_point = :min_point,
+                                age_apply = :age_apply
+                            WHERE event_code = :code
+                            """)
+                    .bind("img_url", coverImgUrl)
+                    .bind("title", title)
+                    .bind("value", value)
+                    .bind("start_date", startDate)
+                    .bind("end_date", endDate)
+                    .bind("type_book_apply", typeBookApply)
+                    .bind("pulisher_apply", pulisher)
+                    .bind("author_apply", author)
+                    .bind("voucher_code", voucher)
+                    .bind("special_voucher", specialVoucher)
+                    .bind("min_point", minPoint)
+                    .bind("age_apply", age)
+                    .bind("code", code)
+                    .execute();
+
+            if (updated == 0) {
+                return false;
+            }
+
+            handle.createUpdate(
+                            "DELETE FROM event_books WHERE event_id = :event_id"
+                    )
+                    .bind("event_id", eventId)
+                    .execute();
+
+            for (Book b : listBookEvent) {
+                handle.createUpdate("""
+                                INSERT INTO event_books(event_id, book_id)
+                                VALUES (:event_id, :book_id)
+                                """)
+                        .bind("event_id", eventId)
+                        .bind("book_id", b.getId())
+                        .execute();
+            }
+
+            return true;
+        });
+    }
+
+    public Event getEventByCode(String code) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT * FROM events WHERE event_code = :code"
+                        )
+                        .bind("code", code)
+                        .mapToBean(Event.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
 }

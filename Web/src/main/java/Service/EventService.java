@@ -30,15 +30,71 @@ public class EventService {
 
     public boolean addEvent(String code, Part imagePart, String title, double value, String startDate, String endDate, String typeBookApply, String pulisher, String author, String voucher, String specialVoucher, int minPoint, String age) {
         String coverImgUrl = uploadService.upload(imagePart, "event/");
-        BookService  bookService = new BookService();
-        List<Book> listBookEvent = bookService.filterBooksForEvent(bookService.getAllBooks(),typeBookApply,pulisher,author,age);
+        BookService bookService = new BookService();
+        List<Book> listBookEvent = bookService.filterBooksForEvent(bookService.getAllBooks(), typeBookApply, pulisher, author, age);
         bookService.updateDiscountBook(listBookEvent, value);
-        return eventDao.addEvent( code,  coverImgUrl,  title,  value,  startDate,  endDate,  typeBookApply,  pulisher,  author,  voucher,  specialVoucher,  minPoint,  age, listBookEvent);
+        return eventDao.addEvent(code, coverImgUrl, title, value, startDate, endDate, typeBookApply, pulisher, author, voucher, specialVoucher, minPoint, age, listBookEvent);
     }
 
     public boolean existsByCode(String code) {
         return eventDao.existsByCode(code);
     }
 
+
+    public boolean updateEvent(
+            String code,
+            Part imagePart,
+            String title,
+            double value,
+            String startDate,
+            String endDate,
+            String typeBookApply,
+            String pulisher,
+            String author,
+            String voucher,
+            String specialVoucher,
+            int minPoint,
+            String age
+    ) {
+
+        Event oldEvent = eventDao.getEventByCode(code);
+        if (oldEvent == null) {
+            return false;
+        }
+
+        String coverImgUrl = oldEvent.getImgUrl();
+        if (imagePart != null && imagePart.getSize() > 0) {
+            coverImgUrl = uploadService.upload(imagePart, "event/");
+        }
+
+        BookService bookService = new BookService();
+
+        List<Book> listBookEvent = bookService.filterBooksForEvent(
+                bookService.getAllBooks(),
+                typeBookApply,
+                pulisher,
+                author,
+                age
+        );
+
+        bookService.updateDiscountBook(listBookEvent, value);
+
+        return eventDao.updateEvent(
+                code,
+                coverImgUrl,
+                title,
+                value,
+                startDate,
+                endDate,
+                typeBookApply,
+                pulisher,
+                author,
+                voucher,
+                specialVoucher,
+                minPoint,
+                age,
+                listBookEvent
+        );
+    }
 
 }

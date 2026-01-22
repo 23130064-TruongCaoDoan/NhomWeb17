@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
@@ -14,7 +15,7 @@ public class User {
 
     private String phone;
 
-    private Date birthday;
+    private LocalDate birthday;
 
     private int point;
 
@@ -69,11 +70,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

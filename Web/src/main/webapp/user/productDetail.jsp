@@ -90,7 +90,7 @@
                         <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
                         <span>
                             <i id="addHeart" class="fa-solid fa-heart ${isFavouriteBook ? 'active' : ''}" onclick="toggleFavourite(${book.id})"></i>
-</span>
+                        </span>
                     </div>
                     <div class="program">
                         <p>🛡️ Đổi trả miễn phí 7 ngày</p>
@@ -333,7 +333,6 @@
             });
         });
     });
-    // quantity
     const input = document.getElementById("number-quantity");
 
     function minus() {

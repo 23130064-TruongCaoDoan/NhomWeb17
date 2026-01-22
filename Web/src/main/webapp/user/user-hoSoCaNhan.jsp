@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,46 +19,46 @@
             <div class="menuUser">
                 <c:import url="/user/menuUser.jsp"></c:import>
             </div>
-            <div class="profile-container">
-                <h2>Hồ sơ cá nhân</h2>
-                <div class="form-group">
-                    <label for="hoten">Họ và tên</label>
-                    <input type="text" id="hoten" placeholder="Nhập họ và tên" aria-describedby="hotenError"/>
-                    <div class="error" id="hotenError" role="alert" aria-live="polite">Vui lòng nhập họ và tên.</div>
-                </div>
-                <div class="form-group">
-                    <label for="sdt">Số điện thoại</label>
-                    <div class="form-inline">
-                        <input type="text" id="sdt" placeholder="Nhập số điện thoại " readonly>
-                        <a id="thayDoiDT" href="#">Thay đổi</a>
+                <div class="profile-container">
+                    <h2>Hồ sơ cá nhân</h2>
+                    <form action="SetUpAccount" method="post">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="hoten" placeholder="Nhập họ và tên" name="name" value="${user.name}" aria-describedby="hotenError"/>
+                        <div class="error" id="hotenError" role="alert" aria-live="polite">Vui lòng nhập họ và tên.</div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <div class="form-inline">
+                            <input type="text" id="sdt" name="phone" value="${user.phone}" placeholder="Nhập số điện thoại " readonly>
+                            <a id="thayDoiDT" href="#">Thay đổi</a>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <div class="form-inline">
-                        <input type="email" id="email" value="truongdoangacho432@gmail.com" readonly>
-                        <a id="thayDoiE" href="#">Thay đổi</a>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="form-inline">
+                            <input type="email" id="email" name="email" value="${user.email}" readonly>
+                            <a id="thayDoiE" href="#">Thay đổi</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Giới tính</label>
-                    <div class="gender-group">
-                        <label><input type="radio" name="gioitinh" checked> Nam</label>
-                        <label><input type="radio" name="gioitinh"> Nữ</label>
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <div class="gender-group">
+                            <label><input type="radio" name="gioitinh" value="Nam" <c:if test="${!isDefault}">checked</c:if> > Nam</label>
+                            <label><input type="radio" name="gioitinh" value="Nu" <c:if test="${isDefault}">checked</c:if> > Nữ</label>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Birthday</label>
-                    <div class="birthday-group">
-                        <input type="number" placeholder="25" min="1" max="31">
-                        <input type="number" placeholder="04" min="1" max="12">
-                        <input type="number" placeholder="2005" min="1900" max="2025">
+                    <div class="form-group">
+                        <label>Birthday</label>
+                        <div class="birthday-group">
+                            <input type="date" name="birthday" value="${user.birthday}">
+                        </div>
                     </div>
+                    <button class="btn-save">Lưu thay đổi</button>
+                    </form>
                 </div>
-                <button class="btn-save">Lưu thay đổi</button>
-            </div>
         </div>
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
@@ -92,24 +92,39 @@
 </div>
 <div class="popup" id="thaydoiEmail">
     <h3>THAY ĐỔI EMAIL</h3>
-    <div class="form-group">
-        <label>Email</label>
-        <div class="email-row">
-            <input type="email" placeholder="Enter Email"/>
-            <button class="otp-btn">Gửi mã OTP</button>
+
+    <form action="Confirm" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <div class="email-row">
+                <input type="email" name="email" placeholder="Enter Email" value="${newEmail}" <c:if test="${showOTP}">readonly</c:if> required/>
+                <button type="submit" formaction="changeEmail" class="otp-btn" <c:if test="${showOTP}"> style="display: none" </c:if> >
+                    Gửi mã OTP
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label>Mã xác nhận OTP</label>
-        <input type="text" placeholder="6 ký tự" maxlength="6"/>
-    </div>
+        <c:if test="${showOTP}">
+            <div class="form-group">
+                <label>Mã xác nhận OTP</label>
+                <input type="text" name="otp" maxlength="8" required>
+            </div>
 
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
+            <div class="btn-group">
+                <button type="submit" class="confirm">Xác nhận</button>
+                <button type="button" class="cancel">Trở về</button>
+            </div>
+        </c:if>
+    </form>
 </div>
+<c:if test="${showOTP}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("thaydoiEmail").style.display = "block";
+        });
+    </script>
+</c:if>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const hoten = document.getElementById('hoten');
