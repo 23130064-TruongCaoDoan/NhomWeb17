@@ -68,6 +68,14 @@ public class addVoucher extends HttpServlet {
             return;
         }
 
+        if (voucherService.voucherExists(code)) {
+
+            response.getWriter().write(
+                    "{\"success\":false,\"message\":\"mã voucher đã tồn tại\"}"
+            );
+            return;
+        }
+
         if (conditionPrice <= 0
                 && (conditionBook == null || conditionBook.trim().isEmpty())
                 && (conditionPublisher == null || conditionPublisher.trim().isEmpty())) {

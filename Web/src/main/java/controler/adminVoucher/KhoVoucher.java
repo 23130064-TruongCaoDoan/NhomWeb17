@@ -16,17 +16,28 @@ public class KhoVoucher extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        User user = (User)session.getAttribute("user")==null?null:(User)session.getAttribute("user");
-        UserService userService = new UserService();
-        if (session != null && user != null && userService.checkRole(user)) {
-        VoucherService voucherService = new VoucherService();
-        List<Voucher> listVoucher=voucherService.getListVoucher();
-        request.setAttribute("listVoucher",listVoucher);
-        request.getRequestDispatcher("admin/khoVoucher.jsp").forward(request, response);
-        }
-        else {
+
+        if (session == null) {
             response.sendRedirect("login");
+            return;
         }
+
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("login");
+            return;
+        }
+
+        UserService userService = new UserService();
+        if (!userService.checkRole(user)) {
+            response.sendRedirect("login");
+            return;
+        }
+        VoucherService voucherService = new VoucherService();
+        List<Voucher> listVoucher = voucherService.getListVoucher();
+
+        request.setAttribute("listVoucher", listVoucher);
+        request.getRequestDispatcher("admin/khoVoucher.jsp").forward(request, response);
 
     }
 
