@@ -32,9 +32,9 @@ public class UserDao extends BaseDao {
         );
     }
 
-    public void updatePass(String password) {
+    public void updatePass(String email,String password) {
         getJdbi().withHandle(handle ->
-                handle.createUpdate("update USER set password_hash=:password").bind("password", password).execute()
+                handle.createUpdate("update `user` set password_hash=:password where email = :email").bind("password", password).bind("email",email).execute()
         );
     }
 
@@ -76,4 +76,12 @@ public class UserDao extends BaseDao {
         );
     }
 
+    public List<Integer> getUserIdsByMinPoint(int minPoint) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SElECT id FROM `user` where point >= :minpoint")
+                        .bind("minpoint",minPoint)
+                        .mapTo(Integer.class)
+                        .list()
+        );
+    }
 }

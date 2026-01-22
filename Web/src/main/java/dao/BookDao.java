@@ -1,4 +1,5 @@
 package dao;
+
 import model.Book;
 import model.CommentView;
 
@@ -12,6 +13,7 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
@@ -34,6 +36,7 @@ public class BookDao extends BaseDao {
                         .orElse(null)
         );
     }
+
     public List<Book> getBookRecommendInDetail(String type) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE type = :type AND is_sell=1 ORDER BY quantity_sold DESC")
@@ -42,6 +45,7 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getAllBooks(int limit, int offset) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 LIMIT :limit OFFSET :offset")
@@ -51,6 +55,7 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getAllBooks() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(
@@ -158,6 +163,7 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getAllBookByEvent(int limit, int offset, String title) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT b.* " +
@@ -168,7 +174,7 @@ public class BookDao extends BaseDao {
                                 "ORDER BY add_date DESC LIMIT :limit OFFSET :offset")
                         .bind("limit", limit)
                         .bind("offset", offset)
-                        .bind("title","%" +title+"%")
+                        .bind("title", "%" + title + "%")
                         .mapToBean(Book.class)
                         .list()
         );
@@ -197,6 +203,7 @@ public class BookDao extends BaseDao {
                         .one()
         );
     }
+
     public int countBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
@@ -213,7 +220,7 @@ public class BookDao extends BaseDao {
                                 "INNER JOIN events e ON e.id = eb.event_id " +
                                 "WHERE is_sell=1 AND e.title LIKE :title " +
                                 "ORDER BY add_date DESC")
-                        .bind("title","%" +title+"%")
+                        .bind("title", "%" + title + "%")
                         .mapTo(int.class)
                         .one()
         );
@@ -273,26 +280,26 @@ public class BookDao extends BaseDao {
     public void update(Book book) {
         getJdbi().useHandle(h ->
                 h.createUpdate("""
-                    UPDATE books SET
-                        book_code = :code,
-                        title = :title,
-                        author_id = :authorId,
-                        price = :price,
-                        price_discounted = :priceDiscounted,
-                        type = :type,
-                        age = :age,
-                        cover_img_url = :cover,
-                        description = :description,
-                        publisher = :publisher,
-                        provider = :provider,
-                        published_date = :published,
-                        weight = :weight,
-                        book_size = :size,
-                        pages_number = :pages,
-                        format = :format,
-                        stock = :stock
-                    WHERE id = :id
-                """)
+                                    UPDATE books SET
+                                        book_code = :code,
+                                        title = :title,
+                                        author_id = :authorId,
+                                        price = :price,
+                                        price_discounted = :priceDiscounted,
+                                        type = :type,
+                                        age = :age,
+                                        cover_img_url = :cover,
+                                        description = :description,
+                                        publisher = :publisher,
+                                        provider = :provider,
+                                        published_date = :published,
+                                        weight = :weight,
+                                        book_size = :size,
+                                        pages_number = :pages,
+                                        format = :format,
+                                        stock = :stock
+                                    WHERE id = :id
+                                """)
                         .bind("id", book.getId())
                         .bind("code", book.getBookCode())
                         .bind("title", book.getTitle())
@@ -328,40 +335,43 @@ public class BookDao extends BaseDao {
         getJdbi().useHandle(h -> {
             for (String url : urls) {
                 h.createUpdate("""
-                    INSERT INTO book_image_details (book_id, img_url)
-                    VALUES (:id, :url)
-                """)
+                                    INSERT INTO book_image_details (book_id, img_url)
+                                    VALUES (:id, :url)
+                                """)
                         .bind("id", bookId)
                         .bind("url", url)
                         .execute();
             }
         });
     }
+
     public void insertFavouriteBook(int bookId, int userId) {
         getJdbi().useHandle(h -> {
             h.createUpdate("""
-                    INSERT INTO favourite_books(book_id, user_id)
-                    VALUES (:bookId, :userId)
-                    """)
+                            INSERT INTO favourite_books(book_id, user_id)
+                            VALUES (:bookId, :userId)
+                            """)
                     .bind("bookId", bookId)
                     .bind("userId", userId)
                     .execute();
         });
     }
+
     public List<Book> getFavouriteBook(int userId) {
         return getJdbi().withHandle(handle ->
-            handle.createQuery("""
-                    SELECT *
-                    FROM BOOKS
-                    WHERE id IN (SELECT book_id FROM favourite_books WHERE user_id = :userId)
-                    ORDER BY id DESC
-                    """)
-                    .bind("userId", userId)
-                    .mapToBean(Book.class)
-                    .list()
+                handle.createQuery("""
+                                SELECT *
+                                FROM BOOKS
+                                WHERE id IN (SELECT book_id FROM favourite_books WHERE user_id = :userId)
+                                ORDER BY id DESC
+                                """)
+                        .bind("userId", userId)
+                        .mapToBean(Book.class)
+                        .list()
         );
     }
-    public void deleteFavouriteBook(int bookId,  int userId) {
+
+    public void deleteFavouriteBook(int bookId, int userId) {
         getJdbi().useHandle(h -> {
             h.createUpdate("DELETE FROM favourite_books WHERE book_id = :bookId AND user_id = :userId")
                     .bind("bookId", bookId)
@@ -369,21 +379,51 @@ public class BookDao extends BaseDao {
                     .execute();
         });
     }
+
     public boolean isFavouriteBook(int bookId, int userId) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("""
-                            SELECT 1
-                            FROM favourite_books
-                            WHERE book_id = :bookId
-                              AND user_id = :userId
-                            LIMIT 1
-                        """)
+                                    SELECT 1
+                                    FROM favourite_books
+                                    WHERE book_id = :bookId
+                                      AND user_id = :userId
+                                    LIMIT 1
+                                """)
                         .bind("bookId", bookId)
                         .bind("userId", userId)
                         .mapTo(Integer.class)
                         .findFirst()
                         .isPresent()
         );
+    }
+
+    public void updateDiscountBook(List<Book> listBookEvent, double value) {
+
+        if (listBookEvent == null || listBookEvent.isEmpty()) {
+            return;
+        }
+
+        if (value <= 0 || value >= 100) {
+            throw new IllegalArgumentException("Giá trị giảm không hợp lệ");
+        }
+
+        getJdbi().useHandle(handle -> {
+
+            var batch = handle.prepareBatch("""
+                        UPDATE books
+                        SET price_discounted = price * (1 - :value / 100)
+                        WHERE id = :bookId
+                    """);
+
+            for (Book book : listBookEvent) {
+                batch
+                        .bind("value", value)
+                        .bind("bookId", book.getId())
+                        .add();
+            }
+
+            batch.execute();
+        });
     }
 
 }

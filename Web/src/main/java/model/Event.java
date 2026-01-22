@@ -13,14 +13,15 @@ public class Event {
     private String type_book_apply;
     private String pulisher_apply;
     private String author_apply;
-    private int voucher_code;
-    private int special_voucher;
+    private String voucher_code;
+    private String special_voucher;
     private int min_point;
+    private String age_apply;
 
     public Event() {
     }
 
-    public Event(int id, String eventCode, String imgUrl, String title, double value, String startDate, String endDate, String type_book_apply, String pulisher_apply, String author_apply, int voucher_code, int special_voucher, int min_point) {
+    public Event(int id, String eventCode, String imgUrl, String title, double value, String startDate, String endDate, String type_book_apply, String pulisher_apply, String author_apply, String voucher_code, String special_voucher, int min_point, String age_apply) {
         this.id = id;
         this.eventCode = eventCode;
         this.imgUrl = imgUrl;
@@ -34,6 +35,7 @@ public class Event {
         this.voucher_code = voucher_code;
         this.special_voucher = special_voucher;
         this.min_point = min_point;
+        this.age_apply = age_apply;
     }
 
     public int getId() {
@@ -116,19 +118,19 @@ public class Event {
         this.author_apply = author_apply;
     }
 
-    public int getVoucher_code() {
+    public String getVoucher_code() {
         return voucher_code;
     }
 
-    public void setVoucher_code(int voucher_code) {
+    public void setVoucher_code(String voucher_code) {
         this.voucher_code = voucher_code;
     }
 
-    public int getSpecial_voucher() {
+    public String getSpecial_voucher() {
         return special_voucher;
     }
 
-    public void setSpecial_voucher(int special_voucher) {
+    public void setSpecial_voucher(String special_voucher) {
         this.special_voucher = special_voucher;
     }
 
@@ -138,6 +140,14 @@ public class Event {
 
     public void setMin_point(int min_point) {
         this.min_point = min_point;
+    }
+
+    public String getAge_apply() {
+        return age_apply;
+    }
+
+    public void setAge_apply(String age_apply) {
+        this.age_apply = age_apply;
     }
 
     public String getStartDateFormatted() {
@@ -176,9 +186,36 @@ public class Event {
                 ", type_book_apply='" + type_book_apply + '\'' +
                 ", pulisher_apply='" + pulisher_apply + '\'' +
                 ", author_apply='" + author_apply + '\'' +
-                ", voucher_code=" + voucher_code +
-                ", special_voucher=" + special_voucher +
+                ", voucher_code='" + voucher_code + '\'' +
+                ", special_voucher='" + special_voucher + '\'' +
                 ", min_point=" + min_point +
+                ", age_apply='" + age_apply + '\'' +
                 '}';
     }
+
+    public String getApplyConditionSummary() {
+        StringBuilder sb = new StringBuilder();
+
+        if (type_book_apply != null && !type_book_apply.isBlank()) {
+            sb.append("Loại sách: ").append(type_book_apply);
+        }
+
+        if (pulisher_apply != null && !pulisher_apply.isBlank()) {
+            if (sb.length() > 0) sb.append(" | ");
+            sb.append("NXB: ").append(pulisher_apply);
+        }
+
+        if (author_apply != null && !author_apply.isBlank()) {
+            if (sb.length() > 0) sb.append(" | ");
+            sb.append("Tác giả: ").append(author_apply);
+        }
+
+        if (age_apply != null && !age_apply.isBlank()) {
+            if (sb.length() > 0) sb.append(" | ");
+            sb.append("Độ tuổi: ").append(age_apply);
+        }
+
+        return sb.toString(); // KHÔNG có default nữa
+    }
+
 }

@@ -4,37 +4,50 @@ import dao.BookDao;
 import jakarta.servlet.http.Part;
 import model.Book;
 import Service.UploadService;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookService {
-    private BookDao hd=new BookDao();
+    private BookDao hd = new BookDao();
     private UploadService uploadService = new UploadService();
-    public List<Book> getBooksDiscounted(){
+
+    public List<Book> getBooksDiscounted() {
         return hd.getBooksDiscounted();
     }
+
     public List<Book> getAllBooksDiscounted(int limit, int offset) {
         return hd.getAllBooksDiscounted(limit, offset);
     }
-    public Book getBooksById(int id){
+
+    public Book getBooksById(int id) {
         return hd.getBookById(id);
     }
-    public List<Book> getBookRecommendInDetail(String type){
+
+    public List<Book> getBookRecommendInDetail(String type) {
         return hd.getBookRecommendInDetail(type);
     }
-    public List<Book> getBooksNew(){
+
+    public List<Book> getBooksNew() {
         return hd.getBooksNew();
     }
-    public List<Book> getAllBooksNew(int limit, int offset){
-        return hd.getAllBooksNew(limit,offset);
+
+    public List<Book> getAllBooksNew(int limit, int offset) {
+        return hd.getAllBooksNew(limit, offset);
     }
-    public List<Book> getAllBooks(int limit, int offset){
+
+    public List<Book> getAllBooks(int limit, int offset) {
         return hd.getAllBooks(limit, offset);
     }
-    public List<Book> getAllBooks(){
+
+    public List<Book> getAllBooks() {
         return hd.getAllBooks();
     }
-    public int countBooks(){return hd.countBooks();}
+
+    public int countBooks() {
+        return hd.countBooks();
+    }
+
     public void addBook(Map<String, String[]> params, Part mainImage,
                         List<Part> detailImages) throws Exception {
 
@@ -103,12 +116,12 @@ public class BookService {
     }
 
 
-
     public List<Book> findListBook(String search, int limit, int offset) {
         return hd.findListBook(search, limit, offset);
     }
-    public List<Book> getBookByEvent(int limit, int offset,String title) {
-        return hd.getAllBookByEvent(limit, offset,title);
+
+    public List<Book> getBookByEvent(int limit, int offset, String title) {
+        return hd.getAllBookByEvent(limit, offset, title);
     }
 
     public int countBooksBySearch(String search) {
@@ -133,12 +146,13 @@ public class BookService {
     }
 
     public List<Book> searchAndFilter(String q, String type, String stock) {
-            if (q != null && q.isBlank()) q = null;
-            if (type != null && type.isBlank()) type = null;
-            if (stock != null && stock.isBlank()) stock = null;
+        if (q != null && q.isBlank()) q = null;
+        if (type != null && type.isBlank()) type = null;
+        if (stock != null && stock.isBlank()) stock = null;
 
-            return hd.searchAndFilter(q, type, stock);
+        return hd.searchAndFilter(q, type, stock);
     }
+
     public void updateBook(int id,
                            Map<String, String[]> params,
                            Part mainImage,
@@ -146,10 +160,10 @@ public class BookService {
 
         Book old = hd.getBookById(id);
         if (old == null) return;
-        
+
         Book incoming = buildBookFromParams(new Book(), params);
         incoming.setId(id);
-        
+
         if (!old.getBookCode().equals(incoming.getBookCode()))
             old.setBookCode(incoming.getBookCode());
 
@@ -249,16 +263,87 @@ public class BookService {
 
         return book;
     }
-    public void insertFavoriteBook(int BookId, int userId){
+
+    public void insertFavoriteBook(int BookId, int userId) {
         hd.insertFavouriteBook(BookId, userId);
     }
+
     public List<Book> getFavouriteBook(int userId) {
         return hd.getFavouriteBook(userId);
     }
-    public void deleteFavouriteBook(int bookId,  int userId) {
+
+    public void deleteFavouriteBook(int bookId, int userId) {
         hd.deleteFavouriteBook(bookId, userId);
     }
-    public boolean isFavouriteBook(int bookId,  int userId) {
+
+    public boolean isFavouriteBook(int bookId, int userId) {
         return hd.isFavouriteBook(bookId, userId);
+    }
+
+    private Set<String> splitToSet(String value) {
+        if (value == null || value.trim().isEmpty()) return Set.of();
+        return Arrays.stream(value.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toSet());
+    }
+
+    private Set<Integer> splitToIntSet(String value) {
+        if (value == null || value.trim().isEmpty()) return Set.of();
+        return Arrays.stream(value.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
+    }
+
+
+
+
+    public List<Book> filterBooksForEvent(
+            List<Book> allBooks,
+            String typeBookApply,
+            String authorApply,
+            String publisherApply,
+            String ageApply
+    ) {
+        // Tách điều kiện event (nếu có)
+        Set<String> typeSet = splitToSet(typeBookApply);
+        Set<String> authorSet = splitToSet(authorApply);
+        Set<String> publisherSet = splitToSet(publisherApply);
+        Set<Integer> ageSet = splitToIntSet(ageApply);
+
+        return allBooks.stream().filter(book -> {
+
+
+            if (!typeSet.isEmpty()) {
+                Set<String> bookTypes = splitToSet(book.getType());
+                if (Collections.disjoint(typeSet, bookTypes)) return false;
+            }
+
+            if (!authorSet.isEmpty()) {
+                Set<String> bookAuthors = splitToSet(book.getAuthor());
+                if (Collections.disjoint(authorSet, bookAuthors)) return false;
+            }
+
+
+            if (!publisherSet.isEmpty()) {
+                Set<String> bookPublishers = splitToSet(book.getPublisher());
+                if (Collections.disjoint(publisherSet, bookPublishers)) return false;
+            }
+
+
+            if (!ageSet.isEmpty()) {
+                if (!ageSet.contains(book.getAge())) return false;
+            }
+
+            return true;
+        }).toList();
+    }
+
+
+    public void updateDiscountBook(List<Book> listBookEvent, double value) {
+        hd.updateDiscountBook(listBookEvent,value);
+
     }
 }

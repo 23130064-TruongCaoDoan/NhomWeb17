@@ -195,4 +195,11 @@ public class VoucherService {
     }
 
 
+    public boolean voucherExists(String voucherParam) {
+        return voucherDao.voucherExists(voucherParam);
+    }
+
+    public void tangVoucher(List<Integer> listU, String voucherParam) {
+        voucherDao.tangVoucher(listU, voucherParam);
+    }
 }
