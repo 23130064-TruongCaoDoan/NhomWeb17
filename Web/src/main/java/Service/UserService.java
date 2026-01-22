@@ -76,15 +76,12 @@ public class UserService {
         return userDao.existsById(id);
     }
 
-<<<<<<< HEAD
     public List<Integer> getUserPoint(int minPoint) {
         return userDao.getUserIdsByMinPoint(minPoint);
-=======
     public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
         userDao.updateProfile(id, name, phone, email, birthday);
     }
     public void updateEmail(int id, String email) {
         userDao.updateEmail(id, email);
->>>>>>> 186a88a897de915471f3f5f7c17d88ae060dae04
     }
 }
