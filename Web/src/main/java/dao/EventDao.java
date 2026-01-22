@@ -64,6 +64,9 @@ public class EventDao extends BaseDao {
 
     public boolean deleteEvent(int id) {
         return getJdbi().inTransaction(handle -> {
+            int count1 = handle.createUpdate(
+                    "DELETE FROM event_books WHERE event_id = :id"
+            ).bind("id", id).execute();
 
             int count = handle.createUpdate(
                     "DELETE FROM events WHERE id = :id"
