@@ -63,7 +63,7 @@ public class Cart implements Serializable {
     public double getTotalBill() {
         double total = 0;
         for (CartItem item : data.values()) {
-            total += item.getPrice()* item.getQuantity();
+            total += item.getPrice() * item.getQuantity();
         }
         return total;
     }
@@ -74,6 +74,23 @@ public class Cart implements Serializable {
 
     public void updateUser(User user) {
         user = new User();
+    }
+
+    public String getProductNamesAsString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (CartItem item : data.values()) {
+            if (item.getBook() != null) {
+                sb.append(item.getBook().getTitle()).append(". ");
+            }
+        }
+
+        // Xóa ". " cuối
+        if (sb.length() >= 2) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        return sb.toString();
     }
 
 

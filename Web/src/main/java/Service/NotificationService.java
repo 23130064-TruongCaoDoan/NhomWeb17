@@ -23,5 +23,12 @@ public class NotificationService {
             notificationDAO.insert(n);
         }
     }
+    public void sendNoti(int userId, String title, String content) {
+        Notification n = new Notification();
+        n.setUserId(userId);
+        n.setTitle(title);
+        n.setNoti(content);
+        notificationDAO.insert(n);
+    }
 }
 
