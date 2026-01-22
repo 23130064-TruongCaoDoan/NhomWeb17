@@ -55,7 +55,7 @@ public class CreateOrder extends HttpServlet {
 
 
         OrderService  orderService = new OrderService();
-        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange);
+        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
 
         session.removeAttribute("cart");
         session.removeAttribute("appliedDiscountVoucher");
@@ -64,7 +64,8 @@ public class CreateOrder extends HttpServlet {
         if (check) {
             response.sendRedirect("home");
         }
-
+        else{
         response.sendRedirect("ThanhToan");
+        }
     }
 }

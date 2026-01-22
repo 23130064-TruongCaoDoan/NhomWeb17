@@ -580,9 +580,14 @@
         return n.toLocaleString("vi-VN");
     }
 
+    const pointWarning = document.getElementById("pointWarning");
+
+
     if (userPoint < 100) {
         usePointCheckbox.disabled = true;
-        pointWarning.style.display = "block";
+        if (pointWarning) {
+            pointWarning.style.display = "block";
+        }
     }
 
     usePointCheckbox.addEventListener("change", function () {
@@ -623,6 +628,21 @@
         // note
         document.getElementById("finalNote").value =
             document.querySelector('textarea[name="orderNote"]').value;
+    });
+
+
+
+    // nếu không có mặc định thì chọn 1 cái
+    document.addEventListener("DOMContentLoaded", function () {
+        const addressRadios = document.querySelectorAll('input[name="addressId"]');
+
+        // nếu chưa có cái nào được chọn → tick cái đầu tiên
+        if (addressRadios.length > 0) {
+            const checked = document.querySelector('input[name="addressId"]:checked');
+            if (!checked) {
+                addressRadios[0].checked = true;
+            }
+        }
     });
 
 </script>

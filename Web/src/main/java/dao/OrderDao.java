@@ -6,7 +6,7 @@ public class OrderDao extends BaseDao{
         try {
             return getJdbi().withHandle(handle ->
                     handle.createUpdate("""
-                INSERT INTO ORDERS
+                INSERT INTO `ORDERS`
                 (user_id, total_amount, note, status, dis_voucher_id, ship_voucher_id)
                 VALUES (:user_id, :total_amount, :note, :status, :dis_voucher_id, :ship_voucher_id)
             """)
