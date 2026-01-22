@@ -102,3 +102,13 @@
 .save-btn:hover {
     background-color: #154c99;
 }
+.address_default {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.address_default label {
+    cursor: pointer;
+}

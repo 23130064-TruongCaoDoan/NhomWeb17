@@ -47,6 +47,8 @@ public class UserAddAdress extends HttpServlet {
         try {
             addressService.insertAddress(address);
             response.sendRedirect("address");
+
+
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Lỗi lưu địa chỉ!");

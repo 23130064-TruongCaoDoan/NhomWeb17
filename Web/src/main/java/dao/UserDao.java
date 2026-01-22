@@ -3,6 +3,8 @@ package dao;
 import DTO.UserWithTotalSpentDTO;
 import model.User;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class UserDao extends BaseDao {
@@ -19,11 +21,6 @@ public class UserDao extends BaseDao {
                         .mapToBean(User.class)
                         .list()
         );
-    }
-
-    public static void main(String[] args) {
-        UserDao ud = new UserDao();
-        System.out.println(ud.finduser("123@gmail.com"));
     }
 
     public void addUser(String fullname, String email, String password) {
@@ -75,6 +72,26 @@ public class UserDao extends BaseDao {
                         .isPresent()
         );
     }
+    public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE user SET name = :name, phone=:phone, email=:email, birthday=:birthday WHERE id = :id")
+                .bind("id", id)
+                .bind("name", name)
+                .bind("phone", phone)
+                .bind("email", email)
+                .bind("birthday", birthday)
+                .execute()
+                );
+    }
+    public void updateEmail(int id, String email) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE user SET email=:email WHERE id = :id")
+                        .bind("id", id)
+                        .bind("email", email)
+                        .execute()
+        );
+    }
+
 
     public List<Integer> getUserIdsByMinPoint(int minPoint) {
         return getJdbi().withHandle(handle ->

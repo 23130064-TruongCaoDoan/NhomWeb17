@@ -32,4 +32,11 @@ public class AddressService {
         }
         System.out.println(listAddress);
     }
+
+    public boolean isDefaultAddress(int id) {
+        return addressDao.isDefaultAddress(id);
+    }
+    public void setAddressDefault(int id,int userId) {
+        addressDao.setDefaultAddress(id,userId);
+    }
 }

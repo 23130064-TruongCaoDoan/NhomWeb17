@@ -30,17 +30,13 @@
                                 <span><b>${address.getName()}</b> | ${address.getSpecificAddress()}, ${address.getWard()}, ${address.getCity()}| ${address.getPhone()}</span>
                             </div>
                             <div class="address-actions">
-                                <a href="user-newAddress.jsp" class="edit-btn" title="Chỉnh sửa">
+                                <a href="editAddress?id=${address.id}" class="edit-btn" title="Chỉnh sửa">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
-                                <span class="divider">|</span>
-                                <button class="delete-btn" title="Xóa">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
                             </div>
                         </div>
                     </c:forEach>
-                    <a class="add-address" href="user-newAddress.jsp"><i class="fa-solid fa-plus"></i> Giao hàng đến địa
+                    <a class="add-address" href="addAddress"><i class="fa-solid fa-plus"></i> Giao hàng đến địa
                         chỉ khác</a>
                 </div>
 
