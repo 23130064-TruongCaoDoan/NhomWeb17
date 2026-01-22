@@ -78,6 +78,7 @@ public class UserService {
 
     public List<Integer> getUserPoint(int minPoint) {
         return userDao.getUserIdsByMinPoint(minPoint);
+    }
     public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
         userDao.updateProfile(id, name, phone, email, birthday);
     }

@@ -307,39 +307,36 @@ public class BookService {
             String publisherApply,
             String ageApply
     ) {
-        // Tách điều kiện event (nếu có)
         Set<String> typeSet = splitToSet(typeBookApply);
-        Set<String> authorSet = splitToSet(authorApply);
+        Set<Integer> authorSet = splitToIntSet(authorApply);
         Set<String> publisherSet = splitToSet(publisherApply);
         Set<Integer> ageSet = splitToIntSet(ageApply);
 
         return allBooks.stream().filter(book -> {
 
+            boolean match = false;
 
-            if (!typeSet.isEmpty()) {
-                Set<String> bookTypes = splitToSet(book.getType());
-                if (Collections.disjoint(typeSet, bookTypes)) return false;
+
+            if (!typeSet.isEmpty() && typeSet.contains(book.getType())) {
+                match = true;
             }
 
-            if (!authorSet.isEmpty()) {
-                Set<String> bookAuthors = splitToSet(book.getAuthor());
-                if (Collections.disjoint(authorSet, bookAuthors)) return false;
+            if (!authorSet.isEmpty() && authorSet.contains(book.getAuthorId())) {
+                match = true;
             }
 
-
-            if (!publisherSet.isEmpty()) {
-                Set<String> bookPublishers = splitToSet(book.getPublisher());
-                if (Collections.disjoint(publisherSet, bookPublishers)) return false;
+            if (!publisherSet.isEmpty() && publisherSet.contains(book.getPublisher())) {
+                match = true;
             }
 
-
-            if (!ageSet.isEmpty()) {
-                if (!ageSet.contains(book.getAge())) return false;
+            if (!ageSet.isEmpty() && ageSet.contains(book.getAge())) {
+                match = true;
             }
 
-            return true;
+            return match;
         }).toList();
     }
+
 
 
     public void updateDiscountBook(List<Book> listBookEvent, double value) {
