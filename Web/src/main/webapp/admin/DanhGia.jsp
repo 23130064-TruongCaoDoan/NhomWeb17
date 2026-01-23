@@ -130,7 +130,7 @@
                         <th>Đánh giá</th>
                         <th>Nhận xét</th>
                         <th>Ngày đánh giá</th>
-
+                        <th>Active</th>
                     </tr>
                     </thead>
                     <tbody id="reviewTable">
@@ -141,29 +141,9 @@
                         <td>5</td>
                         <td>Vui và dễ hiểu</td>
                         <td>2025-01-10</td>
+                        <td><input type="checkbox" name="active"></td>
 
                     </tr>
-
-                    <tr>
-                        <td>202</td>
-                        <td>Chú Mèo Đi Hia</td>
-                        <td>Hải Nam</td>
-                        <td>4</td>
-                        <td>Truyện hay</td>
-                        <td>2025-01-18</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>203</td>
-                        <td>Cô Bé Quàng Khăn Đỏ</td>
-                        <td>Thu Hà</td>
-                        <td>4</td>
-                        <td>Phù hợp trẻ nhỏ</td>
-                        <td>2025-02-02</td>
-
-                    </tr>
-
                     </tbody>
                 </table>
             </div>

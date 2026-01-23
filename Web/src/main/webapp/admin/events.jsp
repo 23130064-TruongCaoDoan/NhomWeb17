@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,25 +20,35 @@
         <c:import url="MenuFunctionAdmin.jsp"></c:import>
         <div class="event-container">
             <h2>Quản lý Sự kiện</h2>
-
-            <div class="function">
-                <button id="addEvent">Thêm sự kiện</button>
-                <div class="timkiem">
-                    <input type="text" class="search" placeholder="Tìm kiếm sự kiện">
-                    <button class="buttonSearch">Tìm kiếm</button>
+            <form method="get" action="Event">
+                <div class="function">
+                    <button id="addEvent" type="button">Thêm sự kiện</button>
+                    <div class="timkiem">
+                        <input type="text"
+                               class="search"
+                               name="q"
+                               placeholder="Tìm kiếm sự kiện"
+                               value="${param.q}">
+                        <button type="submit" class="buttonSearch">Tìm kiếm</button>
+                    </div>
                 </div>
-            </div>
 
+                <div class="event-list">
+                    <div class="title">
+                        <h3>Danh sách sự kiện</h3>
+                        <select class="locEvent" name="sortDate" onchange="this.form.submit()">
+                            <option value="all">Tất cả</option>
+                            <option value="asc" ${param.sortDate == 'asc' ? 'selected' : ''}>
+                                Sự kiện cũ nhất
+                            </option>
+                            <option value="desc" ${param.sortDate == 'desc' ? 'selected' : ''}>
+                                Sự kiện mới nhất
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
             <div class="event-list">
-                <div class="title">
-                    <h3>Danh sách sự kiện</h3>
-                    <select class="locEvent">
-                        <option value="all">Tất cả</option>
-                        <option value="latest">Sự kiện gần nhất</option>
-                        <option value="oldest">Sự kiện cũ nhất</option>
-                    </select>
-                </div>
-
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -65,26 +77,26 @@
                                         <span class="status inactive">Đã kết thúc</span>
                                     </c:if>
                                 </td>
-                                <td>${event.type_book_apply}; ${event.pulisher_apply} ; ${event.author_apply}</td>
+                                <td>${event.getApplyConditionSummary()}</td>
                                 <td>
                                     <i class="fa-solid fa-pen sua"
-                                       onclick='editEvent({
-                                               id: ${event.id},
-                                               eventCode: "${event.eventCode}",
-                                               title: "${event.title}",
-                                               value: ${event.value},
-                                               startDate: "${event.startDate}",
-                                               endDate: "${event.endDate}",
-                                               voucher: "${event.voucher_code}",
-                                               specialVoucher: "${event.special_voucher}",
-                                               point: ${event.min_point},
-                                               typeBook: [
-                                       <c:forEach var="t" items="${event.type_book_apply}" varStatus="st">
-                                               "${t}"<c:if test="${!st.last}">,</c:if>
-                                       </c:forEach>
-                                               ]
-                                               })'>
+                                       data-id="${event.id}"
+                                       data-code="${fn:escapeXml(event.eventCode)}"
+                                       data-title="${fn:escapeXml(event.title)}"
+                                       data-img="${fn:escapeXml(event.imgUrl)}"
+                                       data-value="${event.value}"
+                                       data-start="${event.startDate}"
+                                       data-end="${event.endDate}"
+                                       data-type="${fn:escapeXml(event.type_book_apply)}"
+                                       data-publisher="${fn:escapeXml(event.pulisher_apply)}"
+                                       data-author="${fn:escapeXml(event.author_apply)}"
+                                       data-voucher="${event.voucher_code}"
+                                       data-special="${event.special_voucher}"
+                                       data-point="${event.min_point}"
+                                       data-age="${fn:escapeXml(event.age_apply)}"
+                                       onclick="editEvent(this)">
                                     </i>
+
 
                                     <i class="fa-solid fa-trash xoa"
                                        onclick="deleteEvent(${event.id})">
@@ -107,36 +119,43 @@
             <button class="btn-cancel" onclick="closeDeletePopup()">Hủy</button>
         </div>
     </div>
-    <form id="eventForm"  method="post" enctype="multipart/form-data">
+    <form id="eventForm" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Mã sự kiện</label>
-            <input type="text" name="code" id="eventCode" placeholder="Nhập mã sự kiện" required>
+            <input type="text" name="code" id="eventCode" placeholder="Nhập mã sự kiện">
+            <span class="error"></span>
         </div>
 
         <div class="form-group">
             <label>Tiêu đề</label>
-            <input type="text" name="title" id="eventTitle" placeholder="Tiêu đề sự kiện" required>
+            <input type="text" name="title" id="eventTitle" placeholder="Tiêu đề sự kiện">
+            <span class="error"></span>
         </div>
 
         <div class="form-group">
             <label>Giá trị (%)</label>
-            <input type="number" name="giatri" id="eventValue" placeholder="30" required>
+            <input type="number" name="giatri" id="eventValue" placeholder="30">
+            <span class="error"></span>
         </div>
 
         <div class="form-group-inline">
             <div>
                 <label>Ngày bắt đầu</label>
-                <input type="date" name="startdate" id="startDate" required>
+                <input type="date" name="startdate" id="startDate">
+                <span class="error"></span>
             </div>
             <div>
                 <label>Ngày kết thúc</label>
-                <input type="date" name="enddate" id="endDate" required>
+                <input type="date" name="enddate" id="endDate">
+                <span class="error"></span>
             </div>
         </div>
 
         <div class="form-group anh">
             <label>Ảnh sự kiện</label>
             <input type="file" name="image" id="eventImage" accept="image/*">
+            <input type="hidden" name="oldImg" id="oldImg">
+            <span class="error"></span>
         </div>
 
         <div class="form-group book-type-group">
@@ -144,23 +163,27 @@
 
             <div class="book-type-box">
                 <label class="book-type-item">
-                    <input type="checkbox" id="tomau" name="typeBook" value="to_mau">
+                    <input type="checkbox" id="tomau" name="typeBook" value="Sách tô màu">
                     <span>Sách tô màu</span>
+                    <span class="error"></span>
                 </label>
 
                 <label class="book-type-item">
-                    <input type="checkbox" name="typeBook" id="giaoduc" value="giao_duc">
+                    <input type="checkbox" name="typeBook" id="giaoduc" value="Sách giáo dục">
                     <span>Sách giáo dục</span>
+                    <span class="error"></span>
                 </label>
 
                 <label class="book-type-item">
-                    <input type="checkbox" name="typeBook" id="sachanh" value="anh">
+                    <input type="checkbox" name="typeBook" id="sachanh" value="Sách ảnh">
                     <span>Sách ảnh</span>
+                    <span class="error"></span>
                 </label>
 
                 <label class="book-type-item">
-                    <input type="checkbox" name="typeBook" id="truyentranh" value="truyen_tranh">
+                    <input type="checkbox" name="typeBook" id="truyentranh" value="Truyện tranh">
                     <span>Truyện tranh</span>
+                    <span class="error"></span>
                 </label>
             </div>
         </div>
@@ -168,28 +191,35 @@
         <div class="form-group">
             <label>Loại sách theo độ tuổi đc áp dụng</label>
             <input id="ageBook" name="age" placeholder="Nhập các tên loại, cách nhau bằng dấu phẩy...">
+            <span class="error"></span>
         </div>
         <div class="form-group">
             <label>Sách của tác giả được áp dụng đc áp dụng</label>
-            <input id="ageBook" name="author" placeholder="Nhập các tên loại, cách nhau bằng dấu phẩy...">
+            <input id="authorBook" name="author" placeholder="Nhập các tên loại, cách nhau bằng dấu phẩy...">
+            <span class="error"></span>
         </div>
         <div class="form-group">
             <label>Nhà xuất bản áp dụng</label>
-            <input id="bookCodes" name="pulisher" placeholder="Nhập các tên nhà xuất bảng, cách nhau bằng dấu phẩy...">
+            <input id="publisher" name="pulisher" placeholder="Nhập các tên nhà xuất bảng, cách nhau bằng dấu phẩy...">
+            <span class="error"></span>
         </div>
         <div class="form-group">
             <label>Mã voucher tặng chung</label>
             <input type="text" id="voucherCode" name="voucher" placeholder="Nhập mã voucher">
+            <span class="error"></span>
         </div>
 
         <div class="form-group-inline">
             <div>
                 <label>Các mã voucher dành riêng</label>
-                <input type="text" id="specialVoucher" name="v" placeholder="Nhập các mã voucher (cách nhau bằng dấu phẩy)">
+                <input type="text" id="specialVoucher" name="v"
+                       placeholder="Nhập các mã voucher (cách nhau bằng dấu phẩy)">
+                <span class="error"></span>
             </div>
             <div>
                 <label>Điều kiện point</label>
                 <input type="number" id="minPoint" name="point" placeholder="Điềm từ...">
+                <span class="error"></span>
             </div>
         </div>
 
@@ -198,11 +228,13 @@
 </main>
 <script>
     let mode = "add";
+
     let editId = null;
     const overlay = document.getElementById("overlay");
     const add = document.getElementById("addEvent")
     const sua = document.querySelector(".sua")
     const popup = document.getElementById("eventForm");
+    const form = document.getElementById("eventForm");
 
 
     overlay.addEventListener('click', () => {
@@ -213,6 +245,7 @@
     add.addEventListener('click', () => {
         mode = "add";
         editId = null;
+        code.readOnly = false;
         form.reset();
 
         overlay.style.display = "block";
@@ -220,20 +253,20 @@
     })
     const code = document.getElementById("eventCode");
     const title = document.getElementById("eventTitle");
-    const eValue = document.getElementById("eValue");
+    const eValue = document.getElementById("eventValue");
     const sd = document.getElementById("startDate");
     const ed = document.getElementById("endDate");
     const img = document.getElementById("eventImage");
-    const tomau=document.getElementById("tomau");
-    const giaoduc=document.getElementById("giaoduc");
-    const sachanh=document.getElementById("sachanh");
-    const truyentranh=document.getElementById("truyentranh");
-    const voucher=document.getElementById("voucherCode");
-    const spVoucher=document.getElementById("specialVoucher");
-    const minPoint=document.getElementById("minPoint");
-    const form = document.getElementById("eventForm");
-
-
+    const tomau = document.getElementById("tomau");
+    const giaoduc = document.getElementById("giaoduc");
+    const sachanh = document.getElementById("sachanh");
+    const truyentranh = document.getElementById("truyentranh");
+    const voucher = document.getElementById("voucherCode");
+    const spVoucher = document.getElementById("specialVoucher");
+    const minPoint = document.getElementById("minPoint");
+    const age = document.getElementById("ageBook");
+    const authorBook = document.getElementById("authorBook");
+    const bookCodes = document.getElementById("publisher");
 
 
     function setError(inputElement, message) {
@@ -304,11 +337,33 @@
             clearError(img);
         }
 
-        // Checkbox loại sách
+        // ===== Điều kiện áp dụng (ít nhất 1 trong 4) =====
         const checkedBooks = document.querySelectorAll('input[name="typeBook"]:checked');
-        if (checkedBooks.length === 0) {
-            alert("Vui lòng chọn ít nhất 1 loại sách áp dụng");
+        const hasTypeBook = checkedBooks.length > 0;
+        const hasPublisher = bookCodes.value.trim() !== "";
+        const hasAge = age.value.trim() !== "";
+        const hasAuthor = authorBook.value.trim() !== "";
+
+        if (!hasTypeBook && !hasPublisher && !hasAge && !hasAuthor) {
+
+            // show lỗi ở publisher (1 chỗ đại diện)
+            setError(bookCodes,
+                "Vui lòng chọn ít nhất 1 điều kiện (Loại sách / NXB / Độ tuổi / Tác giả)"
+            );
+
+            // OPTIONAL: bôi đỏ thêm nhóm checkbox cho dễ nhìn
+            document.querySelectorAll('input[name="typeBook"]').forEach(cb => {
+                cb.closest('.book-type-item').style.border = '1px solid red';
+            });
+
             hasError = true;
+
+        } else {
+            clearError(bookCodes);
+
+            document.querySelectorAll('.book-type-item').forEach(item => {
+                item.style.border = '';
+            });
         }
 
 
@@ -325,7 +380,6 @@
             }
         }
     });
-
 
 
     function setGroupError(groupId, message) {
@@ -349,27 +403,34 @@
         }
     }
 
-    function editEvent(event) {
+    function editEvent(el) {
         mode = "edit";
-        editId = event.id;
+        editId = el.dataset.id;
 
-        code.value = event.eventCode;
-        title.value = event.title;
-        document.getElementById("eventValue").value = event.value;
-        sd.value = event.startDate;
-        ed.value = event.endDate;
-        voucher.value = event.voucher || "";
-        spVoucher.value = event.specialVoucher || "";
-        minPoint.value = event.point || "";
+        code.value = el.dataset.code;
+        code.readOnly = true;
 
+        title.value = el.dataset.title;
+        eValue.value = el.dataset.value;
+        sd.value = el.dataset.start;
+        ed.value = el.dataset.end;
+
+        voucher.value = el.dataset.voucher || "";
+        spVoucher.value = el.dataset.special || "";
+        minPoint.value = el.dataset.point || "";
+
+        age.value = el.dataset.age || "";
+        authorBook.value = el.dataset.author || "";
+        bookCodes.value = el.dataset.publisher || "";
+
+        document.getElementById("oldImg").value = el.dataset.img || "";
+
+        img.value = "";
 
         document.querySelectorAll('input[name="typeBook"]').forEach(cb => cb.checked = false);
-
-        if (event.typeBook) {
-            event.typeBook.forEach(t => {
-                const cb = document.querySelector(
-                    `input[name="typeBook"][value="${t}"]`
-                );
+        if (el.dataset.type) {
+            el.dataset.type.split(",").forEach(t => {
+                const cb = document.querySelector(`input[value="${t.trim()}"]`);
                 if (cb) cb.checked = true;
             });
         }
@@ -377,7 +438,6 @@
         overlay.style.display = "block";
         popup.style.display = "block";
     }
-
 
 
     function updateEvent() {
@@ -403,7 +463,6 @@
             })
             .catch(err => console.log(err));
     }
-
 
 
     function addEvent() {
@@ -453,6 +512,7 @@
         overlay.style.display = "block";
         document.getElementById("deletePopup").style.display = "block";
     }
+
     function closeDeletePopup() {
         deleteId = null;
         overlay.style.display = "none";

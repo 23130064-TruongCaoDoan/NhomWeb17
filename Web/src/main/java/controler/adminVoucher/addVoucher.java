@@ -68,6 +68,14 @@ public class addVoucher extends HttpServlet {
             return;
         }
 
+        if (voucherService.voucherExists(code)) {
+
+            response.getWriter().write(
+                    "{\"success\":false,\"message\":\"mã voucher đã tồn tại\"}"
+            );
+            return;
+        }
+
         if (conditionPrice <= 0
                 && (conditionBook == null || conditionBook.trim().isEmpty())
                 && (conditionPublisher == null || conditionPublisher.trim().isEmpty())) {
@@ -84,27 +92,34 @@ public class addVoucher extends HttpServlet {
             );
             return;
         }
-        boolean success = voucherService.addVoucher(
-                code,
-                description,
-                conditionPrice,
-                conditionBook,
-                conditionPublisher,
-                start_date,
-                end_date,
-                usage_limit,
-                value,
-                type
-        );
+        try {
 
-        if (success) {
-            response.getWriter().write(
-                    "{\"success\":true,\"message\":\"Thêm voucher thành công\"}"
+
+            boolean success = voucherService.addVoucher(
+                    code,
+                    description,
+                    conditionPrice,
+                    conditionBook,
+                    conditionPublisher,
+                    start_date,
+                    end_date,
+                    usage_limit,
+                    value,
+                    type
             );
-        } else {
-            response.getWriter().write(
-                    "{\"success\":false,\"message\":\"Thêm voucher thất bại\"}"
-            );
+
+            if (success) {
+                response.getWriter().write(
+                        "{\"success\":true,\"message\":\"Thêm voucher thành công\"}"
+                );
+            } else {
+                response.getWriter().write(
+                        "{\"success\":false,\"message\":\"Thêm voucher thất bại\"}"
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Ghi lại stack trace
+            response.getWriter().write("{\"success\":false,\"message\":\"Đã xảy ra lỗi\"}");
         }
     }
 }

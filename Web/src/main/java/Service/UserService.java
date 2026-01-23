@@ -44,7 +44,7 @@ public class UserService {
 
     public void updatePass(String email, String password) {
         if (checkExit(email)) {
-            userDao.updatePass(password);
+            userDao.updatePass(email,password);
         }
     }
 
@@ -76,6 +76,9 @@ public class UserService {
         return userDao.existsById(id);
     }
 
+    public List<Integer> getUserPoint(int minPoint) {
+        return userDao.getUserIdsByMinPoint(minPoint);
+    }
     public void updateProfile(int id, String name, String phone, String email, LocalDate birthday) {
         userDao.updateProfile(id, name, phone, email, birthday);
     }

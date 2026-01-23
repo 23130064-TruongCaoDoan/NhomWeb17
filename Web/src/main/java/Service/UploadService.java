@@ -11,7 +11,11 @@ public class UploadService {
 
     private final Cloudinary cloudinary;
     public UploadService() {
-        cloudinary = new Cloudinary("cloudinary://API_KEY:API_SECRET@CLOUD_NAME");
+        cloudinary = new Cloudinary(Map.of(
+                "cloud_name", "dyw6k0pz6",
+                "api_key", "481496538886471",          // Root API Key
+                "api_secret", "TZz2KR2Z1ohIvOsE5q4_FOpiUk4" // Root API Secret
+        ));
     }
 
     public String upload(Part file, String folder) {

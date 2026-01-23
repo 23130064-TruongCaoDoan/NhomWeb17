@@ -147,9 +147,9 @@ public class VoucherDao extends BaseDao {
     public void insertVoucherForUsers(int voucher_id, List<Integer> userIds) {
 
         String sql = """
-        INSERT IGNORE INTO voucher_user (user_id, voucher_id)
-        VALUES (:userId, :voucher_id)
-        """;
+                INSERT IGNORE INTO voucher_user (user_id, voucher_id)
+                VALUES (:userId, :voucher_id)
+                """;
 
         getJdbi().useHandle(handle -> {
             var batch = handle.prepareBatch(sql);
@@ -166,11 +166,11 @@ public class VoucherDao extends BaseDao {
 
     public int getVoucherIdByCode(String code) {
         String sql = """
-        SELECT id
-        FROM voucher
-        WHERE code = :code
-        LIMIT 1
-        """;
+                SELECT id
+                FROM voucher
+                WHERE code = :code
+                LIMIT 1
+                """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
@@ -183,21 +183,21 @@ public class VoucherDao extends BaseDao {
         );
     }
 
-    public List<Voucher> listVoucherDiscountUser(int id){
+    public List<Voucher> listVoucherDiscountUser(int id) {
         LocalDate today = LocalDate.now();
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery("""
-                SELECT v.* FROM voucher v
-                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
-                WHERE 
-                  type='discount' 
-                  AND vu.user_id = :userId
-                  AND v.start_date <= :today
-                  AND v.end_date >= :today
-                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
-                ORDER BY v.end_date ASC, v.valuee DESC
-                """)
+                                SELECT v.* FROM voucher v
+                                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
+                                WHERE 
+                                  type='discount' 
+                                  AND vu.user_id = :userId
+                                  AND v.start_date <= :today
+                                  AND v.end_date >= :today
+                                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
+                                ORDER BY v.end_date ASC, v.valuee DESC
+                                """)
                         .bind("userId", id)
                         .bind("today", today)
                         .mapToBean(Voucher.class)
@@ -211,19 +211,57 @@ public class VoucherDao extends BaseDao {
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery("""
-                SELECT v.* FROM voucher v
-                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
-                WHERE  type='ship'
-                  AND vu.user_id = :userId
-                  AND v.start_date <= :today
-                  AND v.end_date >= :today
-                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
-                ORDER BY v.end_date ASC, v.valuee DESC
-                """)
+                                SELECT v.* FROM voucher v
+                                INNER JOIN voucher_user vu ON v.id = vu.voucher_id
+                                WHERE  type='ship'
+                                  AND vu.user_id = :userId
+                                  AND v.start_date <= :today
+                                  AND v.end_date >= :today
+                                  AND (v.usage_limit IS NULL OR v.usage_limit > 0)
+                                ORDER BY v.end_date ASC, v.valuee DESC
+                                """)
                         .bind("userId", id)
                         .bind("today", today)
                         .mapToBean(Voucher.class)
                         .list()
         );
     }
+
+    public boolean voucherExists(String code) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                    SELECT COUNT(*) FROM voucher WHERE code = :code
+                                """)
+                        .bind("code", code)
+                        .mapTo(int.class)
+                        .one()
+        ) > 0;
+    }
+
+    public void tangVoucher(List<Integer> listU, String voucherParam) {
+        if (listU == null || listU.isEmpty()) return;
+
+        getJdbi().useHandle(handle -> {
+            Integer voucherId = handle.createQuery(
+                            "SELECT id FROM voucher WHERE code = :code"
+                    )
+                    .bind("code", voucherParam)
+                    .mapTo(Integer.class)
+                    .one();
+
+            org.jdbi.v3.core.statement.PreparedBatch batch =
+                    handle.prepareBatch(
+                            "INSERT INTO voucher_user(user_id, voucher_id) VALUES (:user_id, :voucher_id)"
+                    );
+
+            for (Integer userId : listU) {
+                batch.bind("user_id", userId)
+                        .bind("voucher_id", voucherId)
+                        .add();
+            }
+
+            batch.execute();
+        });
+    }
+
 }
