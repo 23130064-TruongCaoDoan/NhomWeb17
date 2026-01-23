@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 22/12/2025
-  Time: 10:49 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -21,7 +15,7 @@
         <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
         <a href="<c:url value="/KhoVoucher" />" class="function storeVoucher">Kho Voucher</a>
         <a href="<c:url value="/event" />" class="function event">Sự kiện</a>
-        <a href="DanhGia.html" class="function rating">Đánh giá</a>
+        <a href="<c:url value="/Rate" />" class="function rating">Đánh giá</a>
     </div>
 </div>
 </body>

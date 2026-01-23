@@ -5,6 +5,7 @@ import dao.CommentDao;
 import model.CommentView;
 import model.RatingStartView;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class CommentService {
@@ -24,4 +25,18 @@ public class CommentService {
     public List<CommentView> getCommentByRating(int bookId, int rating){
         return hd.getCommentByRating(bookId, rating);
     }
+
+    public int countByStar(int star, LocalDate from, LocalDate to, String  type) {
+        return hd.countByStar(star, from, to, type);
+    }
+    public int countByStar(int star,  String  type) {
+        return hd.countByStar(star, type);
+    }
+    public int countByStar(int star, LocalDate from, LocalDate to) {
+        return hd.countByStar(star, from, to);
+    }
+    public int countByStar(int star) {
+        return hd.countByStar(star);
+    }
+
 }

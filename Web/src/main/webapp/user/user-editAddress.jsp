@@ -29,7 +29,7 @@
                 <h2>Chỉnh sửa địa chỉ</h2>
                 <div class="address_default">
                     <label for="isDefault">Địa chỉ mặc định</label>
-                    <input type="radio" name="isDefault" value="${address.id}" <c:if test="${isDefault}">checked</c:if>  onclick="setDefault(${address.id})">
+                    <input type="radio" id="isDefault" name="isDefault" value="${address.id}" <c:if test="${isDefault}">checked</c:if>  onclick="setDefault(${address.id})">
                     <small class="error-msg"></small>
                 </div>
                 <form id="addressForm" class="address-form" action="editAddress" method="post" novalidate>
@@ -37,19 +37,19 @@
 
 
                     <div class="form-group">
-                        <label>Họ và tên</label>
+                        <label for="hoten">Họ và tên</label>
                         <input type="text" id="hoten" name="hoten" placeholder="Nhập họ và tên" value="${address.name}">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
-                        <label>Điện thoại</label>
+                        <label for="sdt">Điện thoại</label>
                         <input type="text" id="sdt" name="sdt" placeholder="Ex: 0972xxxxxx" value="${address.phone}">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
-                        <label>Tỉnh/Thành phố</label>
+                        <label for="tinh">Tỉnh/Thành phố</label>
                         <select id="tinh" name="tinh">
                             <option value="">${address.city}</option>
                         </select>
@@ -59,7 +59,7 @@
 
 
                     <div class="form-group">
-                        <label>Xã/Phường</label>
+                        <label for="xa">Xã/Phường</label>
                         <select id="xa" name="xa">
                             <option value="">${address.ward}</option>
                         </select>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Địa chỉ</label>
+                        <label for="diachi">Địa chỉ</label>
                         <input type="text" id="diachi" name="diachi" placeholder="Địa chỉ cụ thể" value="${address.specificAddress}">
                         <small class="error-msg"></small>
                     </div>

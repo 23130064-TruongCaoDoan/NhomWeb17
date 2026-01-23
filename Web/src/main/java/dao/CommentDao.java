@@ -3,6 +3,8 @@ package dao;
 import model.CommentView;
 import model.RatingStartView;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class CommentDao extends BaseDao{
@@ -69,10 +71,77 @@ public class CommentDao extends BaseDao{
                         .list()
         );
     }
+    public int countByStar(int star, LocalDate from, LocalDate to, String type) {
+        return getJdbi().withHandle(handle -> {
+                return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                                AND c.create_at >= :from
+                                                AND c.create_at <= :to
+                                                AND b.type = :type
+                                    """)
+                    .bind("star", star)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .bind("type", type)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star, LocalDate from, LocalDate to) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments
+                                        WHERE rating = :star
+                                                AND create_at >= :from
+                                                AND create_at <= :to
+                                    """)
+                    .bind("star", star)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star, String type) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                              AND b.type = :type
+                                    """)
+                    .bind("star", star)
+                    .bind("type", type)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                    """)
+                    .bind("star", star)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+
+
 
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
         List<RatingStartView> comments = dao.getRatingStartView(2);
-        System.out.println(dao.getAllComment(2));
+        LocalDate from =  LocalDate.of(2018, 1, 1);
+        LocalDate to =  LocalDate.now();
+        System.out.println(dao.countByStar(5,"Truyện tranh"));
     }
 }
