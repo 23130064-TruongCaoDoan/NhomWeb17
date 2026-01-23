@@ -1,193 +1,177 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Đánh giá</title>
 
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css_admin/danhgia.css" />
-    <link rel="stylesheet" href="assets/css_admin/admin.css" />
-  </head>
-  <body>
-    <main>
-      <header>
-        <div class="logo left">
-          <img src="assets/img/logo/logoChinh.png" alt="logo" />
-        </div>
-        <div class="right">
-          <i class="fa-solid fa-user"></i>
-          <div class="ten">admin</div>
-          <button class="dangxuat">Đăng xuất</button>
-        </div>
-      </header>
-      <div class="content">
-        <div class="Menu">
-          <div class="title"><span>CHỨC NĂNG</span></div>
-          <div class="menfunction">
-            <a href="ThongKe.html" class="function thongke">Thống kê</a>
-            <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
-            <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
-            <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
-            <a href="khoVoucher.html" class="function storeVoucher"
-              >Kho Voucher</a
-            >
-            <a href="events.html" class="function event">Sự kiện</a>
-            <a href="DanhGia.html" class="function rating active">Đánh giá</a>
-          </div>
-          
-        </div>
-       
+    <link rel="stylesheet" href="assets/css_admin/danhgia.css"/>
+    <link rel="stylesheet" href="assets/css_admin/admin.css"/>
+</head>
+<body>
+<main>
+    <c:import url="headerAdmin.jsp"></c:import>
+    <div class="content">
+        <c:import url="MenuFunctionAdmin.jsp"></c:import>
+
         <div class="dashboard">
-        <h2>Thống kê đánh giá</h2>
+            <h2>Thống kê đánh giá</h2>
 
-        <div class="filter-section">
-          <div class="filter-item">
-            <label>Từ ngày:</label>
-            <input type="date" id="startDate">
-          </div>
-          <div class="filter-item">
-            <label>Đến ngày:</label>
-            <input type="date" id="endDate">
-          </div>
-          <div class="filter-item">
-            <label>Thể loại:</label>
-            <select id="typeFilter">
-              <option value="">Tất cả</option>
-              <option value="">Truyện tranh</option>
-              <option value="">Halloween</option>
-              <option value="">Noel</option>
-              <option value="">Hài hước</option>
-            </select>
-          </div>
-          <button id="applyFilter" class="btn-filter">Lọc</button>
+            <form id="filterForm" action="${pageContext.request.contextPath}/Rate" method="post">
+                <div class="filter-section">
+                    <div class="filter-item">
+                        <label for="startDate">Từ ngày:</label>
+                        <input type="date" id="startDate" name="startDate" value="${from}">
+                    </div>
+                    <div class="filter-item">
+                        <label for="endDate">Đến ngày:</label>
+                        <input type="date" id="endDate" name="endDate" value="${to}">
+                    </div>
+                    <div class="filter-item">
+                        <label for="typeFilter">Thể loại:</label>
+                        <select id="typeFilter" name="typeFilter">
+                            <option value="0" ${type==0?"selected":""}>Tất cả</option>
+                            <option value="1" ${type==1?"selected":""}>Truyện tranh</option>
+                            <option value="2" ${type==2?"selected":""}>Sách ảnh</option>
+                            <option value="3" ${type==3?"selected":""}>Sách giáo dục</option>
+                            <option value="4" ${type==4?"selected":""}>Sách tô màu</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="applyFilter" class="btn-filter">Lọc</button>
+                </div>
+            </form>
+
+
+            <div class="chart-container">
+                <div class="chart-title">Phân bố số lượng đánh giá</div>
+                <div class="chart">
+                    <c:forEach begin="1" end="5" var="i">
+                        <div class="column-wrapper">
+                            <div class="figure">${stars[i]}</div>
+
+                            <div class="columns-chart"
+                                 style="height: ${(stars[i] * 200.0) / max}px">
+                            </div>
+
+                            <p class="label-star">${i} Sao</p>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+
+
+            <div class="top-section">
+                <div class="top-box">
+                    <h3>Top sách được đánh giá cao</h3>
+                    <ul id="topHighRated">
+                        <c:if test="${empty listHigh}">
+                            <li>Chưa có dữ liệu</li>
+                        </c:if>
+                        <c:forEach items="${listHigh}" var="item" varStatus="st" begin="0" end="10">
+                            <li>
+                                <span class="rank ${st.index == 0 ? 'rank1' : st.index == 1 ? 'rank2' : st.index == 2 ? 'rank3' : ''}">
+                                        ${st.index + 1}
+                                </span>
+                                <span class="book-title" title="${item.title}">
+                                        ${item.title}
+                                </span>
+                                <span class="stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <c:choose>
+                                            <c:when test="${i <= item.rating}">★</c:when>
+                                            <c:otherwise>☆</c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </span>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <div class="top-box">
+                    <h3>Sách bị đánh giá thấp</h3>
+                    <ul id="topLowRated">
+                        <c:if test="${empty listLow}">
+                            <li>Chưa có dữ liệu</li>
+                        </c:if>
+                        <c:forEach items="${listLow}" var="item" varStatus="st" begin="0" end="10">
+                            <li>
+                                <span class="rank ${st.index == 0 ? 'rank1' : st.index == 1 ? 'rank2' : st.index == 2 ? 'rank3' : ''}">
+                                        ${st.index + 1}
+                                </span>
+                                <span class="book-title" title="${item.title}">
+                                        ${item.title}
+                                </span>
+                                <span class="stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <c:choose>
+                                            <c:when test="${i <= item.rating}">★</c:when>
+                                            <c:otherwise>☆</c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </span>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID Đánh giá</th>
+                        <th>Tên sách</th>
+                        <th>Người đánh giá</th>
+                        <th>Đánh giá</th>
+                        <th>Nhận xét</th>
+                        <th>Ngày đánh giá</th>
+                        <th>Active</th>
+                    </tr>
+                    </thead>
+                    <tbody id="reviewTable">
+                    <tr>
+                        <td>201</td>
+                        <td>Doraemon - Tập 1</td>
+                        <td>Mai Anh</td>
+                        <td>5</td>
+                        <td>Vui và dễ hiểu</td>
+                        <td>2025-01-10</td>
+                        <td><input type="checkbox" name="active"></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+</main>
+<script>
+    const overlay = document.getElementById("overlay");
+    const add = document.getElementById("addEvent");
+    const sua = document.querySelector(".sua");
+    const popup = document.getElementById("eventForm");
 
-        <div class="chart-container">
-        <div class="chart-title">Phân bố số lượng đánh giá</div>
-        <div class="chart">
-          <div class="column-wrapper">
-              <div class="figure">100</div>
-            <div class="columns-chart" id="star1" style="height: 15%;"></div>
-            <p class="label-star">1 Sao</p>
-          </div>
-          <div class="column-wrapper">
-              <div class="figure">150</div>
-            <div class="columns-chart" id="star2" style="height: 20%;"></div>
-            <p class="label-star">2 Sao</p>
-          </div>
-          <div class="column-wrapper">
-              <div class="figure">250</div>
-            <div class="columns-chart" id="star3" style="height: 30%;"></div>
-            <p class="label-star">3 Sao</p>
-          </div>
-          <div class="column-wrapper">
-              <div class="figure">500</div>
-            <div class="columns-chart" id="star4" style="height: 70%;"></div>
-            <p class="label-star">4 Sao</p>
-          </div>
-          <div class="column-wrapper">
-              <div class="figure">600</div>
-            <div class="columns-chart" id="star5" style="height: 90%;"></div>
-            <p class="label-star">5 Sao</p>
-          </div>
-        </div>
-      </div>
-
-
-        <div class="top-section">
-          <div class="top-box">
-            <h3>Top sách được đánh giá cao</h3>
-            <ul id="topHighRated">
-              <li><span class="rank rank1">1</span> Harry Potter và Hòn đá Phù thủy <span class="stars">★★★★★</span></li>
-              <li><span class="rank rank2">2</span> Nhà em bán nem <span class="stars">★★★★★</span></li>
-              <li><span class="rank rank3">3</span> Bí kíp luyện rồng <span class="stars">★★★★☆</span></li>
-              <li><span class="rank">4</span> Chuyện cổ tích Việt Nam <span class="stars">★★★★☆</span></li>
-              <li><span class="rank">5</span> Những người khốn khổ <span class="stars">★★★★☆</span></li>
-            </ul>
-          </div>
-          <div class="top-box">
-            <h3>Sách bị đánh giá thấp</h3>
-            <ul id="topLowRated">
-              <li><span class="rank rank1">1</span> Cuốn nhật ký nhạt <span class="stars">★☆☆☆☆</span></li>
-              <li><span class="rank rank2">2</span> Lịch sử nhàm chán <span class="stars">★★☆☆☆</span></li>
-              <li><span class="rank rank3">3</span> Truyện dài dài không tên <span class="stars">★★☆☆☆</span></li>
-              <li><span class="rank">4</span> Câu chuyện không hồi kết <span class="stars">★★★☆☆</span></li>
-              <li><span class="rank">5</span> Học toán khô khan <span class="stars">★★★☆☆</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>ID Đánh giá</th>
-                <th>Tên sách</th>
-                <th>Người đánh giá</th>
-                <th>Đánh giá</th>
-                <th>Nhận xét</th>
-                <th>Ngày đánh giá</th>
-                
-              </tr>
-            </thead>
-            <tbody id="reviewTable">
-              <tr>
-                <td>201</td>
-                <td>Doraemon - Tập 1</td>
-                <td>Mai Anh</td>
-                <td>5</td>
-                <td>Vui và dễ hiểu</td>
-                <td>2025-01-10</td>
-                
-              </tr>
-
-              <tr>
-                <td>202</td>
-                <td>Chú Mèo Đi Hia</td>
-                <td>Hải Nam</td>
-                <td>4</td>
-                <td>Truyện hay</td>
-                <td>2025-01-18</td>
-                
-              </tr>
-
-              <tr>
-                <td>203</td>
-                <td>Cô Bé Quàng Khăn Đỏ</td>
-                <td>Thu Hà</td>
-                <td>4</td>
-                <td>Phù hợp trẻ nhỏ</td>
-                <td>2025-02-02</td>
-                
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-    <script>
-      const overlay = document.getElementById("overlay");
-      const add = document.getElementById("addEvent");
-      const sua = document.querySelector(".sua");
-      const popup = document.getElementById("eventForm");
-
-      overlay.addEventListener("click", () => {
+    overlay.addEventListener("click", () => {
         overlay.style.display = "none";
         popup.style.display = "none";
-      });
-      sua.addEventListener("click", () => {
+    });
+    sua.addEventListener("click", () => {
         overlay.style.display = "block";
         popup.style.display = "block";
-      });
-      add.addEventListener("click", () => {
+    });
+    add.addEventListener("click", () => {
         overlay.style.display = "block";
         popup.style.display = "block";
-      });
-    </script>
-  </body>
+    });
+</script>
+<script>
+    window.onload = function () {
+        document.getElementById("filterForm").dispatchEvent(new Event("submit"));
+    };
+</script>
+</body>
 </html>

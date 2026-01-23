@@ -73,11 +73,6 @@ public class BookDao extends BaseDao {
         );
     }
 
-    public static void main(String[] args) {
-        BookDao bookDao = new BookDao();
-        System.out.println(bookDao.getBookById(1));
-    }
-
     public List<Book> findListBook(String search, int limit, int offset) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(
@@ -164,17 +159,17 @@ public class BookDao extends BaseDao {
         );
     }
 
-    public List<Book> getAllBookByEvent(int limit, int offset, String title) {
+    public List<Book> getAllBookByEvent(int limit, int offset, int idEvent) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT b.* " +
                                 "FROM BOOKS b " +
                                 "INNER JOIN event_books eb ON eb.book_id = b.id " +
                                 "INNER JOIN events e ON e.id = eb.event_id " +
-                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "WHERE is_sell=1 AND e.id LIKE :id " +
                                 "ORDER BY add_date DESC LIMIT :limit OFFSET :offset")
                         .bind("limit", limit)
                         .bind("offset", offset)
-                        .bind("title", "%" + title + "%")
+                        .bind("id", idEvent)
                         .mapToBean(Book.class)
                         .list()
         );
@@ -212,15 +207,15 @@ public class BookDao extends BaseDao {
         );
     }
 
-    public int countBooksByEvent(String title) {
+    public int countBooksByEvent(int idEvent) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*)" +
                                 "FROM BOOKS b " +
                                 "INNER JOIN event_books eb ON eb.book_id = b.id " +
                                 "INNER JOIN events e ON e.id = eb.event_id " +
-                                "WHERE is_sell=1 AND e.title LIKE :title " +
+                                "WHERE is_sell=1 AND e.id LIKE :id " +
                                 "ORDER BY add_date DESC")
-                        .bind("title", "%" + title + "%")
+                        .bind("id", idEvent)
                         .mapTo(int.class)
                         .one()
         );

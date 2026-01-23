@@ -1,8 +1,11 @@
 package dao;
 
+import model.AdminBookRateView;
 import model.CommentView;
 import model.RatingStartView;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class CommentDao extends BaseDao{
@@ -69,10 +72,212 @@ public class CommentDao extends BaseDao{
                         .list()
         );
     }
+    public int countByStar(int star, LocalDate from, LocalDate to, String type) {
+        return getJdbi().withHandle(handle -> {
+                return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                                AND c.create_at >= :from
+                                                AND c.create_at <= :to
+                                                AND b.type = :type
+                                    """)
+                    .bind("star", star)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .bind("type", type)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star, LocalDate from, LocalDate to) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments
+                                        WHERE rating = :star
+                                                AND create_at >= :from
+                                                AND create_at <= :to
+                                    """)
+                    .bind("star", star)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star, String type) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                              AND b.type = :type
+                                    """)
+                    .bind("star", star)
+                    .bind("type", type)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
+    public int countByStar(int star) {
+        return getJdbi().withHandle(handle -> {
+            return handle.createQuery("""
+                                        SELECT COUNT(*)
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.rating = :star
+                                    """)
+                    .bind("star", star)
+                    .mapTo(int.class)
+                    .one();
+        });
+    }
 
+    public List<AdminBookRateView> getAdminBookRateHigh(LocalDate from, LocalDate to, String type) {
+        return getJdbi().withHandle(handle -> {
+             return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE b.type = :type
+                                                 AND c.rating BETWEEN 4 AND 5
+                                                 AND c.create_at >= :from
+                                                 AND c.create_at <= :to
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating DESC
+                                    """)
+                        .bind("type", type)
+                        .bind("from", from)
+                        .bind("to", to)
+                        .mapToBean(AdminBookRateView.class)
+                        .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(LocalDate from, LocalDate to) {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE rating BETWEEN 4 AND 5
+                                            AND c.create_at >= :from
+                                            AND c.create_at <= :to
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating DESC
+                                    """)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh() {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE rating BETWEEN 4 AND 5
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating DESC
+                                    """)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(String type) {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE b.type = :type
+                                            AND rating BETWEEN 4 AND 5
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating DESC
+                                    """)
+                    .bind("type", type)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+
+    public List<AdminBookRateView> getAdminBookRateLow(LocalDate from, LocalDate to) {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE c.create_at >= :from
+                                            AND c.create_at <= :to
+                                            AND rating BETWEEN 1 AND 3
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating ASC
+                                    """)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(LocalDate from, LocalDate to,String type) {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE b.type = :type
+                                            AND rating BETWEEN 1 AND 3
+                                            AND c.create_at >= :from
+                                            AND c.create_at <= :to
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating ASC
+                                    """)
+                    .bind("from", from)
+                    .bind("to", to)
+                    .bind("type", type)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(String type) {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE b.type = :type
+                                            AND rating BETWEEN 1 AND 3
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating ASC
+                                    """)
+                    .bind("type", type)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
+    public List<AdminBookRateView> getAdminBookRateLow() {
+        return getJdbi().withHandle(handle -> {
+            return   handle.createQuery("""
+                                        SELECT b.title, AVG(c.rating) AS rating
+                                        FROM comments c
+                                        INNER JOIN books b ON b.id = c.book_id
+                                        WHERE rating BETWEEN 1 AND 3
+                                        GROUP BY b.id, b.title
+                                        ORDER BY rating ASC
+                                    """)
+                    .mapToBean(AdminBookRateView.class)
+                    .list();
+        });
+    }
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
         List<RatingStartView> comments = dao.getRatingStartView(2);
-        System.out.println(dao.getAllComment(2));
+        LocalDate from =  LocalDate.of(2018, 1, 1);
+        LocalDate to =  LocalDate.now();
+        System.out.println(dao.getAdminBookRateHigh());
     }
 }

@@ -218,3 +218,13 @@ th, td {
     text-align: center;
     word-wrap: break-word;
 }
+.book-title {
+    max-width: 338px;
+    display: inline-block;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    vertical-align: middle;
+}

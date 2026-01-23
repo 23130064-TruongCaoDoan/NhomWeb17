@@ -33,7 +33,7 @@
                 <div class="slides">
                     <c:forEach var="event" items="${events}" varStatus="st">
                         <div class="slide ${st.first ? 'active' : ''}">
-                            <a href="${pageContext.request.contextPath}/dsSanPham?type=4&title=${event.title}">
+                            <a href="${pageContext.request.contextPath}/dsSanPham?type=4&title=${event.title}&idEvent=${event.id}">
                                 <img src="${event.imgUrl}" alt="event-img">
                             </a>
                         </div>

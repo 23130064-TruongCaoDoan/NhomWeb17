@@ -89,9 +89,9 @@ public class UserDao extends BaseDao {
                         .bind("id", id)
                         .bind("email", email)
                         .execute()
+
         );
     }
-
 
     public List<Integer> getUserIdsByMinPoint(int minPoint) {
         return getJdbi().withHandle(handle ->
