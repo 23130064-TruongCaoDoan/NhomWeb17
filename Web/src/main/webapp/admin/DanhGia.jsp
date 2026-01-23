@@ -69,23 +69,53 @@
                 <div class="top-box">
                     <h3>Top sách được đánh giá cao</h3>
                     <ul id="topHighRated">
-                        <li><span class="rank rank1">1</span> Harry Potter và Hòn đá Phù thủy <span
-                                class="stars">★★★★★</span></li>
-                        <li><span class="rank rank2">2</span> Nhà em bán nem <span class="stars">★★★★★</span></li>
-                        <li><span class="rank rank3">3</span> Bí kíp luyện rồng <span class="stars">★★★★☆</span></li>
-                        <li><span class="rank">4</span> Chuyện cổ tích Việt Nam <span class="stars">★★★★☆</span></li>
-                        <li><span class="rank">5</span> Những người khốn khổ <span class="stars">★★★★☆</span></li>
+                        <c:if test="${empty listHigh}">
+                            <li>Chưa có dữ liệu</li>
+                        </c:if>
+                        <c:forEach items="${listHigh}" var="item" varStatus="st" begin="0" end="10">
+                            <li>
+                                <span class="rank ${st.index == 0 ? 'rank1' : st.index == 1 ? 'rank2' : st.index == 2 ? 'rank3' : ''}">
+                                        ${st.index + 1}
+                                </span>
+                                <span class="book-title" title="${item.title}">
+                                        ${item.title}
+                                </span>
+                                <span class="stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <c:choose>
+                                            <c:when test="${i <= item.rating}">★</c:when>
+                                            <c:otherwise>☆</c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </span>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div class="top-box">
                     <h3>Sách bị đánh giá thấp</h3>
                     <ul id="topLowRated">
-                        <li><span class="rank rank1">1</span> Cuốn nhật ký nhạt <span class="stars">★☆☆☆☆</span></li>
-                        <li><span class="rank rank2">2</span> Lịch sử nhàm chán <span class="stars">★★☆☆☆</span></li>
-                        <li><span class="rank rank3">3</span> Truyện dài dài không tên <span class="stars">★★☆☆☆</span>
-                        </li>
-                        <li><span class="rank">4</span> Câu chuyện không hồi kết <span class="stars">★★★☆☆</span></li>
-                        <li><span class="rank">5</span> Học toán khô khan <span class="stars">★★★☆☆</span></li>
+                        <c:if test="${empty listLow}">
+                            <li>Chưa có dữ liệu</li>
+                        </c:if>
+                        <c:forEach items="${listLow}" var="item" varStatus="st" begin="0" end="10">
+                            <li>
+                                <span class="rank ${st.index == 0 ? 'rank1' : st.index == 1 ? 'rank2' : st.index == 2 ? 'rank3' : ''}">
+                                        ${st.index + 1}
+                                </span>
+                                <span class="book-title" title="${item.title}">
+                                        ${item.title}
+                                </span>
+                                <span class="stars">
+                                    <c:forEach begin="1" end="5" var="i">
+                                        <c:choose>
+                                            <c:when test="${i <= item.rating}">★</c:when>
+                                            <c:otherwise>☆</c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </span>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

@@ -7,11 +7,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.AdminBookRateView;
 import model.User;
 
 import java.io.IOException;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(name="Rate", value = "/Rate")
@@ -37,9 +40,13 @@ public class RateServlet extends HttpServlet {
             stars[i] = commentService.countByStar(i, from, to);
             max = Math.max(max, stars[i]);
         }
+        List<AdminBookRateView> listHigh = commentService.getAdminBookRateHigh(from,to);
+        List<AdminBookRateView> listLow = commentService.getAdminBookRateLow(from, to);
 
         request.setAttribute("stars", stars);
         request.setAttribute("max", max == 0 ? 1 : max);
+        request.setAttribute("listHigh", listHigh);
+        request.setAttribute("listLow", listLow);
         request.getRequestDispatcher("admin/DanhGia.jsp").forward(request, response);
     }
     @Override
@@ -85,11 +92,23 @@ public class RateServlet extends HttpServlet {
             }
             max = Math.max(max, stars[i]);
         }
+        List<AdminBookRateView> listHigh = new ArrayList<>();
+        List<AdminBookRateView> listLow = new ArrayList<>();
+        if(flag){
+            listHigh = type.equals("all") ? commentService.getAdminBookRateHigh(from, to):commentService.getAdminBookRateHigh(from, to, type);
+            listLow = type.equals("all") ? commentService.getAdminBookRateLow(from, to):commentService.getAdminBookRateLow(from, to, type);
+        }else{
+            listHigh = type.equals("all") ? commentService.getAdminBookRateHigh():commentService.getAdminBookRateHigh(type);
+            listLow = type.equals("all") ? commentService.getAdminBookRateLow():commentService.getAdminBookRateLow(type);
+        }
+
 
         request.setAttribute("from", from);
         request.setAttribute("to", to);
         request.setAttribute("type", number);
         request.setAttribute("stars", stars);
+        request.setAttribute("listHigh", listHigh);
+        request.setAttribute("listLow", listLow);
         request.setAttribute("max", max == 0 ? 1 : max);
 
         request.getRequestDispatcher("admin/DanhGia.jsp").forward(request, response);

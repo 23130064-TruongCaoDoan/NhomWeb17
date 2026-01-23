@@ -2,6 +2,8 @@ package Service;
 
 import dao.BookDao;
 import dao.CommentDao;
+import model.AdminBookRateView;
+import model.Book;
 import model.CommentView;
 import model.RatingStartView;
 
@@ -37,6 +39,31 @@ public class CommentService {
     }
     public int countByStar(int star) {
         return hd.countByStar(star);
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(LocalDate from, LocalDate to, String type){
+        return hd.getAdminBookRateHigh(from, to, type);
+
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(LocalDate from, LocalDate to){
+        return hd.getAdminBookRateHigh(from, to);
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(String type){
+        return hd.getAdminBookRateHigh(type);
+    }
+    public List<AdminBookRateView> getAdminBookRateHigh(){
+        return hd.getAdminBookRateHigh();
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(LocalDate from, LocalDate to, String type){
+        return hd.getAdminBookRateLow(from, to, type);
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(LocalDate from, LocalDate to){
+        return hd.getAdminBookRateLow(from, to);
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(String type){
+        return hd.getAdminBookRateLow(type);
+    }
+    public List<AdminBookRateView> getAdminBookRateLow(){
+        return hd.getAdminBookRateLow();
     }
 
 }
