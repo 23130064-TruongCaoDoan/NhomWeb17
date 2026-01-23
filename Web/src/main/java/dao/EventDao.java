@@ -33,33 +33,7 @@ public class EventDao extends BaseDao {
                         .list()
         );
     }
-//    public static void main(String[] args) {
-//        EventDao eventDao = new EventDao();
-//        System.out.println(eventDao.getListEvent());
-//
-//
-//        boolean result = eventDao.addEvent(
-//                "EVT_TEST_01",                         // event_code
-//                "https://example.com/event.jpg",      // img_url
-//                "Sự kiện test thêm mới",               // title
-//                15.0,                                  // value
-//                "2026-02-01",                          // start_date
-//                "2026-02-28",                          // end_date
-//                "NOVEL",                               // type_book_apply
-//                "NXB Trẻ",                             // pulisher_apply
-//                "Nguyễn Nhật Ánh",                     // author_apply
-//                "VC_TEST",                             // voucher_code
-//                null,                                  // special_voucher
-//                50,                                    // min_point
-//                "12+"                                  // age_apply
-//        );
-//
-//        if (result) {
-//            System.out.println("✅ Add event thành công");
-//        } else {
-//            System.out.println("❌ Add event thất bại");
-//        }
-//    }
+
 
 
     public boolean deleteEvent(int id) {

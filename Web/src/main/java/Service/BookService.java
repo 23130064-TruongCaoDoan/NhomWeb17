@@ -120,8 +120,8 @@ public class BookService {
         return hd.findListBook(search, limit, offset);
     }
 
-    public List<Book> getBookByEvent(int limit, int offset, String title) {
-        return hd.getAllBookByEvent(limit, offset, title);
+    public List<Book> getBookByEvent(int limit, int offset, int id) {
+        return hd.getAllBookByEvent(limit, offset, id);
     }
 
     public int countBooksBySearch(String search) {
@@ -136,8 +136,8 @@ public class BookService {
         return hd.countBooksNew();
     }
 
-    public int countBooksByEvent(String title) {
-        return hd.countBooksByEvent(title);
+    public int countBooksByEvent(int id) {
+        return hd.countBooksByEvent(id);
     }
 
     public List<String> getAllBookTypes() {

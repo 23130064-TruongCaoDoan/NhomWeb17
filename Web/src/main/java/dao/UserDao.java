@@ -93,10 +93,6 @@ public class UserDao extends BaseDao {
         );
     }
 
-
-<<<<<<< HEAD
-
-=======
     public List<Integer> getUserIdsByMinPoint(int minPoint) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SElECT id FROM `user` where point >= :minpoint")
@@ -105,5 +101,4 @@ public class UserDao extends BaseDao {
                         .list()
         );
     }
->>>>>>> f4c1297e59b06e3805404e8679ff7ac3923912f3
 }

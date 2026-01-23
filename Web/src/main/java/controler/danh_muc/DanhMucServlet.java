@@ -16,7 +16,14 @@ import java.util.List;
 public class DanhMucServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = new BookService();
-        String title= request.getParameter("title");
+        String id = request.getParameter("idEvent");
+        int idEvent;
+        if(id==null||id.isEmpty() || id.isBlank()){
+            idEvent = 0;
+        }else{
+            idEvent = Integer.parseInt(request.getParameter("idEvent"));
+        }
+        String title  = request.getParameter("title");
 
         int page = 1;
         int pageSize = 28;
@@ -35,7 +42,7 @@ public class DanhMucServlet extends HttpServlet {
                 totalBooks = bookService.countBooksNew();
                 break;
             case 4:
-                totalBooks = bookService.countBooksByEvent(title);
+                totalBooks = bookService.countBooksByEvent(idEvent);
                 break;
             default:
                 totalBooks = bookService.countBooks();
@@ -64,8 +71,8 @@ public class DanhMucServlet extends HttpServlet {
                 break;
             }
             case 4:{
-                bookList=bookService.getBookByEvent(pageSize, offset, title);
-                search="Sách Giáng Sinh";
+                bookList=bookService.getBookByEvent(pageSize, offset, idEvent);
+                search="Sách " + title;
                 break;
             }
             default:{
