@@ -2,6 +2,7 @@ package controler.ThanhToan;
 
 import Cart.Cart;
 import Service.OrderService;
+import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -20,6 +21,7 @@ public class CreateOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        UserService  userService = new UserService();
 
         User user = (User) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
@@ -51,6 +53,7 @@ public class CreateOrder extends HttpServlet {
 
         if (usePoint && pointUsed > 0) {
             user.setPoint(user.getPoint() - pointUsed);
+            userService.updateDiem(userId,pointUsed);
         }
 
 
@@ -62,6 +65,9 @@ public class CreateOrder extends HttpServlet {
         session.removeAttribute("appliedShipVoucher");
 
         if (check) {
+            userService.tichDiem(userId,finalTotal);
+            user.setPoint(user.getPoint() + (int) (finalTotal*0.05));
+            session.setAttribute("user", user);
             response.sendRedirect("home");
         }
         else{

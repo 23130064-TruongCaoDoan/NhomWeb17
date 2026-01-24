@@ -8,6 +8,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class UserDao extends BaseDao {
+    public void tichDiem(int userId, double finalTotal) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("update `user` set point= point + :finalTotal where id=:id")
+                        .bind("finalTotal",(int)(finalTotal*0.05))
+                        .bind("id",userId)
+                        .execute()
+                ));
+    }
+
     public User finduser(String username) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("select * from USER where phone=:username OR email=:username")
@@ -55,7 +64,7 @@ public class UserDao extends BaseDao {
 
     public User findUserById(int id) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("select * from USER where id=:id")
+                handle.createQuery("select * from `USER` where id=:id")
                         .bind("id", id).mapToBean(User.class).findFirst().orElse(null)
         );
     }
@@ -100,5 +109,14 @@ public class UserDao extends BaseDao {
                         .mapTo(Integer.class)
                         .list()
         );
+    }
+
+    public void updateDiem(int userId, double pointUsed) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("update `user` set point= point - :pointUsed where id=:id")
+                        .bind("pointUsed",(pointUsed))
+                        .bind("id",userId)
+                        .execute()
+        ));
     }
 }
