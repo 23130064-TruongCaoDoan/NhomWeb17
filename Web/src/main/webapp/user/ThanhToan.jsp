@@ -18,6 +18,7 @@
     <div class="content">
         <form method="get" action="ThanhToan" id="checkoutForm">
             <div class="container">
+                <input type="hidden" name="mode" value="${param.mode}">
                 <!-- address  -->
                 <div class="checkout-section">
                     <div class="section-title">ĐỊA CHỈ GIAO HÀNG</div>
@@ -203,6 +204,8 @@
                 </div>
                 <form method="post" action="CreateOrder" id="orderForm">
                     <div class="buttonAndTerm">
+                        <input type="hidden" name="mode" value="${param.mode}">
+
                         <input type="hidden" name="addressId" id="finalAddressId">
                         <input type="hidden" name="shipType" id="finalShipType">
                         <input type="hidden" name="usePoint" id="finalUsePoint">

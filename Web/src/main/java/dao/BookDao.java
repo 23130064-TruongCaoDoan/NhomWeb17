@@ -8,7 +8,7 @@ import java.util.List;
 public class BookDao extends BaseDao {
     public List<Book> getBooksDiscounted() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1")
+                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1 ORDER BY updated_at DESC")
                         .mapToBean(Book.class)
                         .list()
         );
@@ -143,7 +143,7 @@ public class BookDao extends BaseDao {
 
     public List<Book> getAllBooksDiscounted(int limit, int offset) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1 LIMIT :limit OFFSET :offset").bind("limit", limit)
+                handle.createQuery("SELECT * FROM BOOKS WHERE price_discounted > 0 AND is_sell=1  ORDER BY updated_at DESC LIMIT :limit OFFSET :offset").bind("limit", limit)
                         .bind("offset", offset)
                         .mapToBean(Book.class)
                         .list()
@@ -406,7 +406,8 @@ public class BookDao extends BaseDao {
 
             var batch = handle.prepareBatch("""
                         UPDATE books
-                        SET price_discounted = price * (1 - :value / 100)
+                        SET price_discounted = price * (1 - :value / 100),
+                        updated_at = NOW()
                         WHERE id = :bookId
                     """);
 

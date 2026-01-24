@@ -87,7 +87,13 @@
                             <button type="button" id="cart" onclick="addToCartDetail()">Thêm vào giỏ hàng<i
                                     class="fa-solid fa-cart-plus"></i></button>
                         </form>
-                        <button id="buy"><a href="ThanhToan.jsp">Mua ngay</a></button>
+                        <form action="MuaNgay" method="post" style="display:inline">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                            <input type="hidden" name="quantity" id="buyNowQuantity">
+
+                            <button id="buy" type="submit">Mua ngay</button>
+                        </form>
+
                         <span>
                             <i id="addHeart" class="fa-solid fa-heart ${isFavouriteBook ? 'active' : ''}" onclick="toggleFavourite(${book.id})"></i>
                         </span>
@@ -284,6 +290,15 @@
     <c:import url="footerUser.jsp"> </c:import>
 </div>
 <script>
+
+    // mua ngay
+    document.getElementById("buy").addEventListener("click", function () {
+        document.getElementById("buyNowQuantity").value =
+            document.getElementById("number-quantity").value;
+    });
+
+
+    //
     const contextPath = "${pageContext.request.contextPath}";
 
     let isProcessing = false;

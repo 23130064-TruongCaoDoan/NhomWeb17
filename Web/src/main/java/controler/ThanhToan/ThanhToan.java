@@ -19,7 +19,15 @@ public class ThanhToan extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        Cart cart = (Cart) session.getAttribute("cart");
+        String mode = request.getParameter("mode");
+
+        Cart cart;
+        if ("buynow".equals(mode)) {
+            cart = (Cart) session.getAttribute("buyNowCart");
+        } else {
+            cart = (Cart) session.getAttribute("cart");
+        }
+
         VoucherService voucherService = new VoucherService();
 
 
@@ -70,11 +78,11 @@ public class ThanhToan extends HttpServlet {
 
         // kiểm tra lại voucher có hợp lệ không
         if (voucherDis != null) {
-            boolean valid = voucherService.isVoucherValid(cart,voucherDis);
+            boolean valid = voucherService.isVoucherValid(cart, voucherDis);
             if (!valid) {
                 session.removeAttribute("appliedDiscountVoucher");
                 voucherDis = null;
-                Integer numApplyVoucher= (Integer) session.getAttribute("numApplyVoucher");
+                Integer numApplyVoucher = (Integer) session.getAttribute("numApplyVoucher");
                 numApplyVoucher--;
                 session.setAttribute("numApplyVoucher", numApplyVoucher);
             }
@@ -85,7 +93,7 @@ public class ThanhToan extends HttpServlet {
             if (!valid) {
                 session.removeAttribute("appliedShipVoucher");
                 voucherShip = null;
-                Integer numApplyVoucher= (Integer) session.getAttribute("numApplyVoucher");
+                Integer numApplyVoucher = (Integer) session.getAttribute("numApplyVoucher");
                 numApplyVoucher--;
                 session.setAttribute("numApplyVoucher", numApplyVoucher);
             }
@@ -129,7 +137,6 @@ public class ThanhToan extends HttpServlet {
         request.setAttribute("listAddress", listAddress);
         request.setAttribute("selectedAddressId", selectedAddressId);
         request.setAttribute("orderNote", orderNote);
-
 
 
         int userId = user.getId();

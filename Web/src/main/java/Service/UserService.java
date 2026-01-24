@@ -85,4 +85,12 @@ public class UserService {
     public void updateEmail(int id, String email) {
         userDao.updateEmail(id, email);
     }
+
+    public void tichDiem(int userId, double finalTotal) {
+        userDao.tichDiem(userId,finalTotal);
+    }
+
+    public void updateDiem(int userId, int pointUsed) {
+        userDao.updateDiem(userId,pointUsed);
+    }
 }
