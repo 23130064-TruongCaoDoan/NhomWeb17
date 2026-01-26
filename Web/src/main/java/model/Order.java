@@ -22,7 +22,8 @@ public class Order {
         this.disVoucherId = disVoucherId;
         this.shipVoucherId = shipVoucherId;
     }
-
+    public Order() {
+    }
     public double getTotalAmount() {
         return totalAmount;
     }

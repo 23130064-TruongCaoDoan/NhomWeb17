@@ -71,8 +71,9 @@ public class CreateOrder extends HttpServlet {
 
 
         OrderService  orderService = new OrderService();
-        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
 
+        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
+        System.out.println("CREATE ORDER RESULT = " + check);
         session.removeAttribute("appliedDiscountVoucher");
         session.removeAttribute("appliedShipVoucher");
 

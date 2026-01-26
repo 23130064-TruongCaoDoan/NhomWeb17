@@ -29,7 +29,7 @@
         <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
     </div>
 
-    <a href="user-myOrders.jsp" class="menu donhang">
+    <a href="my-orders" class="menu donhang">
         <i class="fa-solid fa-receipt"></i>
         <span>Đơn hàng của tôi</span>
     </a>
