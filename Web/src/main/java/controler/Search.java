@@ -1,6 +1,7 @@
 package controler;
 
 import Service.BookService;
+import Service.EventService;
 import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -14,6 +15,9 @@ import java.util.List;
 public class Search extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
+
         String search = request.getParameter("bSearch").trim();
         if (search == null || search.equals("")) {
             response.sendRedirect("home");

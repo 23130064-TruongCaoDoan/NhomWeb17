@@ -15,12 +15,15 @@ import java.util.List;
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         BookService bookService = new BookService();
         List<Book> booksListSale = bookService.getBooksDiscounted();
         List<Book> booksListNew = bookService.getBooksNew();
         List<Book> booksListFavourite = bookService.getFavouriteBook();
 
         EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
 
         List<Event> eventList= eventService.getListEvent();
         request.setAttribute("events",eventList);

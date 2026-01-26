@@ -25,6 +25,35 @@ public class EventDao extends BaseDao {
                         .list()
         );
     }
+    public List<Event> getActiveEventsOrderByStartDateAsc() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                SELECT *
+                FROM events
+                WHERE start_date <= NOW()
+                  AND end_date >= NOW()
+                ORDER BY start_date ASC
+            """)
+                        .mapToBean(Event.class)
+                        .list()
+        );
+    }
+    public List<Book> getBooksByEventId(int eventId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                SELECT b.*
+                FROM books b
+                JOIN event_books eb ON b.id = eb.book_id
+                WHERE eb.event_id = :eventId
+            """)
+                        .bind("eventId", eventId)
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
+
+
+
 
     public List<Event> getListEventALl() {
         return getJdbi().withHandle(handle ->
