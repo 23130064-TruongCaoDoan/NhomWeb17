@@ -119,4 +119,24 @@ public class UserDao extends BaseDao {
                         .execute()
         ));
     }
+
+    public boolean changePassword(int id, String newPassword) {
+        return getJdbi().withHandle(handle ->(
+                handle.createUpdate("UPDATE `USER` set password_hash=:newPassword WHERE id=:id")
+                        .bind("newPassword",newPassword)
+                        .bind("id",id)
+                        .execute()>0
+                ));
+    }
+
+    public boolean checkPassword(int id, String oldPassword) {
+        return getJdbi().withHandle(handle ->(
+                handle.createQuery("SELECT Count(*) from `user` where id=:id and password_hash=:oldPassword ")
+                        .bind("id",id)
+                        .bind("oldPassword",oldPassword)
+                        .mapTo(Integer.class)
+                        .findOne()
+                        .orElse(0) > 0
+                ));
+    }
 }

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,26 +17,28 @@
     <c:import url="/user/headerUser.jsp"></c:import>
     <div class="content">
         <div class="container">
-            <c:import url="/user/menuUser.jsp"></c:import>
+            <div class="menuUser">
+                <c:import url="/user/menuUser.jsp"></c:import>
+            </div>
             <div class="password-container">
                 <h2>Đổi mật khẩu</h2>
-                <form class="password-form" id="passwordForm" novalidate>
+                <form class="password-form" id="passwordForm" method="post" novalidate>
 
                     <div class="form-group">
                         <label>Mật khẩu hiện tại</label>
-                        <input type="password" id="oldPass" placeholder="Nhập mật khẩu hiện tại">
+                        <input type="password" id="oldPass" name="oldPass" placeholder="Nhập mật khẩu hiện tại">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
                         <label>Mật khẩu mới</label>
-                        <input type="password" id="newPass" placeholder="Nhập mật khẩu mới">
+                        <input type="password" id="newPass" name="newPass" placeholder="Nhập mật khẩu mới">
                         <small class="error-msg"></small>
                     </div>
 
                     <div class="form-group">
                         <label>Xác nhận mật khẩu mới</label>
-                        <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu mới">
+                        <input type="password" id="confirmPass" name="confirmPass" placeholder="Nhập lại mật khẩu mới">
                         <small class="error-msg"></small>
                     </div>
 
@@ -45,56 +48,7 @@
 
         </div>
     </div>
-    <footer class="footer">
-        <div class="wave-container">
-            <svg
-                    viewBox="0 0 120 15"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-            >
-                <path
-                        d="M0,10
-                C10,15 20,5 30,10
-                C40,15 50,5 60,10
-                C70,15 80,5 90,10
-                C100,15 115,5 120,10
-                L120,20 0,20 Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Liên hệ chúng tôi</h3>
-                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-                <a href="#"
-                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
-                >
-            </div>
-
-            <div class="footer-column">
-                <h3>Dịch vụ khách hàng</h3>
-                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
-                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
-                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
-
-            </div>
-
-            <div class="footer-column">
-                <h3>Đối tác</h3>
-                <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
-                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Bảo mật</h3>
-                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
-                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright ©. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <c:import url="footerUser.jsp"> </c:import>
 </div>
 <script>
     document.getElementById("passwordForm").addEventListener("submit", function (e) {
@@ -105,13 +59,12 @@
         const confirmPass = document.getElementById("confirmPass");
 
         const fields = [
-            { el: oldPass, name: "mật khẩu hiện tại" },
-            { el: newPass, name: "mật khẩu mới" },
-            { el: confirmPass, name: "xác nhận mật khẩu mới" }
+            {el: oldPass, name: "mật khẩu hiện tại"},
+            {el: newPass, name: "mật khẩu mới"},
+            {el: confirmPass, name: "xác nhận mật khẩu mới"}
         ];
 
         let isValid = true;
-
 
         fields.forEach(f => {
             const errorMsg = f.el.nextElementSibling;
@@ -127,15 +80,18 @@
             }
         });
 
-        if (newPass.value && newPass.value.length < 6) {
+        // Check mật khẩu mạnh
+        const strongPassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+        if (newPass.value && !strongPassRegex.test(newPass.value)) {
             const errorMsg = newPass.nextElementSibling;
-            errorMsg.textContent = "Mật khẩu mới phải có ít nhất 6 ký tự.";
+            errorMsg.textContent =
+                "Mật khẩu phải ≥ 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
             errorMsg.style.display = "block";
             newPass.classList.add("error");
             isValid = false;
         }
 
-
+        // Check confirm password
         if (newPass.value && confirmPass.value && newPass.value !== confirmPass.value) {
             const errorMsg = confirmPass.nextElementSibling;
             errorMsg.textContent = "Mật khẩu xác nhận không trùng khớp.";
@@ -145,10 +101,42 @@
         }
 
         if (isValid) {
-            alert("Đổi mật khẩu thành công!");
+            const form = document.getElementById("passwordForm");
+            const data = new URLSearchParams(new FormData(form));
 
+            fetch("${pageContext.request.contextPath}/DoiMK", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                body: data.toString()
+            })
+                .then(response => response.json())
+                .then(data => {
+                    showToast(data.message, data.success);
+                    if (data.success) {
+                        oldPass.value = '';
+                        newPass.value = '';
+                        confirmPass.value = '';
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    showToast("Có lỗi xảy ra. Vui lòng thử lại.", false);
+                });
+        }
+
+        function showToast(message, success = true) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.style.backgroundColor = success ? "#4CAF50" : "#f44336";
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
         }
     });
 </script>
+
 </body>
 </html>

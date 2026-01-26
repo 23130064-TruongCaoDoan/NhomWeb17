@@ -25,7 +25,7 @@ public class HomeServlet extends HttpServlet {
         EventService eventService = new EventService();
         eventService.updatBookPriceForEvent();
 
-        List<Event> eventList= eventService.getListEvent();
+        List<Event> eventList= eventService.getActiveEventsOrderByStartDateAsc();
         request.setAttribute("events",eventList);
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);

@@ -86,7 +86,7 @@ public class CreateOrder extends HttpServlet {
             } else {
                 session.removeAttribute("cart");
             }
-            response.sendRedirect("home");
+            response.sendRedirect("my-orders");
         }
         else{
         response.sendRedirect("ThanhToan");
