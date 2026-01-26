@@ -11,6 +11,12 @@ import java.io.IOException;
 public class deleteVoucher extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id")==null?"0":request.getParameter("id"));
         VoucherService voucherService = new VoucherService();
         request.setCharacterEncoding("UTF-8");
@@ -21,14 +27,8 @@ public class deleteVoucher extends HttpServlet {
         if (success) {
             json = "{\"success\":true,\"message\":\"Xóa voucher thành công\"}";
         } else {
-            json = "{\"success\":false,\"message\":\"Xóa voucher thất bại\"}";
+            json = "{\"success\":false,\"message\":\"Xóa voucher thất bại do tồn tai\"}";
         }
         response.getWriter().write(json);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

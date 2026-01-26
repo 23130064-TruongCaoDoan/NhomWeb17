@@ -1,6 +1,7 @@
 package controler.danh_muc;
 
 import Service.BookService;
+import Service.EventService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +17,8 @@ import java.util.List;
 public class DanhMucServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = new BookService();
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
         String id = request.getParameter("idEvent");
         int idEvent;
         if(id==null||id.isEmpty() || id.isBlank()){

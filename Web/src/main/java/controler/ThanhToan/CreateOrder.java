@@ -38,7 +38,13 @@ public class CreateOrder extends HttpServlet {
             return;
         }
 
-        int addressId = Integer.parseInt(request.getParameter("addressId"));
+        String addressIdStr = request.getParameter("addressId");
+
+        if (addressIdStr == null || addressIdStr.trim().isEmpty()) {
+            response.sendRedirect("ThanhToan");
+            return;
+        }
+        int addressId = Integer.parseInt(addressIdStr);
         String shipType = request.getParameter("shipType");
         boolean usePoint = "1".equals(request.getParameter("usePoint"));
         String note = request.getParameter("orderNote");

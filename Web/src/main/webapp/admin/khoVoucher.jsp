@@ -81,15 +81,15 @@
                                     <i class="fa-solid fa-pen sua"
                                        onclick="editVoucher(
                                            ${voucher.id},
-                                           '${voucher.code}',
-                                           '${voucher.description}',
-                                           '${voucher.type}',
+                                               '${voucher.code}',
+                                               '${voucher.description}',
+                                               '${voucher.type}',
                                            ${voucher.valuee},
-                                           '${voucher.start_date}',
-                                           '${voucher.end_date}',
+                                               '${voucher.start_date}',
+                                               '${voucher.end_date}',
                                            ${voucher.usage_limit},
                                            ${voucher.valuee},
-                                               ${voucher.conditionPrice},
+                                           ${voucher.conditionPrice},
                                                '${voucher.conditionBook}',
                                                '${voucher.conditionPublisher}'
                                                )"></i>
@@ -325,9 +325,9 @@
         end_date.value = end;
         usage_limit.value = limit;
         value.value = valuee;
-        price.value=conditionPrice;
-        loaisach.value=conditionBook;
-        nxb.value=conditionPulisher;
+        price.value = conditionPrice;
+        loaisach.value = conditionBook;
+        nxb.value = conditionPulisher;
 
 
         overlay.style.display = "block";
@@ -364,7 +364,7 @@
                         location.reload();
                     }, 1800);
                 } else {
-                    show(data.message,false);
+                    show(data.message, false);
                 }
             });
     }
@@ -438,7 +438,13 @@
     function confirmDelete() {
         if (!deleteId) return;
 
-        fetch("deleteVoucher?id=" + deleteId)
+        fetch("deleteVoucher", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "id=" + encodeURIComponent(deleteId)
+        })
             .then(res => res.json())
             .then(data => {
                 closeDeletePopup();
@@ -446,7 +452,7 @@
                     show(data.message);
                     setTimeout(() => location.reload(), 1200);
                 } else {
-                    alert(data.message,false);
+                    alert(data.message, false);
                 }
             })
             .catch(err => console.log(err));
