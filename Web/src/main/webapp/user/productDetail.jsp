@@ -197,7 +197,7 @@
                     <option value="1">★</option>
                 </select>
                 <textarea id="reviewText" name="content" rows="4" placeholder="Nội dung đánh giá..."
-                          required></textarea>
+                          required maxlength="100"></textarea>
                 <input type="file" name="image" accept="image/*" >
                 <button type="submit" id="submitReview">Hoàn thành</button>
             </form>

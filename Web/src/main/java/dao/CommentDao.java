@@ -1,6 +1,7 @@
 package dao;
 
 import model.AdminBookRateView;
+import model.CommentAdmin;
 import model.CommentView;
 import model.RatingStartView;
 
@@ -15,7 +16,7 @@ public class CommentDao extends BaseDao{
                                 "SELECT  u.name AS name , c.rating AS rating, c.content  AS content, DATE_FORMAT(c.create_at, '%d/%m/%Y') AS createAt, c.img_comment AS imgComment" +
                                         " FROM comments c" +
                                         " INNER JOIN USER u ON u.id = c.user_id" +
-                                        " WHERE c.book_id = :book_id ORDER BY c.create_at DESC")
+                                        " WHERE c.book_id = :book_id  AND c.is_active=1 ORDER BY c.create_at DESC")
                         .bind("book_id", bookId)
                         .mapToBean(CommentView.class)
                         .list()
@@ -24,8 +25,8 @@ public class CommentDao extends BaseDao{
     public void insertComment(int userId, int bookId, int rating, String content, String imgURL) {
         getJdbi().useHandle(handle ->
                 handle.createUpdate(
-                                "INSERT INTO comments(user_id, book_id, rating, content, create_at, img_comment) " +
-                                        "VALUES (:userId, :bookId, :rating, :content, NOW(), :imgURL)"
+                                "INSERT INTO comments(user_id, book_id, rating, content, create_at, img_comment, is_active) " +
+                                        "VALUES (:userId, :bookId, :rating, :content, NOW(), :imgURL , 1)"
                         )
                         .bind("userId", userId)
                         .bind("bookId", bookId)
@@ -273,11 +274,46 @@ public class CommentDao extends BaseDao{
                     .list();
         });
     }
+
+    public List<CommentAdmin> getCommentAdmin() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                        SELECT c.id,b.title AS title,u.name AS name,c.rating,c.content,c.create_at AS createAt,c.is_active AS isActive
+                                        FROM comments c
+                                        JOIN books b ON c.book_id = b.id
+                                        JOIN user u ON c.user_id = u.id;
+                                        """)
+                        .mapToBean(CommentAdmin.class)
+                        .list()
+        );
+    }
+    public void setActive(int id){
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("""
+                                    UPDATE comments
+                                    SET is_active = CASE 
+                                        WHEN is_active = 1 THEN 0
+                                        ELSE 1
+                                    END
+                                    WHERE id = :id
+                                """)
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+    public void deleteRate(int id){
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("DELETE FROM comments c WHERE c.id = :id")
+                        .bind("id", id)
+                        .execute()
+        );
+    }
     public static void main(String[] args) {
         CommentDao dao = new CommentDao();
         List<RatingStartView> comments = dao.getRatingStartView(2);
         LocalDate from =  LocalDate.of(2018, 1, 1);
         LocalDate to =  LocalDate.now();
-        System.out.println(dao.getAdminBookRateHigh());
+        System.out.println(dao.getCommentAdmin());
     }
+
 }

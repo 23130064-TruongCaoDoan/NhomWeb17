@@ -28,11 +28,8 @@ public class Book {
     private int stock;
 
 
-    // Constructor mặc định
     public Book() {
     }
-
-    // Constructor đầy đủ
 
     public Book(int id, String bookCode, String title, Integer authorId, String author, int price, int priceDiscounted, String type, int age, String coverImgUrl, String description, String publisher, String provider, int publishedDate, double weight, String bookSize, int pagesNumber, String format, boolean isSell, String add_date, int quantitySold, int stock) {
         this.id = id;

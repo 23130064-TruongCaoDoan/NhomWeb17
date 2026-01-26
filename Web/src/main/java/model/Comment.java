@@ -10,6 +10,7 @@ public class Comment {
     private String comment;
     private LocalDate createdAt;
     private String imgComment;
+    private boolean isActive;
 
     public Comment(int id, int bookId, int userId, int rating, String comment, LocalDate createdAt, String imgComment) {
         this.id = id;
@@ -54,6 +55,7 @@ public class Comment {
         this.rating = rating;
     }
 
+
     public String getComment() {
         return comment;
     }
@@ -74,5 +76,11 @@ public class Comment {
     }
     public void setImgComment(String imgComment) {
         this.imgComment = imgComment;
+    }
+    public boolean isActive() {
+        return isActive;
+    }
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
