@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><!DOCTYPE html>
+<fmt:setLocale value="vi_VN"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,20 +23,16 @@
 <c:import url="/user/headerUser.jsp"></c:import>
 <div class="content">
     <div class="container">
-        <c:import url="/user/menuUser.jsp"></c:import>
+        <div class="menuUser">
+            <c:import url="/user/menuUser.jsp"></c:import>
+        </div>
         <div class="manage-order">
             <div class="menu-bar">
                 <div class="menu-item all active">
                     <p>Tất cả</p>
                 </div>
                 <div class="menu-item">
-                    <p>Chờ xác nhận</p>
-                </div>
-                <div class="menu-item">
-                    <p>Vận chuyển</p>
-                </div>
-                <div class="menu-item">
-                    <p>Chờ giao hàng</p>
+                    <p>Đang xử lí</p>
                 </div>
                 <div class="menu-item">
                     <p>Hoàn thành</p>
@@ -43,100 +40,80 @@
                 <div class="menu-item">
                     <p>Đã hủy</p>
                 </div>
-                <div class="menu-item" id="hoantien">
-                    <p>Hoàn trả</p>
-                </div>
             </div>
             <div class="order-content">
-                <div class="card-order">
-                    <div class="top">
-                        <p class="order-id">Mã đơn hàng: #12121</p>
-                        <div class="order-status"><p class="time">11/11/2025 - 9:50</p><p class="status-delivered">Đã giao</p></div>
-                    </div>
-                        <div class="center">
-                            <div class="image">
-                                <a href="productDetail.jsp">
-                                    <img src="assets/img/books/365TruyenKeHangDem.png" alt="" />
-                                </a>
-                            </div>
-                            <div class="info">
-                                <p class="book-name">365 Truyện kể hằng đêm 1</p>
+
+                <c:if test="${empty orders}">
+                    <p>Chưa có đơn hàng nào.</p>
+                </c:if>
+
+                <c:forEach var="o" items="${orders}">
+                    <div class="card-order">
+
+                        <!-- TOP -->
+                        <div class="top">
+                            <p class="order-id">Mã đơn hàng: #${o.orderId}</p>
+
+                            <div class="order-status">
+                                <p class="time">${o.orderDate}</p>
+
+                                <p class="
+                                        ${o.status == 'DELIVERED' ? 'status-delivered' :
+                                          o.status == 'PENDING'   ? 'status-waiting'   :
+                                          o.status == 'NOPAID'   ? 'status-waiting'   :
+                                          o.status == 'SHIPPING'  ? 'status-shipping'  :
+                                          o.status == 'CANCELLED' ? 'status-cancel'    : ''}">
+
+                                    <c:choose>
+                                        <c:when test="${o.status == 'DELIVERED'}">Đã giao</c:when>
+                                        <c:when test="${o.status == 'PENDING'}">Đang xử lý</c:when>
+                                        <c:when test="${o.status == 'NOPAID'}">Đang xử lý</c:when>
+                                        <c:when test="${o.status == 'CANCELLED'}">Đã huỷ</c:when>
+                                        <c:otherwise>${o.status}</c:otherwise>
+                                    </c:choose>
+                                </p>
+
                             </div>
                         </div>
+
+                        <!-- CENTER -->
+                        <div class="center" style="display: flex">
+                            <div class="image">
+                                <img src="${o.firstBookImage}" alt="" />
+                            </div>
+
+                            <div class="info">
+                                <p class="book-name">Sản phẩm trong đơn hàng</p>
+                            </div>
+                        </div>
+
+                        <!-- BOTTOM -->
                         <div class="bottom">
-                            <div class="quantity">Số lượng sản phẩm 3 </div>
+                            <div class="quantity">
+                                Số lượng sản phẩm ${o.totalQuantity}
+                            </div>
+
                             <div class="price-cart">
                                 <div class="total-price">
                                     <span class="total">Tổng tiền:</span>
-                                    <span class="price">50.000 đ</span>
+                                    <span class="price">
+                            <fmt:formatNumber value="${ o.totalAmount}" type="currency"/>
+                        </span>
                                 </div>
+
                                 <div class="button">
-                                    <button class="rebuy">Mua lại</button>
-                                    <button onclick="window.location='user-order-detail.jsp'">Xem chi tiết</button>
-                                    <button>Yêu cầu hoàn trả</button>
+                                    <button onclick="window.location='my-order?id=${o.orderId}'">
+                                        Xem chi tiết
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="card-order">
-                    <div class="top">
-                        <p class="order-id">Mã đơn hàng: #12122</p>
-                        <div class="order-status"><p class="time">11/11/2025 - 9:50</p><p class="status-waiting"><i class="fa-solid fa-clock-rotate-left"></i>  Chờ xác nhận</p></div>
+
                     </div>
-                    <div class="center">
-                        <div class="image">
-                            <a href="productDetail.jsp">
-                                <img src="assets/img/books/365TruyenKeHangDem.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="quantity">Số lượng sản phẩm 3 </div>
-                        <div class="price-cart">
-                            <div class="total-price">
-                                <span class="total">Tổng tiền:</span>
-                                <span class="price">50.000 đ</span>
-                            </div>
-                            <div class="button">
-                                <button>Xem chi tiết</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-order">
-                    <div class="top">
-                        <p class="order-id">Mã đơn hàng: #12121</p>
-                        <div class="order-status"><p class="time">11/11/2025 - 9:50</p><p class="status-delivered">Đã giao</p></div>
-                    </div>
-                    <div class="center">
-                        <div class="image">
-                            <a href="productDetail.jsp">
-                                <img src="assets/img/books/365TruyenKeHangDem.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="info">
-                            <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="quantity">Số lượng sản phẩm 3 </div>
-                        <div class="price-cart">
-                            <div class="total-price">
-                                <span class="total">Tổng tiền:</span>
-                                <span class="price">50.000 đ</span>
-                            </div>
-                            <div class="button">
-                                <button class="rebuy">Mua lại</button>
-                                <button>Xem chi tiết</button>
-                                <button>Yêu cầu hoàn trả</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+
             </div>
+
         </div>
         </div>
     </div>

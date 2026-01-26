@@ -8,7 +8,7 @@ public class Shipping {
     private String shippingType;
     private Double shippingCost;
     private Date shippingDate;
-    private Date deliveredDate;
+    private String deliveredDate;
     private String status;
 
     public int getOrderId() {
@@ -51,11 +51,11 @@ public class Shipping {
         this.shippingDate = shippingDate;
     }
 
-    public Date getDeliveredDate() {
+    public String getDeliveredDate() {
         return deliveredDate;
     }
 
-    public void setDeliveredDate(Date deliveredDate) {
+    public void setDeliveredDate(String deliveredDate) {
         this.deliveredDate = deliveredDate;
     }
 
