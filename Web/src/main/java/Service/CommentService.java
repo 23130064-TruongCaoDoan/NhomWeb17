@@ -2,10 +2,7 @@ package Service;
 
 import dao.BookDao;
 import dao.CommentDao;
-import model.AdminBookRateView;
-import model.Book;
-import model.CommentView;
-import model.RatingStartView;
+import model.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -65,5 +62,15 @@ public class CommentService {
     public List<AdminBookRateView> getAdminBookRateLow(){
         return hd.getAdminBookRateLow();
     }
+    public List<CommentAdmin> getCommentAdmin(){
+        return hd.getCommentAdmin();
+    }
 
+    public void deleteRate(int id) {
+        hd.deleteRate(id);
+    }
+
+    public void setActive(int id) {
+        hd.setActive(id);
+    }
 }

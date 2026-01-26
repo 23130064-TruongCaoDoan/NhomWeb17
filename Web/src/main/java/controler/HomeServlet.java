@@ -18,6 +18,7 @@ public class HomeServlet extends HttpServlet {
         BookService bookService = new BookService();
         List<Book> booksListSale = bookService.getBooksDiscounted();
         List<Book> booksListNew = bookService.getBooksNew();
+        List<Book> booksListFavourite = bookService.getFavouriteBook();
 
         EventService eventService = new EventService();
 
@@ -25,6 +26,7 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("events",eventList);
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
+        request.setAttribute("booksListFavourite", booksListFavourite);
 
         HttpSession session = request.getSession(false);
 

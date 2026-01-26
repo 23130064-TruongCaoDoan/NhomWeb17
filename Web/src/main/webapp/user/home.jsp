@@ -123,56 +123,40 @@
             <div class="sachh yeuThich">
                 <div class="title"><span>Sách được các bé yêu thích</span><i class="fa-solid fa-heart"></i></div>
                 <div class="dsbooks">
-                    <div class="card">
-                        <a href="productDetail.jsp">
-                            <img src="assets/img/books/365TruyenKeHangDemMuaThu.png" alt=""/>
-                        </a>
-                        <p class="book-name">365 Truyện kể hằng đêm 3</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
+                    <c:forEach var="book" items="${booksListFavourite}" begin="0" end="4">
+                        <c:url var="detailUrl" value="/productDetail">
+                            <c:param name="id" value="${book.id}"/>
+                            <c:param name="type" value="${book.type}"/>
+                        </c:url>
+                        <div class="card">
+                            <a href="${detailUrl}">
+                                <a href="productDetail?id=${book.id}&type=${book.type}">
+                                    <img src="${book.coverImgUrl}" alt="${book.title}"/>
+                                    <p class="book-name">${book.title}</p>
+                                </a>
+                                <p class="rating">
+                                </p>
+                                <div class="price-cart">
+                                    <p class="price">
+                                        <c:if test="${book.priceDiscounted > 0}">
+                                            <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                 maxFractionDigits="0"/> Đ</s>
+                                            <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                    groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
+                                        <c:if test="${book.priceDiscounted == 0}">
+                                            <span><fmt:formatNumber value="${book.price}" type="number"
+                                                                    groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                        </c:if>
+                                    </p>
+                                    <i class="fa-solid fa-cart-plus" onclick="addToCart(${book.id},1)"></i>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/trangVietNam.png" alt=""/>
-                        <p class="book-name">Trạng Việt Nam</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/365TruyenKeHangDem.png" alt=""/>
-                        <p class="book-name">365 Truyện kể hằng đêm 1</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/CoTichTheGioi.jpg" alt=""/>
-                        <p class="book-name">Tuyển tập cổ tích thế giới</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="assets/img/books/guongDungCam.png" alt=""/>
-                        <p class="book-name">Gương Dũng Cảm</p>
-                        <p class="rating">⭐⭐⭐⭐⭐</p>
-                        <div class="price-cart">
-                            <p class="price">50.000 Đ</p>
-                            <i class="fa-solid fa-cart-plus"></i>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
-                <div class="bt btsachYeuThich">
-                    <button onclick="location.href='dsSanPham.jsp'" class="xemThem">Xem Thêm<i
+                <div class="bt btmoi">
+                    <button onclick="window.location.href='dsSanPham?type=3'" class="xemThem">Xem Thêm<i
                             class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>

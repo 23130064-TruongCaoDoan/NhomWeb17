@@ -1,4 +1,4 @@
-package controler.adminAssestRateManagement;
+package controler.adminRateManagement;
 
 import Service.CommentService;
 import jakarta.servlet.ServletException;
@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.AdminBookRateView;
+import model.CommentAdmin;
 import model.User;
 
 import java.io.IOException;
@@ -42,11 +43,13 @@ public class RateServlet extends HttpServlet {
         }
         List<AdminBookRateView> listHigh = commentService.getAdminBookRateHigh(from,to);
         List<AdminBookRateView> listLow = commentService.getAdminBookRateLow(from, to);
+        List<CommentAdmin> listRate = commentService.getCommentAdmin();
 
         request.setAttribute("stars", stars);
         request.setAttribute("max", max == 0 ? 1 : max);
         request.setAttribute("listHigh", listHigh);
         request.setAttribute("listLow", listLow);
+        request.setAttribute("listRate", listRate);
         request.getRequestDispatcher("admin/DanhGia.jsp").forward(request, response);
     }
     @Override
@@ -101,6 +104,7 @@ public class RateServlet extends HttpServlet {
             listHigh = type.equals("all") ? commentService.getAdminBookRateHigh():commentService.getAdminBookRateHigh(type);
             listLow = type.equals("all") ? commentService.getAdminBookRateLow():commentService.getAdminBookRateLow(type);
         }
+        List<CommentAdmin> listRate = commentService.getCommentAdmin();
 
 
         request.setAttribute("from", from);
@@ -109,6 +113,7 @@ public class RateServlet extends HttpServlet {
         request.setAttribute("stars", stars);
         request.setAttribute("listHigh", listHigh);
         request.setAttribute("listLow", listLow);
+        request.setAttribute("listRate", listRate);
         request.setAttribute("max", max == 0 ? 1 : max);
 
         request.getRequestDispatcher("admin/DanhGia.jsp").forward(request, response);

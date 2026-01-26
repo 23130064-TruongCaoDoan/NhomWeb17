@@ -197,6 +197,10 @@
 
 .table-wrapper {
     margin-top: 25px;
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
 }
 
 table {
@@ -227,4 +231,30 @@ th, td {
     text-overflow: ellipsis;
 
     vertical-align: middle;
+}
+.review-table{
+    max-height: 500px;
+    overflow: scroll;
+}
+.review-table thead th {
+    position: sticky;
+    top: 0;
+    background: #e6e6e6;
+    z-index: 10;
+}
+.xoa {
+    color: #8e8e8e;
+    transition: 0.2s ease;
+}
+
+.xoa:hover {
+    cursor: pointer;
+}
+
+.xoa:active {
+    transform: scale(0.95);
+}
+.btn-delete{
+    background: none;
+    border: none;
 }

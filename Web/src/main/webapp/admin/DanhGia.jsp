@@ -121,29 +121,73 @@
             </div>
 
             <div class="table-wrapper">
-                <table>
+                <table class="review-table">
                     <thead>
                     <tr>
-                        <th>ID Đánh giá</th>
+                        <th>ID</th>
                         <th>Tên sách</th>
                         <th>Người đánh giá</th>
-                        <th>Đánh giá</th>
+                        <th>Số sao ⭐</th>
                         <th>Nhận xét</th>
-                        <th>Ngày đánh giá</th>
-                        <th>Active</th>
+                        <th>Ngày</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
                     </tr>
                     </thead>
-                    <tbody id="reviewTable">
-                    <tr>
-                        <td>201</td>
-                        <td>Doraemon - Tập 1</td>
-                        <td>Mai Anh</td>
-                        <td>5</td>
-                        <td>Vui và dễ hiểu</td>
-                        <td>2025-01-10</td>
-                        <td><input type="checkbox" name="active"></td>
 
-                    </tr>
+                    <tbody id="reviewTable">
+
+                    <c:if test="${empty listRate}">
+                        <tr>
+                            <td colspan="8" style="text-align:center">
+                                Không có đánh giá nào
+                            </td>
+                        </tr>
+                    </c:if>
+
+                    <c:forEach items="${listRate}" var="r">
+                        <tr class="${r.rating <= 2 ? 'bad-review' : ''}">
+                            <td>${r.id}</td>
+
+                            <td title="${r.title}">
+                                    ${r.title}
+                            </td>
+
+                            <td title="User">
+                                    ${r.name}
+                            </td>
+
+                            <td>
+                                    ${r.rating}
+                            </td>
+
+                            <td class="comment" title="${r.content}">
+                                    ${r.content}
+                            </td>
+
+                            <td>
+                                <fmt:formatDate value="${r.createAt}" pattern="dd/MM/yyyy"/>
+                            </td>
+
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox"
+                                           <c:if test="${r.active}">checked</c:if>
+                                           data-id="${r.id}"
+                                           onchange="toggleActive(this)">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <button class="btn-delete"
+                                        onclick="deleteReview(${r.id})">
+                                    <i class="fa-solid fa-trash xoa"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
                     </tbody>
                 </table>
             </div>
@@ -168,10 +212,27 @@
         popup.style.display = "block";
     });
 </script>
+
 <script>
-    window.onload = function () {
-        document.getElementById("filterForm").dispatchEvent(new Event("submit"));
-    };
+    function deleteReview(id) {
+        if (!confirm("Bạn chắc chắn muốn xóa đánh giá này?")) return;
+
+        fetch('${pageContext.request.contextPath}/deleteRate', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'id=' + id
+        }).then(() => location.reload());
+    }
+
+    function toggleActive(el) {
+        const id = el.dataset.id;
+
+        fetch('${pageContext.request.contextPath}/hidden', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: 'id=' + id
+        });
+    }
 </script>
 </body>
 </html>

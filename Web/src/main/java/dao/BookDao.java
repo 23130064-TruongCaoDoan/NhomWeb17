@@ -152,7 +152,8 @@ public class BookDao extends BaseDao {
 
     public List<Book> getAllBooksNew(int limit, int offset) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC LIMIT :limit OFFSET :offset").bind("limit", limit)
+                handle.createQuery("SELECT * FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC LIMIT :limit OFFSET :offset")
+                        .bind("limit", limit)
                         .bind("offset", offset)
                         .mapToBean(Book.class)
                         .list()
@@ -170,6 +171,22 @@ public class BookDao extends BaseDao {
                         .bind("limit", limit)
                         .bind("offset", offset)
                         .bind("id", idEvent)
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
+    public List<Book> getAllFavouriteBook(int limit, int offset) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                SELECT b.*
+                                FROM books b
+                                JOIN favourite_books f ON b.id = f.book_id
+                                GROUP BY b.id
+                                ORDER BY COUNT(f.book_id) DESC
+                                LIMIT :limit OFFSET :offset
+                                """)
+                        .bind("limit", limit)
+                        .bind("offset", offset)
                         .mapToBean(Book.class)
                         .list()
         );
@@ -202,6 +219,13 @@ public class BookDao extends BaseDao {
     public int countBooksNew() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE is_sell=1 ORDER BY add_date DESC")
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
+    public int countBookFavourite() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE id IN (SELECT DISTINCT book_id FROM favourite_books) AND is_sell=1")
                         .mapTo(int.class)
                         .one()
         );
@@ -361,6 +385,19 @@ public class BookDao extends BaseDao {
                                 ORDER BY id DESC
                                 """)
                         .bind("userId", userId)
+                        .mapToBean(Book.class)
+                        .list()
+        );
+    }
+    public List<Book> getFavouriteBook() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                SELECT b.*
+                                FROM books b
+                                JOIN favourite_books f ON b.id = f.book_id
+                                GROUP BY b.id
+                                ORDER BY COUNT(f.book_id) DESC;
+                                """)
                         .mapToBean(Book.class)
                         .list()
         );

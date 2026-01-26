@@ -271,6 +271,16 @@ public class BookService {
     public List<Book> getFavouriteBook(int userId) {
         return hd.getFavouriteBook(userId);
     }
+    public List<Book> getAllFavouriteBook(int limit, int offset) {
+        return hd.getAllFavouriteBook(limit, offset);
+    }
+    public List<Book> getFavouriteBook() {
+        return hd.getFavouriteBook();
+    }
+    public int countBookFavourite() {
+        return hd.countBookFavourite();
+    }
+
 
     public void deleteFavouriteBook(int bookId, int userId) {
         hd.deleteFavouriteBook(bookId, userId);
