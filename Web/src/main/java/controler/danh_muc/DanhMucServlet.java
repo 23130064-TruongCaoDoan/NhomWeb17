@@ -41,6 +41,9 @@ public class DanhMucServlet extends HttpServlet {
             case 2:
                 totalBooks = bookService.countBooksNew();
                 break;
+            case 3:
+                totalBooks = bookService.countBookFavourite();
+                break;
             case 4:
                 totalBooks = bookService.countBooksByEvent(idEvent);
                 break;
@@ -68,6 +71,11 @@ public class DanhMucServlet extends HttpServlet {
                 bookList=bookService.getAllBooksNew(pageSize, offset);
                 search="Góc Sách Mới";
                 icon="assets/img/icon/iconNew.png";
+                break;
+            }
+            case 3:{
+                bookList=bookService.getAllFavouriteBook(pageSize, offset);
+                search="Sách được các bé yêu thích nhiều nhất";
                 break;
             }
             case 4:{

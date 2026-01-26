@@ -11,15 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/adminAssestRateManagement/RateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/adminRateManagement/RateServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/CommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/admin/DanhGia.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/admin/DanhGia.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/adrress.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/adrress.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css_admin/danhgia.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css_admin/danhgia.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/productDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/HomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/HomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/danh_muc/DanhMucServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/danh_muc/DanhMucServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/home.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,7 +372,7 @@
       <workItem from="1769014693755" duration="5070000" />
       <workItem from="1769049680833" duration="4673000" />
       <workItem from="1769143903318" duration="12087000" />
-      <workItem from="1769411491237" duration="10232000" />
+      <workItem from="1769411491237" duration="11728000" />
     </task>
     <servers />
   </component>
