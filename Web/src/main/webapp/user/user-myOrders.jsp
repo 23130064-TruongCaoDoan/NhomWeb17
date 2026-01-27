@@ -13,10 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/errolpage.css">
     <link rel="stylesheet" href="assets/css/user.css">
-    <link rel="stylesheet" href="assets/css/address.css">
     <link rel="stylesheet" href="assets/css/myOrder.css">
 </head>
 <body>
@@ -76,7 +73,6 @@
                             </div>
                         </div>
 
-                        <!-- CENTER -->
                         <div class="center" style="display: flex">
                             <div class="image">
                                 <img src="${o.firstBookImage}" alt="" />
@@ -105,6 +101,14 @@
                                     <button onclick="window.location='my-order?id=${o.orderId}'">
                                         Xem chi tiết
                                     </button>
+
+                                    <c:if test="${o.status == 'COMPLETED' && o.reviewed == false}">
+                                        <button class="action-btn writeReviewBtn"
+                                                data-order-id="${o.orderId}">
+                                            Viết đánh giá
+                                        </button>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </div>
@@ -118,16 +122,106 @@
         </div>
     </div>
 <c:import url="/user/footerUser.jsp"></c:import>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="reviewPopup" class="popup" style="display: none;">
+
+        <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="order" name="orderId">
+            <label>Đánh giá</label>
+            <select id="reviewStars" name="rating" required>
+                <option value="5">★★★★★</option>
+                <option value="4">★★★★</option>
+                <option value="3">★★★</option>
+                <option value="2">★★</option>
+                <option value="1">★</option>
+            </select>
+            <label>Nhận xét</label>
+            <textarea rows="4" placeholder="Nhập đánh giá của bạn..." name="content" required></textarea>
+            <input type="file" name="image" accept="image/*" >
+            <div class="popup-actions">
+                <button type="submit" id="submitReview">Gửi</button>
+                <button type="button" class="close-popup">Hủy</button>
+            </div>
+        </form>
+    </div>
 <script>
         const menuItems = document.querySelectorAll(".menu-item");
         menuItems.forEach(item => {
             item.addEventListener("click", function() {
-                // Xóa active ở tất cả
                 menuItems.forEach(i => i.classList.remove("active"));
-                // Thêm active vào mục được bấm
                 this.classList.add("active");
             });
         });
 </script>
+<script>
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("reviewPopup");
+    const closeBtn = document.querySelector(".close-popup");
+    const orderIdInput = document.getElementById("order");
+    const reviewForm = document.getElementById("reviewForm");
+
+    // Mở popup
+    document.querySelectorAll(".writeReviewBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const orderId = btn.dataset.orderId;
+            orderIdInput.value = orderId;
+
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        });
+    });
+
+    // Đóng popup
+    function closePopup() {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+        reviewForm.reset();
+        orderIdInput.value = "";
+    }
+
+    overlay.addEventListener("click", closePopup);
+    closeBtn.addEventListener("click", closePopup);
+
+    // Submit form với AJAX
+    reviewForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById("submitReview");
+        const formData = new FormData(this);
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Đang gửi...";
+
+        fetch(this.action, {
+            method: "POST",
+            body: formData,
+            credentials: "same-origin"
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                alert("Đánh giá của bạn đã được gửi thành công!");
+                closePopup();
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Có lỗi xảy ra. Vui lòng thử lại!");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Gửi";
+            });
+    });
+</script>
+
 </body>
 </html>

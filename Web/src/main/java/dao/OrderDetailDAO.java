@@ -16,7 +16,6 @@ public class OrderDetailDAO extends BaseDao{
 
         return getJdbi().withHandle(handle -> {
 
-            // 1. Order
             Order order = handle.createQuery("""
                 SELECT id, user_id, order_date, status,
                        total_amount, note,
@@ -84,4 +83,10 @@ public class OrderDetailDAO extends BaseDao{
             return dto;
         });
     }
+
+    public static void main(String[] args) {
+        OrderDetailDAO dao = new OrderDetailDAO();
+        System.out.println(dao.findOrderDetailByOrderId(43));
+    }
+
 }

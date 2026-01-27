@@ -43,7 +43,7 @@ public class RateServlet extends HttpServlet {
         }
         List<AdminBookRateView> listHigh = commentService.getAdminBookRateHigh(from,to);
         List<AdminBookRateView> listLow = commentService.getAdminBookRateLow(from, to);
-        List<CommentAdmin> listRate = commentService.getCommentAdmin();
+        List<CommentAdmin> listRate = commentService.getCommentAdmin(from, to);
 
         request.setAttribute("stars", stars);
         request.setAttribute("max", max == 0 ? 1 : max);
@@ -97,14 +97,19 @@ public class RateServlet extends HttpServlet {
         }
         List<AdminBookRateView> listHigh = new ArrayList<>();
         List<AdminBookRateView> listLow = new ArrayList<>();
+        List<CommentAdmin> listRate = new ArrayList<>();
         if(flag){
             listHigh = type.equals("all") ? commentService.getAdminBookRateHigh(from, to):commentService.getAdminBookRateHigh(from, to, type);
             listLow = type.equals("all") ? commentService.getAdminBookRateLow(from, to):commentService.getAdminBookRateLow(from, to, type);
+            listRate = type.equals("all") ? commentService.getCommentAdmin(from, to) : commentService.getCommentAdmin(from, to, type);
         }else{
             listHigh = type.equals("all") ? commentService.getAdminBookRateHigh():commentService.getAdminBookRateHigh(type);
             listLow = type.equals("all") ? commentService.getAdminBookRateLow():commentService.getAdminBookRateLow(type);
+            listRate = type.equals("all") ? commentService.getCommentAdmin() : commentService.getCommentAdmin(type);
+
         }
-        List<CommentAdmin> listRate = commentService.getCommentAdmin();
+
+
 
 
         request.setAttribute("from", from);

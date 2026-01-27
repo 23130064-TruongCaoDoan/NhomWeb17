@@ -65,6 +65,13 @@ public class CommentService {
     public List<CommentAdmin> getCommentAdmin(){
         return hd.getCommentAdmin();
     }
+    public List<CommentAdmin> getCommentAdmin(LocalDate from, LocalDate to){
+        return hd.getCommentAdmin(from, to);
+    }
+    public List<CommentAdmin> getCommentAdmin(LocalDate from, LocalDate to, String type){
+        return hd.getCommentAdmin(from, to, type);
+    }
+
 
     public void deleteRate(int id) {
         hd.deleteRate(id);
@@ -72,5 +79,9 @@ public class CommentService {
 
     public void setActive(int id) {
         hd.setActive(id);
+    }
+
+    public List<CommentAdmin> getCommentAdmin(String type) {
+        return hd.getCommentAdmin(type);
     }
 }

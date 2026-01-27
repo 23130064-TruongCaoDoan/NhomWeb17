@@ -11,6 +11,7 @@ public class Order {
     private String note;
     private String disVoucherId;
     private String shipVoucherId;
+    private boolean reviewed;
 
     public Order(int id, int userId, String orderDate, String status, double totalAmount, String note, String disVoucherId, String shipVoucherId) {
         this.id = id;
@@ -86,5 +87,11 @@ public class Order {
 
     public void setShipVoucherId(String shipVoucherId) {
         this.shipVoucherId = shipVoucherId;
+    }
+    public boolean isReviewed() {
+        return reviewed;
+    }
+    public void setReviewed(boolean reviewed) {
+        this.reviewed = reviewed;
     }
 }
