@@ -87,18 +87,20 @@ public class CreateOrder extends HttpServlet {
             user.setPoint(user.getPoint() + (int) (finalTotal * 0.05));
             session.setAttribute("user", user);
             if ("buynow".equals(mode)) {
-                cart = (Cart) session.getAttribute("buyNowCart");
-
-                int bid = cart.getItems().getFirst().getBook().getId();
-                int quantity = cart.getItems().getFirst().getQuantity();
+                Cart buyNowCart = (Cart) session.getAttribute("buyNowCart");
                 session.removeAttribute("buyNowCart");
-                cart = (Cart) session.getAttribute("cart");
-                Iterator<CartItem> iterator = cart.getItems().iterator();
+
+                Cart mainCart = (Cart) session.getAttribute("cart");
+                if (mainCart == null) {
+                    response.sendRedirect("my-orders");
+                    return;
+                }
+
+                Iterator<CartItem> iterator = mainCart.getItems().iterator();
 
                 while (iterator.hasNext()) {
                     CartItem item = iterator.next();
                     int bookId = item.getBook().getId();
-
 
                     int stock = bookService.getStockByBookId(bookId);
 
@@ -107,7 +109,6 @@ public class CreateOrder extends HttpServlet {
                         continue;
                     }
 
-                    // Cart > tồn kho → cập nhật lại
                     if (item.getQuantity() > stock) {
                         item.setQuantity(stock);
                     }
