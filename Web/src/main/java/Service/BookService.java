@@ -346,6 +346,9 @@ public class BookService {
             return match;
         }).toList();
     }
+    public List<String> getImgDetails(int bookId) {
+        return hd.getImgDetails(bookId);
+    }
 
 
 
