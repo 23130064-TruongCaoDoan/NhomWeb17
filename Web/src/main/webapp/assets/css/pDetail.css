@@ -58,8 +58,11 @@
 
 .detail-container .detail .main-img img {
     max-width: 90%;
-    height: auto;
+    max-height: 600px;
+    height: 500px;
     border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 4px 15px rgba(226, 225, 225, 0.4);
 }
 .detail-container .detail .describe{
     width: 44%;

@@ -48,6 +48,7 @@ public class SetUpAccount extends HttpServlet {
             user.setEmail(email);
             user.setBirthday(birthday);
             session.setAttribute("user", user);
+            request.setAttribute("error", "Cập nhật thành công!");
             response.sendRedirect("SetUpAccount");
         } catch (Exception e) {
             e.printStackTrace();
