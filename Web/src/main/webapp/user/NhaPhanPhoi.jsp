@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,67 +27,7 @@
 </head>
 <body>
 <div class="page-wrapper">
-    <div id="home-page">
-        <div id="page-header">
-            <div class="header-message">
-                <div class="message"></div>
-                <div class="messageBorder"></div>
-            </div>
-            <div class="container">
-                <div class="header-title">
-                    <a href="" class="logo">
-                        <img
-                                src="assets/img/logo/logoChinh.png"
-                                alt="Sách thiếu nhi cho bé"
-                        />
-                    </a>
-                </div>
-                <div class="header-menu">
-                    <a href="home.jsp" class="button bt"
-                    ><i class="fa-solid fa-house"></i><span>Trang chủ</span></a
-                    >
-                    <div class="button category">
-                        <a href="dsSanPham.jsp" class="button bt danhmuc">
-                            <i class="fa-solid fa-list"></i><span>Danh mục</span></a
-                        >
-                        <div class="danhMuc sach">
-                            <div class="item truyenTranh">
-                                <a href="dsSanPham.jsp" class="it truyen-tranh"
-                                ><span>Truyện tranh</span></a
-                                >
-                            </div>
-                            <div class="item anh">
-                                <a href="dsSanPham.jsp" class="it sach-anh"><span>Sách ảnh</span></a>
-                            </div>
-                            <div class="item giaoDuc">
-                                <a href="dsSanPham.jsp" class="it giao-duc"><span>Giáo dục</span></a>
-                            </div>
-                            <div class="item toMau">
-                                <a href="dsSanPham.jsp" class="it to-mau"><span>Sách tô màu</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="search" placeholder="Tìm kiếm sách"/>
-                        <button>Tìm Kiếm</button>
-                    </div>
-                    <a href="login.jsp" class="button bt taikhoan">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Tài khoản</span>
-                    </a>
-                    <a href="shoppingCart.jsp" class="button bt gio">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Giỏ hàng</span>
-                    </a>
-                    <a href="user-thongbao.jsp" class="button bt thongbao">
-                        <i class="fa-solid fa-bell"><span class="number">11</span></i>
-                        <span>Thông báo</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <c:import url="/user/headerUser.jsp"></c:import>
     <main class="return-policy">
         <section class="policy-intro">
             <h1>Nhà Phân Phối</h1>
@@ -106,56 +48,7 @@
         </section>
 
     </main>
-    <footer class="footer">
-        <div class="wave-container">
-            <svg
-                    viewBox="0 0 120 15"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-            >
-                <path
-                        d="M0,10
-                C10,15 20,5 30,10
-                C40,15 50,5 60,10
-                C70,15 80,5 90,10
-                C100,15 115,5 120,10
-                L120,20 0,20 Z"
-                ></path>
-            </svg>
-        </div>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Liên hệ chúng tôi</h3>
-                <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-                <a href="#"
-                ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
-                >
-            </div>
-
-            <div class="footer-column">
-                <h3>Dịch vụ khách hàng</h3>
-                <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
-                <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
-                <a href="returnPolicy.jsp">Chính sách đổi trả</a>
-
-            </div>
-
-            <div class="footer-column">
-                <h3>Đối tác</h3>
-                <a href="NhaPhanPhoi.html">Nhà phân phối</a>
-                <a href="dsSanPham.jsp">Sách của chúng tôi</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Bảo mật</h3>
-                <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
-                <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright ©. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <c:import url="/user/footerUser.jsp"></c:import>
 </div>
 </body>
 </html>

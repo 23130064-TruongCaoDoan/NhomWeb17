@@ -110,7 +110,6 @@
                                     </c:if>
 
                                 </div>
-
                             </div>
                         </div>
 
@@ -122,7 +121,7 @@
         </div>
         </div>
     </div>
-<c:import url="footerUser.jsp"> </c:import>
+<c:import url="/user/footerUser.jsp"></c:import>
 
     <div id="overlay" class="overlay"></div>
     <div id="reviewPopup" class="popup" style="display: none;">

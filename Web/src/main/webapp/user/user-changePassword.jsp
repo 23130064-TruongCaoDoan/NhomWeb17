@@ -80,12 +80,11 @@
             }
         });
 
-        // Check mật khẩu mạnh
         const strongPassRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
         if (newPass.value && !strongPassRegex.test(newPass.value)) {
             const errorMsg = newPass.nextElementSibling;
             errorMsg.textContent =
-                "Mật khẩu phải ≥ 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
+                "Mật khẩu phải ít nhất 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
             errorMsg.style.display = "block";
             newPass.classList.add("error");
             isValid = false;

@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="assets/css/voucher.css">
 </head>
 <body>
+<c:if test="${not empty error}">
+    <div id="toast-error" class="error-message toast-error">
+        <i class="fa-solid fa-circle-exclamation"></i>
+            ${error}
+    </div>
+</c:if>
+<div id="toast-term" class="error-message toast-error" style="display:none;">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    Vui lòng đồng ý Điều khoản & Điều kiện trước khi thanh toán
+</div>
 <div class="page-wrapper">
     <c:import url="headerUser.jsp"> </c:import>
     <div class="content">
@@ -223,7 +233,7 @@
                                 <a href="<c:url value="/DieuKhoanSuDung" />">Điều khoản & Điều kiện của Chúng Tôi</a>
                             </label>
                         </div>
-                        <button type="submit" class="confirm-payment-btn" disabled>Xác nhận thanh toán</button>
+                        <button type="submit" class="confirm-payment-btn">Xác nhận thanh toán</button>
 
                     </div>
                 </form>
@@ -513,7 +523,7 @@
         });
     });
 
-    // Đóng popup điều kiện
+
     cancelBtn.addEventListener("click", () => {
         voucherPopup.style.display = "none";
         popup.style.display = "block";
@@ -603,48 +613,79 @@
     });
 
 
-    // xác nhận thanh toán
+
     const agree = document.getElementById("agree");
     const confirmBtn = document.querySelector(".confirm-payment-btn");
 
-    confirmBtn.disabled = true;
 
-    agree.addEventListener("change", () => {
-        confirmBtn.disabled = !agree.checked;
-    });
 
-    // trước khi submit → gom dữ liệu từ form GET
-    document.getElementById("orderForm").addEventListener("submit", function () {
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
 
-        // address
+        if (!agree.checked) {
+            e.preventDefault();
+
+            const toast = document.getElementById("toast-term");
+            toast.style.display = "flex";
+
+            setTimeout(() => {
+                toast.classList.add("toast-hide");
+            }, 3000);
+
+            setTimeout(() => {
+                toast.style.display = "none";
+                toast.classList.remove("toast-hide");
+            }, 3400);
+
+            return;
+        }
+
+
         const addressChecked = document.querySelector('input[name="addressId"]:checked');
         document.getElementById("finalAddressId").value = addressChecked?.value || "";
 
-        // ship
+
         const shipChecked = document.querySelector('input[name="ship"]:checked');
         document.getElementById("finalShipType").value = shipChecked?.value || "";
 
-        // point
+
         document.getElementById("finalUsePoint").value =
             document.querySelector('input[name="usePoint"]')?.checked ? "1" : "0";
 
-        // note
+
         document.getElementById("finalNote").value =
             document.querySelector('textarea[name="orderNote"]').value;
     });
 
 
 
-    // nếu không có mặc định thì chọn 1 cái
+
+
     document.addEventListener("DOMContentLoaded", function () {
         const addressRadios = document.querySelectorAll('input[name="addressId"]');
 
-        // nếu chưa có cái nào được chọn → tick cái đầu tiên
+
         if (addressRadios.length > 0) {
             const checked = document.querySelector('input[name="addressId"]:checked');
             if (!checked) {
                 addressRadios[0].checked = true;
             }
+        }
+    });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const toast = document.getElementById("toast-error");
+        if (toast) {
+            setTimeout(() => {
+                toast.classList.add("toast-hide");
+            }, 3000);
+
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3400);
         }
     });
 
