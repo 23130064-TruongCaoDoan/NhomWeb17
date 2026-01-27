@@ -3,9 +3,11 @@ package controler;
 import DTO.RevenueDTO;
 import Service.EventService;
 import Service.ThongKeService;
+import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.User;
 
 import java.io.IOException;
 
@@ -16,6 +18,17 @@ public class ThongKeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EventService eventService = new EventService();
         eventService.updatBookPriceForEvent();
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+        UserService userService = new UserService();
+        if (!userService.checkRole(user)) {
+            response.sendRedirect("login");
+            return;
+        }
         request.setAttribute("totalRevenue", service.getTotalRevenue());
         request.setAttribute("top10Customers", service.getTop10Users());
         request.setAttribute("topCustomer", service.getTopCustomer());

@@ -19,7 +19,7 @@ public class ThongKeService {
         return dao.getTop10UsersWithTotalSpent();
     }
     public UserWithTotalSpentDTO getTopCustomer() {
-        return dao.getTopCustomer();
+        return dao.getTopCustomer().orElse(null);
     }
 
     public BookWithSoldDTO getBestSeller() {

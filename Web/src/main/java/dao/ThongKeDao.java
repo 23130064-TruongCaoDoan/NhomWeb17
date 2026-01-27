@@ -5,6 +5,7 @@ import DTO.RevenueDTO;
 import DTO.UserWithTotalSpentDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ThongKeDao extends BaseDao {
 
@@ -43,7 +44,7 @@ public class ThongKeDao extends BaseDao {
                         .one()
         );
     }
-    public UserWithTotalSpentDTO getTopCustomer() {
+    public Optional<UserWithTotalSpentDTO> getTopCustomer() {
         return getJdbi().withHandle(h ->
                 h.createQuery("""
             SELECT 
@@ -61,7 +62,7 @@ public class ThongKeDao extends BaseDao {
             LIMIT 1
         """)
                         .mapToBean(UserWithTotalSpentDTO.class)
-                        .one()
+                        .findOne()
         );
     }
     public BookWithSoldDTO getBestSeller() {
