@@ -28,7 +28,7 @@
 }
 
 .order-container .function #addorder,
-.order-container .function .find button {
+.order-container .function button {
     background-color: #0d3164;
     color: #fff;
     padding: 10px 16px;
@@ -38,12 +38,12 @@
     font-weight: 600;
 }
 
-.order-container .function .find {
+.order-container .function  {
     display: flex;
     gap: 10px;
 }
 
-.order-container .function .find input {
+.order-container .function input {
     width: 20vw;
     padding: 8px;
     border: 1px solid #ccc;
@@ -64,7 +64,7 @@
 }
 
 .table-wrapper {
-    max-height: 250px;
+    height: auto;
     overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -192,23 +192,91 @@ textarea {
     color: white;
     background: #0d3164;
 }
-#listSP  {
+#listSP {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 110; /* cao hơn overlay */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    z-index: 110;
     display: none;
-    box-sizing: border-box;
-    width: auto;
+
+    width: 85vw;
+    max-width: 1000px;
     max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden; /* popup KHÔNG scroll */
+}
+
+#listSP table {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+#listSP th,
+#listSP td {
+    white-space: nowrap;
+    padding: 8px 12px;
 }
 #listSP table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+}
+#listSP .table-wrapper {
+    max-height: 65vh;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.delete-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    z-index: 102;
+    width: 320px;
+    display: none;
+}
+
+.delete-popup p {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: #333;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c9302c;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #b3b3b3;
 }
