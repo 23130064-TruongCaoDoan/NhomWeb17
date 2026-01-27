@@ -23,11 +23,11 @@ public class ThongKeService {
     }
 
     public BookWithSoldDTO getBestSeller() {
-        return dao.getBestSeller();
+        return dao.getBestSeller().orElse(null);
     }
 
     public BookWithSoldDTO getWorstSeller() {
-        return dao.getWorstSeller();
+        return dao.getWorstSeller().orElse(null);
     }
 
     public List<BookWithSoldDTO> getTop10Books() {

@@ -65,7 +65,7 @@ public class ThongKeDao extends BaseDao {
                         .findOne()
         );
     }
-    public BookWithSoldDTO getBestSeller() {
+    public Optional<BookWithSoldDTO> getBestSeller() {
         return getJdbi().withHandle(h ->
                 h.createQuery("""
             SELECT 
@@ -86,10 +86,10 @@ public class ThongKeDao extends BaseDao {
             LIMIT 1
         """)
                         .mapToBean(BookWithSoldDTO.class)
-                        .one()
+                        .findOne()
         );
     }
-    public BookWithSoldDTO getWorstSeller() {
+    public Optional<BookWithSoldDTO> getWorstSeller() {
         return getJdbi().withHandle(h ->
                 h.createQuery("""
             SELECT 
@@ -110,7 +110,7 @@ public class ThongKeDao extends BaseDao {
             LIMIT 1
         """)
                         .mapToBean(BookWithSoldDTO.class)
-                        .one()
+                        .findOne()
         );
     }
     public List<BookWithSoldDTO> getTop10Books() {

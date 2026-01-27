@@ -34,17 +34,39 @@
                 <div class="card">
                     <i class="fa-solid fa-user-tie"></i>
                     <h3>Khách hàng mua nhiều nhất</h3>
-                    <p>${topCustomer.name}</p>
+                    <p><c:choose>
+                        <c:when test="${topCustomer != null}">
+                            ${topCustomer.name}
+                        </c:when>
+                        <c:otherwise>
+                            Chưa có dữ liệu
+                        </c:otherwise>
+                    </c:choose></p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-box-open"></i>
                     <h3>Sản phẩm bán chạy nhất</h3>
-                    <p>${bestBook.title}</p>
+                    <p><c:choose>
+                        <c:when test="${bestBook != null}">
+                            ${bestBook.title}
+                        </c:when>
+                        <c:otherwise>
+                            Chưa có dữ liệu
+                        </c:otherwise>
+                    </c:choose>
+                    </p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-box"></i>
                     <h3>Sản phẩm bán ít nhất</h3>
-                    <p>${worstBook.title}</p>
+                    <p><c:choose>
+                        <c:when test="${worstBook != null}">
+                            ${worstBook.title}
+                        </c:when>
+                        <c:otherwise>
+                            Chưa có dữ liệu
+                        </c:otherwise>
+                    </c:choose></p>
                 </div>
                 <div class="card top10-product">
                     <i class="fa-solid fa-box"></i>
@@ -57,7 +79,7 @@
             </div>
 
             <div class="chart">
-                <h2>Biểu đồ doanh thu theo tuần</h2>
+                <h2>Biểu đồ doanh thu</h2>
                 <div class="bar-container">
                     <c:forEach items="${revenueData}" var="r">
                         <div>
