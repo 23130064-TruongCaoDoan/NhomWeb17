@@ -81,7 +81,9 @@
                                        name="quantity"
                                        value="${item.quantity}"
                                        min="1"
-                                       max="100">
+                                       max="${book.stock}"
+                                       onkeydown="handleEnter(event, this)"
+                                       onblur="updateQtyInput(this)">
 
                                 <button type="button" class="plus" onclick="changeQty(this, 1)">+</button>
                             </form>
@@ -364,11 +366,20 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
+                if (!data.success) {
+                    show("Không thể thêm quá số lượng tồn kho");
+                }
                 location.reload();
             })
             .catch(err => console.log(err));
 
     }
+
+    document.querySelectorAll(".number-input").forEach(form => {
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+        });
+    });
 
     document.querySelectorAll(".voucher-item").forEach((item, index) => {
         console.log(`Voucher ${index + 1}:`);
@@ -383,6 +394,36 @@
             document.getElementById('voucherListPopup').style.display = 'none';
         });
     });
+
+    function handleEnter(e, input) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            updateQtyInput(input);
+        }
+    }
+
+    function updateQtyInput(input) {
+        const form = input.closest("form");
+        const id = form.querySelector("input[name='id']").value;
+
+        let value = parseInt(input.value);
+
+        if (isNaN(value) || value < 1) value = 1;
+        if (value > 100) value = 100;
+
+        input.value = value;
+        updateItem(id, value);
+    }
+
+
+    function show(message) {
+        const toast = document.getElementById("toast");
+        toast.innerText = message;
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
 </script>
 </body>
 </html>

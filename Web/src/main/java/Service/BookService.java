@@ -1,5 +1,7 @@
 package Service;
 
+import Cart.Cart;
+import Cart.CartItem;
 import dao.BookDao;
 import jakarta.servlet.http.Part;
 import model.Book;
@@ -306,6 +308,9 @@ public class BookService {
                 .map(Integer::parseInt)
                 .collect(Collectors.toSet());
     }
+    public boolean isBookAvailable(int bookId) {
+        return hd.isBookAvailable(bookId);
+    }
 
 
 
@@ -355,5 +360,24 @@ public class BookService {
     public void updateDiscountBook(List<Book> listBookEvent, double value) {
         hd.updateDiscountBook(listBookEvent,value);
 
+    }
+
+    public void updateStock(Cart cart) {
+        for (CartItem item : cart.getItems()) {
+            hd.updateStock(item.getBook(),item.getQuantity());
+            if (item.getBook().getStock()==item.getQuantity()){
+                hd.setUpdatSeld(item.getBook().getId());
+            }
+        }
+    }
+
+    public void updateQuantity(Cart cart) {
+        for (CartItem item : cart.getItems()) {
+            hd.updateQuantity(item.getBook(),item.getQuantity());
+        }
+    }
+
+    public int getStockByBookId(int bookId) {
+        return hd.getStockByBookId(bookId);
     }
 }

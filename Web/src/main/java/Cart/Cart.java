@@ -94,4 +94,9 @@ public class Cart implements Serializable {
     }
 
 
+    public int getQuantityByBookId(int bookId) {
+        return data.containsKey(bookId)
+                ? data.get(bookId).getQuantity()
+                : 0;
+    }
 }

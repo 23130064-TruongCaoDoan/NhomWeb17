@@ -1,15 +1,19 @@
 package controler.ThanhToan;
 
 import Cart.Cart;
+import Cart.CartItem;
+import Service.BookService;
 import Service.OrderService;
 import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.Book;
 import model.User;
 import model.Voucher;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 @WebServlet(name = "CreateOrder", value = "/CreateOrder")
 public class CreateOrder extends HttpServlet {
@@ -21,7 +25,7 @@ public class CreateOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        UserService  userService = new UserService();
+        UserService userService = new UserService();
 
         User user = (User) session.getAttribute("user");
         String mode = request.getParameter("mode");
@@ -58,38 +62,64 @@ public class CreateOrder extends HttpServlet {
         Voucher dis = (Voucher) session.getAttribute("appliedDiscountVoucher");
         Voucher ship = (Voucher) session.getAttribute("appliedShipVoucher");
 
-        int disid = dis==null?0:dis.getId();
-        int shipid = ship==null?0:ship.getId();
+        int disid = dis == null ? 0 : dis.getId();
+        int shipid = ship == null ? 0 : ship.getId();
 
         int userId = user.getId();
 
 
         if (usePoint && pointUsed > 0) {
             user.setPoint(user.getPoint() - pointUsed);
-            userService.updateDiem(userId,pointUsed);
+            userService.updateDiem(userId, pointUsed);
         }
 
 
-        OrderService  orderService = new OrderService();
+        OrderService orderService = new OrderService();
 
-        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
+        boolean check = orderService.addOrder(userId, finalTotal, note, disid, shipid, addressId, shipType, shipFee, deliveryRange, cart);
         System.out.println("CREATE ORDER RESULT = " + check);
         session.removeAttribute("appliedDiscountVoucher");
         session.removeAttribute("appliedShipVoucher");
 
+        BookService bookService = new BookService();
         if (check) {
-            userService.tichDiem(userId,finalTotal);
-            user.setPoint(user.getPoint() + (int) (finalTotal*0.05));
+            userService.tichDiem(userId, finalTotal);
+            user.setPoint(user.getPoint() + (int) (finalTotal * 0.05));
             session.setAttribute("user", user);
             if ("buynow".equals(mode)) {
+                cart = (Cart) session.getAttribute("buyNowCart");
+
+                int bid = cart.getItems().getFirst().getBook().getId();
+                int quantity = cart.getItems().getFirst().getQuantity();
                 session.removeAttribute("buyNowCart");
+                cart = (Cart) session.getAttribute("cart");
+                Iterator<CartItem> iterator = cart.getItems().iterator();
+
+                while (iterator.hasNext()) {
+                    CartItem item = iterator.next();
+                    int bookId = item.getBook().getId();
+
+
+                    int stock = bookService.getStockByBookId(bookId);
+
+                    if (stock <= 0) {
+                        iterator.remove();
+                        continue;
+                    }
+
+                    // Cart > tồn kho → cập nhật lại
+                    if (item.getQuantity() > stock) {
+                        item.setQuantity(stock);
+                    }
+                }
             } else {
                 session.removeAttribute("cart");
             }
+
+
             response.sendRedirect("my-orders");
-        }
-        else{
-        response.sendRedirect("ThanhToan");
+        } else {
+            response.sendRedirect("ThanhToan");
         }
     }
 }

@@ -197,12 +197,14 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getAllFavouriteBook(int limit, int offset) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("""
                                 SELECT b.*
                                 FROM books b
                                 JOIN favourite_books f ON b.id = f.book_id
+                                WHERE is_sell=1
                                 GROUP BY b.id
                                 ORDER BY COUNT(f.book_id) DESC
                                 LIMIT :limit OFFSET :offset
@@ -245,6 +247,7 @@ public class BookDao extends BaseDao {
                         .one()
         );
     }
+
     public int countBookFavourite() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*) FROM BOOKS WHERE id IN (SELECT DISTINCT book_id FROM favourite_books) AND is_sell=1")
@@ -411,12 +414,14 @@ public class BookDao extends BaseDao {
                         .list()
         );
     }
+
     public List<Book> getFavouriteBook() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("""
                                 SELECT b.*
                                 FROM books b
                                 JOIN favourite_books f ON b.id = f.book_id
+                                where is_sell=1
                                 GROUP BY b.id
                                 ORDER BY COUNT(f.book_id) DESC;
                                 """)
@@ -492,4 +497,51 @@ public class BookDao extends BaseDao {
         );
     }
 
+    public void setUpdatSeld(int id) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("UPDATE books SET is_sell=0 where id=:id")
+                        .bind("id", id)
+                        .execute()
+        ));
+    }
+
+    public void updateStock(Book book, int quantity) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("UPDATE books SET stock = stock - :stock where id=:id")
+                        .bind("stock", quantity)
+                        .bind("id", book.getId())
+                        .execute()
+        ));
+    }
+
+    public boolean isBookAvailable(int bookId) {
+
+        String sql = "SELECT is_sell FROM books WHERE id = :id";
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("id", bookId)
+                        .mapTo(Boolean.class)
+                        .findOne()
+                        .orElse(false)
+        );
+    }
+
+    public void updateQuantity(Book book, int quantity) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("UPDATE books SET quantity_sold = quantity_sold + :quantity_sold where id=:id")
+                        .bind("quantity_sold", quantity)
+                        .bind("id", book.getId())
+                        .execute()
+        ));
+    }
+
+    public int getStockByBookId(int bookId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT stock FROM BOOKS WHERE id=:id")
+                        .bind("id", bookId)
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
 }

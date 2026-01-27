@@ -68,12 +68,12 @@
                                                      maxFractionDigits="0"/> Đ</p>
                             </c:if>
                         </div>
-                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px">
+                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px"   onkeydown="return event.key !== 'Enter';">
                             <input type="hidden" name="bookId" value="${book.id}">
                             <div class="quantity" style="padding-top: 10px;">
                                 <div class="number-input">
                                     <button type="button" class="minus" onclick="minus()">-</button>
-                                    <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
+                                    <input type="number" name="quantity" value="1" min="1" max="${book.stock}" id="number-quantity" class="no-spinners"/>
                                     <button type="button" class="plus" onclick="plus()">+</button>
                                 </div>
                             </div>

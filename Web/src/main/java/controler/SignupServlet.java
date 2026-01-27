@@ -41,6 +41,8 @@ public class SignupServlet extends HttpServlet {
         } else {
             String verifyCode = token.generateToken8();
             session.setAttribute("verifyCode", verifyCode);
+            session.setAttribute("otpTime", System.currentTimeMillis());
+
             session.setAttribute("email", email);
             session.setAttribute("fullname", fullname);
             session.setAttribute("password", password);
