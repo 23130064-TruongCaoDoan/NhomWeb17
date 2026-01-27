@@ -16,7 +16,7 @@
             <div class="header-title">
                 <a href="" class="logo">
                     <img
-                            src="assets/img/logo/logoChinh.png"
+                            src="${pageContext.request.contextPath}/assets/img/logo/logoChinh.png"
                             alt="Sách thiếu nhi cho bé"
                     />
                 </a>

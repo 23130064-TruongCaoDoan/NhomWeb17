@@ -544,4 +544,64 @@ public class BookDao extends BaseDao {
                         .one()
         );
     }
+
+    public int countByCategoryAndAge(
+            String category,
+            int ageFrom,
+            int ageTo
+    ) {
+
+        StringBuilder sql = new StringBuilder("""
+            SELECT COUNT(*)
+            FROM books
+            WHERE is_sell = 1
+              AND age BETWEEN :ageFrom AND :ageTo
+        """);
+
+        if (category != null) {
+            sql.append(" AND type = :category ");
+        }
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString())
+                    .bind("ageFrom", ageFrom)
+                    .bind("ageTo", ageTo);
+
+            if (category != null) {
+                query.bind("category", category);
+            }
+
+            return query.mapTo(Integer.class).one();
+        });
+    }
+
+    public List<Book> findByCategoryAndAge(String category, int ageFrom, int ageTo, int limit, int offset) {
+        StringBuilder sql = new StringBuilder("""
+            SELECT *
+            FROM books
+            WHERE is_sell = 1
+              AND age BETWEEN :ageFrom AND :ageTo
+        """);
+
+        if (category != null) {
+            sql.append(" AND type = :category ");
+        }
+
+        sql.append(" ORDER BY add_date DESC ");
+        sql.append(" LIMIT :limit OFFSET :offset ");
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString())
+                    .bind("ageFrom", ageFrom)
+                    .bind("ageTo", ageTo)
+                    .bind("limit", limit)
+                    .bind("offset", offset);
+
+            if (category != null) {
+                query.bind("category", category);
+            }
+
+            return query.mapToBean(Book.class).list();
+        });
+    }
 }

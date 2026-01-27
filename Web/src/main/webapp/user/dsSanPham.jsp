@@ -10,15 +10,16 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="assets/css/header.css"/>
-    <link rel="stylesheet" href="assets/css/dsSanPham.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
             href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DE+SAS:wght@100..400&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/footer.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/dsSanPham.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css"/>
+
 </head>
 <body>
 <div class="page-wrapper">
@@ -41,22 +42,20 @@
                 <hr>
                 <div class="filter-header" onclick="toggleOptions()">Đối tượng</div>
                 <div class="filter-options" id="options">
-                    <button>Trẻ sơ sinh</button>
-                    <button>Trẻ 1-3 tuổi</button>
-                    <button>Trẻ >4 tuổi</button>
-                    <button>Sinh đôi</button>
-                    <button>Anh chị em</button>
-                    <button>Gia đình</button>
+                    <button data-age="0">Trẻ sơ sinh</button>
+                    <button data-age-from="1" data-age-to="3">Trẻ 1-3 tuổi</button>
+                    <button data-age-from="4">Trẻ >4 tuổi</button>
                 </div>
             </div>
             <div class="occasions">
                 <hr>
                 <div class="filter-header" onclick="toggleOptions2()">Theo thể loại</div>
                 <div class="filter-options" id="options-2">
-                    <button>Truyện tranh</button>
-                    <button>Sách ảnh</button>
-                    <button>Giáo dục</button>
-                    <button>Tô màu</button>
+                    <button data-category="Truyện tranh">Truyện tranh</button>
+                    <button data-category="Sách giáo dục">Sách giáo dục</button>
+                    <button data-category="Sách ảnh">Sách ảnh</button>
+                    <button data-category="Giáo dục">Giáo dục</button>
+                    <button data-category="Sách tô màu">Sách tô màu</button>
                 </div>
             </div>
             <button class="clear-filter">Xoá bộ lọc</button>
@@ -88,8 +87,11 @@
                     </div>
                 </div>
             </c:forEach>
+
+
             <c:if test="${totalPages > 1}">
                 <div class="pagination">
+
                     <c:choose>
 
 
@@ -111,7 +113,26 @@
                                    href="search?page=${currentPage + 1}&bSearch=${search}">»</a>
                             </c:if>
                         </c:when>
+                        <c:when test="${mode == 'filter'}">
 
+                            <c:if test="${currentPage > 1}">
+                                <a class="page-btn prev"
+                                   href="dsSanPham/filter?page=${currentPage - 1}&${qs}">«</a>
+                            </c:if>
+
+                            <c:forEach begin="1" end="${totalPages}" var="i">
+                                <a class="page-btn ${i == currentPage ? 'active' : ''}"
+                                   href="dsSanPham/filter?page=${i}&${qs}">
+                                        ${i}
+                                </a>
+                            </c:forEach>
+
+                            <c:if test="${currentPage < totalPages}">
+                                <a class="page-btn next"
+                                   href="dsSanPham/filter?page=${currentPage + 1}&${qs}">»</a>
+                            </c:if>
+
+                        </c:when>
 
                         <c:otherwise>
                             <c:if test="${currentPage > 1}">
@@ -164,4 +185,56 @@
         }, 2000);
     }
 </script>
+<script>
+    const BASE_URL = "${pageContext.request.contextPath}/dsSanPham/filter";
+    function toggleOptions() {
+        const el = document.getElementById("options");
+        if (el) {
+            el.style.display = el.style.display === "none" ? "block" : "none";
+        }
+    }
+
+    function toggleOptions2() {
+        const el = document.getElementById("options-2");
+        if (el) {
+            el.style.display = el.style.display === "none" ? "block" : "none";
+        }
+    }
+    const params = new URLSearchParams(window.location.search);
+
+
+    document.querySelectorAll("[data-age-from]").forEach(btn => {
+        btn.onclick = () => {
+            params.set("ageFrom", btn.dataset.ageFrom);
+            if (btn.dataset.ageTo) {
+                params.set("ageTo", btn.dataset.ageTo);
+            } else {
+                params.set("ageTo", 100);
+            }
+            params.delete("page");
+            reload();
+        }
+    });
+
+
+
+    document.querySelectorAll("[data-category]").forEach(btn => {
+        btn.onclick = () => {
+            params.set("category", btn.dataset.category);
+            params.delete("page");
+            reload();
+        }
+    });
+
+    console.log("FILTER JS LOADED");
+    // CLEAR
+    document.querySelector(".clear-filter").onclick = () => {
+        window.location.href = "dsSanPham";
+    };
+
+    function reload(){
+        window.location.href = BASE_URL + "?" + params.toString();
+    }
+</script>
+
 </html>

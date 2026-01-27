@@ -35,7 +35,6 @@ public class DanhMucServlet extends HttpServlet {
         if (p != null && !p.trim().isEmpty()) {
             page = Integer.parseInt(p.trim());
         }
-
         int totalBooks;
         String typeParam = request.getParameter("type");
         int type = 0;
@@ -96,6 +95,7 @@ public class DanhMucServlet extends HttpServlet {
                 break;
             }
         }
+
         request.setAttribute("type", type);
         request.setAttribute("color", color);
         request.setAttribute("search", search);
