@@ -12,14 +12,14 @@ public class OrderDao extends BaseDao {
         try {
             return getJdbi().withHandle(handle ->
                     handle.createUpdate("""
-                INSERT INTO `ORDERS`
-                (user_id, total_amount, note, status, dis_voucher_id, ship_voucher_id, reviewed)
-                VALUES (:user_id, :total_amount, :note, :status, :dis_voucher_id, :ship_voucher_id,0)
-            """)
+                                        INSERT INTO `ORDERS`
+                                        (user_id, total_amount, note, status, dis_voucher_id, ship_voucher_id, reviewed)
+                                        VALUES (:user_id, :total_amount, :note, :status, :dis_voucher_id, :ship_voucher_id,0)
+                                    """)
                             .bind("user_id", userId)
                             .bind("total_amount", totalAmount)
                             .bind("note", note)
-                            .bind("status", "NOPAID")
+                            .bind("status", "COMPLETE")
                             .bind("dis_voucher_id", dis)
                             .bind("ship_voucher_id", ship)
                             .executeAndReturnGeneratedKeys("id")
@@ -32,25 +32,8 @@ public class OrderDao extends BaseDao {
         }
     }
 
-        public List<MyOrderDTO> findOrdersByUserId(int userId) {
+    public List<MyOrderDTO> findOrdersByUserId(int userId) {
 
-            String sql = """
-            SELECT 
-                o.id            AS orderId,
-                o.order_date    AS orderDate,
-                o.status        AS status,
-                o.total_amount  AS totalAmount,
-                o.reviewed      AS reviewed,
-
-                SUM(oi.quantity) AS totalQuantity,
-                MIN(b.cover_img_url) AS firstBookImage
-            FROM orders o
-            JOIN order_items oi ON o.id = oi.order_id
-            JOIN books b ON oi.book_id = b.id
-            WHERE o.user_id = :userId
-            GROUP BY o.id, o.order_date, o.status, o.total_amount
-            ORDER BY o.order_date DESC
-        """;
 
         String sql = """
                     SELECT 
@@ -110,13 +93,14 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+
     public void setReviewed(int orderId) {
         getJdbi().withHandle(handle ->
                 handle.createUpdate("""
                                 UPDATE ORDERS SET reviewed = 1 WHERE id = :orderId
                                 """)
-                .bind("orderId", orderId)
-                .execute()
+                        .bind("orderId", orderId)
+                        .execute()
         );
     }
 
@@ -210,20 +194,20 @@ public class OrderDao extends BaseDao {
     public List<OrderItemsView> getOrderItemsByOrderId(int orderId) {
 
         String sql = """
-        SELECT
-            b.id                    AS bookId,
-            b.title                 AS bookName,
-            a.name                  AS author,
-            b.price                 AS price,
-            CAST(oi.quantity AS UNSIGNED) AS quantity,
-            b.type                  AS category,
-            b.age                   AS age,
-            b.cover_img_url         AS image
-        FROM order_items oi
-        JOIN books b ON oi.book_id = b.id
-        LEFT JOIN authors a ON b.author_id = a.id
-        WHERE oi.order_id = :orderId
-    """;
+                    SELECT
+                        b.id                    AS bookId,
+                        b.title                 AS bookName,
+                        a.name                  AS author,
+                        b.price                 AS price,
+                        CAST(oi.quantity AS UNSIGNED) AS quantity,
+                        b.type                  AS category,
+                        b.age                   AS age,
+                        b.cover_img_url         AS image
+                    FROM order_items oi
+                    JOIN books b ON oi.book_id = b.id
+                    LEFT JOIN authors a ON b.author_id = a.id
+                    WHERE oi.order_id = :orderId
+                """;
 
         return getJdbi().withHandle(handle ->
                 handle.createQuery(sql)
