@@ -9,7 +9,9 @@ import model.Book;
 import model.Event;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "home", value = "/home")
 public class HomeServlet extends HttpServlet {
@@ -26,7 +28,19 @@ public class HomeServlet extends HttpServlet {
         eventService.updatBookPriceForEvent();
 
         List<Event> eventList= eventService.getActiveEventsOrderByStartDateAsc();
-        request.setAttribute("events",eventList);
+        Map<Integer, Boolean> eventHasBooks = new HashMap<>();
+
+        for (Event e : eventList) {
+            int count = bookService.countBooksByEvent(e.getId());
+            eventHasBooks.put(e.getId(), count > 0);
+        }
+
+        request.setAttribute("events", eventList);
+        request.setAttribute("eventHasBooks", eventHasBooks);
+
+
+
+
         request.setAttribute("booksListSale", booksListSale);
         request.setAttribute("booksListNew", booksListNew);
         request.setAttribute("booksListFavourite", booksListFavourite);

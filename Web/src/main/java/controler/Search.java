@@ -18,7 +18,13 @@ public class Search extends HttpServlet {
         EventService eventService = new EventService();
         eventService.updatBookPriceForEvent();
 
-        String search = request.getParameter("bSearch").trim();
+        String search = request.getParameter("bSearch");
+
+        if (search == null || search.trim().isEmpty()) {
+            response.sendRedirect("home");
+            return;
+        }
+        search = search.trim();
         if (search == null || search.equals("")) {
             response.sendRedirect("home");
             return;
@@ -44,6 +50,8 @@ public class Search extends HttpServlet {
             List<Book> bookList = bookService.findListBook(search, pageSize, offset);
             request.setAttribute("bookList", bookList);
             request.setAttribute("search", search);
+
+            request.setAttribute("mode", "search");
             request.getRequestDispatcher("user/dsSanPham.jsp").forward(request, response);
         }
     }

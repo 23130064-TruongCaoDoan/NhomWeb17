@@ -1,11 +1,11 @@
-/* ===== LAYOUT CHÍNH ===== */
+
 .content {
     display: grid;
     grid-template-columns: 20vw 1fr;
     gap: 30px;
 }
 
-/* ===== LIST PRODUCT ===== */
+
 .listProducts {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -13,7 +13,7 @@
     padding-right: 30px;
 }
 
-/* ===== CARD ===== */
+
 .card {
     background-color: #fff;
     width: 100%;
@@ -30,7 +30,7 @@
     cursor: pointer;
 }
 
-/* ===== IMAGE ===== */
+
 .card img {
     width: 100%;
     height: auto;
@@ -38,7 +38,7 @@
     object-fit: contain;
 }
 
-/* ===== BOOK NAME ===== */
+
 .card .book-name {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -56,13 +56,13 @@
     text-decoration: underline;
 }
 
-/* ===== RATING ===== */
+
 .card .rating {
     color: gold;
     margin: 5px 0;
 }
 
-/* ===== PRICE + CART ===== */
+
 .price-cart {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -73,7 +73,7 @@
     justify-self: center;
 }
 
-/* ===== PRICE ===== */
+
 .card .price {
     color: #008000;
     font-weight: bold;
@@ -98,7 +98,7 @@
     color: #008000;
 }
 
-/* ===== BANNER ===== */
+
 .page-wrapper .banner {
     width: 100%;
     min-height: 20vh;
@@ -122,7 +122,7 @@
 }
 
 
-/* ===== FILTER ===== */
+
 .filter {
     position: sticky;
     top: 15px;
@@ -157,7 +157,7 @@
     background-color: #f1f1f1;
 }
 
-/* ===== CLEAR FILTER ===== */
+
 .clear-filter {
     margin-top: 15px;
     width: 100%;
@@ -176,7 +176,55 @@
     border: 1px solid #0d3164;
 }
 
-/* ===== LINK ===== */
+
 a {
     text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 50px 0;
+}
+
+.page-btn {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    color: #003366;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.page-btn:hover {
+    background-color: #003366;
+    color: #fff;
+    border-color: #003366;
+}
+
+.page-btn.active {
+    background-color: #003366;
+    color: #fff;
+    border-color: #003366;
+    pointer-events: none;
+    box-shadow: rgba(0, 51, 102, 0.4) 0px 4px 10px;
+}
+
+.page-btn.prev,
+.page-btn.next {
+    font-size: 16px;
+    padding: 0 16px;
+}
+.pagination {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding-right: 30px;
 }

@@ -276,3 +276,29 @@
 a{
     text-decoration: none;
 }
+.event-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.event-disabled img {
+    pointer-events: none;
+}
+.event-no-product {
+    position: relative;
+}
+
+.event-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    pointer-events: none; /* đảm bảo không click */
+}
+
+
