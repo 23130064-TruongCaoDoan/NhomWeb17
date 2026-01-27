@@ -17,33 +17,34 @@
         <div class="thongke-container">
             <h2>Thống kê</h2>
             <div class="filter-bar">
-                <select id="month">
-                    <option selected>Thống kê theo tháng</option>
-                    <option>Thống kê theo tuần</option>
-                    <option>Thống kê theo ngày</option>
-                    <option>Thống kê theo năm</option>
+                <select id="filter">
+                    <option value="month" ${type == 'month' ? 'selected' : ''}>Thống kê theo tháng</option>
+                    <option value="week"  ${type == 'week'  ? 'selected' : ''}>Thống kê theo tuần</option>
+                    <option value="day"   ${type == 'day'   ? 'selected' : ''}>Thống kê theo ngày</option>
+                    <option value="year"  ${type == 'year'  ? 'selected' : ''}>Thống kê theo năm</option>
                 </select>
+
             </div>
             <div class="cards">
                 <div class="card">
                     <i class="fa-solid fa-money-bill-wave"></i>
                     <h3>Tổng doanh thu</h3>
-                    <p>150.000.000₫</p>
+                    <p>${totalRevenue} ₫</p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-user-tie"></i>
                     <h3>Khách hàng mua nhiều nhất</h3>
-                    <p>Nguyễn Văn A</p>
+                    <p>${topCustomer.name}</p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-box-open"></i>
                     <h3>Sản phẩm bán chạy nhất</h3>
-                    <p>Dế Mèn Phiêu Lưu Ký</p>
+                    <p>${bestBook.title}</p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-box"></i>
                     <h3>Sản phẩm bán ít nhất</h3>
-                    <p>Conan Tập 1</p>
+                    <p>${worstBook.title}</p>
                 </div>
                 <div class="card top10-product">
                     <i class="fa-solid fa-box"></i>
@@ -58,27 +59,24 @@
             <div class="chart">
                 <h2>Biểu đồ doanh thu theo tuần</h2>
                 <div class="bar-container">
-                    <div>
-                        <div class="figure">10.000.000₫</div>
-                        <div class="bar" style="height: 120px;"></div>
-                        <div class="bar-label">Tuần 1</div>
-                    </div>
-                    <div>
-                        <div class="figure">45.000.000₫</div>
-                        <div class="bar" style="height: 180px;"></div>
-                        <div class="bar-label">Tuần 2</div>
-                    </div>
-                    <div>
-                        <div class="figure">70.000.000₫</div>
-                        <div class="bar" style="height: 220px;"></div>
-                        <div class="bar-label">Tuần 3</div>
-                    </div>
-                    <div>
-                        <div class="figure">15.000.000₫</div>
-                        <div class="bar" style="height: 150px;"></div>
-                        <div class="bar-label">Tuần 4</div>
-                    </div>
+                    <c:forEach items="${revenueData}" var="r">
+                        <div>
+                            <div class="figure">${r.revenue} ₫</div>
+                            <c:choose>
+                                <c:when test="${singleBar}">
+                                    <div class="bar" style="height:250px"></div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="bar"
+                                         style="height:${((r.revenue - minRevenue) / rangeRevenue) * 200 + 60}px;">
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                            <div class="bar-label">${r.label}</div>
+                        </div>
+                    </c:forEach>
                 </div>
+
             </div>
         </div>
     </div>
@@ -96,69 +94,16 @@
                         </tr>
                         </thead>
                         <tbody id="userTable">
-                        <tr class="infUser" onclick="window.location='userDetail.html'">
-                            <td>KH002</td>
-                            <td>Lê Vân Trường</td>
-                            <td>truongDepTrai@gmail.com</td>
-                            <td>500000</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH003</td>
-                            <td>Trần Nguyễn Thanh Tú</td>
-                            <td>tuDepTrai@gmail.com</td>
-                            <td>100000</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH004</td>
-                            <td>Nguyên Gia Huy</td>
-                            <td>huyDepTrai@gmail.com</td>
-                            <td>10500</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                        <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                            <td>10.000.000₫</td>
-                        </tr>
-                         <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                             <td>10.000.000₫</td>
-                        </tr>
-                         <tr class="infUser">
-                            <td>KH005</td>
-                            <td>Nguyễn Hữu Trọng</td>
-                            <td>trongDepTrai@gmail.com</td>
-                            <td>200</td>
-                             <td>10.000.000₫</td>
-                        </tr>
+                        <c:forEach items="${top10Customers}" var="c">
+                            <tr class="infUser">
+                                <td>${c.customerCode}</td>
+                                <td>${c.name}</td>
+                                <td>${c.email}</td>
+                                <td>${c.point}</td>
+                                <td>${c.totalSpent}</td>
+                            </tr>
+                        </c:forEach>
+
                         
                         </tbody>
                     </table>
@@ -183,116 +128,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B001</td>
-                            <td>365 Truyện kể hằng đêm</td>
-                            <td>Nhiều tác giả</td>
-                            <td>50.000 ₫</td>
-                            <td>20</td>
-                            <td>Thiếu nhi</td>
-                            <td>6+</td>
-                            <td><img src="assets/img/books/365TruyenKeHangDem.png" width="60"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>B002</td>
-                            <td>Dế Mèn Phiêu Lưu Ký</td>
-                            <td>Tô Hoài</td>
-                            <td>45.000 ₫</td>
-                            <td>15</td>
-                            <td>Văn học Việt Nam</td>
-                            <td>8+</td>
-                            <td><img src="assets/img/books/DeMen.jpg" width="60"></td>
-                            
-                        </tr>
+                        <c:forEach items="${top10Books}" var="b">
+                            <tr>
+                                <td>${b.bookCode}</td>
+                                <td>${b.title}</td>
+                                <td>—</td>
+                                <td>${b.price}</td>
+                                <td>${b.totalSold}</td>
+                                <td>${b.type}</td>
+                                <td>${b.age}+</td>
+                                <td><img src="${b.coverImgUrl}" width="60"></td>
+                            </tr>
+                        </c:forEach>
+
+
                         </tbody>
                     </table>
                 </div>
@@ -328,6 +177,11 @@
         });
     }
     popup_panel()
+
+    document.getElementById("filter").addEventListener("change", function () {
+        window.location = "ThongKe?type=" + this.value;
+    });
+
 
 </script>
 </html>
