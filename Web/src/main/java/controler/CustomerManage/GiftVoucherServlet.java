@@ -19,6 +19,7 @@ public class GiftVoucherServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String userIds = request.getParameter("userIds");
         String code = request.getParameter("voucherCode");
         String target = request.getParameter("chon");
