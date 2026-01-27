@@ -12,10 +12,10 @@ public class OrderDao extends BaseDao {
         try {
             return getJdbi().withHandle(handle ->
                     handle.createUpdate("""
-                                        INSERT INTO `ORDERS`
-                                        (user_id, total_amount, note, status, dis_voucher_id, ship_voucher_id)
-                                        VALUES (:user_id, :total_amount, :note, :status, :dis_voucher_id, :ship_voucher_id)
-                                    """)
+                INSERT INTO `ORDERS`
+                (user_id, total_amount, note, status, dis_voucher_id, ship_voucher_id, reviewed)
+                VALUES (:user_id, :total_amount, :note, :status, :dis_voucher_id, :ship_voucher_id,0)
+            """)
                             .bind("user_id", userId)
                             .bind("total_amount", totalAmount)
                             .bind("note", note)
@@ -32,7 +32,25 @@ public class OrderDao extends BaseDao {
         }
     }
 
-    public List<MyOrderDTO> findOrdersByUserId(int userId) {
+        public List<MyOrderDTO> findOrdersByUserId(int userId) {
+
+            String sql = """
+            SELECT 
+                o.id            AS orderId,
+                o.order_date    AS orderDate,
+                o.status        AS status,
+                o.total_amount  AS totalAmount,
+                o.reviewed      AS reviewed,
+
+                SUM(oi.quantity) AS totalQuantity,
+                MIN(b.cover_img_url) AS firstBookImage
+            FROM orders o
+            JOIN order_items oi ON o.id = oi.order_id
+            JOIN books b ON oi.book_id = b.id
+            WHERE o.user_id = :userId
+            GROUP BY o.id, o.order_date, o.status, o.total_amount
+            ORDER BY o.order_date DESC
+        """;
 
         String sql = """
                     SELECT 
@@ -90,6 +108,15 @@ public class OrderDao extends BaseDao {
                 handle.createQuery(sql)
                         .mapToBean(OrderView.class)
                         .list()
+        );
+    }
+    public void setReviewed(int orderId) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("""
+                                UPDATE ORDERS SET reviewed = 1 WHERE id = :orderId
+                                """)
+                .bind("orderId", orderId)
+                .execute()
         );
     }
 

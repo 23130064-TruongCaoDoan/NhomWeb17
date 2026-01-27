@@ -1,15 +1,22 @@
 package controler.product_detail;
 
+import DTO.MyOrderDTO;
+import DTO.OrderDetailDTO;
+import DTO.OrderItemDTO;
 import Service.CommentService;
+import Service.OrderService;
 import Service.UploadService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
+import model.Book;
 import model.User;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 @WebServlet (name="comment" ,value="/comment")
 @MultipartConfig(
@@ -35,7 +42,20 @@ public class CommentServlet extends HttpServlet {
             return;
         }
 
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
+        OrderService  orderService = new OrderService();
+        OrderDetailDTO order = orderService.getOrderDetail(orderId);
+        List<OrderItemDTO> items = order.getItems();
+        List<MyOrderDTO> orders = orderService.getMyOrders(user.getId());
+        if (order.getOrder().isReviewed()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Đơn hàng này đã được đánh giá");
+            return;
+        }
+
+
+
+
+
         int rating = Integer.parseInt(request.getParameter("rating"));
         String content = request.getParameter("content");
         Part imagePart = request.getPart("image");
@@ -43,9 +63,20 @@ public class CommentServlet extends HttpServlet {
         UploadService uploadService = new UploadService();
         String imageUrl = uploadService.upload(imagePart, "comments");
         CommentService commentService = new CommentService();
-        commentService.insertComment(user.getId(), bookId, rating, content, imageUrl);
+        int bookId;
+        for (OrderItemDTO item : items) {
+            bookId = item.getBookId();
+            commentService.insertComment(user.getId(), bookId, rating, content, imageUrl);
+        }
+        orderService.setReviewed(orderId);
 
+
+
+        request.setAttribute("message", "Đánh giá thành công");
+
+        request.setAttribute("orders", orders);
         response.setStatus(HttpServletResponse.SC_OK);
+
     }
 
 }

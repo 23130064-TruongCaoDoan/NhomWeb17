@@ -174,9 +174,9 @@
                     </c:forEach>
                 </div>
 
-                <div class="review-actions">
-                    <button class="action-btn" id="writeReviewBtn">Viết đánh giá</button>
-                </div>
+<%--                <div class="review-actions">--%>
+<%--                    <button class="action-btn" id="writeReviewBtn">Viết đánh giá</button>--%>
+<%--                </div>--%>
             </div>
 
             <form id="reviewForm" action="${pageContext.request.contextPath}/comment" method="post" enctype="multipart/form-data">

@@ -8,12 +8,12 @@ public class Notification {
     private int userId;
     private String title;
     private String noti;
-    private LocalDateTime createdAt;
+    private String createdAt;
 
     public Notification() {
     }
 
-    public Notification(int userId, String title, String noti, LocalDateTime createdAt) {
+    public Notification(int userId, String title, String noti, String createdAt) {
         this.userId = userId;
         this.title = title;
         this.noti = noti;
@@ -52,11 +52,11 @@ public class Notification {
         this.noti = noti;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 }

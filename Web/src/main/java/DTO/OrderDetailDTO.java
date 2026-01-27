@@ -44,4 +44,13 @@ public class OrderDetailDTO {
         this.items = items;
     }
 
+    @Override
+    public String toString() {
+        return "OrderDetailDTO{" +
+                "order=" + order +
+                ", shipping=" + shipping +
+                ", address=" + address +
+                ", items=" + items +
+                '}';
+    }
 }

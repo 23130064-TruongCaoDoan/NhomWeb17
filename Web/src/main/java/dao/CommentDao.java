@@ -281,12 +281,58 @@ public class CommentDao extends BaseDao{
                                         SELECT c.id,b.title AS title,u.name AS name,c.rating,c.content,c.create_at AS createAt,c.is_active AS isActive
                                         FROM comments c
                                         JOIN books b ON c.book_id = b.id
-                                        JOIN user u ON c.user_id = u.id;
+                                        JOIN user u ON c.user_id = u.id
                                         """)
                         .mapToBean(CommentAdmin.class)
                         .list()
         );
     }
+    public List<CommentAdmin> getCommentAdmin(LocalDate from, LocalDate to) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                        SELECT c.id,b.title AS title,u.name AS name,c.rating,c.content,c.create_at AS createAt,c.is_active AS isActive
+                                        FROM comments c
+                                        JOIN books b ON c.book_id = b.id
+                                        JOIN user u ON c.user_id = u.id
+                                        WHERE  c.create_at >= :from AND c.create_at <= :to
+                                        """)
+                        .bind("from", from)
+                        .bind("to", to)
+                        .mapToBean(CommentAdmin.class)
+                        .list()
+        );
+    }
+    public List<CommentAdmin> getCommentAdmin(LocalDate from, LocalDate to, String type) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                        SELECT c.id,b.title AS title,u.name AS name,c.rating,c.content,c.create_at AS createAt,c.is_active AS isActive
+                                        FROM comments c
+                                        JOIN books b ON c.book_id = b.id
+                                        JOIN user u ON c.user_id = u.id
+                                        WHERE  c.create_at >= :from AND c.create_at <= :to AND b.type = :type
+                                        """)
+                        .bind("from", from)
+                        .bind("to", to)
+                        .bind("type", type)
+                        .mapToBean(CommentAdmin.class)
+                        .list()
+        );
+    }
+    public List<CommentAdmin> getCommentAdmin(String type) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("""
+                                        SELECT c.id,b.title AS title,u.name AS name,c.rating,c.content,c.create_at AS createAt,c.is_active AS isActive
+                                        FROM comments c
+                                        JOIN books b ON c.book_id = b.id
+                                        JOIN user u ON c.user_id = u.id
+                                        WHERE b.type = :type
+                                        """)
+                        .bind("type", type)
+                        .mapToBean(CommentAdmin.class)
+                        .list()
+        );
+    }
+
     public void setActive(int id){
         getJdbi().withHandle(handle ->
                 handle.createUpdate("""

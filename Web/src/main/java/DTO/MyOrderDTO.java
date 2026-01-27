@@ -8,6 +8,9 @@ public class MyOrderDTO {
 
     private int totalQuantity;
     private String firstBookImage;
+    private boolean reviewed;
+
+
 
     public int getOrderId() {
         return orderId;
@@ -55,5 +58,25 @@ public class MyOrderDTO {
 
     public void setFirstBookImage(String firstBookImage) {
         this.firstBookImage = firstBookImage;
+    }
+
+
+    @Override
+    public String toString() {
+        return "MyOrderDTO{" +
+                "orderId=" + orderId +
+                ", orderDate='" + orderDate + '\'' +
+                ", status='" + status + '\'' +
+                ", totalAmount=" + totalAmount +
+                ", totalQuantity=" + totalQuantity +
+                ", firstBookImage='" + firstBookImage + '\'' +
+                ", reviewed=" + reviewed +
+                '}';
+    }
+    public boolean isReviewed() {
+        return reviewed;
+    }
+    public void setReviewed(boolean reviewed) {
+        this.reviewed = reviewed;
     }
 }
