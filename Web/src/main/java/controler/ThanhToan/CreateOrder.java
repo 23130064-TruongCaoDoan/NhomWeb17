@@ -45,7 +45,8 @@ public class CreateOrder extends HttpServlet {
         String addressIdStr = request.getParameter("addressId");
 
         if (addressIdStr == null || addressIdStr.trim().isEmpty()) {
-            response.sendRedirect("ThanhToan");
+            request.setAttribute("error", "Vui lòng chọn địa chỉ giao hàng");
+            request.getRequestDispatcher("ThanhToan").forward(request, response);
             return;
         }
         int addressId = Integer.parseInt(addressIdStr);
