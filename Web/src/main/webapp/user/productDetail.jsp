@@ -269,10 +269,17 @@
                             <div class="price-cart">
                                 <p class="price"
                                    style="display: flex;flex-direction: column; width: 100%; text-align: center; margin: auto; margin-top: 20px">
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
-                                                         maxFractionDigits="0"/> Đ</s>
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
-                                                            groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted > 0}">
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                             maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+                                    <c:if test="${book.priceDiscounted == 0}">
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+
                                 </p>
                             </div>
                         </div>
