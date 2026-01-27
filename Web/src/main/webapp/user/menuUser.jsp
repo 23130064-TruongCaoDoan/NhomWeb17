@@ -34,7 +34,7 @@
         <span>Ví voucher</span>
     </a>
 
-    <a href="user-thongbao.jsp" class="menu thongbao">
+    <a href="thong-bao" class="menu thongbao">
         <i class="fa-regular fa-bell"></i>
         <span>Thông báo</span>
     </a>

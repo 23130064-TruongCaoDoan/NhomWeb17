@@ -24,151 +24,87 @@
     <c:import url="/user/headerUser.jsp"></c:import>
     <div class="content">
         <div class="container">
-            <c:import url="/user/menuUser.jsp"></c:import>
-            <div class="profile-container inform">
+
+            <div class="menuUser">
+                <c:import url="/user/menuUser.jsp"></c:import>
+            </div>
+            <div class="profile-container " >
                 <div class="nav-inform">
-                    <a href="" class="tab-inform active">Tất cả</a>
-                    <a href="" class="tab-inform">Đơn Hàng</a>
-                    <a href="" class="tab-inform">Sự kiện</a>
-                    <a href="" class="tab-inform">Mã giảm giá</a>
-                    <a href="" class="tab-inform">Xác nhận</a>
+                    <p class="tab-inform active">THÔNG BÁO</p>
                 </div>
                 <hr/>
-                <div class="inform-card">
-                    <div class="head-inform-card">
-                        <p class="title-inform">Cập nhật số điện thoại ngay để nhận quà!</p>
-                        <p>16:43 11/11/2025</p>
-                    </div>
-                    <p class="content-inform">
-                        Bạn vừa đăng kí tài khoản? Hãy cập nhật email ngay để nhận được các thông báo quà tặng dành cho khách hàng mới! Click ngay vào đây để cập nhật. Đừng quên tiếp tục tham gia mua sắm để nhận được những ưu đãi dành riêng cho khách hàng mới.
-                    </p>
+                <div style="overflow: scroll;height: 47vh">
+                    <c:forEach var="n" items="${notifications}">
+                        <div class="inform-card noti-item"
+                             data-title="${n.title}"
+                             data-content="${n.noti}"
+                             data-time="${n.createdAt}">
+
+                            <div class="head-inform-card">
+                                <p class="title-inform">${n.title}</p>
+                                <p>${n.createdAt}</p>
+                            </div>
+
+                            <p class="content-inform">
+                                    ${n.noti}
+                            </p>
+                        </div>
+                    </c:forEach>
+
+                    <c:if test="${empty notifications}">
+                        <p style="text-align:center; margin-top:20px;">
+                            Không có thông báo
+                        </p>
+                    </c:if>
                 </div>
+
             </div>
         </div>
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
-<div class="overlay" id="overlay"></div>
-<div class="popup" id="thaydoDT">
-    <h3>THAY ĐỔI SỐ ĐIỆN THOẠI</h3>
+<div class="overlay" id="notiOverlay" style="display:none"></div>
 
-    <div class="form-group">
-        <label for="phone">Số điện thoại</label>
-        <input type="text" id="phone" placeholder="Nhập số điện thoại"/>
-    </div>
+<div class="popup" id="notiPopup" style="display:none">
+    <h3 id="popupTitle"></h3>
+    <p id="popupTime" style="font-size:13px;color:#777"></p>
+    <hr/>
+    <p id="popupContent"></p>
 
-    <div class="form-group">
-        <label>Chọn phương thức xác minh OTP</label>
-        <div class="otp-method">
-            <button class="method sms"><i class="fa-solid fa-comment-sms"></i>Tin nhắn SMS</button>
-            <button class="method zalo"><img src="assets/img/icon/iconZalo.png" alt=""><span>Zalo ZNS</span></button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="otp">Mã xác nhận OTP</label>
-        <input type="text" id="otp" placeholder="6 ký tự" maxlength="6"/>
-    </div>
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
+    <div class="btn-group" style="margin-top:20px">
+        <button class="confirm" id="closeNoti">Đóng</button>
     </div>
 </div>
-<div class="popup" id="thaydoiEmail">
-    <h3>THAY ĐỔI EMAIL</h3>
-    <div class="form-group">
-        <label>Email</label>
-        <div class="email-row">
-            <input type="email" placeholder="Enter Email"/>
-            <button class="otp-btn">Gửi mã OTP</button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label>Mã xác nhận OTP</label>
-        <input type="text" placeholder="6 ký tự" maxlength="6"/>
-    </div>
-
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
-</div>
+</body>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const hoten = document.getElementById('hoten');
-        const hotenError = document.getElementById('hotenError');
-        const btnSave = document.querySelector('.btn-save');
+    document.addEventListener("DOMContentLoaded", () => {
 
-        function showError(message) {
-            hotenError.textContent = message || 'Vui lòng nhập họ và tên.';
-            hotenError.style.display = 'block';
-            hoten.classList.add('input-error');
-        }
+        const overlay = document.getElementById("notiOverlay");
+        const popup = document.getElementById("notiPopup");
 
-        function hideError() {
-            hotenError.style.display = 'none';
-            hoten.classList.remove('input-error');
-        }
+        const titleEl = document.getElementById("popupTitle");
+        const timeEl = document.getElementById("popupTime");
+        const contentEl = document.getElementById("popupContent");
 
-        btnSave.addEventListener('click', function (e) {
-            const value = hoten.value.trim();
-            if (!value) {
-                e.preventDefault();
-                showError('Họ và tên không được để trống.');
-                hoten.focus();
-                return;
-            }
-            if (value.length < 2) {
-                e.preventDefault();
-                showError('Vui lòng nhập đầy đủ họ và tên (ít nhất 2 ký tự).');
-                hoten.focus();
-                return;
-            }
-            hideError();
-        });
-        hoten.addEventListener('input', function () {
-            if (hoten.value.trim()) hideError();
+        document.querySelectorAll(".noti-item").forEach(item => {
+            item.addEventListener("click", () => {
+                titleEl.innerText = item.dataset.title;
+                contentEl.innerText = item.dataset.content;
+                timeEl.innerText = item.dataset.time;
+
+                overlay.style.display = "block";
+                popup.style.display = "block";
+            });
         });
 
-        // optional: validate on blur để warning sớm
-        hoten.addEventListener('blur', function () {
-            if (!hoten.value.trim()) showError('Họ và tên không được để trống.');
-        });
-    });
-    // thay đổi số điện thoại và email
-    const overlay = document.getElementById("overlay");
-    const popup = document.getElementById("thaydoDT");
-    const popupE = document.getElementById("thaydoiEmail");
-    const cancelBtns=document.querySelectorAll(".cancel");
-    const changeBtn = document.getElementById("thayDoiDT");
-    const changeBtnE = document.getElementById("thayDoiE");
-
-
-    changeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    });
-    changeBtnE.addEventListener('click', (e) => {
-        e.preventDefault();
-        overlay.style.display = "block";
-        popupE.style.display = "block";
-    });
-    cancelBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        function closePopup() {
             overlay.style.display = "none";
             popup.style.display = "none";
-            popupE.style.display = "none";
-        });
-    });
+        }
 
-    overlay.addEventListener('click', () => {
-        overlay.style.display = "none";
-        popup.style.display = "none";
-        popupE.style.display = "none";
+        document.getElementById("closeNoti").onclick = closePopup;
+        overlay.onclick = closePopup;
     });
-
 </script>
-</body>
+
 </html>

@@ -3,6 +3,8 @@ package Service;
 import dao.NotificationDAO;
 import model.Notification;
 
+import java.util.List;
+
 public class NotificationService {
 
     private NotificationDAO notificationDAO = new NotificationDAO();
@@ -29,6 +31,10 @@ public class NotificationService {
         n.setTitle(title);
         n.setNoti(content);
         notificationDAO.insert(n);
+    }
+
+    public List<Notification> getUserNotifications(int userId) {
+        return notificationDAO.findByUser(userId);
     }
 }
 
