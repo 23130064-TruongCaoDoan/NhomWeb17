@@ -246,7 +246,7 @@
     margin-left: 8%;
 }
 
-/* --- Tóm tắt Đánh giá --- */
+
 .rating-summary {
     display: flex;
     align-items: flex-start;
@@ -277,7 +277,7 @@
     margin: 0;
 }
 
-/* --- Biểu đồ sao --- */
+
 .rating-bars {
     flex-grow: 1;
     max-width: 250px;
@@ -333,7 +333,6 @@
 
 }
 
-/* --- Thanh điều hướng (Reviews, Questions) --- */
 .review-navigation {
     display: flex;
     gap: 25px;

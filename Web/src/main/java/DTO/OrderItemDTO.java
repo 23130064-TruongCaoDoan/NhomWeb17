@@ -57,4 +57,15 @@ public class OrderItemDTO {
         this.subtotal = subtotal;
     }
 
+    @Override
+    public String toString() {
+        return "OrderItemDTO{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", coverImgUrl='" + coverImgUrl + '\'' +
+                ", priceDiscounted=" + priceDiscounted +
+                ", quantity=" + quantity +
+                ", subtotal=" + subtotal +
+                '}';
+    }
 }
