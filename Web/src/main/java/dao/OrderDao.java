@@ -19,7 +19,7 @@ public class OrderDao extends BaseDao {
                             .bind("user_id", userId)
                             .bind("total_amount", totalAmount)
                             .bind("note", note)
-                            .bind("status", "COMPLETE")
+                            .bind("status", "Completed")
                             .bind("dis_voucher_id", dis)
                             .bind("ship_voucher_id", ship)
                             .executeAndReturnGeneratedKeys("id")
