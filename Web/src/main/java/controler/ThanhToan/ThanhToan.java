@@ -53,10 +53,9 @@ public class ThanhToan extends HttpServlet {
         String addressIdStr = request.getParameter("addressId");
         int selectedAddressId = 0;
 
-        if (addressIdStr != null) {
+        if (addressIdStr != null && !addressIdStr.trim().isEmpty()) {
             selectedAddressId = Integer.parseInt(addressIdStr);
         } else {
-
             for (Address a : listAddress) {
                 if (a.getIsDefault()) {
                     selectedAddressId = a.getId();
@@ -64,6 +63,7 @@ public class ThanhToan extends HttpServlet {
                 }
             }
         }
+
 
         //ghi chu
         String orderNote = request.getParameter("orderNote");
