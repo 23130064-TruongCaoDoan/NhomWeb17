@@ -35,23 +35,17 @@
             <div class="detail">
                 <div class="gallery">
                     <div class="thumbnail-column">
-                        <img class="thumbnail active"
-                             src="assets/img/books/365TruyenKeHangDemMuaHe.png"
-                             alt="Ảnh sách 1"
-                             data-main-image="assets/img/books/365TruyenKeHangDemMuaHe.png">
-                        <img class="thumbnail "
-                             src="assets/img/books/365TruyenKeHangDem.png"
-                             alt="Ảnh sách 2"
-                             data-main-image="assets/img/books/365TruyenKeHangDem.png">
-                        <img class="thumbnail "
-                             src="assets/img/books/365TruyenKeHangDemMuaThu.png"
-                             alt="Ảnh sách 3"
-                             data-main-image="assets/img/books/365TruyenKeHangDemMuaThu.png">
+                        <c:forEach items="${listImg}" var="img" varStatus="st">
+                            <img class="thumbnail ${st.first ? 'active' : ''}"
+                                 src="${img}"
+                                 alt="Ảnh sách ${st.index + 1}"
+                                 data-main-image="${img}">
+                        </c:forEach>
                     </div>
 
                     <div class="main-img">
                         <img id="mainImageDisplay"
-                             src="${book.coverImgUrl}"
+                             src="${not empty listImg ? listImg[0] : book.coverImgUrl}"
                              alt="Ảnh sách chính">
                     </div>
                 </div>

@@ -12,6 +12,7 @@ import model.RatingStartView;
 import model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "productDetail", value = "/productDetail")
@@ -29,6 +30,7 @@ public class ProductDetailServlet extends HttpServlet {
         List<CommentView> commentViewList = commentService.getCommentView(bookId);
         Double averageRating = commentService.getAverageRating(bookId);
         List<RatingStartView> ratingList = commentService.getRatingStartView(bookId);
+        List<String> listImg = bookService.getImgDetails(bookId);
 
         boolean isFavouriteBook = false;
         HttpSession session = request.getSession(false);
@@ -42,6 +44,7 @@ public class ProductDetailServlet extends HttpServlet {
         request.setAttribute("averageRating", averageRating);
         request.setAttribute("ratingList", ratingList);
         request.setAttribute("isFavouriteBook", isFavouriteBook);
+        request.setAttribute("listImg", listImg);
         request.getRequestDispatcher("user/productDetail.jsp").forward(request,response);
     }
     @Override

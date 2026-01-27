@@ -3,6 +3,7 @@ package dao;
 import model.Book;
 import model.CommentView;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 public class BookDao extends BaseDao {
@@ -457,6 +458,17 @@ public class BookDao extends BaseDao {
 
             batch.execute();
         });
+    }
+
+    public List<String> getImgDetails(int bookId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT img_url FROM book_image_details WHERE book_id = :book_id"
+                        )
+                        .bind("book_id", bookId)
+                        .mapTo(String.class)
+                        .list()
+        );
     }
 
 }
