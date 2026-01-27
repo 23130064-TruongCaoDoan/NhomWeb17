@@ -1,6 +1,7 @@
 package controler.user.address;
 
 import Service.AddressService;
+import Service.EventService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -14,6 +15,9 @@ import java.util.List;
 public class UserAddress extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
+
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/login");

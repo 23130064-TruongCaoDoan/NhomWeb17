@@ -1,6 +1,7 @@
 package controler.danh_muc;
 
 import Service.BookService;
+import Service.EventService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +17,8 @@ import java.util.List;
 public class DanhMucServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = new BookService();
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
         String id = request.getParameter("idEvent");
         int idEvent;
         if(id==null||id.isEmpty() || id.isBlank()){
@@ -29,11 +32,16 @@ public class DanhMucServlet extends HttpServlet {
         int pageSize = 28;
 
         String p = request.getParameter("page");
-        if (p != null) {
-            page = Integer.parseInt(p);
+        if (p != null && !p.trim().isEmpty()) {
+            page = Integer.parseInt(p.trim());
         }
+
         int totalBooks;
-        int type = Integer.parseInt(request.getParameter("type")==null?"0":request.getParameter("type"));
+        String typeParam = request.getParameter("type");
+        int type = 0;
+        if (typeParam != null && !typeParam.isBlank()) {
+            type = Integer.parseInt(typeParam);
+        }
         switch (type) {
             case 1:
                 totalBooks = bookService.countBooksDiscounted();
@@ -75,7 +83,7 @@ public class DanhMucServlet extends HttpServlet {
             }
             case 3:{
                 bookList=bookService.getAllFavouriteBook(pageSize, offset);
-                search="Sách được các bé yêu thích nhiều nhất";
+                search="Sách được yêu thích nhất";
                 break;
             }
             case 4:{
@@ -96,6 +104,10 @@ public class DanhMucServlet extends HttpServlet {
         request.setAttribute("bookList", bookList);
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages",totalPages);
+
+
+        request.setAttribute("mode", "category");
+
         request.getRequestDispatcher("user/dsSanPham.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}

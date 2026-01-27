@@ -27,29 +27,29 @@
         <div class="footer-column">
             <h3>Liên hệ chúng tôi</h3>
             <a href="#"><i class="fa-solid fa-phone"></i> 0981566177</a>
-            <a href="QRChat.jsp"
+            <a href="QRChatServlet"
             ><i class="fa-brands fa-facebook-messenger"></i> Chat trực tiếp</a
             >
         </div>
 
         <div class="footer-column">
             <h3>Dịch vụ khách hàng</h3>
-            <a href="user-myOrders.jsp">Theo dõi đơn hàng</a>
-            <a href="user-hoSoCaNhan.jsp">Tài khoản</a>
-            <a href="returnPolicy.jsp">Chính sách đổi trả</a>
+            <a href="my-orders">Theo dõi đơn hàng</a>
+            <a href="SetUpAccount">Tài khoản</a>
+            <a href="PolicyServlet">Chính sách đổi trả</a>
 
         </div>
 
         <div class="footer-column">
             <h3>Đối tác</h3>
-            <a href="NhaPhanPhoi.jsp">Nhà phân phối</a>
-            <a href="dsSanPham.jsp">Sách của chúng tôi</a>
+            <a href="NhaPhanPhoi">Nhà phân phối</a>
+            <a href="dsSanPham">Sách của chúng tôi</a>
         </div>
 
         <div class="footer-column">
             <h3>Bảo mật</h3>
-            <a href="PrivatePolicy.jsp">Chính sách bảo mật</a>
-            <a href="DieuKhoanSuDung.jsp">Điều khoản sử dụng</a>
+            <a href="PrivatePolicyServlet">Chính sách bảo mật</a>
+            <a href="DKSuDung">Điều khoản sử dụng</a>
         </div>
     </div>
     <div class="footer-bottom">

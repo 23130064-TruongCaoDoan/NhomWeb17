@@ -38,7 +38,13 @@ public class CreateOrder extends HttpServlet {
             return;
         }
 
-        int addressId = Integer.parseInt(request.getParameter("addressId"));
+        String addressIdStr = request.getParameter("addressId");
+
+        if (addressIdStr == null || addressIdStr.trim().isEmpty()) {
+            response.sendRedirect("ThanhToan");
+            return;
+        }
+        int addressId = Integer.parseInt(addressIdStr);
         String shipType = request.getParameter("shipType");
         boolean usePoint = "1".equals(request.getParameter("usePoint"));
         String note = request.getParameter("orderNote");
@@ -65,8 +71,9 @@ public class CreateOrder extends HttpServlet {
 
 
         OrderService  orderService = new OrderService();
-        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
 
+        boolean check=orderService.addOrder(userId,finalTotal,note,disid,shipid,addressId,shipType,shipFee,deliveryRange, cart);
+        System.out.println("CREATE ORDER RESULT = " + check);
         session.removeAttribute("appliedDiscountVoucher");
         session.removeAttribute("appliedShipVoucher");
 
@@ -79,7 +86,7 @@ public class CreateOrder extends HttpServlet {
             } else {
                 session.removeAttribute("cart");
             }
-            response.sendRedirect("home");
+            response.sendRedirect("my-orders");
         }
         else{
         response.sendRedirect("ThanhToan");

@@ -25,11 +25,10 @@
     <div class="menuInfor">
         <a href="SetUpAccount" class="title prof"><span>Hồ sơ cá nhân</span></a>
         <a href="address" class="title address"><span>Sổ địa chỉ</span></a>
-        <a href="user-changePassword.jsp" class="title passw"><span>Đổi mật khẩu</span></a>
-        <a href="user_UuDaiThanhVien.jsp" class="title member"><span>Ưu đãi thành viên</span></a>
+        <a href="DoiMK" class="title passw"><span>Đổi mật khẩu</span></a>
     </div>
 
-    <a href="user-myOrders.jsp" class="menu donhang">
+    <a href="my-orders" class="menu donhang">
         <i class="fa-solid fa-receipt"></i>
         <span>Đơn hàng của tôi</span>
     </a>

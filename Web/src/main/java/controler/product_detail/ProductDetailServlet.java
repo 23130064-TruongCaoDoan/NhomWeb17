@@ -2,6 +2,7 @@ package controler.product_detail;
 
 import Service.BookService;
 import Service.CommentService;
+import Service.EventService;
 import dao.CommentDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -19,6 +20,9 @@ import java.util.List;
 public class ProductDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
+
         int bookId = Integer.parseInt(request.getParameter("id"));
         String type = request.getParameter("type");
         BookService bookService = new BookService();

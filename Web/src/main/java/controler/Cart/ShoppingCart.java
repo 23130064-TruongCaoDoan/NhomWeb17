@@ -2,6 +2,7 @@ package controler.Cart;
 
 import Cart.Cart;
 import Service.BookService;
+import Service.EventService;
 import Service.VoucherService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ShoppingCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EventService eventService = new EventService();
+        eventService.updatBookPriceForEvent();
 
         VoucherService voucherService = new VoucherService();
         HttpSession session = request.getSession();

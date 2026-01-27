@@ -35,6 +35,18 @@ public class EventService {
         bookService.updateDiscountBook(listBookEvent, value);
         return eventDao.addEvent(code, coverImgUrl, title, value, startDate, endDate, typeBookApply, pulisher, author, voucher, specialVoucher, minPoint, age, listBookEvent);
     }
+    public List<Event> getActiveEventsOrderByStartDateAsc() {
+        return eventDao.getActiveEventsOrderByStartDateAsc();
+    }
+    public void updatBookPriceForEvent() {
+        BookService bookService = new BookService();
+        for (Event event : getActiveEventsOrderByStartDateAsc()) {
+            List<Book> listBookEvent = eventDao.getBooksByEventId(event.getId());
+            bookService.updateDiscountBook(listBookEvent, event.getValue());
+        }
+    }
+
+
 
     public boolean existsByCode(String code) {
         return eventDao.existsByCode(code);

@@ -19,10 +19,6 @@ public class UserService {
     }
 
 
-    public static void main(String[] args) {
-        UserService userService = new UserService();
-        System.out.println(userService.findUser("13@gmail.com"));
-    }
 
     public boolean checkPass(User user, String password) {
         PasswordUtil passwordUtil = new PasswordUtil();
@@ -93,4 +89,17 @@ public class UserService {
     public void updateDiem(int userId, int pointUsed) {
         userDao.updateDiem(userId,pointUsed);
     }
+
+    public boolean changePassword(int id, String newPassword) {
+        return userDao.changePassword(id, newPassword);
+    }
+
+
+//    public static void main(String[] args) {
+//        UserService userService = new UserService();
+//        PasswordUtil passwordUtil = new PasswordUtil();
+//        String oldPassword =passwordUtil.hashPassword("Doanga123@");
+//        System.out.println(oldPassword);
+////        System.out.println(userService.checkPassword());
+//    }
 }

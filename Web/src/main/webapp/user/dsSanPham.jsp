@@ -88,25 +88,56 @@
                     </div>
                 </div>
             </c:forEach>
+            <c:if test="${totalPages > 1}">
+                <div class="pagination">
+                    <c:choose>
+
+
+                        <c:when test="${mode == 'search'}">
+                            <c:if test="${currentPage > 1}">
+                                <a class="page-btn prev"
+                                   href="search?page=${currentPage - 1}&bSearch=${search}">«</a>
+                            </c:if>
+
+                            <c:forEach begin="1" end="${totalPages}" var="i">
+                                <a class="page-btn ${i == currentPage ? 'active' : ''}"
+                                   href="search?page=${i}&bSearch=${search}">
+                                        ${i}
+                                </a>
+                            </c:forEach>
+
+                            <c:if test="${currentPage < totalPages}">
+                                <a class="page-btn next"
+                                   href="search?page=${currentPage + 1}&bSearch=${search}">»</a>
+                            </c:if>
+                        </c:when>
+
+
+                        <c:otherwise>
+                            <c:if test="${currentPage > 1}">
+                                <a class="page-btn prev"
+                                   href="dsSanPham?page=${currentPage - 1}&type=${type}&idEvent=${idEvent}&title=${title}">«</a>
+                            </c:if>
+
+                            <c:forEach begin="1" end="${totalPages}" var="i">
+                                <a class="page-btn ${i == currentPage ? 'active' : ''}"
+                                   href="dsSanPham?page=${i}&type=${type}&idEvent=${idEvent}&title=${title}">
+                                        ${i}
+                                </a>
+                            </c:forEach>
+
+                            <c:if test="${currentPage < totalPages}">
+                                <a class="page-btn next"
+                                   href="dsSanPham?page=${currentPage + 1}&type=${type}&idEvent=${idEvent}&title=${title}">»</a>
+                            </c:if>
+                        </c:otherwise>
+
+                    </c:choose>
+                </div>
+
+            </c:if>
         </div>
-        <c:if test="${not empty bookList}">
-            <div id="pagination">
-                <c:if test="${currenPage > 1}">
-                    <a href="dsSanPham?page=${currentPage - 1}&type=${type}">«</a>
-                </c:if>
 
-                <c:forEach begin="1" end="${totalPages}" var="i">
-                    <a href="dsSanPham?page=${i}&type=${type}"
-                       class="${i == currentPage ? 'active' : ''}">
-                            ${i}
-                    </a>
-                </c:forEach>
-
-                <c:if test="${currentPage < totalPages}">
-                    <a href="dsSanPham?page=${currentPage + 1}&type=${type}">»</a>
-                </c:if>
-            </div>
-        </c:if>
     </div>
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>

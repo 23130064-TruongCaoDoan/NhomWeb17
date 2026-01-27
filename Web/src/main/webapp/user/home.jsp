@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lobster&display=swap" rel="stylesheet">
+    <script src="assets/js/user/home.js"></script>
 </head>
 <body>
 <div class="page-wrapper">
@@ -33,11 +34,27 @@
                 <div class="slides">
                     <c:forEach var="event" items="${events}" varStatus="st">
                         <div class="slide ${st.first ? 'active' : ''}">
-                            <a href="${pageContext.request.contextPath}/dsSanPham?type=4&title=${event.title}&idEvent=${event.id}">
-                                <img src="${event.imgUrl}" alt="event-img">
-                            </a>
+
+                            <c:choose>
+
+                                <c:when test="${eventHasBooks[event.id]}">
+                                    <a href="${pageContext.request.contextPath}/dsSanPham?type=4&title=${event.title}&idEvent=${event.id}">
+                                        <img src="${event.imgUrl}" alt="event-img">
+                                    </a>
+                                </c:when>
+
+
+                                <c:otherwise>
+                                    <div class="event-no-product">
+                                        <img src="${event.imgUrl}" alt="event-img">
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </c:forEach>
+
+
                 </div>
                 <button class="next">&#10095;</button>
             </div>
@@ -121,7 +138,7 @@
                 </div>
             </div>
             <div class="sachh yeuThich">
-                <div class="title"><span>Sách được các bé yêu thích</span><i class="fa-solid fa-heart"></i></div>
+                <div class="title"><span>Sách được yêu thích nhất</span><i class="fa-solid fa-heart"></i></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListFavourite}" begin="0" end="4">
                         <c:url var="detailUrl" value="/productDetail">
@@ -182,84 +199,10 @@
                         </figure>
                     </div>
                 </div>
-                <div class="slogan"><h3>Những quyến sách có thể bạn sẽ thích</h3></div>
-                <div class="list-product">
-                    <c:forEach var="book" items="${bookListRe}" begin="0" end="4">
-                        <a href="productDetail?id=${book.id}&type=${book.type}">
-                            <div class="card">
-                                <img src="${book.coverImgUrl}" alt="${book.title}"/>
-                                <p class="book-name">${book.title}</p>
-                                <p class="rating">
-                                    ⭐⭐⭐⭐⭐
-                                </p>
-                                <div class="price-cart">
-                                    <p class="price">
-                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
-                                                             maxFractionDigits="0"/> Đ</s>
-                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
-                                                                groupingUsed="true" maxFractionDigits="0"/> Đ</span>
-                                    </p>
-                                    <i class="fa-solid fa-cart-plus"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-                </div>
             </div>
         </div>
     </div>
     <c:import url="footerUser.jsp"> </c:import>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const carousel = document.querySelector('.event-carousel');
-        const slides = carousel.querySelectorAll('.slide');
-        const nextBtn = carousel.querySelector('.next');
-        const prevBtn = carousel.querySelector('.prev');
-
-        let index = 0;
-        const total = slides.length;
-
-        function showSlide(i) {
-            carousel.querySelector('.slides').style.transform = `translateX(-${i * 100}%)`;
-        }
-
-        nextBtn.addEventListener('click', () => {
-            index = (index + 1) % total;
-            showSlide(index);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            index = (index - 1 + total) % total;
-            showSlide(index);
-            console.log("bbb")
-        });
-
-        setInterval(() => {
-            index = (index + 1) % total;
-            showSlide(index);
-        }, 3000);
-    });
-
-    function addToCart(bookId, quantity) {
-        fetch("addItemShopping?bookId=" + bookId + "&quantity=" + quantity)
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById("totalItem").innerText = data.total;
-                show("Đã thêm vào giỏ hàng");
-            })
-            .catch(err => console.log(err));
-    }
-
-    function show(message) {
-        const toast = document.getElementById("toast");
-        toast.innerText = message;
-        toast.classList.add("show");
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 2000);
-    }
-
-</script>
 </body>
 </html>
