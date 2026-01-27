@@ -26,7 +26,7 @@
                 <a href="ThongKe.html" class="function thongke">Thống kê</a>
                 <a href="ManageProduct.html" class="function qlsanpham">Quản lý sản phẩm</a>
                 <a href="user.html" class="function qlkhachhang">Quản lý khách hàng</a>
-                <a href="quanlidonhang.html" class="function qldonhang">Quản lý đơn hàng</a>
+                <a href="quanlidonhang.jsp" class="function qldonhang">Quản lý đơn hàng</a>
                 <a href="khoVoucher.html" class="function storeVoucher">Kho Voucher</a>
                 <a href="events.html" class="function event">Sự kiện</a>
                 <a href="DanhGia.html" class="function rating">Đánh giá</a>
