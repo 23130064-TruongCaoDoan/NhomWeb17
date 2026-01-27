@@ -126,7 +126,7 @@
                 <label>Trạng thái đơn hàng</label>
                 <select id="orderStatus">
                     <option value="Chờ xử lý">Chờ xử lý</option>
-                    <option value="Đã giao">Đã giao</option>
+                    <option value="Completed">Đã giao</option>
                     <option value="Đã Huỷ">Đã Huỷ</option>
                 </select>
             </div>

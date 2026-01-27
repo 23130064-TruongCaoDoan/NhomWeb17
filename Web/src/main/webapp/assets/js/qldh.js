@@ -22,7 +22,7 @@ document.getElementById("btnSaveOrder").addEventListener("click", () => {
     const total = document.getElementById("orderValue").value;
     const status = document.getElementById("orderStatus").value;
 
-    fetch("<c:url value='/UpdateOrder' />", {
+    fetch(contextPath+"/UpdateOrder", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
