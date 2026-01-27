@@ -33,6 +33,7 @@ public class ReSendMail extends HttpServlet {
         EmailSender emailSender = new EmailSender();
         String verifyCode = token.generateToken8();
         session.setAttribute("verifyCode", verifyCode);
+        session.setAttribute("otpTime", System.currentTimeMillis());
         emailSender.sendVerificationEmail(email, "Mã xác thực tài khoản", fullname, verifyCode,"Mã xác thực:","Cảm ơn bạn đã đăng ký");
         request.setAttribute("showOTP", true);
         request.setAttribute("error", "Đã gửi lại mã");

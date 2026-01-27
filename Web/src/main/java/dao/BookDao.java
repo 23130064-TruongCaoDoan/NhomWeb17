@@ -506,4 +506,21 @@ public class BookDao extends BaseDao {
         );
     }
 
+    public void updateQuantity(Book book, int quantity) {
+        getJdbi().withHandle(handle -> (
+                handle.createUpdate("UPDATE books SET quantity_sold = quantity_sold + :quantity_sold where id=:id")
+                        .bind("quantity_sold", quantity)
+                        .bind("id", book.getId())
+                        .execute()
+        ));
+    }
+
+    public int getStockByBookId(int bookId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT stock FROM BOOKS WHERE id=:id")
+                        .bind("id", bookId)
+                        .mapTo(int.class)
+                        .one()
+        );
+    }
 }
