@@ -28,7 +28,7 @@
             <div class="menuUser">
                 <c:import url="/user/menuUser.jsp"></c:import>
             </div>
-            <div class="profile-container inform" >
+            <div class="profile-container " >
                 <div class="nav-inform">
                     <p class="tab-inform active">THÔNG BÁO</p>
                 </div>

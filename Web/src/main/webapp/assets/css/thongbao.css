@@ -15,10 +15,7 @@
     padding-bottom: 2vh;
     gap:2vw;
 }
-.inform {
-    overflow: scroll;
-    height: 50vh;
-}
+
 .container hr {
     background-color: #0746ae;
     height: 2px;
