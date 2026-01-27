@@ -2,10 +2,13 @@ package controler.ProductManage;
 
 import Service.AuthorService;
 import Service.BookService;
+import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Book;
+import model.User;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -14,10 +17,21 @@ import java.util.List;
 public class ProductManageServlet extends HttpServlet {
     BookService bookService = new BookService();
     AuthorService authorService = new AuthorService();
-
+    UserService userService = new UserService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+
+        if (!userService.checkRole(user)) {
+            response.sendRedirect("login");
+            return;
+        }
         request.setAttribute("authors", authorService.getAllAuthors());
         String q = request.getParameter("q");
         String type = request.getParameter("type");

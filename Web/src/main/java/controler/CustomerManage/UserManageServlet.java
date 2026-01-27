@@ -5,6 +5,7 @@ import Service.UserService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,16 @@ public class UserManageServlet extends HttpServlet {
     UserService userService = new UserService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            response.sendRedirect("login");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+        if (!userService.checkRole(user)) {
+            response.sendRedirect("login");
+            return;
+        }
         String q = request.getParameter("q");
         if (q != null) {
             q = q.trim();
