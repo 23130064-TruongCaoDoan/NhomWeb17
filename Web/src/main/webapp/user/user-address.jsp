@@ -63,7 +63,6 @@
     <c:import url="/user/footerUser.jsp"></c:import>
 </div>
 <script>
-    // Xóa địa chỉ bằng AJAX
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", function () {
             const id = this.dataset.id;
@@ -79,7 +78,7 @@
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        card.remove(); // remove card khỏi DOM
+                        card.remove();
                         checkEmpty();
                         alert("Xóa địa chỉ thành công!");
                     } else {
@@ -93,7 +92,6 @@
         });
     });
 
-    // Kiểm tra nếu không còn địa chỉ nào thì hiển thị emtyCard
     function checkEmpty() {
         const emtyCard = document.querySelector(".emtyCard");
         const cards = document.querySelectorAll('.address-card');
@@ -104,8 +102,6 @@
             emtyCard.style.display = "none";
         }
     }
-
-    // Khởi chạy checkEmpty lúc load page
     checkEmpty();
 
 </script>

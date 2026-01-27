@@ -21,18 +21,18 @@
             </div>
                 <div class="profile-container">
                     <h2>Hồ sơ cá nhân</h2>
-                    <form action="SetUpAccount" method="post">
+                    <form id="setUpForm" action="SetUpAccount" method="post">
                     <div class="form-group">
                         <label for="name">Họ và tên</label>
                         <input type="text" id="hoten" placeholder="Nhập họ và tên" name="name" value="${user.name}" aria-describedby="hotenError"/>
                         <div class="error" id="hotenError" role="alert" aria-live="polite">Vui lòng nhập họ và tên.</div>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Số điện thoại</label>
+                        <label for="sdt">Số điện thoại</label>
                         <div class="form-inline">
-                            <input type="text" id="sdt" name="phone" value="${user.phone}" placeholder="Nhập số điện thoại " readonly>
-                            <a id="thayDoiDT" href="#">Thay đổi</a>
+                            <input type="text" id="sdt" name="phone" value="${user.phone}" placeholder="Nhập số điện thoại" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
                         </div>
+                        <div class="error" id="phoneError" role="alert" aria-live="polite">Số điện thoại không hợp lệ</div>
                     </div>
 
                     <div class="form-group">
@@ -65,31 +65,6 @@
 
 </div>
 <div class="overlay" id="overlay"></div>
-<div class="popup" id="thaydoDT">
-    <h3>THAY ĐỔI SỐ ĐIỆN THOẠI</h3>
-
-    <div class="form-group">
-        <label for="phone">Số điện thoại</label>
-        <input type="text" id="phone" placeholder="Nhập số điện thoại"/>
-    </div>
-
-    <div class="form-group">
-        <label>Chọn phương thức xác minh OTP</label>
-        <div class="otp-method">
-            <button class="method sms"><i class="fa-solid fa-comment-sms"></i>Tin nhắn SMS</button>
-            <button class="method zalo"><img src="assets/img/icon/iconZalo.png" alt=""><span>Zalo ZNS</span></button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="otp">Mã xác nhận OTP</label>
-        <input type="text" id="otp" placeholder="6 ký tự" maxlength="6"/>
-    </div>
-    <div class="btn-group">
-        <button class="confirm">Xác nhận</button>
-        <button class="cancel">Trở về</button>
-    </div>
-</div>
 <div class="popup" id="thaydoiEmail">
     <h3>THAY ĐỔI EMAIL</h3>
 
@@ -117,6 +92,7 @@
         </c:if>
     </form>
 </div>
+
 <c:if test="${showOTP}">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -125,6 +101,46 @@
         });
     </script>
 </c:if>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("setUpForm");
+        const phoneInput = document.getElementById("sdt");
+        const phoneError = document.getElementById("phoneError");
+
+        const phoneRegex = /^0(3|5|7|8|9)\d{8}$/;
+
+        phoneError.style.display = "none";
+
+        phoneInput.addEventListener("input", function () {
+            this.value = this.value.replace(/[^0-9]/g, "");
+            phoneError.style.display = "none";
+        });
+
+        form.addEventListener("submit", function (e) {
+            const phone = phoneInput.value.trim();
+
+            if (phone === "") {
+                e.preventDefault();
+                phoneError.innerText = "Vui lòng nhập số điện thoại";
+                phoneError.style.display = "block";
+                phoneInput.focus();
+                return;
+            }
+
+            if (!phoneRegex.test(phone)) {
+                e.preventDefault();
+                phoneError.innerText = "Số điện thoại không hợp lệ VD:09xx...";
+                phoneError.style.display = "block";
+                phoneInput.focus();
+                return;
+            }
+
+            phoneError.style.display = "none";
+        });
+    });
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const hoten = document.getElementById('hoten');
@@ -162,44 +178,43 @@
             if (hoten.value.trim()) hideError();
         });
 
-        // optional: validate on blur để warning sớm
         hoten.addEventListener('blur', function () {
             if (!hoten.value.trim()) showError('Họ và tên không được để trống.');
         });
     });
-    // thay đổi số điện thoại và email
+
     const overlay = document.getElementById("overlay");
-    const popup = document.getElementById("thaydoDT");
     const popupE = document.getElementById("thaydoiEmail");
-    const cancelBtns=document.querySelectorAll(".cancel");
-    const changeBtn = document.getElementById("thayDoiDT");
+    const cancelBtns = document.querySelectorAll(".cancel");
     const changeBtnE = document.getElementById("thayDoiE");
 
-
-    changeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    });
     changeBtnE.addEventListener('click', (e) => {
         e.preventDefault();
         overlay.style.display = "block";
         popupE.style.display = "block";
     });
+
     cancelBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             overlay.style.display = "none";
-            popup.style.display = "none";
             popupE.style.display = "none";
         });
     });
 
     overlay.addEventListener('click', () => {
         overlay.style.display = "none";
-        popup.style.display = "none";
         popupE.style.display = "none";
     });
 
 </script>
+
+<c:if test="${not empty error}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            alert("${error}");
+        });
+    </script>
+</c:if>
+
 </body>
 </html>

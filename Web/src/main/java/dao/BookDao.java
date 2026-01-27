@@ -40,7 +40,28 @@ public class BookDao extends BaseDao {
 
     public List<Book> getBookRecommendInDetail(String type) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM BOOKS WHERE type = :type AND is_sell=1 ORDER BY quantity_sold DESC")
+                handle.createQuery("""
+                                    SELECT b.*
+                                    FROM BOOKS b
+                                    LEFT JOIN comments r 
+                                           ON b.id = r.book_id 
+                                          AND r.is_active = 1
+                                    WHERE b.is_sell = 1
+                                      AND b.type = :type
+                                    GROUP BY 
+                                        b.id, b.title, b.author_id, b.publisher,
+                                        b.price, b.price_discounted, b.quantity_sold,
+                                        b.published_date, b.stock, b.is_sell, b.type
+                                    ORDER BY
+                                        AVG(r.rating) DESC,
+                                        COUNT(*) DESC,
+                                        b.quantity_sold DESC,
+                                        CASE 
+                                            WHEN b.price_discounted > 0 THEN 1 
+                                            ELSE 0 
+                                        END DESC,
+                                        b.published_date DESC
+                                """)
                         .bind("type", type)
                         .mapToBean(Book.class)
                         .list()

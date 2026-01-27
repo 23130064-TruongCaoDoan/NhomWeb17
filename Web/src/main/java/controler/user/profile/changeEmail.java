@@ -29,10 +29,10 @@ public class changeEmail extends HttpServlet {
 
         if (email == null || email.trim().isEmpty()) {
             request.setAttribute("type", "danger");
-            request.setAttribute("message", "Email không được để trống");
+            request.setAttribute("error", "Email không được để trống");
         } else if (userService.checkExit(email)) {
             request.setAttribute("type", "danger");
-            request.setAttribute("message", "Email đã tồn tại");
+            request.setAttribute("error", "Email đã tồn tại");
         } else {
             String verifyCode = token.generateToken8();
             session.setAttribute("verifyCode", verifyCode);
