@@ -28,6 +28,9 @@ public class RateServlet extends HttpServlet {
             response.sendRedirect("login");
             return;
         }
+        if(!user.isRole()){
+            response.sendRedirect("login");
+        }
         LocalDate from = LocalDate.now();
         LocalDate to = LocalDate.now();
 
