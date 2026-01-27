@@ -23,6 +23,7 @@ public class ProductDetailServlet extends HttpServlet {
         EventService eventService = new EventService();
         eventService.updatBookPriceForEvent();
 
+
         int bookId = Integer.parseInt(request.getParameter("id"));
         String type = request.getParameter("type");
         BookService bookService = new BookService();

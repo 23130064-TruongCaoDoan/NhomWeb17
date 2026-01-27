@@ -16,6 +16,7 @@ public class OrderService {
     NotificationService notificationService;
     OrderItemDao orderItemDao;
     OrderDetailDAO dao = new OrderDetailDAO();
+    BookService bookService = new BookService();
     public OrderService() {
         this.orderDao = new OrderDao();
         this.shippingDao = new ShippingDao();
@@ -26,6 +27,7 @@ public class OrderService {
     public boolean addOrder(int userId, double totalAmount, String note, Integer dis, Integer ship, Integer address_id, String shipping_type, double shipping_cost, String delivered_date, Cart cart) {
         int order_id = orderDao.addOrder(userId, totalAmount, note, dis, ship);
         if (order_id != -1) {
+            bookService.updateStock(cart);
             orderItemDao.insertOrderItems(order_id, cart);
             notificationService.sendNoti(userId, "Bạn đã đặt đơn hàng: " + order_id,"Các sản phẩm bạn đặt: "+ cart.getProductNamesAsString());
             int ship_id = shippingDao.addShipping(order_id, address_id, shipping_type, shipping_cost, delivered_date);

@@ -68,12 +68,12 @@
                                                      maxFractionDigits="0"/> Đ</p>
                             </c:if>
                         </div>
-                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px">
+                        <form action="addItemShopping" method="get" style="display: flex; flex-direction: row; gap: 15px"   onkeydown="return event.key !== 'Enter';">
                             <input type="hidden" name="bookId" value="${book.id}">
                             <div class="quantity" style="padding-top: 10px;">
                                 <div class="number-input">
                                     <button type="button" class="minus" onclick="minus()">-</button>
-                                    <input type="number" name="quantity" value="1" min="1" max="1000" id="number-quantity" class="no-spinners"/>
+                                    <input type="number" name="quantity" value="1" min="1" max="${book.stock}" id="number-quantity" class="no-spinners"/>
                                     <button type="button" class="plus" onclick="plus()">+</button>
                                 </div>
                             </div>
@@ -269,10 +269,17 @@
                             <div class="price-cart">
                                 <p class="price"
                                    style="display: flex;flex-direction: column; width: 100%; text-align: center; margin: auto; margin-top: 20px">
-                                    <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
-                                                         maxFractionDigits="0"/> Đ</s>
-                                    <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
-                                                            groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    <c:if test="${book.priceDiscounted > 0}">
+                                        <s><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                             maxFractionDigits="0"/> Đ</s>
+                                        <span><fmt:formatNumber value="${book.priceDiscounted}" type="number"
+                                                                groupingUsed="true" maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+                                    <c:if test="${book.priceDiscounted == 0}">
+                                        <span><fmt:formatNumber value="${book.price}" type="number" groupingUsed="true"
+                                                                maxFractionDigits="0"/> Đ</span>
+                                    </c:if>
+
                                 </p>
                             </div>
                         </div>
@@ -372,7 +379,9 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
-                show("Đã thêm vào giỏ hàng");
+                if (!data.success){
+                    show("Không thể thêm vào giỏ hàng do số lượng tồn kho không đủ");
+                }
             })
             .catch(err => console.log(err));
     }
