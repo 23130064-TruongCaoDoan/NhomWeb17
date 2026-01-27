@@ -24,8 +24,11 @@
     <c:import url="/user/headerUser.jsp"></c:import>
     <div class="content">
         <div class="container">
-            <c:import url="/user/menuUser.jsp"></c:import>
-            <div class="profile-container inform">
+
+            <div class="menuUser">
+                <c:import url="/user/menuUser.jsp"></c:import>
+            </div>
+            <div class="profile-container inform" >
                 <div class="nav-inform">
                     <a href="" class="tab-inform active">Tất cả</a>
                     <a href="" class="tab-inform">Đơn Hàng</a>
@@ -34,15 +37,26 @@
                     <a href="" class="tab-inform">Xác nhận</a>
                 </div>
                 <hr/>
-                <div class="inform-card">
-                    <div class="head-inform-card">
-                        <p class="title-inform">Cập nhật số điện thoại ngay để nhận quà!</p>
-                        <p>16:43 11/11/2025</p>
-                    </div>
-                    <p class="content-inform">
-                        Bạn vừa đăng kí tài khoản? Hãy cập nhật email ngay để nhận được các thông báo quà tặng dành cho khách hàng mới! Click ngay vào đây để cập nhật. Đừng quên tiếp tục tham gia mua sắm để nhận được những ưu đãi dành riêng cho khách hàng mới.
-                    </p>
+                <div style="overflow: scroll;height: 47vh">
+                    <c:forEach var="n" items="${notifications}">
+                        <div class="inform-card">
+                            <div class="head-inform-card">
+                                <p class="title-inform">${n.title}</p>
+                                <p>${n.createdAt}</p>
+                            </div>
+
+                            <p class="content-inform">
+                                    ${n.noti}
+                            </p>
+                        </div>
+                    </c:forEach>
+                    <c:if test="${empty notifications}">
+                        <p style="text-align:center; margin-top:20px;">
+                            Không có thông báo
+                        </p>
+                    </c:if>
                 </div>
+
             </div>
         </div>
     </div>
