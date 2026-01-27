@@ -16,7 +16,7 @@
             <div class="header-title">
                 <a href="" class="logo">
                     <img
-                            src="assets/img/logo/logoChinh.png"
+                            src="${pageContext.request.contextPath}/assets/img/logo/logoChinh.png"
                             alt="Sách thiếu nhi cho bé"
                     />
                 </a>
@@ -66,7 +66,7 @@
                     <i class="fa-solid fa-cart-shopping"><span class="number" id="totalItem"><c:if test="${cart.totalQuantity > 0}">${cart.totalQuantity}</c:if></span></i>
                     <span>Giỏ hàng</span>
                 </a>
-                <a href="user-thongbao.jsp" class="button bt thongbao">
+                <a href="thong-bao" class="button bt thongbao">
                     <i class="fa-solid fa-bell"><span class="number">${numNotiFy}</span></i>
                     <span>Thông báo</span>
                 </a>

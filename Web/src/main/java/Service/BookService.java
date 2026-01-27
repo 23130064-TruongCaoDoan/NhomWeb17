@@ -380,4 +380,16 @@ public class BookService {
     public int getStockByBookId(int bookId) {
         return hd.getStockByBookId(bookId);
     }
+
+    public int countBooksByCategoryAndAge(String category, int ageFrom, int ageTo) {
+        return hd.countByCategoryAndAge(
+                category, ageFrom, ageTo
+        );
+    }
+
+    public List<Book> getBooksByCategoryAndAge(String category, int ageFrom, int ageTo, int limit, int offset) {
+        return hd.findByCategoryAndAge(
+                category, ageFrom, ageTo, limit, offset
+        );
+    }
 }
