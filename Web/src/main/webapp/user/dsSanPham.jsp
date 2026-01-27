@@ -229,7 +229,7 @@
     console.log("FILTER JS LOADED");
     // CLEAR
     document.querySelector(".clear-filter").onclick = () => {
-        window.location.href = "dsSanPham";
+        window.location.href = "${pageContext.request.contextPath}/dsSanPham";
     };
 
     function reload(){

@@ -66,7 +66,7 @@ public class CommentDao extends BaseDao{
                                 "SELECT  u.name AS name , c.rating AS rating, c.content  AS content, DATE_FORMAT(c.create_at, '%d/%m/%Y') AS createAt, c.img_comment AS imgComment" +
                                         " FROM comments c" +
                                         " INNER JOIN USER u ON u.id = c.user_id" +
-                                        " WHERE c.book_id = :book_id AND c.rating = :rating ORDER BY c.create_at DESC")
+                                        " WHERE c.book_id = :book_id AND c.rating = :rating AND c.is_active=1 ORDER BY c.create_at DESC")
                         .bind("book_id", bookId)
                         .bind("rating", rating)
                         .mapToBean(CommentView.class)
