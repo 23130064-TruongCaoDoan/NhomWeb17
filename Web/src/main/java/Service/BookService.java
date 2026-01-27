@@ -370,4 +370,14 @@ public class BookService {
             }
         }
     }
+
+    public void updateQuantity(Cart cart) {
+        for (CartItem item : cart.getItems()) {
+            hd.updateQuantity(item.getBook(),item.getQuantity());
+        }
+    }
+
+    public int getStockByBookId(int bookId) {
+        return hd.getStockByBookId(bookId);
+    }
 }

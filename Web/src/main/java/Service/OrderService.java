@@ -27,6 +27,7 @@ public class OrderService {
     public boolean addOrder(int userId, double totalAmount, String note, Integer dis, Integer ship, Integer address_id, String shipping_type, double shipping_cost, String delivered_date, Cart cart) {
         int order_id = orderDao.addOrder(userId, totalAmount, note, dis, ship);
         if (order_id != -1) {
+            bookService.updateQuantity(cart);
             bookService.updateStock(cart);
             orderItemDao.insertOrderItems(order_id, cart);
             notificationService.sendNoti(userId, "Bạn đã đặt đơn hàng: " + order_id,"Các sản phẩm bạn đặt: "+ cart.getProductNamesAsString());

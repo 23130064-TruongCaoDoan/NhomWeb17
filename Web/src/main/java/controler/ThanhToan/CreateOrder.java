@@ -13,6 +13,7 @@ import model.User;
 import model.Voucher;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 @WebServlet(name = "CreateOrder", value = "/CreateOrder")
 public class CreateOrder extends HttpServlet {
@@ -92,16 +93,24 @@ public class CreateOrder extends HttpServlet {
                 int quantity = cart.getItems().getFirst().getQuantity();
                 session.removeAttribute("buyNowCart");
                 cart = (Cart) session.getAttribute("cart");
-                if (cart != null) {
-                    for (CartItem item : cart.getItems()) {
-                        if (!bookService.isBookAvailable(item.getBook().getId())) {
-                            cart.removeItem(item.getBook().getId());
-                        }
-                        if (item.getBook().getId() == bid) {
-                            item.setQuantity(item.getQuantity() - quantity);
-                        }
+                Iterator<CartItem> iterator = cart.getItems().iterator();
+
+                while (iterator.hasNext()) {
+                    CartItem item = iterator.next();
+                    int bookId = item.getBook().getId();
+
+
+                    int stock = bookService.getStockByBookId(bookId);
+
+                    if (stock <= 0) {
+                        iterator.remove();
+                        continue;
                     }
-                    session.setAttribute("cart", cart);
+
+                    // Cart > tồn kho → cập nhật lại
+                    if (item.getQuantity() > stock) {
+                        item.setQuantity(stock);
+                    }
                 }
             } else {
                 session.removeAttribute("cart");

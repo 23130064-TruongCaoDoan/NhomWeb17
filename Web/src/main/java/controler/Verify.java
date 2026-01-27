@@ -24,10 +24,10 @@ public class Verify extends HttpServlet {
             request.getRequestDispatcher("user/errol.jsp").forward(request, response);
             return;
         }
-        String verifyCode = session.getAttribute("verifyCode").toString();
-        String email = session.getAttribute("email").toString();
-        String fullname = session.getAttribute("fullname").toString();
-        String password = session.getAttribute("password").toString();
+        String verifyCode = (String) session.getAttribute("verifyCode");
+        String email = (String) session.getAttribute("email");
+        String fullname = (String) session.getAttribute("fullname");
+        String password = (String) session.getAttribute("password");
         String otp =request.getParameter("otp");
         UserService userService = new UserService();
         PasswordUtil passwordUtil = new PasswordUtil();
@@ -44,9 +44,22 @@ public class Verify extends HttpServlet {
             request.getRequestDispatcher("user/errol.jsp").forward(request, response);
             return;
         }
+        long now = System.currentTimeMillis();
+        long otpTime = (long) session.getAttribute("otpTime");
+
+        if (now - otpTime > 2 * 60 * 1000) {
+            session.removeAttribute("verifyCode");
+            session.removeAttribute("otpTime");
+
+            request.setAttribute("showOTP", true);
+            request.setAttribute("error", "Mã xác thực đã hết hạn!");
+            request.getRequestDispatcher("user/errol.jsp").forward(request, response);
+            return;
+        }
         if (otp.equals(verifyCode)) {
             userService.addUser(fullname, email, passwordUtil.hashPassword(password));
             session.removeAttribute("verifyCode");
+            session.removeAttribute("otpTime");
             session.removeAttribute("email");
             session.removeAttribute("fullname");
             session.removeAttribute("password");
