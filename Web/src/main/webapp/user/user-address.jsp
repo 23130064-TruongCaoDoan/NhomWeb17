@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %><html lang="en">
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Address</title>
@@ -72,7 +74,7 @@
 
             fetch("deleteAddress", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
                 body: "id=" + encodeURIComponent(id)
             })
                 .then(res => res.json())
@@ -102,6 +104,7 @@
             emtyCard.style.display = "none";
         }
     }
+
     checkEmpty();
 
 </script>
