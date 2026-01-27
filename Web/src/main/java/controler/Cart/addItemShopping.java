@@ -28,6 +28,17 @@ public class addItemShopping extends HttpServlet {
         Book book=bookService.getBooksById(bookId);
         User user = (User) session.getAttribute("user");
         if(book!=null){
+            int currentQty = cart.getQuantityByBookId(bookId);
+
+            if (currentQty + quantity > book.getStock()) {
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().print(
+                        "{\"success\":false,\"total\":" + cart.getTotalQuantity() + "}"
+                );
+                return;
+            }
+
             cart.addItem(book, quantity);
             session.setAttribute("cart",cart);
             if(user!=null){
@@ -48,7 +59,7 @@ public class addItemShopping extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print(
-                "{\"total\":" + cart.getTotalQuantity() + "}"
+                "{\"success\":true,\"total\":" + cart.getTotalQuantity() + "}"
         );
     }
 

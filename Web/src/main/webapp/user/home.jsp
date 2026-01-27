@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="sachh moi">
-                <div class="title"><span>Góc sách mới cho bé</span><img src="assets/img/icon/iconNew.png"></div>
+                <div class="title"><span>Góc sách mới</span><img src="assets/img/icon/iconNew.png"></div>
                 <div class="dsbooks">
                     <c:forEach var="book" items="${booksListNew}" begin="0" end="4">
                         <c:url var="detailUrl" value="/productDetail">

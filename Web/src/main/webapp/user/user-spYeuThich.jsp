@@ -102,7 +102,11 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("totalItem").innerText = data.total;
-                show("Đã thêm vào giỏ hàng");
+                if (data.success) {
+                    show("Đã thêm vào giỏ hàng");
+                } else {
+                    show("Không thể thêm do quá số lượng")
+                }
             })
             .catch(err => console.log(err));
     }

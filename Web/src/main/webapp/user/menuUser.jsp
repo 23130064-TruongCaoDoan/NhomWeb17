@@ -7,10 +7,6 @@
     <div class="name">
         ${sessionScope.user.name}
     </div>
-
-    <div class="bacThanhVien">
-        <%--                        ${sessionScope.user.memberLevel}--%>Bạc
-    </div>
     <div class="point">
        Điểm: ${sessionScope.user.point}
     </div>
