@@ -20,6 +20,7 @@
     margin-bottom: 20px;
 }
 
+
 .voucher-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

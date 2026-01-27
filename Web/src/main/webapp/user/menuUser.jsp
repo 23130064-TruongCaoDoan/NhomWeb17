@@ -29,7 +29,7 @@
         <span>Đơn hàng của tôi</span>
     </a>
 
-    <a href="ViVoucher.jsp" class="menu Voucher">
+    <a href="my-vouchers" class="menu Voucher">
         <i class="fa-solid fa-ticket"></i>
         <span>Ví voucher</span>
     </a>
