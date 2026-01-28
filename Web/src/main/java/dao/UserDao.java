@@ -140,7 +140,7 @@ public class UserDao extends BaseDao {
                 ));
     }
 
-    public void updateRole(int userId, String role) {
+    public void updateRole(int userId, boolean  role) {
         String sql = "UPDATE user SET role = :role WHERE id = :id";
 
         getJdbi().useHandle(handle ->

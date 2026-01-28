@@ -84,7 +84,14 @@
                                 <td>
                                     <form method="post" action="${pageContext.request.contextPath}/change-role">
                                         <input type="hidden" name="userId" value="${u.id}">
-                                        <select name="role" onchange="this.form.submit()">
+                                        <select name="role" onchange="
+                                                if (${u.id == sessionScope.user.id} && this.value == '0') {
+                                                alert('❌ Bạn không thể tự bỏ quyền quản trị của chính mình');
+                                                this.value = '1';
+                                                return false;
+                                                }
+                                                this.form.submit();
+                                                ">
                                             <c:choose>
                                                 <c:when test="${u.role == 0}">
                                                     <option value="0" selected>USER</option>
