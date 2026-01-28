@@ -70,6 +70,7 @@
                             <th>Email</th>
                             <th>Point</th>
                             <th>Tổng tiền mua</th>
+                            <th>Role</th>
                         </tr>
                         </thead>
                         <tbody id="userTable">
@@ -80,9 +81,35 @@
                                 <td>${u.email}</td>
                                 <td>${u.point}</td>
                                 <td>${u.totalSpent}</td>
+                                <td>
+                                    <form method="post" action="${pageContext.request.contextPath}/change-role">
+                                        <input type="hidden" name="userId" value="${u.id}">
+                                        <select name="role" onchange="
+                                                if (${u.id == sessionScope.user.id} && this.value == '0') {
+                                                alert('❌ Bạn không thể tự bỏ quyền quản trị của chính mình');
+                                                this.value = '1';
+                                                return false;
+                                                }
+                                                this.form.submit();
+                                                ">
+                                            <c:choose>
+                                                <c:when test="${u.role == 0}">
+                                                    <option value="0" selected>USER</option>
+                                                    <option value="1">ADMIN</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="0">USER</option>
+                                                    <option value="1" selected>ADMIN</option>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                        </select>
+                                    </form>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
+
                     </table>
                 </div>
             </div>

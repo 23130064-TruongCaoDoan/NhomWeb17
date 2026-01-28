@@ -13,8 +13,8 @@ public class UploadService {
     public UploadService() {
         cloudinary = new Cloudinary(Map.of(
                 "cloud_name", "dyw6k0pz6",
-                "api_key", "481496538886471",          // Root API Key
-                "api_secret", "TZz2KR2Z1ohIvOsE5q4_FOpiUk4" // Root API Secret
+                "api_key", "481496538886471",
+                "api_secret", "TZz2KR2Z1ohIvOsE5q4_FOpiUk4"
         ));
     }
 

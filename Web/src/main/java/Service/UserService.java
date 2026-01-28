@@ -94,6 +94,11 @@ public class UserService {
         return userDao.changePassword(id, newPassword);
     }
 
+    public void updateRole(int userId, boolean role) {
+        userDao.updateRole(userId, role);
+    }
+
+
 
 //    public static void main(String[] args) {
 //        UserService userService = new UserService();

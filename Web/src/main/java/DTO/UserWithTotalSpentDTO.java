@@ -6,7 +6,7 @@ public class UserWithTotalSpentDTO {
     private String email;
     private int point;
     private double totalSpent;
-
+    private int role;
     public int getId() {
         return id;
     }
@@ -15,6 +15,14 @@ public class UserWithTotalSpentDTO {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getName() {
