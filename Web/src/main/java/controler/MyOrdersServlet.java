@@ -18,7 +18,6 @@ public class MyOrdersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        // lấy user từ session (đúng chuẩn)
         User user = (User) req.getSession().getAttribute("user");
 
         if (user == null) {

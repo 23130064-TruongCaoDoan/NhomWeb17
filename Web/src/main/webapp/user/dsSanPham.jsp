@@ -227,7 +227,6 @@
     });
 
     console.log("FILTER JS LOADED");
-    // CLEAR
     document.querySelector(".clear-filter").onclick = () => {
         window.location.href = "${pageContext.request.contextPath}/dsSanPham";
     };

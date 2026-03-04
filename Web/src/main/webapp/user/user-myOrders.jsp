@@ -55,18 +55,18 @@
                                 <p class="time">${o.orderDate}</p>
 
                                 <p class="
-                                        ${o.status == 'Completed' ? 'status-delivered' :
-                                          o.status == 'PENDING'   ? 'status-waiting'   :
-                                          o.status == 'NOPAID'   ? 'status-waiting'   :
-                                          o.status == 'SHIPPING'  ? 'status-shipping'  :
-                                          o.status == 'CANCELLED' ? 'status-cancel'    : ''}">
+                                        ${o.status.toLowerCase() == 'completed' ? 'status-delivered' :
+                                          o.status.toLowerCase() == 'pending'   ? 'status-waiting'   :
+                                          o.status.toLowerCase() == 'nopaid'   ? 'status-waiting'   :
+                                          o.status.toLowerCase() == 'shipping'  ? 'status-shipping'  :
+                                          o.status.toLowerCase() == 'cancelled' ? 'status-cancel'    : ''}">
 
                                     <c:choose>
-                                        <c:when test="${o.status == 'Completed'}">Đã giao</c:when>
-                                        <c:when test="${o.status == 'PENDING'}">Đang xử lý</c:when>
-                                        <c:when test="${o.status == 'NOPAID'}">Đang xử lý</c:when>
-                                        <c:when test="${o.status == 'CANCELLED'}">Đã huỷ</c:when>
-                                        <c:otherwise>${o.status}</c:otherwise>
+                                        <c:when test="${o.status.toLowerCase() == 'completed'}">Đã giao</c:when>
+                                        <c:when test="${o.status.toLowerCase() == 'pending'}">Đang xử lý</c:when>
+                                        <c:when test="${o.status.toLowerCase() == 'nopaid'}">Đang xử lý</c:when>
+                                        <c:when test="${o.status.toLowerCase() == 'cancelled'}">Đã huỷ</c:when>
+                                        <c:otherwise>${o.status.toLowerCase()}</c:otherwise>
                                     </c:choose>
                                 </p>
 
@@ -102,7 +102,7 @@
                                         Xem chi tiết
                                     </button>
 
-                                    <c:if test="${o.status == 'Completed' && o.reviewed == false}">
+                                    <c:if test="${o.status.toLowerCase() == 'completed' && !o.reviewed}">
                                         <button class="action-btn writeReviewBtn"
                                                 data-order-id="${o.orderId}">
                                             Viết đánh giá

@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/MyOrdersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/MyOrdersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/CommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/CommentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +379,13 @@
       <workItem from="1769489085349" duration="27167000" />
       <workItem from="1769516822938" duration="85000" />
       <workItem from="1769524678056" duration="12199000" />
-      <workItem from="1769540125429" duration="682000" />
+      <workItem from="1769540125429" duration="2076000" />
+      <workItem from="1769563698501" duration="3251000" />
+      <workItem from="1769576428166" duration="1244000" />
+      <workItem from="1769578553571" duration="1095000" />
+      <workItem from="1772440099456" duration="826000" />
+      <workItem from="1772456740081" duration="52000" />
+      <workItem from="1772606600893" duration="1650000" />
     </task>
     <servers />
   </component>
@@ -392,16 +402,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Web/src/main/webapp/user/user_UuDaiThanhVien.jsp</url>
-          <line>15</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
