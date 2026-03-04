@@ -52,10 +52,6 @@ public class CommentServlet extends HttpServlet {
             return;
         }
 
-
-
-
-
         int rating = Integer.parseInt(request.getParameter("rating"));
         String content = request.getParameter("content");
         Part imagePart = request.getPart("image");

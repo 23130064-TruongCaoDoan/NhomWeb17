@@ -41,6 +41,7 @@ public class OrderDao extends BaseDao {
                         o.order_date    AS orderDate,
                         o.status        AS status,
                         o.total_amount  AS totalAmount,
+                        o.reviewed        AS reviewed,
                 
                         SUM(oi.quantity) AS totalQuantity,
                         MIN(b.cover_img_url) AS firstBookImage
