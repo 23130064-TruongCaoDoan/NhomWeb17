@@ -11,10 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/MyOrdersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/MyOrdersServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/CommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/product_detail/CommentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/FilterSanPhamServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/FilterSanPhamServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/user-myOrders.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +383,7 @@
       <workItem from="1769578553571" duration="1095000" />
       <workItem from="1772440099456" duration="826000" />
       <workItem from="1772456740081" duration="52000" />
-      <workItem from="1772606600893" duration="1650000" />
+      <workItem from="1772606600893" duration="2372000" />
     </task>
     <servers />
   </component>

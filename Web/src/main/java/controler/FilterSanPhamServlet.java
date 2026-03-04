@@ -9,7 +9,7 @@ import model.Book;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "FilterSanPhamServlet", value = "/dsSanPham/filter")
+@WebServlet(name = "FilterSanPhamServlet", value = "/filter")
 public class FilterSanPhamServlet extends HttpServlet {
     private final BookService bookService = new BookService();
 

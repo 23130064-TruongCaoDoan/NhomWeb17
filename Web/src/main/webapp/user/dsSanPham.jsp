@@ -93,8 +93,6 @@
                 <div class="pagination">
 
                     <c:choose>
-
-
                         <c:when test="${mode == 'search'}">
                             <c:if test="${currentPage > 1}">
                                 <a class="page-btn prev"
@@ -186,7 +184,7 @@
     }
 </script>
 <script>
-    const BASE_URL = "${pageContext.request.contextPath}/dsSanPham/filter";
+    const BASE_URL = "${pageContext.request.contextPath}/filter";
     function toggleOptions() {
         const el = document.getElementById("options");
         if (el) {
