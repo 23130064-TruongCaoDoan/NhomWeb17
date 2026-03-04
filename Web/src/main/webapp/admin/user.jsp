@@ -70,7 +70,8 @@
                             <th>Email</th>
                             <th>Point</th>
                             <th>Tổng tiền mua</th>
-                            <th>Role</th>
+                            <th>Quyền</th>
+                            <th>Trang thái</th>
                         </tr>
                         </thead>
                         <tbody id="userTable">
@@ -100,6 +101,31 @@
                                                 <c:otherwise>
                                                     <option value="0">USER</option>
                                                     <option value="1" selected>ADMIN</option>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" action="${pageContext.request.contextPath}/change-status">
+                                        <input type="hidden" name="userId" value="${u.id}">
+                                        <select name="status" onchange="
+                                                if (${u.id == sessionScope.user.id} && this.value == '0') {
+                                                alert('Bạn không thể tự bỏ trạng thái hoạt động của chính mình');
+                                                this.value = '1';
+                                                return false;
+                                                }
+                                                this.form.submit();
+                                                ">
+                                            <c:choose>
+                                                <c:when test="${u.status == 0}">
+                                                    <option value="0" selected>Khóa</option>
+                                                    <option value="1">Mở</option>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <option value="0">Khóa</option>
+                                                    <option value="1" selected>Mở</option>
                                                 </c:otherwise>
                                             </c:choose>
 
@@ -161,7 +187,7 @@
             <label>Người nhận</label>
             <select name="userIds" class="mota" multiple required>
                 <c:forEach items="${users}" var="u">
-                    <option value="${u.id}">${u.name}</option>
+                    <option value="${u.id}">${u.email}</option>
                 </c:forEach>
             </select>
         </div>

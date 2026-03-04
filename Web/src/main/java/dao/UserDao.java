@@ -54,7 +54,7 @@ public class UserDao extends BaseDao {
 
     public List<UserWithTotalSpentDTO> getUserWithTotalSpent(String q, String stock) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT u.id, u.name, u.email, u.point, u.role,  COALESCE(SUM(o.total_amount), 0) AS total_spent FROM user u LEFT JOIN orders o ON u.id = o.user_id WHERE (:q IS NULL OR u.name LIKE CONCAT('%', :q, '%') OR u.email LIKE CONCAT('%', :q, '%')) GROUP BY u.id, u.name, u.email, u.point ORDER BY CASE WHEN :sort = 'pAsc'  THEN u.point END ASC, CASE WHEN :sort = 'pDesc' THEN u.point END DESC, CASE WHEN :sort = 'mAsc'  THEN total_spent END ASC, CASE WHEN :sort = 'mDesc' THEN total_spent END DESC;")
+                handle.createQuery("SELECT u.id, u.name, u.email, u.point, u.role,  COALESCE(SUM(o.total_amount), 0) AS total_spent, u.status FROM user u LEFT JOIN orders o ON u.id = o.user_id WHERE (:q IS NULL OR u.name LIKE CONCAT('%', :q, '%') OR u.email LIKE CONCAT('%', :q, '%')) GROUP BY u.id, u.name, u.email, u.point ORDER BY CASE WHEN :sort = 'pAsc'  THEN u.point END ASC, CASE WHEN :sort = 'pDesc' THEN u.point END DESC, CASE WHEN :sort = 'mAsc'  THEN total_spent END ASC, CASE WHEN :sort = 'mDesc' THEN total_spent END DESC;")
                         .bind("q",q)
                         .bind("sort",stock)
                         .mapToBean(UserWithTotalSpentDTO.class)
@@ -146,6 +146,16 @@ public class UserDao extends BaseDao {
         getJdbi().useHandle(handle ->
                 handle.createUpdate(sql)
                         .bind("role", role)
+                        .bind("id", userId)
+                        .execute()
+        );
+    }
+    public void updateStatus(int userId, boolean  status) {
+        String sql = "UPDATE user SET status = :status WHERE id = :id";
+
+        getJdbi().useHandle(handle ->
+                handle.createUpdate(sql)
+                        .bind("status", status)
                         .bind("id", userId)
                         .execute()
         );
