@@ -55,14 +55,14 @@
                                 <p class="time">${o.orderDate}</p>
 
                                 <p class="
-                                        ${o.status == 'DELIVERED' ? 'status-delivered' :
+                                        ${o.status == 'Completed' ? 'status-delivered' :
                                           o.status == 'PENDING'   ? 'status-waiting'   :
                                           o.status == 'NOPAID'   ? 'status-waiting'   :
                                           o.status == 'SHIPPING'  ? 'status-shipping'  :
                                           o.status == 'CANCELLED' ? 'status-cancel'    : ''}">
 
                                     <c:choose>
-                                        <c:when test="${o.status == 'DELIVERED'}">Đã giao</c:when>
+                                        <c:when test="${o.status == 'Completed'}">Đã giao</c:when>
                                         <c:when test="${o.status == 'PENDING'}">Đang xử lý</c:when>
                                         <c:when test="${o.status == 'NOPAID'}">Đang xử lý</c:when>
                                         <c:when test="${o.status == 'CANCELLED'}">Đã huỷ</c:when>
@@ -102,7 +102,7 @@
                                         Xem chi tiết
                                     </button>
 
-                                    <c:if test="${o.status == 'COMPLETED' && o.reviewed == false}">
+                                    <c:if test="${o.status == 'Completed' && o.reviewed == false}">
                                         <button class="action-btn writeReviewBtn"
                                                 data-order-id="${o.orderId}">
                                             Viết đánh giá

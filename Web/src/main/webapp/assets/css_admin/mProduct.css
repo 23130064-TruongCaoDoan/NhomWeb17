@@ -130,6 +130,10 @@
     display: none;
     box-sizing: border-box;
     width: 50%;
+
+
+    max-height: 90vh;
+    overflow-y: auto;
 }
 .form-grid {
     display: grid;
