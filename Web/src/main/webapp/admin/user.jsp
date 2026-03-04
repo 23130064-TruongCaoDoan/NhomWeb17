@@ -86,7 +86,7 @@
                                         <input type="hidden" name="userId" value="${u.id}">
                                         <select name="role" onchange="
                                                 if (${u.id == sessionScope.user.id} && this.value == '0') {
-                                                alert('❌ Bạn không thể tự bỏ quyền quản trị của chính mình');
+                                                alert('Bạn không thể tự bỏ quyền quản trị của chính mình');
                                                 this.value = '1';
                                                 return false;
                                                 }
@@ -138,7 +138,7 @@
         </c:if>
         <c:if test="${param.success == 'notify'}">
             <script>
-                alert("🔔 Tạo thông báo thành công");
+                alert("Tạo thông báo thành công");
             </script>
         </c:if>
         <button type="submit" class="confirm">Xác nhận</button>
@@ -173,19 +173,19 @@
 </main>
 <c:if test="${param.error == 'invalid_code'}">
     <script>
-        alert("❌ Mã voucher không hợp lệ");
+        alert(" Mã voucher không hợp lệ");
     </script>
 </c:if>
 
 <c:if test="${param.error == 'no_user_selected'}">
     <script>
-        alert("❌ Chưa chọn khách hàng");
+        alert(" Chưa chọn khách hàng");
     </script>
 </c:if>
 
 <c:if test="${param.success == 'gifted'}">
     <script>
-        alert("🎉 Tặng voucher thành công");
+        alert(" Tặng voucher thành công");
     </script>
 </c:if>
 

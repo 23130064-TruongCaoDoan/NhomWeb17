@@ -107,14 +107,13 @@
                 <div style="display: flex;justify-content: space-between;margin-top: 20px;">
                     <p class="order-note">*Trạng thái đơn hàng:
                         <c:choose>
-                        <c:when test="${dto.order.status == 'DELIVERED'}">Đã giao</c:when>
+                        <c:when test="${dto.order.status == 'Completed'}">Đã giao</c:when>
                         <c:when test="${dto.order.status == 'PENDING'}">Đang xử lý</c:when>
                         <c:when test="${dto.order.status == 'NOPAID'}">Đang xử lý</c:when>
                         <c:when test="${dto.order.status == 'CANCELLED'}">Đã huỷ</c:when>
                         <c:otherwise>${dto.order.status}</c:otherwise>
                         </c:choose>
                     </p>
-                    <button class="order-button">Mua Lại</button>
                 </div>
                 </div>
   
