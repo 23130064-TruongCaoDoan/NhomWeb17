@@ -7,6 +7,7 @@ public class UserWithTotalSpentDTO {
     private int point;
     private double totalSpent;
     private int role;
+    private int status;
     public int getId() {
         return id;
     }
@@ -47,6 +48,13 @@ public class UserWithTotalSpentDTO {
 
     public void setPoint(int point) {
         this.point = point;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public double getTotalSpent() {

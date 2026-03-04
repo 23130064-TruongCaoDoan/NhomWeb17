@@ -97,6 +97,9 @@ public class UserService {
     public void updateRole(int userId, boolean role) {
         userDao.updateRole(userId, role);
     }
+    public void updateStatus(int userId, boolean status) {
+        userDao.updateStatus(userId, status);
+    }
 
 
 
