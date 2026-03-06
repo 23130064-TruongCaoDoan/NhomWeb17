@@ -37,6 +37,9 @@ public class UserService {
     public void addUser(String fullname, String email, String password) {
         userDao.addUser(fullname, email, password);
     }
+    public void addUser(String fullname, String email) {
+        userDao.addUser(fullname, email);
+    }
 
     public void updatePass(String email, String password) {
         if (checkExit(email)) {
@@ -96,6 +99,9 @@ public class UserService {
 
     public void updateRole(int userId, boolean role) {
         userDao.updateRole(userId, role);
+    }
+    public void updateStatus(int userId, boolean status) {
+        userDao.updateStatus(userId, status);
     }
 
 

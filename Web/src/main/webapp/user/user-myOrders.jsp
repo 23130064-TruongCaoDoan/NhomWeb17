@@ -172,7 +172,6 @@
         });
     });
 
-    // Đóng popup
     function closePopup() {
         overlay.style.display = "none";
         popup.style.display = "none";
@@ -183,7 +182,6 @@
     overlay.addEventListener("click", closePopup);
     closeBtn.addEventListener("click", closePopup);
 
-    // Submit form với AJAX
     reviewForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
