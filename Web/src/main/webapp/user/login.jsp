@@ -41,9 +41,12 @@
                 <button type="submit" class="dangNhap">Đăng nhập</button>
                 <div class="signUp"><a href="<c:url value='dangki' />"><span>Đăng ký</span></a></div>
             </div>
-            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/Web_war_exploded/login-google&response_type=code&client_id=846603349467-fma7pe8c0b03i56hibab7psvktbnluj7.apps.googleusercontent.com&approval_prompt=force">
-                Login with Google
-            </a>
+            <div class="login-google">
+                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/Web_war_exploded/login-google&response_type=code&client_id=846603349467-fma7pe8c0b03i56hibab7psvktbnluj7.apps.googleusercontent.com&approval_prompt=force">
+                    <img src="https://freelogopng.com/images/all_img/1657952440google-logo-png-transparent.png" alt="">
+                    <span>Đăng nhập bằng Google</span>
+                </a>
+            </div>
         </form>
     </div>
 </div>

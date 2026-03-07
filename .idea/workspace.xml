@@ -11,7 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/Util/GoogleOAuthUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/Util/GoogleOAuthUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,49 +73,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AddressDao.executor": "Run",
-    "Application.BookDao.executor": "Run",
-    "Application.CommentDao.executor": "Run",
-    "Application.CommentServlet.executor": "Run",
-    "Application.EventDao.executor": "Run",
-    "Application.HomeDao.executor": "Run",
-    "Application.HomeServlet.executor": "Run",
-    "Application.OrderDao.executor": "Run",
-    "Application.OrderDetailDAO.executor": "Run",
-    "Application.UserDao.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.DanhGia.jsp.executor": "Run",
-    "JavaScript Debug.ThanhToan.html.executor": "Run",
-    "JavaScript Debug.home.html.executor": "Run",
-    "JavaScript Debug.quanlidonhang.html.executor": "Run",
-    "JavaScript Debug.user_UuDaiThanhVien.html.executor": "Run",
-    "Maven.Web [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Tomcat Server.DanhGia.jsp.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.482.executor": "Run",
-    "Tomcat Server.Tomcat.executor": "Run",
-    "git-widget-placeholder": "spYeuThich",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/hoc tap/NhomWeb17/Web/src/main/webapp/assets/img/event",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.applicationServers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AddressDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BookDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CommentDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CommentServlet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EventDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HomeDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HomeServlet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OrderDao.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OrderDetailDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserDao.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.DanhGia.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.ThanhToan.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.quanlidonhang.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.user_UuDaiThanhVien.html.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Web [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.DanhGia.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.482.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;spYeuThich&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/hoc tap/NhomWeb17/Web/src/main/webapp/assets/img/event&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\hoc tap\NhomWeb17\Web\src\main\webapp\assets\img\event" />
@@ -385,7 +386,8 @@
       <workItem from="1772456740081" duration="52000" />
       <workItem from="1772606600893" duration="3275000" />
       <workItem from="1772712907430" duration="1008000" />
-      <workItem from="1772801624245" duration="6031000" />
+      <workItem from="1772801624245" duration="6523000" />
+      <workItem from="1772857840015" duration="2836000" />
     </task>
     <servers />
   </component>

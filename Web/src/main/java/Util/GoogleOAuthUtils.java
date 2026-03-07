@@ -18,7 +18,6 @@ public class GoogleOAuthUtils {
     private static final String REDIRECT_URI = "http://localhost:8080/Web_war_exploded/login-google";
 
     public static String getToken(String code) throws Exception {
-
         GoogleTokenResponse tokenResponse =
                 new GoogleAuthorizationCodeTokenRequest(
                         GoogleNetHttpTransport.newTrustedTransport(),
@@ -28,30 +27,22 @@ public class GoogleOAuthUtils {
                         code,
                         REDIRECT_URI
                 ).execute();
-
         return tokenResponse.getIdToken();
     }
 
     public static GoogleUser getUserInfo(String idTokenString) throws Exception {
-
         GoogleIdTokenVerifier verifier =
                 new GoogleIdTokenVerifier.Builder(
                         GoogleNetHttpTransport.newTrustedTransport(),
                         GsonFactory.getDefaultInstance())
                         .setAudience(Collections.singletonList(CLIENT_ID))
                         .build();
-
         GoogleIdToken idToken = verifier.verify(idTokenString);
-
         if (idToken != null) {
-
             GoogleIdToken.Payload payload = idToken.getPayload();
-
             GoogleUser user = new GoogleUser();
-
             user.setEmail(payload.getEmail());
             user.setName((String) payload.get("name"));
-
             return user;
         }
 
