@@ -41,6 +41,12 @@
                 <button type="submit" class="dangNhap">Đăng nhập</button>
                 <div class="signUp"><a href="<c:url value='dangki' />"><span>Đăng ký</span></a></div>
             </div>
+            <div class="login-google">
+                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/Web_war_exploded/login-google&response_type=code&client_id=846603349467-fma7pe8c0b03i56hibab7psvktbnluj7.apps.googleusercontent.com&approval_prompt=force">
+                    <img src="https://freelogopng.com/images/all_img/1657952440google-logo-png-transparent.png" alt="">
+                    <span>Đăng nhập bằng Google</span>
+                </a>
+            </div>
         </form>
     </div>
 </div>
@@ -113,11 +119,10 @@
             errorDiv.innerText = "Vui lòng nhập mật khẩu";
             hasError = true;
         }
-        else if (passInput.value.length < 8 && !checkPassword(passInput.value.trim)) {
+        else if (passInput.value.length < 8 && !checkPassword(passInput.value.trim())) {
             errorDiv.innerText = "Mật khẩu phải có ít nhất 8 ký tự, có số và kí tự đặc biệt";
             hasError = true;
         }
-
         if (hasError) {
             e.preventDefault();
         }

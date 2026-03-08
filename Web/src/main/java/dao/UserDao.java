@@ -37,6 +37,11 @@ public class UserDao extends BaseDao {
                 handle.createUpdate("insert into USER(name,email,password_hash,role,status, point) values(:username, :email, :password,:role,:status,:point)").bind("username", fullname).bind("email", email).bind("password", password).bind("role",0).bind("status",1).bind("point",0).execute()
         );
     }
+    public void addUser(String fullname, String email) {
+        getJdbi().withHandle(handle ->
+                handle.createUpdate("insert into USER(name,email,role,status, point) values(:username, :email,:role,:status,:point)").bind("username", fullname).bind("email", email).bind("role",0).bind("status",1).bind("point",0).execute()
+        );
+    }
 
     public void updatePass(String email,String password) {
         getJdbi().withHandle(handle ->

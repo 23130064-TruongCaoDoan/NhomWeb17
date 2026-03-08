@@ -11,8 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae983c31-9de9-4979-ab49-753be64a09cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/java/controler/FilterSanPhamServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/java/controler/FilterSanPhamServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/dsSanPham.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/assets/css/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/main/webapp/user/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,7 @@
     &quot;JavaScript Debug.home.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.quanlidonhang.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.user_UuDaiThanhVien.html.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Web [install].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
@@ -383,7 +384,10 @@
       <workItem from="1769578553571" duration="1095000" />
       <workItem from="1772440099456" duration="826000" />
       <workItem from="1772456740081" duration="52000" />
-      <workItem from="1772606600893" duration="2372000" />
+      <workItem from="1772606600893" duration="3275000" />
+      <workItem from="1772712907430" duration="1008000" />
+      <workItem from="1772801624245" duration="6523000" />
+      <workItem from="1772857840015" duration="2836000" />
     </task>
     <servers />
   </component>

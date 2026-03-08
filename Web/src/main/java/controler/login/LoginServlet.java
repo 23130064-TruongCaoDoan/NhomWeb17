@@ -1,4 +1,4 @@
-package controler;
+package controler.login;
 
 import Service.UserService;
 import jakarta.servlet.*;

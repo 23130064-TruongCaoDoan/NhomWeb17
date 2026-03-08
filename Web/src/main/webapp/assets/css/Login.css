@@ -204,3 +204,29 @@
     70%  { transform: scale(1.05); }
     100% { transform: scale(1); opacity: 1; }
 }
+.login-google{
+    display: block;
+    border: 1px solid black ;
+    width: fit-content;
+    margin:0 auto;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-top: 3px;
+}
+.login-google a{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    gap: 8px;
+}
+.login-google img{
+    height: 24px;
+    width: 24px;
+    float: left;
+}
+
+.login-google span{
+    display: flex;
+    align-items: center;
+    float: right;
+}
